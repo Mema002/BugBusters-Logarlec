@@ -3,6 +3,8 @@ package src.game;
 import java.util.ArrayList;
 
 import src.character.Character;
+import src.room.Room;
+import src.room.RoomManager;
 
 public class GameLogic{
     private RoomManager roomManager;

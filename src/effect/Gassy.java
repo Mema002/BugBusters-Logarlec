@@ -1,4 +1,7 @@
-package src.Game;
+package src.effect;
+
+import src.character.Character;
+
 public class Gassy extends Effect {
 
     public Gassy(boolean a) {

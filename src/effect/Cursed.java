@@ -1,6 +1,9 @@
-package src.Game;
+package src.effect;
 
 import java.util.ArrayList;
+
+import src.room.Room;
+import src.character.Character;
 
 public class Cursed extends Effect {
     private ArrayList<Room> inNeighbours;

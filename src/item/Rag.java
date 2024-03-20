@@ -1,4 +1,8 @@
-package src.Game;
+package src.item;
+
+import src.room.Room;
+import src.character.Character;
+
 public class Rag extends Item {
     private int remainingTime;
 

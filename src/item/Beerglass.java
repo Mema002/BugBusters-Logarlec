@@ -1,4 +1,7 @@
-package src.Game;
+package src.item;
+
+import src.room.Room;
+import src.character.Character;
 
 public class Beerglass extends Item {
     private int remainingTime;

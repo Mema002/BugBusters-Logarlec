@@ -1,6 +1,10 @@
-package src.Game;
+package src.room;
 
 import java.util.ArrayList;
+
+import src.effect.Effect;
+import src.item.Item;
+import src.character.Character;
 
 public class Room {
     private ArrayList<Character> characters;

@@ -1,7 +1,7 @@
 package src.item;
 
 import src.character.Character;
-import src.game.Room;
+import src.room.Room;
 
 public abstract class Item {
     protected Room currentRoom;

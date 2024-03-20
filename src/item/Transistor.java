@@ -1,4 +1,8 @@
-package src.Game;
+package src.item;
+
+import src.room.Room;
+import src.character.Character;
+
 public class Transistor extends Item {
     private boolean isActive;
     private Transistor pair;

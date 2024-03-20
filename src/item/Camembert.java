@@ -1,4 +1,8 @@
-package src.Game;
+package src.item;
+
+import src.effect.Cursed;
+import src.room.Room;
+import src.character.Character;
 
 public class Camembert extends Item {
     private int remainingTime;

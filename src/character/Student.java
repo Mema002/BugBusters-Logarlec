@@ -1,6 +1,9 @@
-package src.Game;
+package src.character;
 
 import java.util.ArrayList;
+
+import src.item.Item;
+import src.room.Room;
 
 public class Student extends Character {
 
