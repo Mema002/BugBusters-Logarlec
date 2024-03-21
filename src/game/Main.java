@@ -30,5 +30,6 @@ public class Main {
         logger.info("15. Jatek kezdete");
         logger.info("16. Osszetett eset");
         logger.info("17. Targyeldobasa");
+        logger.warning("Ejnye, bebugzott valami! (mock warning)");
     }
 }
