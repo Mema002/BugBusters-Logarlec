@@ -7,20 +7,29 @@ import src.item.Item;
 import src.character.Character;
 
 public class Room {
+
     private ArrayList<Character> characters;
     private ArrayList<Item> items;
     private ArrayList<Effect> effects;
     private ArrayList<Room> neighbours;
     private int capacity;
 
-    public Room(int c) {
+    private final int id;
+
+    public Room(int capacity, int id) {
         this.characters = new ArrayList<Character>();
         this.items = new ArrayList<Item>();
         this.effects = new ArrayList<Effect>();
         this.neighbours = new ArrayList<Room>();
-        this.capacity = c;
+        this.capacity = capacity;
+        this.id = id;
     }
-    //character get set
+
+    public int getId() {
+        return id;
+    }
+
+    //TODO character get set
     public ArrayList<Character> getCharacters() {
         return characters;
     }
