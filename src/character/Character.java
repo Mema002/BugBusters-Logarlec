@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import src.item.Item;
 import src.room.Room;
+import static src.game.SingletonLogger.logger;
+
 
 public abstract class Character {
+
     protected ArrayList<Item> inventory;
     protected Room currentRoom;
     protected int stunnedFor;
@@ -18,6 +21,7 @@ public abstract class Character {
         this.expelled = false;
     }
 
+    public abstract int getId();
     public ArrayList<Item> getInventory() {
         return inventory;
     }

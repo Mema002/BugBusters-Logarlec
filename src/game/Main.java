@@ -1,11 +1,16 @@
 package src.game;
 
-import java.util.logging.Logger;
+import src.character.Student;
+
+import java.io.Console;
+
+import static src.game.SingletonLogger.logger;
 
 public class Main {
     public static void main(String[] args) {
 
-        Logger logger = SingletonLogger.getLogger();
+        ConsoleApp consoleApp = new ConsoleApp();
+        consoleApp.writeOutInventory(new Student(null, 0));
         logger.info("BugBusters ProjLab tesztprogram");
         logger.info("Tesztesetek:");
         logger.info("1.  Logarlec");

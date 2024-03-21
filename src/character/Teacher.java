@@ -8,8 +8,14 @@ import src.room.Room;
 
 public class Teacher extends Character {
 
-    public Teacher(Room currentRoom) {
+    private int id;
+    public Teacher(Room currentRoom, int id) {
         super(currentRoom);
+        this.id = id;
+    }
+    @Override
+    public int getId() {
+        return id;
     }
     
     private void expellStudent(Student s) {
@@ -20,7 +26,7 @@ public class Teacher extends Character {
     public void move() {
         ArrayList<Room> options = currentRoom.getNeighbours();
         int targetIndex;
-        if (options.size() == 0) return;
+        if (options.isEmpty()) return;
         if (options.size() == 1) targetIndex = 0;
         else {
             Random random = new Random();

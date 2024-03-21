@@ -6,11 +6,17 @@ import src.item.Item;
 import src.room.Room;
 
 public class Student extends Character {
-
-    public Student(Room currentRoom) {
+    private int id;
+    public Student(Room currentRoom, int id) {
         super(currentRoom);
+        this.id = id;
     }
-    
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+
     private void addToInventory(Item i) {
         inventory.add(i);
     }

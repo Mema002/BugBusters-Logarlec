@@ -1,16 +1,22 @@
 package src.game;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
 
 public class SingletonLogger {
-    private static Logger logger = null;
+    public static Logger logger = null;
 
-    private SingletonLogger() {
+    static {
+        logger = Logger.getLogger(SingletonLogger.class.getName());
+        Handler[] handlers = logger.getParent().getHandlers();
+        for (Handler handler : handlers) {
+            logger.getParent().removeHandler(handler);
+        }
+        CustomConsoleHandler handler = new CustomConsoleHandler();
+        handler.setFormatter(new CustomFormatter());
+        logger.addHandler(handler);
     }
 
-    public static Logger getLogger() {
-        if (logger == null) {
-            logger = Logger.getLogger(SingletonLogger.class.getName());
-        }
-        return logger;
+    private SingletonLogger() {
     }
 }

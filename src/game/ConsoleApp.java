@@ -2,9 +2,11 @@ package src.game;
 
 import src.character.Character;
 
+import static src.game.SingletonLogger.logger;
+
 public class ConsoleApp {
     public boolean writeOutInventory(Character character) {
-        character.getInventory().forEach((n) -> System.out.printf("Player's current room: %s, ",n.getCurrentRoom().getId()));
+        logger.info("Current player's id: " + character.getId());
         return true;
     }
 }

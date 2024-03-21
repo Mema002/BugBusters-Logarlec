@@ -30,7 +30,7 @@ public class RoomManager {
 
     public void splitRoom(Room r) {
         //capacity split
-        Room newRoom = new Room(r.getCapacity() / 2);
+        Room newRoom = new Room(r.getCapacity() / 2, r.getId());
         r.setCapacity(r.getCapacity() / 2);
 
         //item split
