@@ -51,5 +51,11 @@ public class Transistor extends Item {
     public boolean isActive() {
         return isActive;
     }
+
+    @Override
+    public void drop() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'drop'");
+    }
     
 }

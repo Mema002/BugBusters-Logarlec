@@ -39,11 +39,9 @@ public abstract class Character {
     }
 
     public void dropItem(Item i) {
-        if (i.isActive()) {
-            //if (i.getPairLocation().requestChange()) gatya 
-        }
         inventory.remove(i);
         currentRoom.addItem(i);
+        i.drop();
     }
 
     public void dropItems() {

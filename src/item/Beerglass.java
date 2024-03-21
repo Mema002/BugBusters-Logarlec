@@ -41,5 +41,11 @@ public class Beerglass extends Item {
     public boolean isActive() {
         return false;
     }
+
+    @Override
+    public void drop() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'drop'");
+    }
     
 }

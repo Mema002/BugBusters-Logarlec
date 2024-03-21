@@ -18,13 +18,21 @@ public abstract class Item {
         this.currentRoom = r;
     }
 
-    public abstract boolean useItem(Character c);
+    public boolean useItem(Character c){
+        return true;
+    }
 
-    public abstract boolean IsUnpaired();
+    public boolean IsUnpaired(){
+        return false;
+    }
 
     public abstract void setRemainingTime(int i);
 
     public abstract void initItem();
 
-    public abstract boolean isActive();
+    public boolean isActive(){
+        return false;
+    }
+
+    public abstract void drop();
 }

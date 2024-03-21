@@ -3,6 +3,7 @@ package src.item;
 import src.effect.Cursed;
 import src.room.Room;
 import src.character.Character;
+import src.effect.Gassy;
 
 public class Camembert extends Item {
     private int remainingTime;
@@ -14,7 +15,7 @@ public class Camembert extends Item {
 
     @Override
     public boolean useItem(Character c) {
-        currentRoom.addEffect(new Cursed());
+        currentRoom.addEffect(new Gassy()));
         return true; //?
     }
 
@@ -41,6 +42,12 @@ public class Camembert extends Item {
     @Override
     public boolean isActive() {
         return false;
+    }
+
+    @Override
+    public void drop() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'drop'");
     }
     
 }

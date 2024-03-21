@@ -12,12 +12,6 @@ public class Rag extends Item {
     }
 
     @Override
-    public boolean useItem(Character c) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'useItem'");
-    }
-
-    @Override
     public boolean IsUnpaired() {
         return false;
     }
@@ -40,6 +34,12 @@ public class Rag extends Item {
     @Override
     public boolean isActive() {
         return false;
+    }
+
+    @Override
+    public void drop() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'drop'");
     }
     
 }
