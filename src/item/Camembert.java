@@ -14,7 +14,7 @@ public class Camembert extends Item {
 
     @Override
     public boolean useItem(Character c) {
-        currentRoom.addEffect(new Cursed(true));
+        currentRoom.addEffect(new Cursed());
         return true; //?
     }
 

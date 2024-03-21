@@ -8,7 +8,7 @@ import src.effect.Effect;
 import src.item.Item;
 
 public class RoomManager {
-    private ArrayList<Room> rooms;
+    private static ArrayList<Room> rooms;
 
     public RoomManager() {
         this.rooms = new ArrayList<>();
@@ -61,6 +61,16 @@ public class RoomManager {
             if (room.getNeighbours().contains(r))
                 room.getNeighbours().remove(r);
         }
+    }
+
+    public static ArrayList<Room> getInNeighbours(Room r) {
+        ArrayList<Room> inNeighbours = new ArrayList<Room>();
+        for (Room room : rooms) {
+            if (room.getNeighbours().contains(r)) {
+                inNeighbours.add(room);
+            }
+        }
+        return inNeighbours;
     }
 
     public void sortCharacters(ArrayList<Character> c) {

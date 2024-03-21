@@ -24,7 +24,7 @@ public class Teacher extends Character {
         if (options.size() == 1) targetIndex = 0;
         else {
             Random random = new Random();
-            targetIndex = random.nextInt(options.size() + 1);
+            targetIndex = random.nextInt(options.size() /*+ 1*/);
         }
 
         Room targetRoom = options.get(targetIndex);
