@@ -1,19 +1,22 @@
 package src.effect;
 
 import src.character.Character;
+import src.room.Room;
 
 public class Gassy extends Effect {
 
-    public Gassy(boolean a) {
-        super(a);
+    public Gassy() {
+        super();
         //TODO Auto-generated constructor stub
     }
 
     @Override
-    public void triggerEffect(Character c) {
-        if(c.checkStun()) {
-            c.dropItems();
-            c.beStunnedFor(1);
+    public void triggerEffect(Room r) {
+        for(Character c : r.getCharacters()){
+            if(c.checkStun()) {
+                c.dropItems();
+                c.beStunnedFor(1);
+            }
         }
     }
     
