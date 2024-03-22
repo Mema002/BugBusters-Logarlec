@@ -39,5 +39,13 @@ public class Batskin extends Item {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'drop'");
     }
-    
+
+    @Override
+    public boolean checkDefense() {
+        if(durability > 0){
+            durability--;
+            return true;
+        }
+        return false;
+    }
 }
