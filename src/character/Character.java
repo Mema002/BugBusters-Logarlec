@@ -58,8 +58,6 @@ public abstract class Character {
 
     public abstract void pickUpItem();
 
-    public abstract void chooseAction();
-
     public void skipTurn() { //TODO
 
     }

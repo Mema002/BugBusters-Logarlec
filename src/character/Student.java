@@ -50,12 +50,6 @@ public class Student extends Character {
     }
 
     @Override
-    public void chooseAction() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chooseAction'");
-    }
-
-    @Override
     public void useItem(Item i) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'useItem'");
