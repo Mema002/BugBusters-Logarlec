@@ -15,6 +15,9 @@ public class GameLogic{
     private static ArrayList<Character> characters;
     private static ArrayList<Character> deadCharacters;
 
+    //A veletlen actionokhoz
+    private static Random random = new Random();
+
     static {
         roomManager = new RoomManager();
         characters = new ArrayList<Character>();
@@ -32,7 +35,6 @@ public class GameLogic{
     private static void runGame() {
         //Itt fut a jatek
 
-        Random random = new Random();
         int currentPlayerIdx = 0;
 
         while(isGameRunning) {
@@ -86,6 +88,9 @@ public class GameLogic{
         for (Character c : characters) {
             c.endOfRound();
         }
+        //1 a 3 hoz esely
+        if(1 == random.nextInt(0, 3))
+            roomManager.triggerAllEffects();
     }
 
     public static void removeCharacter(Character character) {

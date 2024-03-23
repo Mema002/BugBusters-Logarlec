@@ -99,4 +99,9 @@ public class RoomManager {
         for (Room room : rooms)
             room.clearItems();
     }
+
+    public void triggerAllEffects() {
+        for (Room room : rooms)
+            room.triggerRoomEffects();
+    }
 }
