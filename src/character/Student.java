@@ -34,6 +34,7 @@ public class Student extends Character {
         Item chosen = options.get(0);
         addToInventory(chosen);
         currentRoom.removeItem(chosen);
+        chosen.initItem();
     }
 
     @Override

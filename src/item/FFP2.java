@@ -15,14 +15,6 @@ public class FFP2 extends Item {
         return false;
     }
 
-
-
-    @Override
-    public void initItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initItem'");
-    }
-
     @Override
     public boolean isActive() {
         return false;

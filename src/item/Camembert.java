@@ -15,7 +15,7 @@ public class Camembert extends Item {
     @Override
     public boolean useItem(Character c) {
         currentRoom.addEffect(new Gassy());
-        return true; //?
+        return true;
     }
 
     @Override
@@ -26,12 +26,6 @@ public class Camembert extends Item {
     @Override
     public void decrRemainingTime() {
         remainingTime -= 1;
-    }
-
-    @Override
-    public void initItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initItem'");
     }
 
     private void makeRoomGassy() {

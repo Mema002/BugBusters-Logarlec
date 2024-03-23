@@ -17,6 +17,7 @@ public class GameLogic{
         characters = new ArrayList<Character>();
     }
 
+
     public static void startGame() {
 
     }

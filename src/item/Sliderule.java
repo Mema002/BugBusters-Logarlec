@@ -1,5 +1,6 @@
 package src.item;
 
+import src.game.GameLogic;
 import src.room.Room;
 
 public class Sliderule extends Item {
@@ -21,8 +22,7 @@ public class Sliderule extends Item {
 
     @Override
     public void initItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initItem'");
+        GameLogic.endGame();
     }
 
     @Override

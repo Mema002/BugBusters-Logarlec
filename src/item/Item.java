@@ -34,7 +34,7 @@ public abstract class Item {
 
     public void decrRemainingTime() {};
 
-    public abstract void initItem();
+    public void initItem() {};
 
     public boolean isActive(){
         return false;

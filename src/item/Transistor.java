@@ -29,12 +29,6 @@ public class Transistor extends Item {
         return;
     }
 
-    @Override
-    public void initItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initItem'");
-    }
-
     private void activate() { //ha paired akkor lehet csak aktiválni
         if (!IsUnpaired()) isActive = true;
     }

@@ -20,12 +20,6 @@ public class Rag extends Item {
         remainingTime -= 1;
     }
 
-    @Override
-    public void initItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initItem'");
-    }
-
     private void stunTeachers() { //szekvencián nincs használva
 
     }

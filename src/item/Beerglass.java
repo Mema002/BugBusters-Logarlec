@@ -27,12 +27,6 @@ public class Beerglass extends Item {
         remainingTime -= 1;
     }
 
-    @Override
-    public void initItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initItem'");
-    }
-
     public int getRemainingTime() { //valszeg inkább abstractba kéne overrideolnia mindenkinek
         return remainingTime;
     }
