@@ -91,4 +91,20 @@ public class GameLogic{
     public static void removeCharacter(Character character) {
         deadCharacters.add(character);
     }
+
+    public static void resetGame() {
+        //item torles
+        for (Character character : characters)
+            character.clearInventory();
+
+        roomManager.clearRoomItems();
+
+        //karakter torles
+        characters.clear();
+
+        //szoba torles
+        roomManager.clearRooms();
+
+
+    }
 }

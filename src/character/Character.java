@@ -81,4 +81,6 @@ public abstract class Character {
     public abstract boolean tryExpell();
 
     public abstract void endOfRound();
+
+    public void clearInventory() { inventory.clear(); }
 }

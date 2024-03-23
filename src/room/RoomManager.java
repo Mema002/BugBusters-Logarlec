@@ -92,4 +92,11 @@ public class RoomManager {
     public void sortCapacity(int i) {
 
     }
+
+    public void clearRooms() { rooms.clear(); }
+
+    public void clearRoomItems() {
+        for (Room room : rooms)
+            room.clearItems();
+    }
 }

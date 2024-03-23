@@ -99,4 +99,6 @@ public class Room {
             effect.triggerEffect(this);
         }
     }
+
+    public void clearItems() { items.clear(); }
 }
