@@ -78,7 +78,7 @@ public abstract class Character {
 
     public abstract boolean triggerExpelling(Student s);
 
-    public abstract boolean checkStun();
+    public boolean tryStun() {return true; };
 
     public abstract boolean tryExpell();
 

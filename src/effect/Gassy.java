@@ -13,7 +13,7 @@ public class Gassy extends Effect {
     @Override
     public void triggerEffect(Room r) {
         for(Character c : r.getCharacters()){
-            if(c.checkStun()) {
+            if(c.tryStun()) {
                 c.dropItems();
                 c.beStunnedFor(1);
             }

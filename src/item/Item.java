@@ -43,4 +43,6 @@ public abstract class Item {
     public abstract void drop();
 
     public boolean checkDefense() { return false; }
+
+    public boolean defendStun() { return false; }
 }

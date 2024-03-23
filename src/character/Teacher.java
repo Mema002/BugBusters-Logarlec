@@ -76,19 +76,13 @@ public class Teacher extends Character {
     }
 
     @Override
-    public boolean checkStun() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'checkStun'");
-    }
-
-    @Override
     public boolean tryExpell() {
         return false;
     }
 
     @Override
     public void endOfRound() {
-        List<Character> inRoomCharacters = this.getCurrentRoom().getCharacters();
+        List<Character> inRoomCharacters = currentRoom.getCharacters();
         for (Character character : inRoomCharacters) {
             if(character.tryExpell()){
                 character.setExpelled();

@@ -16,6 +16,7 @@ public class FFP2 extends Item {
     }
 
 
+
     @Override
     public void initItem() {
         // TODO Auto-generated method stub
@@ -32,5 +33,11 @@ public class FFP2 extends Item {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'drop'");
     }
-    
+
+    @Override
+    public boolean defendStun() {
+        if(durability > 0)
+            return true;
+        return false;
+    }
 }

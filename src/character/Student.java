@@ -75,12 +75,19 @@ public class Student extends Character {
     }
 
     @Override
-    public boolean checkStun() {
-        //return false ha van maszk with durability > 0
-        return true;
+    public boolean tryStun() {
+        for (Item item : inventory) {
+            if(item.defendStun())
+                return true;
+        }
+        return false;
     }
 
     public boolean checkDefense() {
+        for (Item item : inventory){
+            if(item.checkDefense())
+                return true;
+        }
         return false;
     }
 
@@ -91,8 +98,7 @@ public class Student extends Character {
 
     @Override
     public void endOfRound() {
-        List<Item> invItems = this.getInventory();
-        for (Item item : invItems) {
+        for (Item item : inventory) {
             item.decrRemainingTime();
         }
     }
