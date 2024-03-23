@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import src.game.GameLogic;
 import src.item.Item;
 import src.room.Room;
 
@@ -86,7 +87,7 @@ public class Teacher extends Character {
         for (Character character : inRoomCharacters) {
             if(character.tryExpell()){
                 character.setExpelled();
-                //GameLogic removeCharacter(character)
+                GameLogic.removeCharacter(character);
                 currentRoom.removeCharacter(character);
             }
         }

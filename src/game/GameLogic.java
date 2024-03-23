@@ -9,45 +9,49 @@ import static src.game.SingletonLogger.logger;
 
 
 public class GameLogic{
-    private RoomManager roomManager;
-    private ArrayList<Character> characters;
+    private static RoomManager roomManager;
+    private static ArrayList<Character> characters;
 
-    public GameLogic() {
-        this.roomManager = new RoomManager();
-        this.characters = new ArrayList<Character>();
+    static {
+        roomManager = new RoomManager();
+        characters = new ArrayList<Character>();
     }
 
-    public void startGame() {
-
-    }
-
-    public void endGame() {
+    public static void startGame() {
 
     }
 
-    public void changeRoomTo(Room r) {
+    public static void endGame() {
 
     }
 
-    public void generateCharacters() {
+    public static void changeRoomTo(Room r) {
 
     }
 
-    public void generateItems() {
+    public static void generateCharacters() {
 
     }
 
-    public ArrayList<Character> getStudents() { //wtf
+    public static void generateItems() {
+
+    }
+
+    public static ArrayList<Character> getStudents() { //wtf
         return null;
     }
 
-    private void triggerRoomEffects() {
+    private static void triggerRoomEffects() {
 
     }
 
-    private void endOfTurn() {
+    private static void endOfTurn() {
         for (Character c : characters) {
             c.endOfRound();
         }
+    }
+
+    public static void removeCharacter(Character character) {
+        characters.remove(character);
     }
 }
