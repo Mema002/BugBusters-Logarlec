@@ -25,7 +25,7 @@ public class Transistor extends Item {
     }
 
     @Override
-    public void setRemainingTime(int i) {
+    public void decrRemainingTime() {
         return;
     }
 

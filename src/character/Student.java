@@ -1,6 +1,7 @@
 package src.character;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import src.item.Item;
 import src.room.Room;
@@ -86,5 +87,13 @@ public class Student extends Character {
     @Override
     public boolean tryExpell() {
         return !checkDefense();
+    }
+
+    @Override
+    public void endOfRound() {
+        List<Item> invItems = this.getInventory();
+        for (Item item : invItems) {
+            item.decrRemainingTime();
+        }
     }
 }

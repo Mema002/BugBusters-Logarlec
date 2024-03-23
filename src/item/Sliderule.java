@@ -1,7 +1,6 @@
 package src.item;
 
 import src.room.Room;
-import src.character.Character;
 
 public class Sliderule extends Item {
 
@@ -16,7 +15,7 @@ public class Sliderule extends Item {
     }
 
     @Override
-    public void setRemainingTime(int i) {
+    public void decrRemainingTime() {
         return;
     }
 

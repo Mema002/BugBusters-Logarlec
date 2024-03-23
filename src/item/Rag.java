@@ -1,7 +1,6 @@
 package src.item;
 
 import src.room.Room;
-import src.character.Character;
 
 public class Rag extends Item {
     private int remainingTime;
@@ -17,8 +16,8 @@ public class Rag extends Item {
     }
 
     @Override
-    public void setRemainingTime(int i) {
-        remainingTime = i;
+    public void decrRemainingTime() {
+        remainingTime -= 1;
     }
 
     @Override
@@ -41,5 +40,5 @@ public class Rag extends Item {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'drop'");
     }
-    
+
 }

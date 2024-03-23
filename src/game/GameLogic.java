@@ -46,6 +46,8 @@ public class GameLogic{
     }
 
     private void endOfTurn() {
-
+        for (Character c : characters) {
+            c.endOfRound();
+        }
     }
 }

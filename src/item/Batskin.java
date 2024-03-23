@@ -1,7 +1,6 @@
 package src.item;
 
 import src.room.Room;
-import src.character.Character;
 
 public class Batskin extends Item {
     private int durability;
@@ -14,11 +13,6 @@ public class Batskin extends Item {
     @Override
     public boolean IsUnpaired() {
         return false;
-    }
-
-    @Override
-    public void setRemainingTime(int i) {
-        return;
     }
 
     @Override

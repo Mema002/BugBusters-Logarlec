@@ -32,7 +32,7 @@ public abstract class Item {
         return false;
     }
 
-    public abstract void setRemainingTime(int i);
+    public void decrRemainingTime() {};
 
     public abstract void initItem();
 

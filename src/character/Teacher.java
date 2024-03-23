@@ -1,6 +1,7 @@
 package src.character;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import src.item.Item;
@@ -83,5 +84,17 @@ public class Teacher extends Character {
     @Override
     public boolean tryExpell() {
         return false;
+    }
+
+    @Override
+    public void endOfRound() {
+        List<Character> inRoomCharacters = this.getCurrentRoom().getCharacters();
+        for (Character character : inRoomCharacters) {
+            if(character.tryExpell()){
+                character.setExpelled();
+                //GameLogic removeCharacter(character)
+                currentRoom.removeCharacter(character);
+            }
+        }
     }
 }

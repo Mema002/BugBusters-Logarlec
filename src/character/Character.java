@@ -6,7 +6,6 @@ import src.item.Item;
 import src.room.Room;
 import static src.game.SingletonLogger.logger;
 
-
 public abstract class Character {
 
     protected ArrayList<Item> inventory;
@@ -82,4 +81,6 @@ public abstract class Character {
     public abstract boolean checkStun();
 
     public abstract boolean tryExpell();
+
+    public abstract void endOfRound();
 }

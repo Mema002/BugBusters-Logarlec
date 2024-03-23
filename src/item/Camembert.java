@@ -1,6 +1,5 @@
 package src.item;
 
-import src.effect.Cursed;
 import src.room.Room;
 import src.character.Character;
 import src.effect.Gassy;
@@ -25,8 +24,8 @@ public class Camembert extends Item {
     }
 
     @Override
-    public void setRemainingTime(int i) {
-        remainingTime = i;
+    public void decrRemainingTime() {
+        remainingTime -= 1;
     }
 
     @Override

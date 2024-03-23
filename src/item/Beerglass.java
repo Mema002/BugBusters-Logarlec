@@ -23,8 +23,8 @@ public class Beerglass extends Item {
     }
 
     @Override
-    public void setRemainingTime(int i) {
-        remainingTime = i;
+    public void decrRemainingTime() {
+        remainingTime -= 1;
     }
 
     @Override

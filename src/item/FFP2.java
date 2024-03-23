@@ -1,7 +1,6 @@
 package src.item;
 
 import src.room.Room;
-import src.character.Character;
 
 public class FFP2 extends Item {
     private int durability;
@@ -16,10 +15,6 @@ public class FFP2 extends Item {
         return false;
     }
 
-    @Override
-    public void setRemainingTime(int i) {
-        return;
-    }
 
     @Override
     public void initItem() {
