@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import src.game.ConsoleApp;
 import src.game.GameLogic;
 import src.item.Item;
 import src.room.Room;
@@ -26,6 +27,7 @@ public class Teacher extends Character {
 
     @Override
     public void move(int targetIndex) {
+        ConsoleApp.consoleLog(this, currentRoom, "Teacher to Room getNeighbours");
         ArrayList<Room> options = currentRoom.getNeighbours();
 
         //ez még nem kell mert 
@@ -38,12 +40,20 @@ public class Teacher extends Character {
         } */
 
         Room targetRoom = options.get(targetIndex);
+        ConsoleApp.consoleLog(this, currentRoom, "Teacher to Room requestChange");
         if (targetRoom.requestChange()) {
+            ConsoleApp.consoleLog(this, currentRoom, "Teacher to Room removeCharacter");
             currentRoom.removeCharacter(this);
+            ConsoleApp.consoleLog(this, currentRoom, "Teacher to Room addCharacter");
             targetRoom.addCharacter(this);
             setRoom(targetRoom);
+            ConsoleApp.consoleLog(this, currentRoom, "Teacher to Room getCharacters");
             for (Character c : targetRoom.getCharacters()) {
-                if (c.tryExpell(this));
+                ConsoleApp.consoleLog(this, c, "Teacher to Character tryExpell");
+                if (c.tryExpell(this)) {
+                    ConsoleApp.consoleLog(this, c, "Teacher to Character setExpelled");
+                    c.setExpelled();
+                }
             }
         }
     }

@@ -76,6 +76,7 @@ public class Student extends Character {
     @Override
     public boolean tryExpell(Teacher attacker) {
         for (Item item : inventory){
+            ConsoleApp.consoleLog(this, item, "Character to Item checkDefense");
             if(item.checkDefense(attacker))
                 return false;
         }
@@ -84,9 +85,12 @@ public class Student extends Character {
 
     @Override
     public boolean setExpelled(){
+        ConsoleApp.consoleLog(this, currentRoom, "Student to Room removeCharacter");
         currentRoom.removeCharacter(this);
         expelled=true;
+        ConsoleApp.consoleLog(this, this, "Student to Character dropItems");
         dropItems();
+        ConsoleApp.consoleLog(this, currentRoom, "Student to Room removeCharacter");
         GameLogic.removeCharacter(this);
         return true;
     }

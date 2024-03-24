@@ -117,7 +117,18 @@ public class Tester {
         ConsoleApp.reset();
     }
     public void test12() {
-
+        Room room1 = new Room(1, 1);
+        Room room2 = new Room(1, 2);
+        room2.addEffect(new Gassy());
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        Student student1 = new Student(room1, 1);
+        Teacher teacher1 = new Teacher(room2, 1);
+        ConsoleApp.consoleLog(this, (Teacher)teacher1, "Tester to Teacher move");
+        teacher1.move(0);
     }
     public void test13() {
 
