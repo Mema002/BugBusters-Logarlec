@@ -22,53 +22,69 @@ public class Tester {
     //Logarléc teszt
     public void test1() {
         GameLogic gl = new GameLogic();
-        ConsoleApp.consoleLog(this, gl, "Tester to GameLogic startGame");
+        ConsoleApp.funcLog("GameLogic.startGame()");
         GameLogic.startGame();
+        ConsoleApp.returnLog("return");
 
         Room room = new Room(5,0);
         Student student = new Student(room, 0);
         Sliderule sliderule = new Sliderule();
 
-        ConsoleApp.consoleLog(this, room, "Tester to Room addCharacter");
+        ConsoleApp.funcLog("room.addCharacter(student)");
         room.addCharacter(student);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, room, "Tester to Room addItem");
+        ConsoleApp.funcLog("room.addItem(sliderule)");
         room.addItem(sliderule);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, student, "Tester to Student pickUpItem");
+        ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
-
-        ConsoleApp.reset();
+        ConsoleApp.returnLog("return");
     }
 
     //Camembert test
     public void test2() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(2, 1);
         Teacher teacher1 = new Teacher(room1, 11);
         Student student1 = new Student(room1, 1);
         Camembert camembert1 = new Camembert();
-        ConsoleApp.consoleLog(this, room1, "Tester to Room addCharacter");
+
+        ConsoleApp.funcLog("room1.addCharacter(teacher1)");
         room1.addCharacter(teacher1);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, room1, "Tester to Room addCharacter");
+        ConsoleApp.funcLog("room1.addCharacter(student1)");
         room1.addCharacter(student1);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, camembert1, "Tester to Camembert setOwner");
+        ConsoleApp.funcLog("camembert1.setOwner(student1)");
         camembert1.setOwner(student1);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, student1, "Tester to Student addToInventory");
+        ConsoleApp.funcLog("student1.addToInventory(camembert1)");
         student1.addToInventory(camembert1);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, camembert1, "Tester to Student useItem");
+        ConsoleApp.funcLog("student1.useItem(0)");
         student1.useItem(0);
+        ConsoleApp.returnLog("return");
 
+        ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
-
-        ConsoleApp.reset();
+        ConsoleApp.returnLog("return");
     }
 
     //batskin teszt
     public void test3() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(2, 0);
         Room room2 = new Room(2, 1);
         Student student = new Student(room2, 2);
@@ -77,26 +93,33 @@ public class Tester {
 
         room1.addNeighbour(room2);
 
-        ConsoleApp.consoleLog(this, room1, "Tester to Room addCharacter");
+        ConsoleApp.funcLog("room1.addCharacter(teacher)");
         room1.addCharacter(teacher);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, room2, "Tester to Room addCharacter");
+        ConsoleApp.funcLog("room2.addCharacter(student)");
         room2.addCharacter(student);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, room2, "Tester to Room addItem");
+        ConsoleApp.funcLog("room2.addItem(batskin)");
         room2.addItem(batskin);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, student, "Tester to Student pickUpItem");
+        ConsoleApp.funcLog("student.pickUpItem(0)");;
         student.pickUpItem(0);
+        ConsoleApp.returnLog("return");
 
-        ConsoleApp.consoleLog(this, teacher, "Tester to Teacher move");
+        ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
-
-        ConsoleApp.reset();
+        ConsoleApp.returnLog("return");
     }
 
     //beerglass test
     public void test4() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(2, 0);
         Room room2 = new Room(1, 1);
         Teacher teacher = new Teacher(room2, 0);
@@ -105,18 +128,30 @@ public class Tester {
 
         room2.addNeighbour(room1);
 
+        ConsoleApp.funcLog("room1.addCharacter(student)");
         room1.addCharacter(student);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("student.addToInventory(beerglass)");
         student.addToInventory(beerglass);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("room2.addCharacter(teacher)");
         room2.addCharacter(teacher);
+        ConsoleApp.returnLog("return");
 
+        ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
-
-        ConsoleApp.reset();
+        ConsoleApp.returnLog("return");
     }
 
 
     //rag test
     public void test5() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(2, 0);
         Room room2 = new Room(1, 0);
         Student student = new Student(room2, 0);
@@ -125,34 +160,62 @@ public class Tester {
 
         room2.addNeighbour(room1);
 
+        ConsoleApp.funcLog("room2.addCharacter(student)");
         room2.addCharacter(student);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("room1.addCharacter(teacher)");
         room1.addCharacter(teacher);
+        ConsoleApp.returnLog("return");
 
+        ConsoleApp.funcLog("student.addToInventory(rag)");
         student.addToInventory(rag);
+        ConsoleApp.returnLog("return");
 
+        ConsoleApp.funcLog("student.move(0)");
         student.move(0);
+        ConsoleApp.returnLog("return");
 
+        ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
-
-        ConsoleApp.reset();
+        ConsoleApp.returnLog("return");
     }
 
     //FFP2 test
     public void test6() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+        
         Room room1 = new Room(2, 0);
         Room room2 = new Room(2, 0);
         Gassy gassy = new Gassy();
+
+        ConsoleApp.funcLog("room2.addEffect(gassy)");
         room2.addEffect(gassy);
+        ConsoleApp.returnLog("return");
+
         Student student = new Student(room1, 0);
         room1.addNeighbour(room2);
+
+        ConsoleApp.funcLog("room1.addCharacter(student)");
         room1.addCharacter(student);
+        ConsoleApp.returnLog("return");
 
+        ConsoleApp.funcLog("student.move(0)");
         student.move(0);
+        ConsoleApp.returnLog("return");
 
+        ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
+        ConsoleApp.returnLog("return");
     }
+
     public void test7() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
         GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(5, 0);
         Room room2 = new Room(5, 1);
         Student student1 = new Student(room1, 0);
@@ -162,28 +225,67 @@ public class Tester {
         room2.addNeighbour(room1);
         room1.addItem(transistor2);
         transistor1.setOwner(student1);
-        student1.pickUpItem(0);
-        transistor2.initItem(student1);
-        student1.move(1);
-        transistor2.drop();
-        student1.dropItem(transistor1);
+        student1.addToInventory(transistor1);
 
+        ConsoleApp.funcLog("student1.pickUpItem(0)");
+        student1.pickUpItem(0);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("student1.dropItem(transistor1)");
+        student1.dropItem(transistor1);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("student1.move(1)");
+        student1.move(1);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("student1.useItem(0)");
+        student1.useItem(0);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("student1.dropItem(transistor1)");
+        student1.dropItem(transistor1);
+        ConsoleApp.returnLog("return");
     }
+
     public void test8() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
         GameLogic.startGame();
-        Room r1 = new Room(5, 0);
-        Room r2 = new Room(5, 1);
-        Room r3 = new Room(5, 2);
-        r1.addNeighbour(r2);
-        r1.addNeighbour(r3);
+        ConsoleApp.returnLog("return");
+
+        Room r1 = new Room(1, 0);
+        Room r2 = new Room(1, 1);
+        Room r3 = new Room(1, 2);
         r2.addNeighbour(r1);
-        r3.addNeighbour(r1);
+        r2.addNeighbour(r3);
+        r1.addNeighbour(r2);
+        r3.addNeighbour(r2);
         Student s = new Student(r1, 0);
-        Teacher t = new Teacher(r2, 1);
-        s.move(1);
-        t.move(2);
+
+        ConsoleApp.funcLog("r1.addCharacter(s)");
+        r1.addCharacter(s);
+        ConsoleApp.returnLog("return");
+
+        Teacher t = new Teacher(r3, 1);
+
+        ConsoleApp.funcLog("r3.addCharacter(t)");
+        r3.addCharacter(t);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("s.move(0)");
+        s.move(0);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.funcLog("t.move(0)");
+        t.move(0);
+        ConsoleApp.returnLog("return");
     }
+
     public void test9() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(1, 0);
         Room room2 = new Room(1, 1);
         room2.addEffect(new Cursed());
@@ -193,12 +295,15 @@ public class Tester {
         roomManager.getRooms().add(room1);
         roomManager.getRooms().add(room2);
         Student student1 = new Student(room1, 0);
-        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
         student1.move(1);
-        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager triggerAllEffects");
         roomManager.triggerAllEffects();
     }
+
     public void test10() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(1, 1);
         Room room2 = new Room(1, 2);
         room2.addEffect(new Gassy());
@@ -208,82 +313,88 @@ public class Tester {
         roomManager.getRooms().add(room1);
         roomManager.getRooms().add(room2);
         Student student1 = new Student(room1, 1);
-        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
         student1.move(0);
-        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager triggerAllEffects");
         roomManager.triggerAllEffects();
         student1.skipTurn();
     }
+
     public void test11() {
-        ConsoleApp.consoleLog(this, GameLogic.getGameLogic(), "Tester to GameLogic startGame");
+        ConsoleApp.funcLog("GameLogic.startGame()");
         GameLogic.startGame();
+        ConsoleApp.returnLog("return");
 
         Room room = new Room(5,0);
         Student student = new Student(room, 0);
         Batskin batskin = new Batskin();
 
-        ConsoleApp.consoleLog(this, room, "Tester to Room addCharacter");
         room.addCharacter(student);
 
-        ConsoleApp.consoleLog(this, room, "Tester to Room addItem");
         room.addItem(batskin);
 
-        ConsoleApp.consoleLog(this, student, "Tester to Student pickUpItem");
         student.pickUpItem(0);
-
-        ConsoleApp.reset();
     }
+
     public void test12() {
-        Room room1 = new Room(2, 1);
-        Room room2 = new Room(2, 2);
-        RoomManager roomManager = new RoomManager();
-        room1.addNeighbour(room2);
-        room2.addNeighbour(room1);
-        roomManager.getRooms().add(room1);
-        roomManager.getRooms().add(room2);
-        Student student1 = new Student(room1, 1);
-        Teacher teacher1 = new Teacher(room2, 1);
-        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher move");
-        teacher1.move(0);
-        ConsoleApp.reset();
-    }
-    public void test13() {
-        Room room1 = new Room(2, 1);
-        Room room2 = new Room(2, 2);
-        RoomManager roomManager = new RoomManager();
-        room1.addNeighbour(room2);
-        room2.addNeighbour(room1);
-        roomManager.getRooms().add(room1);
-        roomManager.getRooms().add(room2);
-        Student student1 = new Student(room1, 1);
-        Teacher teacher1 = new Teacher(room2, 1);
-        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
-        student1.move(0);
-        ConsoleApp.reset();
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
 
+        Room room1 = new Room(2, 1);
+        Room room2 = new Room(2, 2);
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        Student student1 = new Student(room1, 1);
+        Teacher teacher1 = new Teacher(room2, 1);
+        teacher1.move(0);
     }
+
+    public void test13() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
+        Room room1 = new Room(2, 1);
+        Room room2 = new Room(2, 2);
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        Student student1 = new Student(room1, 1);
+        Teacher teacher1 = new Teacher(room2, 1);
+        student1.move(0);
+    }
+
     public void test14() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(1, 1);
         room1.addEffect(new Gassy());
         room1.addEffect(new Cursed());
         RoomManager roomManager = new RoomManager();
         roomManager.getRooms().add(room1);
-        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager splitRoom");
         roomManager.splitRoom(room1);
-        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager mergeRooms");
         roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1));
-        ConsoleApp.reset();
-
     }
     public void test15() {
-        ConsoleApp.consoleLog(this, GameLogic.getGameLogic(), "Tester to GameLogic startGame");
+        ConsoleApp.funcLog("GameLogic.startGame()");
         GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         GameLogic.roomManager.generateRooms(5);
         GameLogic.generateCharacters(1, 1);
         GameLogic.generateItems(5);
-        ConsoleApp.reset();
     }
     public void test16() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(2, 1);
         Room room2 = new Room(2, 2);
         Room room3 = new Room(2, 3);
@@ -297,20 +408,18 @@ public class Tester {
         Teacher teacher1 = new Teacher(room1, 1);
         room1.addItem(new Batskin());
         room2.addEffect(new Gassy());
-        ConsoleApp.consoleLog(this, student1, "Tester to Student pickUpItem");
         student1.pickUpItem(0);
-        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher triggerExpelling"); //megakad a character abstract fgvny hivasnal a logging
         teacher1.triggerExpelling(student1);
-        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
         student1.move(0);
-        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher move");
         teacher1.move(0);
-        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
         student1.move(0);
-        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher move");
         teacher1.move(0);
     }
     public void test17() {
+        ConsoleApp.funcLog("GameLogic.startGame()");
+        GameLogic.startGame();
+        ConsoleApp.returnLog("return");
+
         Room room1 = new Room(1, 0);
         Student student = new Student(room1, 0);
         FFP2 ffp2 = new FFP2() ;
