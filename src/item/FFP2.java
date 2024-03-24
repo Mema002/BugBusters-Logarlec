@@ -1,5 +1,6 @@
 package src.item;
 
+import src.game.ConsoleApp;
 import src.room.Room;
 
 public class FFP2 extends Item {
@@ -21,15 +22,11 @@ public class FFP2 extends Item {
     }
 
     @Override
-    public void drop() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'drop'");
-    }
-
-    @Override
     public boolean defendStun() {
-        if(durability > 0)
+        if(durability > 0) {
+            ConsoleApp.returnLog("return true");
             return true;
+        }
         return false;
     }
 }
