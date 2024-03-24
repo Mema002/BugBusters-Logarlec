@@ -2,12 +2,12 @@ package src.item;
 
 import src.game.GameLogic;
 import src.room.Room;
+import src.character.Character;
 
 public class Sliderule extends Item {
 
     public Sliderule(Room r) {
         super(r);
-        //TODO Auto-generated constructor stub
     }
 
     @Override
@@ -21,7 +21,8 @@ public class Sliderule extends Item {
     }
 
     @Override
-    public void initItem() {
+    public void initItem(Character c) {
+        owner = c;
         GameLogic.endGame();
     }
 

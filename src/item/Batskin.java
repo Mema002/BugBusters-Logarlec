@@ -19,14 +19,7 @@ public class Batskin extends Item {
     public boolean isActive() {
         return false;
     }
-
-
-    @Override
-    public void drop() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'drop'");
-    }
-
+    
     @Override
     public boolean checkDefense() {
         if(durability > 0){

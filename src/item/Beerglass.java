@@ -13,8 +13,7 @@ public class Beerglass extends Item {
 
     @Override
     public boolean useItem(Character c) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'useItem'");
+        return false;
     }
 
     @Override

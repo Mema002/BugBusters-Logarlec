@@ -5,7 +5,8 @@ import src.character.Character;
 
 public class Transistor extends Item {
     private boolean isActive;
-    private Transistor pair;
+    private Item pair;
+    private Room location;
 
     public Transistor(Room r) {
         super(r);
@@ -14,9 +15,21 @@ public class Transistor extends Item {
     }
 
     @Override
+    public void initItem(Character c){
+        owner=c;
+        for(Item i : c.getInventory()){
+            if(i.IsUnpaired()){
+                this.pair(i);
+                i.pair(this);
+                return;
+            }
+        }
+    }
+
+    @Override
     public boolean useItem(Character c) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'useItem'");
+        if(!isActive) activate();
+        return true;
     }
 
     @Override
@@ -33,12 +46,17 @@ public class Transistor extends Item {
         if (!IsUnpaired()) isActive = true;
     }
 
-    private void pair(Transistor t) {
+    private void deActivate(){
+        isActive=false;
+    }
+
+    @Override
+    public void pair(Item t) {
         pair = t;
     }
 
     private Room getPairLocation() { //itembe kene rakni abstractként
-        return pair.getCurrentRoom();
+        return pair.getLocation();
     }
 
     @Override
@@ -48,8 +66,25 @@ public class Transistor extends Item {
 
     @Override
     public void drop() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'drop'");
+        if(pair!=null){
+            if(isActive()){
+                Room targetRoom = getPairLocation();
+                Room currentRoom = owner.getCurrentRoom();
+                if(targetRoom.requestChange()){
+                    currentRoom.removeCharacter(owner);
+                    targetRoom.addCharacter(owner);
+                    owner.setRoom(targetRoom);
+                    deActivate();
+                }
+            }
+            pair.pair(null);
+            this.pair(null);
+        }
+    }
+
+    @Override
+    public Room getLocation(){
+        return location;
     }
     
 }

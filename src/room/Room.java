@@ -91,7 +91,7 @@ public class Room {
     }
 
     public boolean requestChange() { //aka requestMove 7. szekvencián
-        return capacity != characters.size();
+        return capacity > characters.size();
     }
 
     public void triggerRoomEffects() {
