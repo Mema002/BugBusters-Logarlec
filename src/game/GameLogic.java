@@ -68,11 +68,11 @@ public class GameLogic{
 
     }
 
-    public static void generateCharacters() {
+    public static void generateCharacters(int count) {
 
     }
 
-    public static void generateItems() {
+    public static void generateItems(int count) {
 
     }
 

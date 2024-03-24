@@ -18,11 +18,11 @@ public class Student extends Character {
         return this.id;
     }
 
-    private void addToInventory(Item i) {
+    public void addToInventory(Item i) {
         inventory.add(i);
     }
 
-    private void removeItem(Item i) {
+    public void removeItem(Item i) {
         inventory.remove(i);
         currentRoom.addItem(i);
         i.drop();
@@ -31,7 +31,7 @@ public class Student extends Character {
     @Override
     public void pickUpItem() {
         ArrayList<Item> options = currentRoom.getItems();
-        if (options.isEmpty() || inventory.size()>=5) return;
+        if (options.isEmpty()) return;
         //choose?
         Item chosen = options.get(0);
         addToInventory(chosen);
@@ -52,8 +52,10 @@ public class Student extends Character {
     }
 
     @Override
-    public void useItem(Item i) {
-        i.useItem(this);
+    public void useItem(int idx) {
+        if(idx >= inventory.size())
+            return;
+        inventory.get(idx).useItem(this);
     }
 
     @Override

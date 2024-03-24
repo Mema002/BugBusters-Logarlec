@@ -21,6 +21,15 @@ public abstract class Character {
     }
 
     public abstract int getId();
+
+    public void addToInventory(Item i) {
+        inventory.add(i);
+    }
+
+    public void removeItem(Item i) {
+        inventory.remove(i);
+    }
+
     public ArrayList<Item> getInventory() {
         return inventory;
     }
@@ -70,7 +79,7 @@ public abstract class Character {
 
     }
 
-    public abstract void useItem(Item i);
+    public void useItem(int idx) { return; };
 
     public abstract void chooseItem();
 

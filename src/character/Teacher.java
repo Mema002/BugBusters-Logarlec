@@ -53,12 +53,6 @@ public class Teacher extends Character {
     }
 
     @Override
-    public void useItem(Item i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'useItem'");
-    }
-
-    @Override
     public void chooseItem() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'chooseItem'");
