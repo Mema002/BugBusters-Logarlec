@@ -7,8 +7,8 @@ import src.character.Teacher;
 public class Beerglass extends Item {
     private int remainingTime;
 
-    public Beerglass(Room r) {
-        super(r);
+    public Beerglass() {
+        super();
         this.remainingTime = 5;
     }
 

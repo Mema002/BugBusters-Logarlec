@@ -9,7 +9,7 @@ public abstract class Item {
     private int id;
     protected Character owner;
 
-    public Item(Room r) {
+    public Item() {
         owner = null;
     }
 

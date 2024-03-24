@@ -5,8 +5,8 @@ import src.room.Room;
 public class FFP2 extends Item {
     private int durability;
 
-    public FFP2(Room r) {
-        super(r);
+    public FFP2() {
+        super();
         this.durability = 3;
     }
 

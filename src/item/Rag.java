@@ -6,8 +6,8 @@ import src.room.Room;
 public class Rag extends Item {
     private int remainingTime;
 
-    public Rag(Room r) {
-        super(r);
+    public Rag() {
+        super();
         this.remainingTime = 5;
     }
 
