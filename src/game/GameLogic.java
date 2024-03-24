@@ -170,4 +170,6 @@ public class GameLogic{
 
 
     }
+
+    public static Object getGameLogic() {return gameLogic;}
 }
