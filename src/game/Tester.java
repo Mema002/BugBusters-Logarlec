@@ -58,7 +58,28 @@ public class Tester {
         ConsoleApp.reset();
     }
 
+    //batskin teszt
     public void test3() {
+        Room room1 = new Room(2, 0);
+        Room room2 = new Room(2, 1);
+        Student student = new Student(room2, 2);
+        Teacher teacher = new Teacher(room1, 3);
+        Batskin batskin = new Batskin();
+
+        ConsoleApp.consoleLog(this, room1, "Tester to Room addCharacter");
+        room1.addCharacter(teacher);
+
+        ConsoleApp.consoleLog(this, room2, "Tester to Room addCharacter");
+        room2.addCharacter(student);
+
+        ConsoleApp.consoleLog(this, room2, "Tester to Room addItem");
+        room2.addItem(batskin);
+
+        ConsoleApp.consoleLog(this, student, "Tester to Student pickUpItem");
+        student.pickUpItem(0);
+
+        ConsoleApp.consoleLog(this, teacher, "Tester to Teacher move");
+        teacher.move(0);
 
     }
     public void test4() {
