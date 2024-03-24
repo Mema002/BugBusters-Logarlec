@@ -6,8 +6,8 @@ import src.character.Character;
 import src.effect.Gassy;
 
 public class Camembert extends Item {
-    public Camembert(Room r) {
-        super(r);
+    public Camembert() {
+        super();
     }
 
     @Override

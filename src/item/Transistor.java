@@ -8,8 +8,8 @@ public class Transistor extends Item {
     private Item pair;
     private Room location;
 
-    public Transistor(Room r) {
-        super(r);
+    public Transistor() {
+        super();
         this.isActive = false;
         this.pair = null;
     }

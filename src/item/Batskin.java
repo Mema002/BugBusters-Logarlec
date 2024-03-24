@@ -6,8 +6,8 @@ import src.room.Room;
 public class Batskin extends Item {
     private int durability;
 
-    public Batskin(Room r) {
-        super(r);
+    public Batskin() {
+        super();
         this.durability = 3;
     }
 

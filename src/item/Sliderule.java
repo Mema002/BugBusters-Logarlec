@@ -6,8 +6,8 @@ import src.character.Character;
 
 public class Sliderule extends Item {
 
-    public Sliderule(Room r) {
-        super(r);
+    public Sliderule() {
+        super();
     }
 
     @Override
