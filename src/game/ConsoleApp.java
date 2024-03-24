@@ -1,10 +1,5 @@
 package src.game;
 
-import src.character.Character;
-
-import java.util.*;
-
-import static src.game.SingletonLogger.logger;
 
 public class ConsoleApp {
     private static int tabCounter = 0;
@@ -23,10 +18,5 @@ public class ConsoleApp {
         }
         System.out.println(returnValue);
         tabCounter--;
-    }
-
-    public static boolean writeOutInventory(Character character) {
-        logger.info("Current player's id: " + character.getId());
-        return true;
     }
 }

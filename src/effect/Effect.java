@@ -1,6 +1,5 @@
 package src.effect;
 
-import src.character.Character;
 import src.room.Room;
 
 public abstract class Effect {
