@@ -2,6 +2,7 @@ package src.game;
 
 import src.character.Student;
 import src.item.Sliderule;
+import src.item.Transistor;
 import src.item.Batskin;
 import src.room.Room;
 import src.room.RoomManager;
@@ -9,6 +10,7 @@ import java.io.Console;
 
 import src.character.Character;
 import src.character.Teacher;
+import src.effect.Cursed;
 import src.effect.Effect;
 import src.effect.Gassy;
 import src.item.Camembert;
@@ -75,13 +77,51 @@ public class Tester {
 
     }
     public void test7() {
+        GameLogic.startGame();
+        Room room1 = new Room(5, 0);
+        Room room2 = new Room(5, 1);
+        Student student1 = new Student(room1, 0);
+        Transistor transistor1 = new Transistor();
+        Transistor transistor2 = new Transistor();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        room1.addItem(transistor2);
+        transistor1.setOwner(student1);
+        student1.pickUpItem(0);
+        transistor2.initItem(student1);
+        student1.move(1);
+        transistor2.drop();
+        student1.dropItem(transistor1);
 
     }
     public void test8() {
-
+        GameLogic.startGame();
+        Room r1 = new Room(5, 0);
+        Room r2 = new Room(5, 1);
+        Room r3 = new Room(5, 2);
+        r1.addNeighbour(r2);
+        r1.addNeighbour(r3);
+        r2.addNeighbour(r1);
+        r3.addNeighbour(r1);
+        Student s = new Student(r1, 0);
+        Teacher t = new Teacher(r2, 1);
+        s.move(1);
+        t.move(2);
     }
     public void test9() {
-
+        Room room1 = new Room(1, 0);
+        Room room2 = new Room(1, 1);
+        room2.addEffect(new Cursed());
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        Student student1 = new Student(room1, 0);
+        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
+        student1.move(1);
+        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager triggerAllEffects");
+        roomManager.triggerAllEffects();
     }
     public void test10() {
         Room room1 = new Room(1, 1);
@@ -97,6 +137,7 @@ public class Tester {
         student1.move(0);
         ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager triggerAllEffects");
         roomManager.triggerAllEffects();
+        student1.skipTurn();
     }
     public void test11() {
         ConsoleApp.consoleLog(this, GameLogic.getGameLogic(), "Tester to GameLogic startGame");
