@@ -3,6 +3,7 @@ package src.game;
 import src.character.Student;
 import src.item.Sliderule;
 import src.item.Batskin;
+import src.item.Beerglass;
 import src.room.Room;
 import src.room.RoomManager;
 import java.io.Console;
@@ -12,6 +13,7 @@ import src.character.Teacher;
 import src.effect.Effect;
 import src.effect.Gassy;
 import src.item.Camembert;
+import src.item.Rag;
 
 public class Tester {
     //Logarléc teszt
@@ -70,6 +72,8 @@ public class Tester {
         Teacher teacher = new Teacher(room1, 3);
         Batskin batskin = new Batskin();
 
+        room1.addNeighbour(room2);
+
         ConsoleApp.consoleLog(this, room1, "Tester to Room addCharacter");
         room1.addCharacter(teacher);
 
@@ -85,15 +89,64 @@ public class Tester {
         ConsoleApp.consoleLog(this, teacher, "Tester to Teacher move");
         teacher.move(0);
 
+        ConsoleApp.reset();
     }
+
+    //beerglass test
     public void test4() {
+        Room room1 = new Room(2, 0);
+        Room room2 = new Room(1, 1);
+        Teacher teacher = new Teacher(room2, 0);
+        Student student = new Student(room1, 0);
+        Beerglass beerglass = new Beerglass();
 
+        room2.addNeighbour(room1);
+
+        room1.addCharacter(student);
+        student.addToInventory(beerglass);
+        room2.addCharacter(teacher);
+
+        teacher.move(0);
+
+        ConsoleApp.reset();
     }
+
+
+    //rag test
     public void test5() {
+        Room room1 = new Room(2, 0);
+        Room room2 = new Room(1, 0);
+        Student student = new Student(room2, 0);
+        Teacher teacher = new Teacher(room1, 0);
+        Rag rag = new Rag();
 
+        room2.addNeighbour(room1);
+
+        room2.addCharacter(student);
+        room1.addCharacter(teacher);
+
+        student.addToInventory(rag);
+
+        student.move(0);
+
+        GameLogic.endOfTurn();
+
+        ConsoleApp.reset();
     }
-    public void test6() {
 
+    //FFP2 test
+    public void test6() {
+        Room room1 = new Room(2, 0);
+        Room room2 = new Room(2, 0);
+        Gassy gassy = new Gassy();
+        room2.addEffect(gassy);
+        Student student = new Student(room1, 0);
+        room1.addNeighbour(room2);
+        room1.addCharacter(student);
+
+        student.move(0);
+
+        GameLogic.endOfTurn();
     }
     public void test7() {
 
