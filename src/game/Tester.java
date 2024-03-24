@@ -5,6 +5,8 @@ import src.item.Sliderule;
 import src.item.Batskin;
 import src.room.Room;
 import src.room.RoomManager;
+import java.io.Console;
+
 import src.character.Character;
 import src.character.Teacher;
 import src.effect.Effect;
@@ -97,8 +99,7 @@ public class Tester {
         roomManager.triggerAllEffects();
     }
     public void test11() {
-        GameLogic gl = new GameLogic();
-        ConsoleApp.consoleLog(this, gl, "Tester to GameLogic startGame");
+        ConsoleApp.consoleLog(this, GameLogic.getGameLogic(), "Tester to GameLogic startGame");
         GameLogic.startGame();
 
         Room room = new Room(5,0);
@@ -137,7 +138,12 @@ public class Tester {
 
     }
     public void test15() {
-
+        ConsoleApp.consoleLog(this, GameLogic.getGameLogic(), "Tester to GameLogic startGame");
+        GameLogic.startGame();
+        GameLogic.roomManager.generateRooms(5);
+        GameLogic.generateCharacters(1, 1);
+        GameLogic.generateItems(5);
+        ConsoleApp.reset();
     }
     public void test16() {
 
