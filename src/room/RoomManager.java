@@ -83,10 +83,6 @@ public class RoomManager {
         return inNeighbours;
     }
 
-    public void sortCharacters(ArrayList<Character> c) {
-
-    }
-
     public void sortEffects(ArrayList<Effect> e) {
 
     }

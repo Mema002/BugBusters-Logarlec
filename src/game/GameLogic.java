@@ -7,8 +7,13 @@ import src.character.Character;
 import src.character.Student;
 import src.character.Teacher;
 import src.item.Batskin;
+import src.item.Beerglass;
+import src.item.Camembert;
+import src.item.FFP2;
 import src.item.Item;
+import src.item.Rag;
 import src.item.Sliderule;
+import src.item.Transistor;
 import src.room.Room;
 import src.room.RoomManager;
 import static src.game.SingletonLogger.logger;
@@ -83,36 +88,42 @@ public class GameLogic{
         for (int i = 0; i < teacherCount; i++) {
             characters.add(new Teacher(null, i /*+ studentCount*/));
         }
+
+        ArrayList<Room> rooms = roomManager.getRooms();
+        int roomCount = rooms.size();
+
+        for (int i = 0; i < characters.size(); i++) {
+            Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
+            randomRoom.addCharacter(characters.get(i));
+        }
     }
 
     public static void generateItems(int count) {
         ArrayList<Item> items = new ArrayList<Item>();
         ArrayList<Room> rooms = roomManager.getRooms();
         int roomCount = rooms.size();
-        items.add(new Sliderule(null));
+        items.add(new Sliderule()); //1 sliderule fix
         for (int i = 0; i < count - 1; i++) {
-            int type = random.nextInt(6);
+            int type = random.nextInt(6); //milyen itemet generaljunk
+            Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
             switch (type) {
                 case 0:
-                    rooms.get(random.nextInt(roomCount)).addItem(new Batskin(null));
+                    randomRoom.addItem(new Batskin());
                     break;
                 case 1:
-                    rooms.get(random.nextInt(roomCount)).addItem(new Batskin(null));
+                    randomRoom.addItem(new Beerglass());
                     break;
                 case 2:
-                    rooms.get(random.nextInt(roomCount)).addItem(new Batskin(null));
+                    randomRoom.addItem(new Camembert());
                     break;
                 case 3:
-                    rooms.get(random.nextInt(roomCount)).addItem(new Batskin(null));
+                    randomRoom.addItem(new FFP2());
                     break;
                 case 4:
-                    rooms.get(random.nextInt(roomCount)).addItem(new Batskin(null));
+                    randomRoom.addItem(new Rag());
                     break;
                 case 5:
-                    rooms.get(random.nextInt(roomCount)).addItem(new Batskin(null));
-                    break;
-                case 6:
-                    rooms.get(random.nextInt(roomCount)).addItem(new Batskin(null));
+                    randomRoom.addItem(new Transistor());
                     break;
                 default: break;
             }
