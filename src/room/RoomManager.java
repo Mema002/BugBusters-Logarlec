@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import src.character.Character;
 import src.effect.Effect;
+import src.game.ConsoleApp;
 import src.item.Item;
 
 public class RoomManager {
@@ -103,7 +104,9 @@ public class RoomManager {
     }
 
     public void triggerAllEffects() {
-        for (Room room : rooms)
+        for (Room room : rooms) {
+            ConsoleApp.consoleLog(this, room, "RoomManager to Room triggerRoomEffects");
             room.triggerRoomEffects();
+        }
     }
 }

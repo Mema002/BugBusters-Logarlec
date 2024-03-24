@@ -4,9 +4,13 @@ import src.character.Student;
 import src.item.Sliderule;
 import src.item.Batskin;
 import src.room.Room;
+import src.room.RoomManager;
+import java.io.Console;
+
 import src.character.Character;
 import src.character.Teacher;
 import src.effect.Effect;
+import src.effect.Gassy;
 import src.item.Camembert;
 
 public class Tester {
@@ -101,11 +105,22 @@ public class Tester {
 
     }
     public void test10() {
-
+        Room room1 = new Room(1, 1);
+        Room room2 = new Room(1, 2);
+        room2.addEffect(new Gassy());
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        Student student1 = new Student(room1, 1);
+        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
+        student1.move(0);
+        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager triggerAllEffects");
+        roomManager.triggerAllEffects();
     }
     public void test11() {
-        GameLogic gl = new GameLogic();
-        ConsoleApp.consoleLog(this, gl, "Tester to GameLogic startGame");
+        ConsoleApp.consoleLog(this, GameLogic.getGameLogic(), "Tester to GameLogic startGame");
         GameLogic.startGame();
 
         Room room = new Room(5,0);
@@ -133,7 +148,12 @@ public class Tester {
 
     }
     public void test15() {
-
+        ConsoleApp.consoleLog(this, GameLogic.getGameLogic(), "Tester to GameLogic startGame");
+        GameLogic.startGame();
+        GameLogic.roomManager.generateRooms(5);
+        GameLogic.generateCharacters(1, 1);
+        GameLogic.generateItems(5);
+        ConsoleApp.reset();
     }
     public void test16() {
 
@@ -141,6 +161,4 @@ public class Tester {
     public void test17() {
 
     }
-
-
 }

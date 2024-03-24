@@ -34,5 +34,6 @@ public class Main {
         Tester tester = new Tester();
         tester.test1();
         tester.test2();
+        tester.test10();
     }
 }

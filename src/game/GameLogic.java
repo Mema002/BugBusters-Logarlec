@@ -21,7 +21,7 @@ import static src.game.SingletonLogger.logger;
 
 public class GameLogic{
     private static boolean isGameRunning;
-    private static RoomManager roomManager;
+    public static RoomManager roomManager;
     private static ArrayList<Character> characters;
     private static ArrayList<Character> deadCharacters;
 
