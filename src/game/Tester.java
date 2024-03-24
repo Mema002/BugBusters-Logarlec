@@ -2,6 +2,7 @@ package src.game;
 
 import src.character.Student;
 import src.item.Sliderule;
+import src.item.Batskin;
 import src.room.Room;
 import src.room.RoomManager;
 import src.character.Character;
@@ -62,7 +63,24 @@ public class Tester {
     public void test3() {
 
     }
+    public void test4() {
 
+    }
+    public void test5() {
+
+    }
+    public void test6() {
+
+    }
+    public void test7() {
+
+    }
+    public void test8() {
+
+    }
+    public void test9() {
+
+    }
     public void test10() {
         Room room1 = new Room(1, 1);
         Room room2 = new Room(1, 2);
@@ -77,5 +95,43 @@ public class Tester {
         student1.move(0);
         ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager triggerAllEffects");
         roomManager.triggerAllEffects();
+    }
+    public void test11() {
+        GameLogic gl = new GameLogic();
+        ConsoleApp.consoleLog(this, gl, "Tester to GameLogic startGame");
+        GameLogic.startGame();
+
+        Room room = new Room(5,0);
+        Student student = new Student(room, 0);
+        Batskin batskin = new Batskin();
+
+        ConsoleApp.consoleLog(this, room, "Tester to Room addCharacter");
+        room.addCharacter(student);
+
+        ConsoleApp.consoleLog(this, room, "Tester to Room addItem");
+        room.addItem(batskin);
+
+        ConsoleApp.consoleLog(this, student, "Tester to Student pickUpItem");
+        student.pickUpItem(0);
+
+        ConsoleApp.reset();
+    }
+    public void test12() {
+
+    }
+    public void test13() {
+
+    }
+    public void test14() {
+
+    }
+    public void test15() {
+
+    }
+    public void test16() {
+
+    }
+    public void test17() {
+
     }
 }
