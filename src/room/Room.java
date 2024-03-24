@@ -67,8 +67,8 @@ public class Room {
         effects.remove(e);
     }
     //neighbours get set
-    public ArrayList<Room> getNeighbours() { //wtf
-        return null;
+    public ArrayList<Room> getNeighbours() {
+        return neighbours;
     }
 
     public void addNeighbour(Room r) {
