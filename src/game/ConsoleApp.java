@@ -35,8 +35,13 @@ public class ConsoleApp {
         int tabNum = calls.get(caller) + 1;
 
         //Ha nincs benne hozzaadja az adot tabulator szammal egyutt
-        if(!calls.containsKey(called));
+        if(!calls.containsKey(called))
             calls.put(called, tabNum);
+
+        //Kiiras
+        for(int i = 0; i < tabNum; i++)
+            System.out.print('\n');
+        System.out.println(text);
     }
 
     public static void reset() { calls.clear(); }
