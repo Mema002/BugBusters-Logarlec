@@ -14,6 +14,16 @@ public class RoomManager {
         rooms = new ArrayList<>();
     }
 
+    public void generateRooms(int count) {
+        for (int i = 0; i < count; i++) {
+            rooms.add(new Room(10, i));
+        }
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
     public void mergeRooms(Room r1, Room r2) { //osztódhat ha van benne karakter?
         r1.setCapacity(Math.max(r1.getCapacity(), r2.getCapacity())); //nagyobbik capacity az uj
         for (Room room : r2.getNeighbours()) {
@@ -71,14 +81,6 @@ public class RoomManager {
             }
         }
         return inNeighbours;
-    }
-
-    public void sortCharacters(ArrayList<Character> c) {
-
-    }
-
-    public void sortItems(ArrayList<Item> i) {
-
     }
 
     public void sortEffects(ArrayList<Effect> e) {
