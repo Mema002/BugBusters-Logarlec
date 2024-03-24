@@ -53,7 +53,7 @@ public class Teacher extends Character {
     }
 
     @Override
-    public void chooseItem() {
+    public Item chooseItem() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'chooseItem'");
     }

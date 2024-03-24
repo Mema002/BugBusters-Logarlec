@@ -12,7 +12,7 @@ import static src.game.SingletonLogger.logger;
 public class ConsoleApp {
     private static HashMap<Object, Integer> calls;
 
-    ConsoleApp() {
+    static  {
         calls = new HashMap<>();
     }
 
@@ -40,14 +40,14 @@ public class ConsoleApp {
 
         //Kiiras
         for(int i = 0; i < tabNum; i++)
-            System.out.print('\n');
+            System.out.print('\t');
         System.out.println(text);
     }
 
     public static void reset() { calls.clear(); }
 
-    /*public static boolean writeOutInventory(Character character) {
+    public static boolean writeOutInventory(Character character) {
         logger.info("Current player's id: " + character.getId());
         return true;
-    }*/
+    }
 }

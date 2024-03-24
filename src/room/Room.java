@@ -3,6 +3,7 @@ package src.room;
 import java.util.ArrayList;
 
 import src.effect.Effect;
+import src.game.ConsoleApp;
 import src.item.Item;
 import src.character.Character;
 
@@ -96,6 +97,7 @@ public class Room {
 
     public void triggerRoomEffects() {
         for (Effect effect : effects) {
+            ConsoleApp.consoleLog(this, effect, "Room to Effect triggerEffect");
             effect.triggerEffect(this);
         }
     }

@@ -3,6 +3,7 @@ package src.character;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.game.ConsoleApp;
 import src.item.Item;
 import src.room.Room;
 
@@ -54,6 +55,7 @@ public class Student extends Character {
     public void useItem(int idx) {
         if(idx >= inventory.size())
             return;
+        ConsoleApp.consoleLog(this, inventory.get(idx), "Student - useItem");
         inventory.get(idx).useItem(this);
     }
 

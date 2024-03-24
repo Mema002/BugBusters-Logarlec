@@ -1,6 +1,7 @@
 package src.effect;
 
 import src.character.Character;
+import src.game.ConsoleApp;
 import src.room.Room;
 
 public class Gassy extends Effect {
@@ -12,9 +13,13 @@ public class Gassy extends Effect {
 
     @Override
     public void triggerEffect(Room r) {
+        ConsoleApp.consoleLog(this, r, "Gassy to Room getCharacters");
         for(Character c : r.getCharacters()){
+            ConsoleApp.consoleLog(this, c, "Gassy to Character tryStun");
             if(c.tryStun()) {
+                ConsoleApp.consoleLog(this, c, "Gassy to Character dropItems");
                 c.dropItems();
+                ConsoleApp.consoleLog(this, c, "Gassy to Character beStunnedFor");
                 c.beStunnedFor(1);
             }
         }

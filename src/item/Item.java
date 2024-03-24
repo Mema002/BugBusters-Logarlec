@@ -45,4 +45,8 @@ public abstract class Item {
     public void pair(Item t){};
     
     public Room getLocation(){ return null; };
+
+    public void setOwner(Character owner) {
+        this.owner = owner;
+    }
 }
