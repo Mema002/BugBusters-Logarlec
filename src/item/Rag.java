@@ -21,18 +21,5 @@ public class Rag extends Item {
     }
 
     private void stunTeachers() { //szekvencián nincs használva
-
     }
-
-    @Override
-    public boolean isActive() {
-        return false;
-    }
-
-    @Override
-    public void drop() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'drop'");
-    }
-
 }

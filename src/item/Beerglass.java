@@ -17,28 +17,12 @@ public class Beerglass extends Item {
     }
 
     @Override
-    public boolean IsUnpaired() {
-        return false;
-    }
-
-    @Override
     public void decrRemainingTime() {
         remainingTime -= 1;
     }
 
     public int getRemainingTime() { //valszeg inkább abstractba kéne overrideolnia mindenkinek
         return remainingTime;
-    }
-
-    @Override
-    public boolean isActive() {
-        return false;
-    }
-
-    @Override
-    public void drop() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'drop'");
     }
 
     @Override

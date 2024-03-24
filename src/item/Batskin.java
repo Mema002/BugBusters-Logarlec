@@ -9,16 +9,6 @@ public class Batskin extends Item {
         super(r);
         this.durability = 3;
     }
-
-    @Override
-    public boolean IsUnpaired() {
-        return false;
-    }
-
-    @Override
-    public boolean isActive() {
-        return false;
-    }
     
     @Override
     public boolean checkDefense() {

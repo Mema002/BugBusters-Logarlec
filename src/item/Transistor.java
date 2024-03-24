@@ -37,11 +37,6 @@ public class Transistor extends Item {
         return pair == null; //lehet nem pontos a compare
     }
 
-    @Override
-    public void decrRemainingTime() {
-        return;
-    }
-
     private void activate() { //ha paired akkor lehet csak aktiválni
         if (!IsUnpaired()) isActive = true;
     }

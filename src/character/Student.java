@@ -31,7 +31,7 @@ public class Student extends Character {
     @Override
     public void pickUpItem() {
         ArrayList<Item> options = currentRoom.getItems();
-        if (options.isEmpty()) return;
+        if (options.isEmpty() || inventory.size()>=5) return;
         //choose?
         Item chosen = options.get(0);
         addToInventory(chosen);
@@ -53,8 +53,7 @@ public class Student extends Character {
 
     @Override
     public void useItem(Item i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'useItem'");
+        i.useItem(this);
     }
 
     @Override
