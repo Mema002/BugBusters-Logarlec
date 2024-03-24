@@ -20,64 +20,49 @@ public class Teacher extends Character {
         return id;
     }
     
-    private void expellStudent(Student s) {
+/*     private void expellStudent(Student s) {
         s.setExpelled();
-    }
+    } */
 
     @Override
-    public void move() {
+    public void move(int targetIndex) {
         ArrayList<Room> options = currentRoom.getNeighbours();
-        int targetIndex;
+
+        //ez még nem kell mert 
+        /* int targetIndex;
         if (options.isEmpty()) return;
         if (options.size() == 1) targetIndex = 0;
         else {
             Random random = new Random();
-            targetIndex = random.nextInt(options.size() /*+ 1*/);
-        }
+            targetIndex = random.nextInt(options.size() /*+ 1);
+        } */
 
         Room targetRoom = options.get(targetIndex);
         if (targetRoom.requestChange()) {
             currentRoom.removeCharacter(this);
             targetRoom.addCharacter(this);
-            changeRoom(targetRoom);
-            /* for (Character c : targetRoom.getCharacters()) {
-                if (c.tryExpell())
-            } */
+            setRoom(targetRoom);
+            for (Character c : targetRoom.getCharacters()) {
+                if (c.tryExpell(this));
+            }
         }
-    }
-
-    @Override
-    public void pickUpItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pickUpItem'");
     }
 
     @Override
     public void chooseItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chooseItem'");
+        return;
     }
 
     @Override
     public boolean triggerExpelling(Student s) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'triggerExpelling'");
-    }
-
-    @Override
-    public boolean tryExpell() {
-        return false;
-    }
-
-    @Override
-    public void endOfRound() {
-        List<Character> inRoomCharacters = currentRoom.getCharacters();
-        for (Character character : inRoomCharacters) {
-            if(character.tryExpell()){
-                character.setExpelled();
-                GameLogic.removeCharacter(character);
-                currentRoom.removeCharacter(character);
-            }
+        if(s.tryExpell(this) && this.stunnedFor==0){
+            s.setExpelled();
         }
+        return true;
+    }
+
+    @Override
+    public boolean tryExpell(Teacher attacker) {
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 package src.item;
 
 import src.character.Character;
+import src.character.Teacher;
 import src.room.Room;
 
 public abstract class Item {
@@ -38,7 +39,7 @@ public abstract class Item {
         owner = null;
     };
 
-    public boolean checkDefense() { return false; }
+    public boolean checkDefense(Teacher attacker) { return false; }
 
     public boolean defendStun() { return false; }
 

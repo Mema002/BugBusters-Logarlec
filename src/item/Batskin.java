@@ -1,5 +1,6 @@
 package src.item;
 
+import src.character.Teacher;
 import src.room.Room;
 
 public class Batskin extends Item {
@@ -9,9 +10,9 @@ public class Batskin extends Item {
         super(r);
         this.durability = 3;
     }
-    
+
     @Override
-    public boolean checkDefense() {
+    public boolean checkDefense(Teacher attacker) {
         if(durability > 0){
             durability--;
             return true;

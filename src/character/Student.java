@@ -1,13 +1,14 @@
 package src.character;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import src.game.GameLogic;
 import src.item.Item;
 import src.room.Room;
 
 public class Student extends Character {
     private int id;
+
     public Student(Room currentRoom, int id) {
         super(currentRoom);
         this.id = id;
@@ -29,25 +30,17 @@ public class Student extends Character {
     }
 
     @Override
-    public void pickUpItem() {
-        ArrayList<Item> options = currentRoom.getItems();
-        if (options.isEmpty()) return;
-        //choose?
-        Item chosen = options.get(0);
-        addToInventory(chosen);
-        currentRoom.removeItem(chosen);
-        chosen.initItem(this);
-    }
-
-    @Override
-    public void move() {
+    public void move(int targetIndex) {
         ArrayList<Room> options = currentRoom.getNeighbours();
         //choose?
-        Room targetRoom = options.get(0);
+        Room targetRoom = options.get(targetIndex);
         if (targetRoom.requestChange()) {
             currentRoom.removeCharacter(this);
             targetRoom.addCharacter(this);
-            changeRoom(targetRoom);
+            setRoom(targetRoom);
+            for(Character c : targetRoom.getCharacters()){
+                c.triggerExpelling(this);
+            }
         }
     }
 
@@ -66,9 +59,6 @@ public class Student extends Character {
 
     @Override
     public boolean triggerExpelling(Student s) { //param?
-        if (tryExpell()) {
-
-        }
         return false;
     }
 
@@ -81,23 +71,21 @@ public class Student extends Character {
         return false;
     }
 
-    public boolean checkDefense() {
+    @Override
+    public boolean tryExpell(Teacher attacker) {
         for (Item item : inventory){
-            if(item.checkDefense())
-                return true;
+            if(item.checkDefense(attacker))
+                return false;
         }
-        return false;
+        return true;
     }
 
     @Override
-    public boolean tryExpell() {
-        return !checkDefense();
-    }
-
-    @Override
-    public void endOfRound() {
-        for (Item item : inventory) {
-            item.decrRemainingTime();
-        }
+    public boolean setExpelled(){
+        currentRoom.removeCharacter(this);
+        expelled=true;
+        dropItems();
+        GameLogic.removeCharacter(this);
+        return true;
     }
 }

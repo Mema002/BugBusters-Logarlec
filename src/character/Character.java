@@ -38,10 +38,6 @@ public abstract class Character {
         return currentRoom;
     }
 
-    public void changeRoom(Room r) { //lehetne setCurrentRoom
-        currentRoom = r;
-    }
-
     public int getStunnedFor() {
         return stunnedFor;
     }
@@ -63,20 +59,30 @@ public abstract class Character {
         inventory.clear();
     }
 
-    public abstract void move();
+    public abstract void move(int targetIndex);
 
-    public abstract void pickUpItem();
-
-    public void skipTurn() { //TODO
-
+    public void pickUpItem(int targetIndex) {
+        ArrayList<Item> options = currentRoom.getItems();
+        if (options.isEmpty()) return;
+        //choose?
+        Item chosen = options.get(targetIndex);
+        if(inventory.size()<5){
+            addToInventory(chosen);
+            currentRoom.removeItem(chosen);
+            chosen.initItem(this);
+        }
     }
 
-    public boolean setExpelled() { //TODO
+    public void skipTurn() {
+        return; //sztem csak ennyi (?)
+    }
+
+    public boolean setExpelled() {
         return false;
     }
 
-    public void setRoom(Room r) { //TODO
-
+    public void setRoom(Room r) {
+        currentRoom = r;
     }
 
     public void useItem(int idx) { return; };
@@ -87,9 +93,13 @@ public abstract class Character {
 
     public boolean tryStun() {return true; };
 
-    public abstract boolean tryExpell();
+    public abstract boolean tryExpell(Teacher attacker);
 
-    public abstract void endOfRound();
+    public void endOfRound() {
+        for (Item item : inventory) {
+            item.decrRemainingTime();
+        }
+    }
 
     public void clearInventory() { inventory.clear(); }
 }

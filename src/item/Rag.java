@@ -1,5 +1,6 @@
 package src.item;
 
+import src.character.Teacher;
 import src.room.Room;
 
 public class Rag extends Item {
@@ -11,15 +12,16 @@ public class Rag extends Item {
     }
 
     @Override
-    public boolean IsUnpaired() {
-        return false;
-    }
-
-    @Override
     public void decrRemainingTime() {
         remainingTime -= 1;
     }
 
-    private void stunTeachers() { //szekvencián nincs használva
+    @Override
+    public boolean checkDefense(Teacher attacker){
+        if(remainingTime>0){
+            attacker.beStunnedFor(1);
+            return true;
+        }
+        return false;
     }
 }

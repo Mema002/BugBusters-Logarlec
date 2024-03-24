@@ -2,6 +2,7 @@ package src.item;
 
 import src.room.Room;
 import src.character.Character;
+import src.character.Teacher;
 
 public class Beerglass extends Item {
     private int remainingTime;
@@ -26,7 +27,7 @@ public class Beerglass extends Item {
     }
 
     @Override
-    public boolean checkDefense() {
+    public boolean checkDefense(Teacher attacker) {
         if (remainingTime > 0)
             return true;
         return false;
