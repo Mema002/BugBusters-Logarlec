@@ -59,6 +59,7 @@ public class Main {
             case "15": tester.test15(); break;
             case "16": tester.test16(); break;
             case "17": tester.test17(); break;
+            case "q": return;
             default: break;
         }
         System.out.println();
