@@ -15,6 +15,7 @@ import src.effect.Cursed;
 import src.effect.Effect;
 import src.effect.Gassy;
 import src.item.Camembert;
+import src.item.FFP2;
 import src.item.Rag;
 
 public class Tester {
@@ -310,6 +311,12 @@ public class Tester {
         teacher1.move(0);
     }
     public void test17() {
+        Room room1 = new Room(1, 0);
+        Student student = new Student(room1, 0);
+        FFP2 ffp2 = new FFP2() ;
+        room1.addCharacter(student);
+        student.addToInventory(ffp2);
 
+        student.dropItem(ffp2);
     }
 }
