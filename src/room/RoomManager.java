@@ -26,22 +26,31 @@ public class RoomManager {
     }
 
     public void mergeRooms(Room r1, Room r2) { //osztódhat ha van benne karakter?
+        ConsoleApp.consoleLog(this, r1, "RoomManager to Room setCapacity");
         r1.setCapacity(Math.max(r1.getCapacity(), r2.getCapacity())); //nagyobbik capacity az uj
+        ConsoleApp.consoleLog(this, r1, "RoomManager to Room getNeighbours");
         for (Room room : r2.getNeighbours()) {
-            if (!r1.getNeighbours().contains(room)) //ha nem szomszedos akkor az lesz
+            if (!r1.getNeighbours().contains(room)) { //ha nem szomszedos akkor az lesz
+                ConsoleApp.consoleLog(this, r1, "RoomManager to Room addNeighbour");
                 r1.addNeighbour(room);
+            }
         }
+        ConsoleApp.consoleLog(this, r1, "RoomManager to Room getEffects");
         for (Effect e : r2.getEffects()) {
-            if (!r1.getEffects().contains(e)) //ha nincs ilyenje akkor kap
+            if (!r1.getEffects().contains(e)) { //ha nincs ilyenje akkor kap
+                ConsoleApp.consoleLog(this, r1, "RoomManager to Room addEffect");
                 r1.addEffect(e);
+            }
         }
         r1.getItems().addAll(r2.getItems()); //itemek is atkerulnek
+        ConsoleApp.consoleLog(this, this, "RoomManager to RoomManager deleteRoom");
         deleteRoom(r2);
     }
 
     public void splitRoom(Room r) {
         //capacity split
         Room newRoom = new Room(r.getCapacity() / 2, r.getId());
+        ConsoleApp.consoleLog(this, r, "RoomManager to Room setCapacity");
         r.setCapacity(r.getCapacity() / 2);
 
         //item split
@@ -54,6 +63,7 @@ public class RoomManager {
         //effect split
         if (r.getEffects().size() == 2) {
             Collections.shuffle(r.getEffects());
+            ConsoleApp.consoleLog(this, r, "RoomManager to Room addEffect");
             newRoom.addEffect(r.getEffects().remove(0));
         }
         //else if (r.getEffects().size() == 1) leszarom megtartja ha csak 1 effektje van
@@ -64,6 +74,7 @@ public class RoomManager {
         ArrayList<Room> secondHalfN = new ArrayList<>(r.getNeighbours().subList(r.getNeighbours().size() / 2, r.getNeighbours().size()));
         r.getNeighbours().clear(); r.getNeighbours().addAll(firstHalfN); r.getNeighbours().add(newRoom);
         newRoom.getNeighbours().addAll(secondHalfN); newRoom.getNeighbours().add(r);
+        rooms.add(newRoom);
     }
 
     public void deleteRoom(Room r) {
