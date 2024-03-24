@@ -104,4 +104,9 @@ public class Transistor extends Item {
         ConsoleApp.returnLog("return location");
         return location;
     }
+
+    @Override
+    public String toString() {
+        return "Transistor";
+    }
 }

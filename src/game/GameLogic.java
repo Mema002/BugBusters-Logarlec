@@ -141,13 +141,15 @@ public class GameLogic{
 
     public static void endOfTurn() {
         for (Character c : characters) {
-            ConsoleApp.consoleLog(gameLogic, c, "GameLogic to Character endOfRound");
+            ConsoleApp.funcLog("GameLogic to Character endOfRound");
             c.endOfRound();
+            ConsoleApp.returnLog("return");
         }
         //1 a 3 hoz esely
         if(1 == random.nextInt(0, 3)) {
-            ConsoleApp.consoleLog(gameLogic, roomManager, "RoomManager to RoomManager triggerAllEffect");
+            ConsoleApp.funcLog("RoomManager to RoomManager triggerAllEffect");
             roomManager.triggerAllEffects();
+            ConsoleApp.returnLog("return");
         }
     }
 

@@ -25,4 +25,12 @@ public class Gassy extends Effect {
         ConsoleApp.returnLog("return");
     }
     
+    /* private void stunCharacters(Room r) { class diagramról, valszeg nem kell
+
+    } */
+
+    @Override
+    public String toString() {
+        return "Gassy";
+    }
 }

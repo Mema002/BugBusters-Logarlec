@@ -29,4 +29,9 @@ public class FFP2 extends Item {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "FFP2";
+    }
 }

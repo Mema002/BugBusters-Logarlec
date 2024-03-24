@@ -23,4 +23,9 @@ public class Sliderule extends Item {
         ConsoleApp.funcLog("Sliderule to GameLogic endGame");
         GameLogic.endGame();
     }
+
+    @Override
+    public String toString() {
+        return "Sliderule";
+    }
 }

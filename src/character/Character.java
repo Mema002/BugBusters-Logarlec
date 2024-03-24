@@ -106,4 +106,6 @@ public abstract class Character {
     }
 
     public void clearInventory() { inventory.clear(); }
+
+    public abstract String toString();
 }
