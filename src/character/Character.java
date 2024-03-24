@@ -2,6 +2,7 @@ package src.character;
 
 import java.util.ArrayList;
 
+import src.game.ConsoleApp;
 import src.item.Item;
 import src.room.Room;
 import static src.game.SingletonLogger.logger;
@@ -62,13 +63,16 @@ public abstract class Character {
     public abstract void move(int targetIndex);
 
     public void pickUpItem(int targetIndex) {
+        ConsoleApp.consoleLog(this, currentRoom, "Tester - Room getItems");
         ArrayList<Item> options = currentRoom.getItems();
         if (options.isEmpty()) return;
-        //choose?
         Item chosen = options.get(targetIndex);
         if(inventory.size()<5){
+            ConsoleApp.consoleLog(this, this, "Tester - Character addToInventory");
             addToInventory(chosen);
+            ConsoleApp.consoleLog(this, currentRoom, "Tester - Room removeitem");
             currentRoom.removeItem(chosen);
+            ConsoleApp.consoleLog(this, currentRoom, "Tester - Item initItem");
             chosen.initItem(this);
         }
     }

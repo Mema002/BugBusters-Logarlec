@@ -32,6 +32,7 @@ public class Main {
         logger.warning("Ejnye, bebugzott valami! (mock warning)");
 
         Tester tester = new Tester();
+        tester.test1();
         tester.test2();
     }
 }

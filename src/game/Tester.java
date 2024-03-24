@@ -3,24 +3,32 @@ package src.game;
 import src.character.Student;
 import src.item.Sliderule;
 import src.room.Room;
-
 import src.character.Character;
-import src.character.Student;
 import src.character.Teacher;
 import src.effect.Effect;
 import src.item.Camembert;
-import src.room.Room;
 
 public class Tester {
+    //Logarléc teszt
     public void test1() {
+        GameLogic gl = new GameLogic();
+        ConsoleApp.consoleLog(this, gl, "Tester to GameLogic startGame");
         GameLogic.startGame();
+
         Room room = new Room(5,0);
         Student student = new Student(room, 0);
-        Sliderule sliderule = new Sliderule(room);
+        Sliderule sliderule = new Sliderule();
+
+        ConsoleApp.consoleLog(this, room, "Tester to Room addCharacter");
         room.addCharacter(student);
+
+        ConsoleApp.consoleLog(this, room, "Tester to Room addItem");
         room.addItem(sliderule);
+
+        ConsoleApp.consoleLog(this, student, "Tester to Student pickUpItem");
         student.pickUpItem(0);
 
+        ConsoleApp.reset();
     }
 
     //Camembert test
@@ -28,7 +36,13 @@ public class Tester {
         Room room1 = new Room(2, 1);
         Teacher teacher1 = new Teacher(room1, 11);
         Student student1 = new Student(room1, 1);
-        Camembert camembert1 = new Camembert(room1);
+        Camembert camembert1 = new Camembert();
+        ConsoleApp.consoleLog(this, room1, "Tester to Room addCharacter");
+        room1.addCharacter(teacher1);
+
+        ConsoleApp.consoleLog(this, room1, "Tester to Room addCharacter");
+        room1.addCharacter(student1);
+
         ConsoleApp.consoleLog(this, camembert1, "Tester to Camembert setOwner");
         camembert1.setOwner(student1);
 
@@ -38,6 +52,7 @@ public class Tester {
         ConsoleApp.consoleLog(this, camembert1, "Tester to Student useItem");
         student1.useItem(0);
 
+        GameLogic.endOfTurn();
 
         ConsoleApp.reset();
     }

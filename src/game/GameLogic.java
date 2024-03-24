@@ -55,8 +55,11 @@ public class GameLogic{
             }
 
             //Ujbol indul ha az utolso karakter is meg volt
-            if(currentPlayerIdx >= characters.size())
+            if(currentPlayerIdx >= characters.size()){
+                endOfTurn();
                 currentPlayerIdx = 0;
+            }
+                
 
 
             //Karakter akcio
@@ -64,6 +67,7 @@ public class GameLogic{
 
             //Itt fogja majd az ActionListener meghívni a fuggvenyeket
 
+            currentPlayerIdx++;
         }
     }
 
@@ -83,11 +87,8 @@ public class GameLogic{
         return null;
     }
 
-    private static void triggerRoomEffects() {
 
-    }
-
-    private static void endOfTurn() {
+    public static void endOfTurn() {
         for (Character c : characters) {
             ConsoleApp.consoleLog(gameLogic, c, "GameLogic to Character endOfRound");
             c.endOfRound();
