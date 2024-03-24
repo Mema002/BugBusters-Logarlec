@@ -103,4 +103,8 @@ public class Room {
     }
 
     public void clearItems() { items.clear(); }
+
+    public String toString() {
+        return "Room";
+    }
 }

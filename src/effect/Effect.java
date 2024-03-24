@@ -1,6 +1,5 @@
 package src.effect;
 
-import src.character.Character;
 import src.room.Room;
 
 public abstract class Effect {
@@ -10,4 +9,6 @@ public abstract class Effect {
     }
 
     public abstract void triggerEffect(Room r);
+
+    public abstract String toString();
 }

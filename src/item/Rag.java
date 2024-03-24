@@ -1,7 +1,7 @@
 package src.item;
 
 import src.character.Teacher;
-import src.room.Room;
+import src.game.ConsoleApp;
 
 public class Rag extends Item {
     private int remainingTime;
@@ -13,15 +13,24 @@ public class Rag extends Item {
 
     @Override
     public void decrRemainingTime() {
+        ConsoleApp.returnLog("return");
         this.remainingTime -= 1;
     }
 
     @Override
     public boolean checkDefense(Teacher attacker){
-        if(remainingTime>0){
+        if (remainingTime > 0) {
+            ConsoleApp.funcLog("Rag to Teacher beStunnedFor");
             attacker.beStunnedFor(1);
+            ConsoleApp.returnLog("return true");
             return true;
         }
+        ConsoleApp.returnLog("return false");
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Rag";
     }
 }

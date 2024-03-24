@@ -8,24 +8,29 @@ public class Gassy extends Effect {
 
     public Gassy() {
         super();
-        //TODO Auto-generated constructor stub
     }
 
     @Override
     public void triggerEffect(Room r) {
-        ConsoleApp.consoleLog(this, r, "Gassy to Room getCharacters");
+        ConsoleApp.funcLog("room.getCharacters()");
         for(Character c : r.getCharacters()){
-            ConsoleApp.consoleLog(this, c, "Gassy to Character tryStun");
+            ConsoleApp.funcLog("character.tryStun()");
             if(c.tryStun()) {
-                ConsoleApp.consoleLog(this, c, "Gassy to Character dropItems");
+                ConsoleApp.funcLog("character.dropItems()");
                 c.dropItems();
-                ConsoleApp.consoleLog(this, c, "Gassy to Character beStunnedFor");
+                ConsoleApp.funcLog("character.beStunnedFor(int: 1)");
                 c.beStunnedFor(1);
             }
         }
+        ConsoleApp.returnLog("return");
     }
     
     /* private void stunCharacters(Room r) { class diagramról, valszeg nem kell
 
     } */
+
+    @Override
+    public String toString() {
+        return "Gassy";
+    }
 }

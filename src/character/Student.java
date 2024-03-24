@@ -100,4 +100,9 @@ public class Student extends Character {
         GameLogic.removeCharacter(this);
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Student";
+    }
 }
