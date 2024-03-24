@@ -34,8 +34,20 @@ public class Main {
         Tester tester = new Tester();
         tester.test1();
         tester.test2();
+        tester.test3();
+        tester.test4();
+        tester.test5();
+        tester.test6();
+        tester.test7();
+        tester.test8();
+        tester.test9();
         tester.test10();
         tester.test11();
+        tester.test12();
+        tester.test13();
+        tester.test14();
         tester.test15();
+        tester.test16();
+        tester.test17();
     }
 }
