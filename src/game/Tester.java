@@ -159,12 +159,45 @@ public class Tester {
         ConsoleApp.reset();
     }
     public void test12() {
-
+        Room room1 = new Room(2, 1);
+        Room room2 = new Room(2, 2);
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        Student student1 = new Student(room1, 1);
+        Teacher teacher1 = new Teacher(room2, 1);
+        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher move");
+        teacher1.move(0);
+        ConsoleApp.reset();
     }
     public void test13() {
+        Room room1 = new Room(2, 1);
+        Room room2 = new Room(2, 2);
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        Student student1 = new Student(room1, 1);
+        Teacher teacher1 = new Teacher(room2, 1);
+        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
+        student1.move(0);
+        ConsoleApp.reset();
 
     }
     public void test14() {
+        Room room1 = new Room(1, 1);
+        room1.addEffect(new Gassy());
+        room1.addEffect(new Cursed());
+        RoomManager roomManager = new RoomManager();
+        roomManager.getRooms().add(room1);
+        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager splitRoom");
+        roomManager.splitRoom(room1);
+        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager mergeRooms");
+        roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1));
+        ConsoleApp.reset();
 
     }
     public void test15() {
@@ -176,7 +209,31 @@ public class Tester {
         ConsoleApp.reset();
     }
     public void test16() {
-
+        Room room1 = new Room(2, 1);
+        Room room2 = new Room(2, 2);
+        Room room3 = new Room(2, 3);
+        RoomManager roomManager = new RoomManager();
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room3); //room1 -> room2(gassy) -> room3
+        roomManager.getRooms().add(room1);
+        roomManager.getRooms().add(room2);
+        roomManager.getRooms().add(room3);
+        Student student1 = new Student(room1, 1);
+        Teacher teacher1 = new Teacher(room1, 1);
+        room1.addItem(new Batskin());
+        room2.addEffect(new Gassy());
+        ConsoleApp.consoleLog(this, student1, "Tester to Student pickUpItem");
+        student1.pickUpItem(0);
+        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher triggerExpelling"); //megakad a character abstract fgvny hivasnal a logging
+        teacher1.triggerExpelling(student1);
+        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
+        student1.move(0);
+        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher move");
+        teacher1.move(0);
+        ConsoleApp.consoleLog(this, student1, "Tester to Student move");
+        student1.move(0);
+        ConsoleApp.consoleLog(this, teacher1, "Tester to Teacher move");
+        teacher1.move(0);
     }
     public void test17() {
 
