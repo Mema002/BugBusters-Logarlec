@@ -28,4 +28,9 @@ public class Rag extends Item {
         ConsoleApp.returnLog("return false");
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Rag";
+    }
 }

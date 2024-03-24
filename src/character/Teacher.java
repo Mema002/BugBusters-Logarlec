@@ -77,4 +77,9 @@ public class Teacher extends Character {
         ArrayList<Item> il = currentRoom.getItems();
         return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
     }
+
+    @Override
+    public String toString() {
+        return "Teacher";
+    }
 }

@@ -56,4 +56,9 @@ public class Cursed extends Effect {
             ConsoleApp.returnLog("return");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Cursed";
+    }
 }

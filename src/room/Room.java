@@ -121,7 +121,10 @@ public class Room {
     }
 
     public void clearItems() {
-        ConsoleApp.returnLog("return");
         items.clear();
+    }
+
+    public String toString() {
+        return "Room";
     }
 }

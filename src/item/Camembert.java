@@ -16,4 +16,9 @@ public class Camembert extends Item {
         owner.getCurrentRoom().addEffect(new Gassy());
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Camembert";
+    }
 }
