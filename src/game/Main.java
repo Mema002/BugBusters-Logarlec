@@ -35,7 +35,6 @@ public class Main {
         tester.test1();
         tester.test2();
         tester.test10();
-        tester.test12();
-        tester.test13();
+        tester.test14();
     }
 }

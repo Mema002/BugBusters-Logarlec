@@ -9,6 +9,7 @@ import java.io.Console;
 
 import src.character.Character;
 import src.character.Teacher;
+import src.effect.Cursed;
 import src.effect.Effect;
 import src.effect.Gassy;
 import src.item.Camembert;
@@ -147,6 +148,16 @@ public class Tester {
 
     }
     public void test14() {
+        Room room1 = new Room(1, 1);
+        room1.addEffect(new Gassy());
+        room1.addEffect(new Cursed());
+        RoomManager roomManager = new RoomManager();
+        roomManager.getRooms().add(room1);
+        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager splitRoom");
+        roomManager.splitRoom(room1);
+        ConsoleApp.consoleLog(this, roomManager, "Tester to RoomManager mergeRooms");
+        roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1));
+        ConsoleApp.reset();
 
     }
     public void test15() {
