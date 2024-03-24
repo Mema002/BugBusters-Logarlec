@@ -12,7 +12,7 @@ import static src.game.SingletonLogger.logger;
 public class ConsoleApp {
     private static HashMap<Object, Integer> calls;
 
-    ConsoleApp() {
+    static  {
         calls = new HashMap<>();
     }
 
@@ -35,14 +35,19 @@ public class ConsoleApp {
         int tabNum = calls.get(caller) + 1;
 
         //Ha nincs benne hozzaadja az adot tabulator szammal egyutt
-        if(!calls.containsKey(called));
+        if(!calls.containsKey(called))
             calls.put(called, tabNum);
+
+        //Kiiras
+        for(int i = 0; i < tabNum; i++)
+            System.out.print('\t');
+        System.out.println(text);
     }
 
     public static void reset() { calls.clear(); }
 
-    /*public static boolean writeOutInventory(Character character) {
+    public static boolean writeOutInventory(Character character) {
         logger.info("Current player's id: " + character.getId());
         return true;
-    }*/
+    }
 }

@@ -11,7 +11,7 @@ public class RoomManager {
     private static ArrayList<Room> rooms;
 
     public RoomManager() {
-        this.rooms = new ArrayList<>();
+        rooms = new ArrayList<>();
     }
 
     public void mergeRooms(Room r1, Room r2) { //osztódhat ha van benne karakter?

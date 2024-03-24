@@ -49,11 +49,6 @@ public class Teacher extends Character {
     }
 
     @Override
-    public void chooseItem() {
-        return;
-    }
-
-    @Override
     public boolean triggerExpelling(Student s) {
         if(s.tryExpell(this) && this.stunnedFor==0){
             s.setExpelled();
@@ -64,5 +59,10 @@ public class Teacher extends Character {
     @Override
     public boolean tryExpell(Teacher attacker) {
         return false;
+    }
+    @Override
+    public Item chooseItem() {
+        ArrayList<Item> il = currentRoom.getItems();
+        return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
     }
 }

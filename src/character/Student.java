@@ -2,6 +2,7 @@ package src.character;
 
 import java.util.ArrayList;
 
+import src.game.ConsoleApp;
 import src.game.GameLogic;
 import src.item.Item;
 import src.room.Room;
@@ -48,13 +49,14 @@ public class Student extends Character {
     public void useItem(int idx) {
         if(idx >= inventory.size())
             return;
+        ConsoleApp.consoleLog(this, inventory.get(idx), "Student - useItem");
         inventory.get(idx).useItem(this);
     }
 
     @Override
-    public void chooseItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chooseItem'");
+    public Item chooseItem() {
+        ArrayList<Item> il = currentRoom.getItems();
+        return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
     }
 
     @Override

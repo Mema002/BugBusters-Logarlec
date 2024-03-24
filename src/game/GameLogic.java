@@ -15,6 +15,9 @@ public class GameLogic{
     private static ArrayList<Character> characters;
     private static ArrayList<Character> deadCharacters;
 
+    //A consoleApp-hoz nem statikus Objektum
+    private static Object gameLogic = new Object();
+
     //A veletlen actionokhoz
     private static Random random = new Random();
 
@@ -86,11 +89,14 @@ public class GameLogic{
 
     private static void endOfTurn() {
         for (Character c : characters) {
+            ConsoleApp.consoleLog(gameLogic, c, "GameLogic to Character endOfRound");
             c.endOfRound();
         }
         //1 a 3 hoz esely
-        if(1 == random.nextInt(0, 3))
+        if(1 == random.nextInt(0, 3)) {
+            ConsoleApp.consoleLog(gameLogic, roomManager, "RoomManager to RoomManager triggerAllEffect");
             roomManager.triggerAllEffects();
+        }
     }
 
     public static void removeCharacter(Character character) {

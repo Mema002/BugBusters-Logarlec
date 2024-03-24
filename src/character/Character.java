@@ -87,7 +87,7 @@ public abstract class Character {
 
     public void useItem(int idx) { return; };
 
-    public abstract void chooseItem();
+    public abstract Item chooseItem();
 
     public abstract boolean triggerExpelling(Student s);
 

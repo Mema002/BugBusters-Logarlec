@@ -13,7 +13,7 @@ public class Rag extends Item {
 
     @Override
     public void decrRemainingTime() {
-        remainingTime -= 1;
+        this.remainingTime -= 1;
     }
 
     @Override

@@ -9,8 +9,7 @@ import static src.game.SingletonLogger.logger;
 public class Main {
     public static void main(String[] args) {
 
-        ConsoleApp consoleApp = new ConsoleApp();
-        consoleApp.writeOutInventory(new Student(null, 0));
+        ConsoleApp.writeOutInventory(new Student(null, 0));
         logger.info("BugBusters ProjLab tesztprogram");
         logger.info("Tesztesetek:");
         logger.info("1.  Logarlec");
@@ -31,5 +30,8 @@ public class Main {
         logger.info("16. Osszetett eset");
         logger.info("17. Targyeldobasa");
         logger.warning("Ejnye, bebugzott valami! (mock warning)");
+
+        Tester tester = new Tester();
+        tester.test2();
     }
 }
