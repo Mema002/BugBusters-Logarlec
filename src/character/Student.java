@@ -32,8 +32,7 @@ public class Student extends Character {
     public void pickUpItem() {
         ArrayList<Item> options = currentRoom.getItems();
         if (options.isEmpty()) return;
-        //choose?
-        Item chosen = options.get(0);
+        Item chosen = this.chooseItem(); 
         addToInventory(chosen);
         currentRoom.removeItem(chosen);
         chosen.initItem(this);
@@ -59,9 +58,9 @@ public class Student extends Character {
     }
 
     @Override
-    public void chooseItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chooseItem'");
+    public Item chooseItem() {
+        ArrayList<Item> il = currentRoom.getItems();
+        return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
     }
 
     @Override
