@@ -82,7 +82,6 @@ public abstract class Character {
     }
 
     public boolean setExpelled() {
-        ConsoleApp.consoleLog(this, currentRoom, "Student to Room removeCharacter");
         return false;
     }
 

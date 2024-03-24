@@ -60,7 +60,9 @@ public class Teacher extends Character {
 
     @Override
     public boolean triggerExpelling(Student s) {
+        ConsoleApp.consoleLog(this, s, "Teacher to Student tryExpell");
         if(s.tryExpell(this) && this.stunnedFor==0){
+            ConsoleApp.consoleLog(this, s, "Teacher to Student setExpelled");
             s.setExpelled();
         }
         return true;

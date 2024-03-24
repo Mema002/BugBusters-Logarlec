@@ -32,14 +32,20 @@ public class Student extends Character {
 
     @Override
     public void move(int targetIndex) {
+        ConsoleApp.consoleLog(this, currentRoom, "Student to Room getNeighbours");
         ArrayList<Room> options = currentRoom.getNeighbours();
         //choose?
         Room targetRoom = options.get(targetIndex);
+        ConsoleApp.consoleLog(this, currentRoom, "Student to Room requestChange");
         if (targetRoom.requestChange()) {
+            ConsoleApp.consoleLog(this, currentRoom, "Student to Room removeCharacter");
             currentRoom.removeCharacter(this);
+            ConsoleApp.consoleLog(this, currentRoom, "Student to Room addCharacter");
             targetRoom.addCharacter(this);
             setRoom(targetRoom);
+            ConsoleApp.consoleLog(this, currentRoom, "Student to Room getCharacters");
             for(Character c : targetRoom.getCharacters()){
+                ConsoleApp.consoleLog(this, c, "Student to Character triggerExpelling");
                 c.triggerExpelling(this);
             }
         }
@@ -76,7 +82,7 @@ public class Student extends Character {
     @Override
     public boolean tryExpell(Teacher attacker) {
         for (Item item : inventory){
-            ConsoleApp.consoleLog(this, item, "Character to Item checkDefense");
+            ConsoleApp.consoleLog(this, item, "Student to Item checkDefense");
             if(item.checkDefense(attacker))
                 return false;
         }
