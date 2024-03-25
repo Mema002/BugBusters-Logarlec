@@ -184,8 +184,8 @@ public class Tester {
         ConsoleApp.funcLog("student1.dropItem(transistor1)");
         student1.dropItem(transistor1);
 
-        ConsoleApp.funcLog("student1.move(1)");
-        student1.move(1);
+        ConsoleApp.funcLog("student1.move(0)");
+        student1.move(0);
 
         ConsoleApp.funcLog("student1.useItem(0)");
         student1.useItem(0);
