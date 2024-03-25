@@ -116,6 +116,7 @@ public class ConsoleApp {
             }
 
         }
+        System.out.print("\n\n");
         System.out.print(consoleBuffer);
         consoleBuffer = new String();
 
