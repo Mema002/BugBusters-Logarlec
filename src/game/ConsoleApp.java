@@ -42,81 +42,50 @@ public class ConsoleApp {
     public static void addRoom(Room room){rooms.add(room);}
 
     public static void stateLog() {
-
-        System.out.println("\nstart stateLog\n");
-
+        System.out.println("\n\n");
         for(int i = 0; i<rooms.size(); i++){
-
-
             Room room = rooms.get(i);
-            //System.out.println(room.toString()+""+i);
-            consoleBuffer+=room.toString();
-            consoleBuffer+=i;
-            consoleBuffer+='\n';
+            System.out.println(room.toString()+i);
 
             //Room items
             ArrayList<Item> itemList = room.getItems();
-            //System.out.println("\tRoom items:");
-            consoleBuffer+="\tRoom items:\n";
+            System.out.println("\tRoom items:");
             //Item count for index
             ArrayList<String> itemCount = new ArrayList<>();
             for(int k = 0; k < itemList.size(); k++){
                 Item item = itemList.get(k);
-                //System.out.println("\t\t"+ item.toString + "" + itemCount.stream().filter(x -> x == item.toString()).count()+1);
-                consoleBuffer+="\t\t";
-                consoleBuffer+=item.toString();
-                consoleBuffer+=itemCount.stream().filter(x -> x == item.toString()).count()+1;
-                consoleBuffer+='\n';
+                System.out.println("\t\t"+itemList.get(k) + itemCount.stream().filter(x -> x == item.toString()).count()+1);
                 itemCount.add(item.toString());
             }
 
             //Characters
             ArrayList<Character> characterList = room.getCharacters();
-            //System.out.println("\tCharacters:");
-            consoleBuffer+="\tCharacters\n";
+            System.out.println("\tCharacters:");
             ArrayList<String> characterCount = new ArrayList<>();
             for (int l = 0; l < characterList.size(); l++){
                 Character character = characterList.get(l);
-                //System.out.println("\t\t"+ character.toString() + "" + characterCount.stream().filter(x->x == character.toString()).count()+1);
-                consoleBuffer+="\t\t";
-                consoleBuffer+=character.toString();
-                consoleBuffer+=characterCount.stream().filter(x->x == character.toString()).count()+1;
-                consoleBuffer+='\n';
+                System.out.println("\t\t"+ character.toString() + characterCount.stream().filter(x->x == character.toString()).count()+1);
                 characterCount.add(character.toString());
 
                 //Character items
                 itemList = character.getInventory();
-                //System.out.println("\t\tCharacter items:");
-                consoleBuffer+="\t\tCharacter items:\n";
+                System.out.println("\t\tRoom items:");
                 //Item count for index
                 itemCount = new ArrayList<>();
                 for(int k = 0; k < itemList.size(); k++){
                     Item item = itemList.get(k);
-                    //System.out.println("\t\t\t"+item.toString() + "" + itemCount.stream().filter(x -> x == item.toString()).count()+1);
-                    consoleBuffer+="\t\t\t";
-                    consoleBuffer+=item.toString();
-                    consoleBuffer+=itemCount.stream().filter(x -> x == item.toString()).count()+1;
-                    consoleBuffer+='\n';
+                    System.out.println("\t\t\t"+itemList.get(k) + itemCount.stream().filter(x -> x == item.toString()).count()+1);
                     itemCount.add(item.toString());
                 }
             }
 
             //Effects
             ArrayList<Effect> effectList = room.getEffects();
-            //System.out.println("\tRoom effects: ");
-            consoleBuffer+="\tRoom effects:\n";
+            System.out.println("\tRoom effects: ");
             for(Effect effect : effectList){
-                //System.out.println("\t\t"+effect.toString());
-                consoleBuffer+="\t\t";
-                consoleBuffer+=effect.toString();
-                consoleBuffer+='\n';
+                System.out.println("\t\t"+effect.toString());
             }
-
         }
-        System.out.print(consoleBuffer);
-        consoleBuffer = new String();
-
-        System.out.println("\nendfo stateLog\n");
     }
 
     public static void resetState() {
