@@ -4,6 +4,8 @@ import src.game.ConsoleApp;
 import src.game.GameLogic;
 import src.character.Character;
 
+import java.io.Console;
+
 public class Sliderule extends Item {
 
     public Sliderule() {
@@ -19,7 +21,7 @@ public class Sliderule extends Item {
     @Override
     public void initItem(Character c) {
         owner = c;
-        ConsoleApp.funcLog("Sliderule to GameLogic endGame");
+        ConsoleApp.returnLog("return");
         GameLogic.endGame();
     }
 
