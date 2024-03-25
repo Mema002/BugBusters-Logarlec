@@ -91,6 +91,8 @@ public class Tester {
         ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -114,6 +116,11 @@ public class Tester {
 
         ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
 
@@ -139,6 +146,11 @@ public class Tester {
 
         ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
+
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     //FFP2 test
@@ -159,6 +171,11 @@ public class Tester {
 
         ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test7() {
@@ -192,6 +209,11 @@ public class Tester {
 
         ConsoleApp.funcLog("student1.dropItem(transistor1)");
         student1.dropItem(transistor1);
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test8() {
@@ -219,6 +241,12 @@ public class Tester {
 
         ConsoleApp.funcLog("t.move(0)");
         t.move(0);
+        
+        ConsoleApp.addRoom(r1);
+        ConsoleApp.addRoom(r2);
+        ConsoleApp.addRoom(r3);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test9() {
@@ -247,6 +275,11 @@ public class Tester {
 
         ConsoleApp.funcLog("student1.move(0)");
         student1.move(0);
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test10() {
@@ -274,6 +307,11 @@ public class Tester {
 
         ConsoleApp.funcLog("student1.skipTurn()");
         student1.skipTurn();
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test11() {
@@ -287,6 +325,10 @@ public class Tester {
 
         ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
+        
+        ConsoleApp.addRoom(room);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test12() {
@@ -306,6 +348,11 @@ public class Tester {
 
         ConsoleApp.funcLog("teacher1.move(0)");
         teacher1.move(0);
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test13() {
@@ -325,6 +372,11 @@ public class Tester {
         
         ConsoleApp.funcLog("student1.move(0)");
         student1.move(0);
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test14() {
@@ -344,7 +396,13 @@ public class Tester {
         ConsoleApp.funcLog("roomManager.getRooms()");
         ConsoleApp.funcLog("roomManager.getRooms()");
         roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1));
+        
+        ConsoleApp.funcLog("roomManager.getRooms()");
+        ConsoleApp.addRoom(roomManager.getRooms().get(0));
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
+
     public void test15() {
         ConsoleApp.funcLog("GameLogic.roomManager.generateRooms(5)");
         GameLogic.roomManager.generateRooms(5);
@@ -354,7 +412,15 @@ public class Tester {
         
         ConsoleApp.funcLog("GameLogic.generateItems(5)");
         GameLogic.generateItems(5);
+        
+        ConsoleApp.funcLog("roomManager.getRooms()");
+        for (Room r : GameLogic.roomManager.getRooms()) {
+            ConsoleApp.addRoom(r);
+        }
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
+
     public void test16() {
         Room room1 = new Room(2, 1);
         Room room2 = new Room(2, 2);
@@ -404,6 +470,12 @@ public class Tester {
 
         ConsoleApp.funcLog("teacher1.move(0)");
         teacher1.move(0);
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.addRoom(room3);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     public void test17() {
@@ -417,5 +489,9 @@ public class Tester {
 
         ConsoleApp.funcLog("student.dropItem(ffp2)");
         student.dropItem(ffp2);
+        
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 }
