@@ -16,7 +16,6 @@ import src.item.Sliderule;
 import src.item.Transistor;
 import src.room.Room;
 import src.room.RoomManager;
-import static src.game.SingletonLogger.logger;
 
 
 public class GameLogic{
@@ -57,8 +56,9 @@ public class GameLogic{
                     //A sorrend miatt fontos
                     if(characters.indexOf(deadCharacter) < currentPlayerIdx)
                         currentPlayerIdx -= 1;
-
+                    ConsoleApp.funcLog("characters.remove(deadCharacter)");
                     characters.remove(deadCharacter);
+                    ConsoleApp.returnLog("return");
                 }
 
                 deadCharacters.clear();
@@ -66,7 +66,9 @@ public class GameLogic{
 
             //Ujbol indul ha az utolso karakter is meg volt
             if(currentPlayerIdx >= characters.size()){
+                ConsoleApp.funcLog("endOfTurn();");
                 endOfTurn();
+                characters.remove("return");
                 currentPlayerIdx = 0;
             }
                 
@@ -98,7 +100,9 @@ public class GameLogic{
 
         for (int i = 0; i < characters.size(); i++) {
             Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
+            ConsoleApp.funcLog("randomRoom.addCharacter()");
             randomRoom.addCharacter(characters.get(i));
+            ConsoleApp.returnLog("return");
         }
     }
 
@@ -106,28 +110,42 @@ public class GameLogic{
         ArrayList<Item> items = new ArrayList<Item>();
         ArrayList<Room> rooms = roomManager.getRooms();
         int roomCount = rooms.size();
+        ConsoleApp.funcLog("items.add(new Sliderule())");
         items.add(new Sliderule()); //1 sliderule fix
+        ConsoleApp.returnLog("return");
         for (int i = 0; i < count - 1; i++) {
             int type = random.nextInt(6); //milyen itemet generaljunk
             Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
             switch (type) {
                 case 0:
+                    ConsoleApp.funcLog("randomRoom.addItem(new Batskin())");
                     randomRoom.addItem(new Batskin());
+                    ConsoleApp.returnLog("return");
                     break;
                 case 1:
+                    ConsoleApp.funcLog("randomRoom.addItem(new Beerglass())");
                     randomRoom.addItem(new Beerglass());
+                    ConsoleApp.returnLog("return");
                     break;
                 case 2:
+                    ConsoleApp.funcLog("randomRoom.addItem(new Camembert())");
                     randomRoom.addItem(new Camembert());
+                    ConsoleApp.returnLog("return");
                     break;
                 case 3:
+                    ConsoleApp.funcLog("randomRoom.addItem(new FFP2())");
                     randomRoom.addItem(new FFP2());
+                    ConsoleApp.returnLog("return");
                     break;
                 case 4:
+                    ConsoleApp.funcLog("randomRoom.addItem(new Rag())");
                     randomRoom.addItem(new Rag());
+                    ConsoleApp.returnLog("return");
                     break;
                 case 5:
+                    ConsoleApp.funcLog("randomRoom.addItem(new Transistor())");
                     randomRoom.addItem(new Transistor());
+                    ConsoleApp.returnLog("return");
                     break;
                 default: break;
             }

@@ -1,6 +1,5 @@
 package src.game;
 
-import java.awt.*;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 

@@ -1,7 +1,6 @@
 package src.item;
 
 import src.game.ConsoleApp;
-import src.room.Room;
 
 public class FFP2 extends Item {
     private int durability;

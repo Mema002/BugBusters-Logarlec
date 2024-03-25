@@ -1,7 +1,6 @@
 package src.item;
 
 import src.character.Teacher;
-import src.room.Room;
 
 public class Batskin extends Item {
     private int durability;

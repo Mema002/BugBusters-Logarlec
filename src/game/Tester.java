@@ -7,12 +7,9 @@ import src.item.Batskin;
 import src.item.Beerglass;
 import src.room.Room;
 import src.room.RoomManager;
-import java.io.Console;
 
-import src.character.Character;
 import src.character.Teacher;
 import src.effect.Cursed;
-import src.effect.Effect;
 import src.effect.Gassy;
 import src.item.Camembert;
 import src.item.FFP2;
@@ -34,6 +31,10 @@ public class Tester {
         ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
         ConsoleApp.returnLog("return");
+
+        ConsoleApp.addRoom(room);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     //Camembert test
@@ -55,6 +56,11 @@ public class Tester {
         ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
         ConsoleApp.returnLog("return");
+
+
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     //batskin teszt
@@ -69,6 +75,11 @@ public class Tester {
         room1.addCharacter(teacher);
         room2.addCharacter(student);
         room2.addItem(batskin);
+        ConsoleApp.returnLog("return");
+
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
 
         ConsoleApp.funcLog("student.pickUpItem(0)");;
         student.pickUpItem(0);
@@ -77,6 +88,9 @@ public class Tester {
         ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
         ConsoleApp.returnLog("return");
+
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     //beerglass test

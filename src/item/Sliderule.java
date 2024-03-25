@@ -2,7 +2,6 @@ package src.item;
 
 import src.game.ConsoleApp;
 import src.game.GameLogic;
-import src.room.Room;
 import src.character.Character;
 
 public class Sliderule extends Item {
