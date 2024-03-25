@@ -121,7 +121,7 @@ public class ConsoleApp {
         System.out.print(consoleBuffer);
         consoleBuffer = new String();
 
-        System.out.println("\nendif stateLog\n");
+        System.out.println("\nend stateLog\n");
     }
 
     public static void resetState() {
