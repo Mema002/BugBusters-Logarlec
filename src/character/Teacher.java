@@ -70,4 +70,9 @@ public class Teacher extends Character {
         ConsoleApp.returnLog("return Item");
         return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
     }
+
+    @Override
+    public String toString() {
+        return "Teacher";
+    }
 }

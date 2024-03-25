@@ -115,4 +115,9 @@ public class Student extends Character {
         ConsoleApp.returnLog("return true");
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Student";
+    }
 }

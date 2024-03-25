@@ -3,6 +3,7 @@ package src.item;
 import src.room.Room;
 import src.character.Character;
 import src.character.Teacher;
+import src.game.ConsoleApp;
 
 public class Beerglass extends Item {
     private int remainingTime;
@@ -28,8 +29,15 @@ public class Beerglass extends Item {
 
     @Override
     public boolean checkDefense(Teacher attacker) {
-        if (remainingTime > 0)
+        if (remainingTime > 0) {
+            ConsoleApp.returnLog("return true");
             return true;
+        }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Beerglass";
     }
 }

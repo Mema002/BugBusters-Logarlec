@@ -141,4 +141,6 @@ public abstract class Character {
         ConsoleApp.funcLog("Character.clearInventory()");
         ConsoleApp.returnLog("return");
         inventory.clear(); }
+
+    public abstract String toString();
 }

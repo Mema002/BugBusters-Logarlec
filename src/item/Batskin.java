@@ -19,4 +19,9 @@ public class Batskin extends Item {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "BatSkin";
+    }
 }

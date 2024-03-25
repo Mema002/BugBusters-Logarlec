@@ -9,4 +9,6 @@ public abstract class Effect {
     }
 
     public abstract void triggerEffect(Room r);
+
+    public abstract String toString();
 }

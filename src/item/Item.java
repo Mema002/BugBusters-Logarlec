@@ -50,4 +50,6 @@ public abstract class Item {
     public void setOwner(Character owner) {
         this.owner = owner;
     }
+
+    public abstract String toString();
 }
