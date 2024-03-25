@@ -35,7 +35,7 @@ public class ConsoleApp {
             System.out.print('\t');
         }
         System.out.println(returnValue);
-        if (tabCounter > 1)
+        if (tabCounter > 0)
             tabCounter--;
     }
 
