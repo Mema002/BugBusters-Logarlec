@@ -29,10 +29,12 @@ public class Tester {
         ConsoleApp.funcLog("room.addItem(sliderule)");
         room.addItem(sliderule);
 
+        ConsoleApp.addRoom(room);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
 
-        ConsoleApp.addRoom(room);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -53,13 +55,15 @@ public class Tester {
         ConsoleApp.funcLog("student1.addToInventory(camembert1)");
         student1.addToInventory(camembert1);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student1.useItem(0)");
         student1.useItem(0);
 
         ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
 
-        ConsoleApp.addRoom(room1);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -91,8 +95,6 @@ public class Tester {
         ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
 
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -114,11 +116,13 @@ public class Tester {
         ConsoleApp.funcLog("room2.addCharacter(teacher)");
         room2.addCharacter(teacher);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -141,14 +145,16 @@ public class Tester {
         ConsoleApp.funcLog("student.addToInventory(rag)");
         student.addToInventory(rag);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student.move(0)");
         student.move(0);
 
         ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
 
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -166,14 +172,16 @@ public class Tester {
         ConsoleApp.funcLog("room1.addCharacter(student)");
         room1.addCharacter(student);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student.move(0)");
         student.move(0);
 
         ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -195,6 +203,10 @@ public class Tester {
         ConsoleApp.funcLog("student1.addToInventory(transistor1)");
         student1.addToInventory(transistor1);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student1.pickUpItem(0)");
         student1.pickUpItem(0);
 
@@ -210,8 +222,6 @@ public class Tester {
         ConsoleApp.funcLog("student1.dropItem(transistor1)");
         student1.dropItem(transistor1);
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -236,15 +246,17 @@ public class Tester {
         ConsoleApp.funcLog("r3.addCharacter(t)");
         r3.addCharacter(t);
 
+        ConsoleApp.addRoom(r1);
+        ConsoleApp.addRoom(r2);
+        ConsoleApp.addRoom(r3);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("s.move(0)");
         s.move(0);
 
         ConsoleApp.funcLog("t.move(0)");
         t.move(0);
         
-        ConsoleApp.addRoom(r1);
-        ConsoleApp.addRoom(r2);
-        ConsoleApp.addRoom(r3);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -267,6 +279,10 @@ public class Tester {
         ConsoleApp.funcLog("room1.addCharacter(student1)");
         room1.addCharacter(student1);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student1.move(0)");
         student1.move(0);
 
@@ -276,8 +292,6 @@ public class Tester {
         ConsoleApp.funcLog("student1.move(0)");
         student1.move(0);
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -299,6 +313,10 @@ public class Tester {
         ConsoleApp.funcLog("room1.addCharacter(student1)");
         room1.addCharacter(student1);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student1.move(0)");
         student1.move(0);
 
@@ -308,8 +326,6 @@ public class Tester {
         ConsoleApp.funcLog("student1.skipTurn()");
         student1.skipTurn();
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -323,10 +339,12 @@ public class Tester {
         ConsoleApp.funcLog("room.addItem(batskin)");
         room.addItem(batskin);
 
+        ConsoleApp.addRoom(room);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
         
-        ConsoleApp.addRoom(room);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -346,11 +364,13 @@ public class Tester {
         Student student1 = new Student(room1, 1);
         Teacher teacher1 = new Teacher(room2, 1);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("teacher1.move(0)");
         teacher1.move(0);
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -369,12 +389,14 @@ public class Tester {
         roomManager.getRooms().add(room2);
         Student student1 = new Student(room1, 1);
         Teacher teacher1 = new Teacher(room2, 1);
+
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
         
         ConsoleApp.funcLog("student1.move(0)");
         student1.move(0);
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -389,21 +411,26 @@ public class Tester {
         ConsoleApp.funcLog("roomManager.getRooms().add(room1)");
         roomManager.getRooms().add(room1);
 
+        ConsoleApp.addRoom(roomManager.getRooms().get(0));
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("roomManager.splitRoom(room1)");
         roomManager.splitRoom(room1);
 
         ConsoleApp.funcLog("roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1))");
-        ConsoleApp.funcLog("roomManager.getRooms()");
-        ConsoleApp.funcLog("roomManager.getRooms()");
         roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1));
         
-        ConsoleApp.funcLog("roomManager.getRooms()");
-        ConsoleApp.addRoom(roomManager.getRooms().get(0));
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
 
     public void test15() {
+        ConsoleApp.funcLog("roomManager.getRooms()");
+        for (Room r : GameLogic.roomManager.getRooms()) {
+            ConsoleApp.addRoom(r);
+        }
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("GameLogic.roomManager.generateRooms(5)");
         GameLogic.roomManager.generateRooms(5);
 
@@ -447,6 +474,11 @@ public class Tester {
         ConsoleApp.funcLog("room3.addEffect(new Gassy())");
         room3.addEffect(new Gassy());
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.addRoom(room3);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("ConsoleApp.returnLog(\"return\")");
         student1.pickUpItem(0);
 
@@ -471,9 +503,6 @@ public class Tester {
         ConsoleApp.funcLog("teacher1.move(0)");
         teacher1.move(0);
         
-        ConsoleApp.addRoom(room1);
-        ConsoleApp.addRoom(room2);
-        ConsoleApp.addRoom(room3);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
@@ -487,10 +516,12 @@ public class Tester {
         ConsoleApp.funcLog("student.addToInventory(ffp2)");
         student.addToInventory(ffp2);
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student.dropItem(ffp2)");
         student.dropItem(ffp2);
         
-        ConsoleApp.addRoom(room1);
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
     }
