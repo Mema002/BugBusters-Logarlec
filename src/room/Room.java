@@ -113,7 +113,7 @@ public class Room {
 
     public void triggerRoomEffects() {
         for (Effect effect : effects) {
-            ConsoleApp.funcLog("Room to Effect triggerEffect");
+            ConsoleApp.funcLog("effect.triggereffect(Room: room)");
             effect.triggerEffect(this);
         }
         ConsoleApp.returnLog("return");
