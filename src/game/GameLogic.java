@@ -16,7 +16,6 @@ import src.item.Sliderule;
 import src.item.Transistor;
 import src.room.Room;
 import src.room.RoomManager;
-import static src.game.SingletonLogger.logger;
 
 
 public class GameLogic{

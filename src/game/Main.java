@@ -3,7 +3,6 @@ package src.game;
 import src.character.Student;
 
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 

@@ -7,12 +7,9 @@ import src.item.Batskin;
 import src.item.Beerglass;
 import src.room.Room;
 import src.room.RoomManager;
-import java.io.Console;
 
-import src.character.Character;
 import src.character.Teacher;
 import src.effect.Cursed;
-import src.effect.Effect;
 import src.effect.Gassy;
 import src.item.Camembert;
 import src.item.FFP2;
@@ -21,7 +18,6 @@ import src.item.Rag;
 public class Tester {
     //Logarléc teszt
     public void test1() {
-        GameLogic gl = new GameLogic();
         ConsoleApp.funcLog("GameLogic.startGame()");
         GameLogic.startGame();
         ConsoleApp.returnLog("return");

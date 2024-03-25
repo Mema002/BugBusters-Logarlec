@@ -3,7 +3,6 @@ package src.room;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import src.character.Character;
 import src.effect.Effect;
 import src.game.ConsoleApp;
 import src.item.Item;

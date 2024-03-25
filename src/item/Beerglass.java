@@ -1,6 +1,5 @@
 package src.item;
 
-import src.room.Room;
 import src.character.Character;
 import src.character.Teacher;
 import src.game.ConsoleApp;

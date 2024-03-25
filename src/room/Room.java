@@ -31,7 +31,6 @@ public class Room {
         return id;
     }
 
-    //TODO character get set
     public ArrayList<Character> getCharacters() {
         ConsoleApp.returnLog("return ArrayList<> characters");
         return characters;
