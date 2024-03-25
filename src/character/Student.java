@@ -17,36 +17,41 @@ public class Student extends Character {
 
     @Override
     public int getId() {
-        ConsoleApp.funcLog("Student.getId()");
         ConsoleApp.returnLog("return id");
         return this.id;
     }
 
     public void addToInventory(Item i) {
-        ConsoleApp.funcLog("Student.addToInventory(item: i)");
         ConsoleApp.returnLog("return");
         inventory.add(i);
     }
 
     public void removeItem(Item i) {
-        ConsoleApp.funcLog("Student.removeItem(item: i)");
         inventory.remove(i);
+        ConsoleApp.funcLog("currentRoom.addItem(i)");
         currentRoom.addItem(i);
+        ConsoleApp.funcLog("i.drop()");
         i.drop();
         ConsoleApp.returnLog("return");
     }
 
     @Override
     public void move(int targetIndex) {
-        ConsoleApp.funcLog("Student.move(int: targetIdx)");
+        ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
         //choose?
         Room targetRoom = options.get(targetIndex);
+        ConsoleApp.funcLog("targetRoom.requestChange()");
         if (targetRoom.requestChange()) {
+            ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
             currentRoom.removeCharacter(this);
+            ConsoleApp.funcLog("targetRoom.addCharacter(this)");
             targetRoom.addCharacter(this);
+            ConsoleApp.funcLog("this.setRoom(targetRoom)");
             setRoom(targetRoom);
+            ConsoleApp.funcLog("targetRoom.getCharacters()");
             for(Character c : targetRoom.getCharacters()){
+                ConsoleApp.funcLog("c.triggerExpelling(this)");
                 c.triggerExpelling(this);
             }
         }
@@ -55,18 +60,17 @@ public class Student extends Character {
 
     @Override
     public void useItem(int idx) {
-        ConsoleApp.funcLog("Student.useItem(int: idx)");
         if(idx >= inventory.size()){
             ConsoleApp.returnLog("return");
             return;
         }
+        ConsoleApp.funcLog("item.useItem(this)");
         inventory.get(idx).useItem(this);
         ConsoleApp.returnLog("return");
     }
 
     @Override
     public Item chooseItem() {
-        ConsoleApp.funcLog("Student.chooseItem()");
         ArrayList<Item> il = currentRoom.getItems();
         ConsoleApp.returnLog("return Item");
         return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
@@ -74,20 +78,19 @@ public class Student extends Character {
 
     @Override
     public boolean triggerExpelling(Student s) { //param?
-        ConsoleApp.funcLog("Student.triggerexpelling(Student: s)");
         ConsoleApp.returnLog("return false");
         return false;
     }
 
     @Override
     public boolean tryStun() {
-        ConsoleApp.funcLog("Student.tryStun()");
         for (Item item : inventory) {
+            ConsoleApp.funcLog("item.defendStun()");
             if(item.defendStun()){
                 ConsoleApp.returnLog("return true");
                 return true;
             }
-                
+
         }
         ConsoleApp.returnLog("return false");
         return false;
@@ -95,11 +98,13 @@ public class Student extends Character {
 
     @Override
     public boolean tryExpell(Teacher attacker) {
-        ConsoleApp.funcLog("Student.tryExpell(Teacher: t)");
         for (Item item : inventory){
-            if(item.checkDefense(attacker))
-            ConsoleApp.returnLog("return false");
+            ConsoleApp.funcLog("item.checkDefense(attacker)");
+            if(item.checkDefense(attacker)){
+                ConsoleApp.returnLog("return false");
                 return false;
+            }
+
         }
         ConsoleApp.returnLog("return true");
         return true;
@@ -107,10 +112,12 @@ public class Student extends Character {
 
     @Override
     public boolean setExpelled(){
-        ConsoleApp.funcLog("Student.setExpelled()");
+        ConsoleApp.funcLog("removeCharacter(this)");
         currentRoom.removeCharacter(this);
         expelled=true;
+        ConsoleApp.funcLog("dropItems()");
         dropItems();
+        ConsoleApp.funcLog("GameLogic.removeCharacter(this)");
         GameLogic.removeCharacter(this);
         ConsoleApp.returnLog("return true");
         return true;
