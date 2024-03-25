@@ -13,7 +13,6 @@ public class Teacher extends Character {
     }
     @Override
     public int getId() {
-        ConsoleApp.funcLog("Teacher.getId()");
         ConsoleApp.returnLog("return int");
         return id;
     }
@@ -21,7 +20,7 @@ public class Teacher extends Character {
 
     @Override
     public void move(int targetIndex) {
-        ConsoleApp.funcLog("Teacher.move()");
+        ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
 
         //ez még nem kell mert 
@@ -34,12 +33,19 @@ public class Teacher extends Character {
         } */
 
         Room targetRoom = options.get(targetIndex);
+        ConsoleApp.funcLog("targetRoom.requestChange()");
         if (targetRoom.requestChange()) {
+            ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
             currentRoom.removeCharacter(this);
+            ConsoleApp.funcLog("targetRoom.addCharacter(this)");
             targetRoom.addCharacter(this);
+            ConsoleApp.funcLog("setRoom(targetRoom)");
             setRoom(targetRoom);
+            ConsoleApp.funcLog("targetRoom.getCharacters()");
             for (Character c : targetRoom.getCharacters()) {
+                ConsoleApp.funcLog("character.tryExpell(this)");
                 if (c.tryExpell(this)) {
+                    ConsoleApp.funcLog("character.setExpelled()");
                     c.setExpelled();
                 }
             }
@@ -49,8 +55,9 @@ public class Teacher extends Character {
 
     @Override
     public boolean triggerExpelling(Student s) {
-        ConsoleApp.funcLog("Teacher.tryExpelling(Student s)");
+        ConsoleApp.funcLog("student.tryExpell(this)");
         if(s.tryExpell(this) && this.stunnedFor==0){
+            ConsoleApp.funcLog("student.setExpelled()");
             s.setExpelled();
         }
         ConsoleApp.returnLog("return true");
@@ -59,13 +66,12 @@ public class Teacher extends Character {
 
     @Override
     public boolean tryExpell(Teacher attacker) {
-        ConsoleApp.funcLog("Teacher.tryExpell(Teacher: t)");
         ConsoleApp.returnLog("return false");
         return false;
     }
     @Override
     public Item chooseItem() {
-        ConsoleApp.funcLog("Teacher.chooseItem()");
+        ConsoleApp.funcLog("currentRoom.getItems()");
         ArrayList<Item> il = currentRoom.getItems();
         ConsoleApp.returnLog("return Item");
         return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
