@@ -12,8 +12,9 @@ public class Camembert extends Item {
 
     @Override
     public boolean useItem(Character c) {
-        ConsoleApp.consoleLog(this, owner.getCurrentRoom(), "Camembert to Room addEffect");
+        ConsoleApp.funcLog("Camembert.useItem(Character: c)");
         owner.getCurrentRoom().addEffect(new Gassy());
+        ConsoleApp.returnLog("return true");
         return true;
     }
 
