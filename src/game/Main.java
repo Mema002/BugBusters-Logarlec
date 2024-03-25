@@ -13,27 +13,27 @@ public class Main {
 
         String number = "";
         while(number != "q") {
-        logger.info("BugBusters ProjLab tesztprogram");
-        logger.info("Tesztesetek:");
-        logger.info("1.  Logarlec");
-        logger.info("2.  Camembert");
-        logger.info("3.  TVSZ Deneverbor");
-        logger.info("4.  Szent sorospohar");
-        logger.info("5.  Nedves Torlorongy");
-        logger.info("6.  FFP2-es maszk");
-        logger.info("7.  Tranzisztor");
-        logger.info("8.  Lepes");
-        logger.info("9.  Elatkozott szoba");
-        logger.info("10. Gazos szoba");
-        logger.info("11. Targyfelvetel");
-        logger.info("12. Tanar lepes es buktatas");
-        logger.info("13. Hallgato lepes es megbukas");
-        logger.info("14. Szoba osztodas es osszeolvadas");
-        logger.info("15. Jatek kezdete");
-        logger.info("16. Osszetett eset");
-        logger.info("17. Targyeldobasa");
-        logger.info("q: Exit");
-        logger.warning("Ejnye, bebugzott valami! (mock warning)");
+            System.out.println("BugBusters ProjLab tesztprogram");
+            System.out.println("Tesztesetek:");
+            System.out.println("1.  Logarlec");
+            System.out.println("2.  Camembert");
+            System.out.println("3.  TVSZ Deneverbor");
+            System.out.println("4.  Szent sorospohar");
+            System.out.println("5.  Nedves Torlorongy");
+            System.out.println("6.  FFP2-es maszk");
+            System.out.println("7.  Tranzisztor");
+            System.out.println("8.  Lepes");
+            System.out.println("9.  Elatkozott szoba");
+            System.out.println("10. Gazos szoba");
+            System.out.println("11. Targyfelvetel");
+            System.out.println("12. Tanar lepes es buktatas");
+            System.out.println("13. Hallgato lepes es megbukas");
+            System.out.println("14. Szoba osztodas es osszeolvadas");
+            System.out.println("15. Jatek kezdete");
+            System.out.println("16. Osszetett eset");
+            System.out.println("17. Targyeldobasa");
+            System.out.println("q: Exit");
+            //logger.warning("Ejnye, bebugzott valami! (mock warning)");
         
         number = reader.readLine();
         Tester tester = new Tester();
@@ -55,8 +55,8 @@ public class Main {
             case "15": tester.test15(); break;
             case "16": tester.test16(); break;
             case "17": tester.test17(); break;
-            case "q": return;
-            default: break;
+            case "q": System.out.println("Bye-bye"); return;
+            default: System.out.println("Rossz input!"); break;
         }
         System.out.println();
         }
