@@ -51,7 +51,7 @@ public class ConsoleApp {
             Room room = rooms.get(i);
             //System.out.println(room.toString()+""+i);
             consoleBuffer+=room.toString();
-            consoleBuffer+=i;
+            consoleBuffer+=i+1;
             consoleBuffer+='\n';
 
             //Room items
