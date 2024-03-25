@@ -22,6 +22,7 @@ public class RoomManager {
     }
 
     public ArrayList<Room> getRooms() {
+        ConsoleApp.returnLog("return");
         return rooms;
     }
 

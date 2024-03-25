@@ -36,7 +36,8 @@ public class ConsoleApp {
             System.out.print('\t');
         }
         System.out.println(returnValue);
-        tabCounter--;
+        if (tabCounter > 0)
+            tabCounter--;
     }
 
     public static void addRoom(Room room){rooms.add(room);}
