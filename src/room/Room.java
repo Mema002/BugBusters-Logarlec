@@ -67,6 +67,7 @@ public class Room {
     }
 
     public void addEffect(Effect e) {
+        ConsoleApp.returnLog("return");
         effects.add(e);
     }
 
