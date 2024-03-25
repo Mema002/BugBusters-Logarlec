@@ -20,7 +20,7 @@ public class Rag extends Item {
     @Override
     public boolean checkDefense(Teacher attacker){
         if (remainingTime > 0) {
-            ConsoleApp.funcLog("Rag to Teacher beStunnedFor");
+            ConsoleApp.funcLog("attacker.beStunnedFor(1)");
             attacker.beStunnedFor(1);
             ConsoleApp.returnLog("return true");
             return true;

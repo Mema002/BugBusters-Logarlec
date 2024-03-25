@@ -19,9 +19,9 @@ public class Transistor extends Item {
     public void initItem(Character c) {
         owner=c;
         for (Item i : c.getInventory()) {
-            ConsoleApp.funcLog("Transistor to Item IsUnpaired");
+            ConsoleApp.funcLog("Item.IsUnpaired()");
             if (i.IsUnpaired()) {
-                ConsoleApp.funcLog("Transistor to Item pair");
+                ConsoleApp.funcLog("Item.pair()");
                 this.pair(i);
                 i.pair(this);
                 ConsoleApp.returnLog("return");
@@ -33,7 +33,10 @@ public class Transistor extends Item {
 
     @Override
     public boolean useItem(Character c) {
-        if(!isActive) activate();
+        if(!isActive) {
+            ConsoleApp.funcLog("activate()");
+            activate();
+        }
         ConsoleApp.returnLog("return true");
         return true;
     }
@@ -45,13 +48,16 @@ public class Transistor extends Item {
     }
 
     private void activate() { //ha paired akkor lehet csak aktiválni
-        if (!IsUnpaired()) isActive = true;
+        if (!IsUnpaired()) {
+            ConsoleApp.funcLog("IsUnpaired()");
+            isActive = true;
+        }
         ConsoleApp.returnLog("return");
     }
 
     private void deActivate() {
         ConsoleApp.returnLog("return");
-        isActive=false;
+        isActive = false;
     }
 
     @Override
@@ -75,25 +81,25 @@ public class Transistor extends Item {
     public void drop() {
         if (pair != null){
             if (isActive()) {
-                ConsoleApp.funcLog("Transistor to Transistor getPairLocation");
+                ConsoleApp.funcLog("getPairLocation()");
                 Room targetRoom = getPairLocation();
-                ConsoleApp.funcLog("Transistor to Character getCurrentRoom");
+                ConsoleApp.funcLog("owner.getCurrentRoom()");
                 Room currentRoom = owner.getCurrentRoom();
-                ConsoleApp.funcLog("Transistor to Room requestChange");
+                ConsoleApp.funcLog("targetRoom.requestChange()");
                 if (targetRoom.requestChange()) {
-                    ConsoleApp.funcLog("Transistor to Room removeCharacter");
+                    ConsoleApp.funcLog("currentRoom.removeCharacter(owner)");
                     currentRoom.removeCharacter(owner);
-                    ConsoleApp.funcLog("Transistor to Room addCharacter");
+                    ConsoleApp.funcLog("targetRoom.addCharacter(owner)");
                     targetRoom.addCharacter(owner);
-                    ConsoleApp.funcLog("Transistor to Character setRoom");
+                    ConsoleApp.funcLog("owner.setRoom(targetRoom)");
                     owner.setRoom(targetRoom);
-                    ConsoleApp.funcLog("Transistor to Transistor deActivate");
+                    ConsoleApp.funcLog("deActivate()");
                     deActivate();
                 }
             }
-            ConsoleApp.funcLog("Transistor to Transistor pair");
+            ConsoleApp.funcLog("pair.pair(null)");
             pair.pair(null);
-            ConsoleApp.funcLog("Transistor to Transistor pair");
+            ConsoleApp.funcLog("this.pair(null)");
             this.pair(null);
         }
         ConsoleApp.returnLog("return");
@@ -101,7 +107,6 @@ public class Transistor extends Item {
 
     @Override
     public Room getLocation() {
-        ConsoleApp.returnLog("return location");
         return location;
     }
 
