@@ -37,6 +37,10 @@ public class Tester {
         ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
         ConsoleApp.returnLog("return");
+
+        ConsoleApp.addRoom(room);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     //Camembert test
@@ -73,6 +77,11 @@ public class Tester {
         ConsoleApp.funcLog("GameLogic.endOfTurn()");
         GameLogic.endOfTurn();
         ConsoleApp.returnLog("return");
+
+
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     //batskin teszt
@@ -101,6 +110,10 @@ public class Tester {
         room2.addItem(batskin);
         ConsoleApp.returnLog("return");
 
+        ConsoleApp.addRoom(room1);
+        ConsoleApp.addRoom(room2);
+        ConsoleApp.stateLog();
+
         ConsoleApp.funcLog("student.pickUpItem(0)");;
         student.pickUpItem(0);
         ConsoleApp.returnLog("return");
@@ -108,6 +121,9 @@ public class Tester {
         ConsoleApp.funcLog("teacher.move(0)");
         teacher.move(0);
         ConsoleApp.returnLog("return");
+
+        ConsoleApp.stateLog();
+        ConsoleApp.resetState();
     }
 
     //beerglass test

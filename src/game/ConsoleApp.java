@@ -39,7 +39,7 @@ public class ConsoleApp {
     public static void stateLog() {
         for(int i = 0; i<rooms.size(); i++){
             Room room = rooms.get(i);
-            System.out.println(room.toString()+i);
+            System.out.println(room.toString()+""+i);
 
             //Room items
             ArrayList<Item> itemList = room.getItems();
@@ -48,7 +48,7 @@ public class ConsoleApp {
             ArrayList<String> itemCount = new ArrayList<>();
             for(int k = 0; k < itemList.size(); k++){
                 Item item = itemList.get(k);
-                System.out.println("\t\t"+itemList.get(k) + itemCount.stream().filter(x -> x == item.toString()).count()+1);
+                System.out.println("\t\t"+itemList.get(k) + "" + itemCount.stream().filter(x -> x == item.toString()).count()+1);
                 itemCount.add(item.toString());
             }
 
@@ -58,7 +58,7 @@ public class ConsoleApp {
             ArrayList<String> characterCount = new ArrayList<>();
             for (int l = 0; l < characterList.size(); l++){
                 Character character = characterList.get(l);
-                System.out.println("\t\t"+ character.toString() + characterCount.stream().filter(x->x == character.toString()).count()+1);
+                System.out.println("\t\t"+ character.toString() + "" + characterCount.stream().filter(x->x == character.toString()).count()+1);
                 characterCount.add(character.toString());
 
                 //Character items
@@ -68,7 +68,7 @@ public class ConsoleApp {
                 itemCount = new ArrayList<>();
                 for(int k = 0; k < itemList.size(); k++){
                     Item item = itemList.get(k);
-                    System.out.println("\t\t\t"+itemList.get(k) + itemCount.stream().filter(x -> x == item.toString()).count()+1);
+                    System.out.println("\t\t\t"+itemList.get(k) + "" + itemCount.stream().filter(x -> x == item.toString()).count()+1);
                     itemCount.add(item.toString());
                 }
             }
