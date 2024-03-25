@@ -14,15 +14,18 @@ public class Beerglass extends Item {
 
     @Override
     public boolean useItem(Character c) {
+        ConsoleApp.returnLog("return false");
         return false;
     }
 
     @Override
     public void decrRemainingTime() {
+        ConsoleApp.returnLog("return");
         remainingTime -= 1;
     }
 
     public int getRemainingTime() { //valszeg inkább abstractba kéne overrideolnia mindenkinek
+        ConsoleApp.returnLog("return remainingTime");
         return remainingTime;
     }
 
@@ -32,6 +35,7 @@ public class Beerglass extends Item {
             ConsoleApp.returnLog("return true");
             return true;
         }
+        ConsoleApp.returnLog("return false");
         return false;
     }
 

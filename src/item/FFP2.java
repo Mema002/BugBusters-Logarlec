@@ -12,11 +12,13 @@ public class FFP2 extends Item {
 
     @Override
     public boolean IsUnpaired() {
+        ConsoleApp.returnLog("return false");
         return false;
     }
 
     @Override
     public boolean isActive() {
+        ConsoleApp.returnLog("return false");
         return false;
     }
 
@@ -26,6 +28,7 @@ public class FFP2 extends Item {
             ConsoleApp.returnLog("return true");
             return true;
         }
+        ConsoleApp.returnLog("return false");
         return false;
     }
 

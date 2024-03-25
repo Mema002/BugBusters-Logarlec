@@ -24,12 +24,13 @@ public class Tester {
         Student student = new Student(room, 0);
         Sliderule sliderule = new Sliderule();
 
+        ConsoleApp.funcLog("room.addCharacter(student)");
         room.addCharacter(student);
+        ConsoleApp.funcLog("room.addItem(sliderule)");
         room.addItem(sliderule);
 
         ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
-        ConsoleApp.returnLog("return");
 
         ConsoleApp.addRoom(room);
         ConsoleApp.stateLog();
@@ -80,7 +81,7 @@ public class Tester {
         ConsoleApp.addRoom(room2);
         ConsoleApp.stateLog();
 
-        ConsoleApp.funcLog("student.pickUpItem(0)");;
+        ConsoleApp.funcLog("student.pickUpItem(0)");
         student.pickUpItem(0);
         ConsoleApp.returnLog("return");
 
