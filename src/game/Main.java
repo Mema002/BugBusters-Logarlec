@@ -1,7 +1,5 @@
 package src.game;
 
-import src.character.Student;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,8 +12,7 @@ public class Main {
             new InputStreamReader(System.in));
 
         String number = "";
-        while(number != "q"){
-            ConsoleApp.writeOutInventory(new Student(null, 0));
+        while(number != "q") {
         logger.info("BugBusters ProjLab tesztprogram");
         logger.info("Tesztesetek:");
         logger.info("1.  Logarlec");
