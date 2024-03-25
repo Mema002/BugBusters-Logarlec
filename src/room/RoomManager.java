@@ -28,17 +28,18 @@ public class RoomManager {
 
     public void mergeRooms(Room r1, Room r2) { //osztódhat ha van benne karakter?
         ConsoleApp.funcLog("room.setCapacity(Math.max(room1.getCapacity(),room2.getCapacity()))");
+        ConsoleApp.funcLog("room.getCapacity()");
+        ConsoleApp.funcLog("room.getCapacity()");
         r1.setCapacity(Math.max(r1.getCapacity(), r2.getCapacity())); //nagyobbik capacity az uj
         ConsoleApp.funcLog("room2.getNeighbours()");
         for (Room room : r2.getNeighbours()) {
-            ConsoleApp.funcLog("room.1getNeighbours.contains(room)");
+            ConsoleApp.funcLog("room1.getNeighbours.contains(room)");
             if (!r1.getNeighbours().contains(room)) { //ha nem szomszedos akkor az lesz
                 ConsoleApp.funcLog("room1.addNeighbour(room)");
                 r1.addNeighbour(room);
             }
         }
         ConsoleApp.funcLog("room2.geteffects()");
-        ConsoleApp.returnLog("return");
         for (Effect e : r2.getEffects()) {
             ConsoleApp.funcLog("room1.geteffects().contains(Effect: e)");
             if (!r1.getEffects().contains(e)) { //ha nincs ilyenje akkor kap
@@ -47,6 +48,7 @@ public class RoomManager {
             }
         }
         ConsoleApp.funcLog("room1.getItems().addAll(room2.getItems())");
+        ConsoleApp.funcLog("room1.getItems()");
         r1.getItems().addAll(r2.getItems()); //itemek is atkerulnek
         ConsoleApp.funcLog("roomManager.deleteRoom(room2)");
         deleteRoom(r2);
@@ -55,10 +57,11 @@ public class RoomManager {
 
     public void splitRoom(Room r) {
         //capacity split
+        ConsoleApp.funcLog("room.getId()");
         ConsoleApp.funcLog("room.getCapacity()");
-        ConsoleApp.funcLog("room.gtId()");
         Room newRoom = new Room(r.getCapacity() / 2, r.getId());
         ConsoleApp.funcLog("room.setCapacity(room.getcapacity()/2)");
+        ConsoleApp.funcLog("room.getCapacity()");
         r.setCapacity(r.getCapacity() / 2);
 
         //item split
@@ -79,10 +82,12 @@ public class RoomManager {
         newRoom.getItems().addAll(secondHalfItems);
 
         //effect split
+        ConsoleApp.funcLog("room.geteffects()");
         if (r.getEffects().size() == 2) {
             ConsoleApp.funcLog("room.geteffects()");
             Collections.shuffle(r.getEffects());
             ConsoleApp.funcLog("room.addEffects(room.geteffects().remove(0))");
+            ConsoleApp.funcLog("room.geteffects()");
             newRoom.addEffect(r.getEffects().remove(0));
         }
 

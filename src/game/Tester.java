@@ -341,6 +341,8 @@ public class Tester {
         roomManager.splitRoom(room1);
 
         ConsoleApp.funcLog("roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1))");
+        ConsoleApp.funcLog("roomManager.getRooms()");
+        ConsoleApp.funcLog("roomManager.getRooms()");
         roomManager.mergeRooms(roomManager.getRooms().get(0), roomManager.getRooms().get(1));
     }
     public void test15() {
