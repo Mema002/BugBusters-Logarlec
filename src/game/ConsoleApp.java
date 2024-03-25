@@ -27,11 +27,12 @@ public class ConsoleApp {
     }
 
     public static void returnLog(String returnValue){
-        for(int i = 0;i < tabCounter-1; i++){
+        for(int i = 0; i < tabCounter-1; i++){
             System.out.print('\t');
         }
         System.out.println(returnValue);
-        tabCounter--;
+        if (tabCounter > 1)
+            tabCounter--;
     }
 
     public static void addRoom(Room room){rooms.add(room);}
