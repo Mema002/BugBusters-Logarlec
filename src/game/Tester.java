@@ -18,7 +18,6 @@ import src.item.Rag;
 public class Tester {
     //Logarléc teszt
     public void test1() {
-        GameLogic gl = new GameLogic();
         GameLogic.startGame();
 
         Room room = new Room(5,0);
