@@ -12,11 +12,20 @@ public class Cursed extends Effect {
     private ArrayList<Room> inNeighbours;
     private ArrayList<Room> outNeighbours;
 
+    /**
+     * Cursed konstruktor
+     */
     public Cursed() {
         this.inNeighbours = new ArrayList<Room>();
         this.outNeighbours = new ArrayList<Room>();
     }
-
+    
+    /** 
+     * Cursed effektus meghivasa
+     * Eltunteti a szomszedokat, nem minden hivasra 100%,hogy megtortenik
+     * Vagy visszahozza a szomszedokat, 100% esellyel
+     * @param r
+     */
     @Override
     public void triggerEffect(Room r) {
         if (!active) {

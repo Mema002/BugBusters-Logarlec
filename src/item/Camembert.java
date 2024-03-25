@@ -5,10 +5,11 @@ import src.character.Character;
 import src.effect.Gassy;
 
 public class Camembert extends Item {
-    public Camembert() {
-        super();
-    }
-
+    /** 
+     * Camembert hasznalata, elgazositja a jelenlegi szobat
+     * @param c
+     * @return boolean
+     */
     @Override
     public boolean useItem(Character c) {
         ConsoleApp.funcLog("owner.getCurrentRoom().addEffect(new Gassy())");

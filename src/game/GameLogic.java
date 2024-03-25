@@ -10,7 +10,6 @@ import src.item.Batskin;
 import src.item.Beerglass;
 import src.item.Camembert;
 import src.item.FFP2;
-import src.item.Item;
 import src.item.Rag;
 import src.item.Sliderule;
 import src.item.Transistor;
@@ -18,7 +17,7 @@ import src.room.Room;
 import src.room.RoomManager;
 
 
-public class GameLogic{
+public class GameLogic {
     private static boolean isGameRunning;
     public static RoomManager roomManager;
     private static ArrayList<Character> characters;

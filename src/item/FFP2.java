@@ -5,23 +5,18 @@ import src.game.ConsoleApp;
 public class FFP2 extends Item {
     private int durability;
 
+    /**
+     * FFP2-es maszk konstruktor
+     */
     public FFP2() {
         super();
         this.durability = 3;
     }
 
-    @Override
-    public boolean IsUnpaired() {
-        ConsoleApp.returnLog("return false");
-        return false;
-    }
-
-    @Override
-    public boolean isActive() {
-        ConsoleApp.returnLog("return false");
-        return false;
-    }
-
+    /** 
+     * Override, megved a gazos effektustol
+     * @return boolean
+     */
     @Override
     public boolean defendStun() {
         if(durability > 0) {

@@ -5,12 +5,22 @@ import src.item.Item;
 import src.room.Room;
 
 public class Teacher extends Character {
-
     private int id;
+
+    /**
+     * Teacher konstruktor
+     * @param currentRoom
+     * @param id
+     */
     public Teacher(Room currentRoom, int id) {
         super(currentRoom);
         this.id = id;
     }
+    
+    /** 
+     * getId override
+     * @return int
+     */
     @Override
     public int getId() {
         ConsoleApp.returnLog("return int");
@@ -18,6 +28,11 @@ public class Teacher extends Character {
     }
     
 
+    
+    /** 
+     * Mozgas a kapott indexu szobaba
+     * @param targetIndex
+     */
     @Override
     public void move(int targetIndex) {
         ConsoleApp.funcLog("currentRoom.getNeighbours()");
@@ -53,6 +68,12 @@ public class Teacher extends Character {
         ConsoleApp.returnLog("return");
     }
 
+    
+    /** 
+     * Automatikus buktatas folyamatat indito fuggveny a paramul kapott studentre
+     * @param s
+     * @return boolean
+     */
     @Override
     public boolean triggerExpelling(Student s) {
         ConsoleApp.funcLog("student.tryExpell(this)");
@@ -64,11 +85,22 @@ public class Teacher extends Character {
         return true;
     }
 
+    
+    /** 
+     * Override, szimpla return false
+     * @param attacker
+     * @return boolean
+     */
     @Override
     public boolean tryExpell(Teacher attacker) {
         ConsoleApp.returnLog("return false");
         return false;
     }
+    
+    /** 
+     * Item kivalasztas fuggveny
+     * @return Item
+     */
     @Override
     public Item chooseItem() {
         ConsoleApp.funcLog("currentRoom.getItems()");

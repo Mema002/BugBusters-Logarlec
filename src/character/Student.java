@@ -10,22 +10,41 @@ import src.room.Room;
 public class Student extends Character {
     private int id;
 
+    /**
+     * Student konstruktor
+     * @param currentRoom
+     * @param id
+     */
     public Student(Room currentRoom, int id) {
         super(currentRoom);
         this.id = id;
     }
 
+    /**
+     * getId override
+     * @return id
+     */
     @Override
     public int getId() {
         ConsoleApp.returnLog("return id");
         return this.id;
     }
 
+    /**
+     * Hozzaadja az inventoryhoz a kapott itemet
+     * @param i
+     */
     public void addToInventory(Item i) {
         ConsoleApp.returnLog("return");
         inventory.add(i);
     }
 
+
+    
+    /** 
+     * Kitorlo a paramul kapott itemet az inventorybol
+     * @param i
+     */
     public void removeItem(Item i) {
         inventory.remove(i);
         ConsoleApp.funcLog("currentRoom.addItem(i)");
@@ -35,6 +54,10 @@ public class Student extends Character {
         ConsoleApp.returnLog("return");
     }
 
+    /**
+     * Mozgas fuggveny override, a paramul kapott szobaba
+     * @param targetIndex
+     */
     @Override
     public void move(int targetIndex) {
         ConsoleApp.funcLog("currentRoom.getNeighbours()");
@@ -58,6 +81,11 @@ public class Student extends Character {
         ConsoleApp.returnLog("return");
     }
 
+    
+    /** 
+     * Itemhasznalat override, meghivja az item useItemjet
+     * @param idx
+     */
     @Override
     public void useItem(int idx) {
         if(idx >= inventory.size()){
@@ -69,6 +97,11 @@ public class Student extends Character {
         ConsoleApp.returnLog("return");
     }
 
+    
+    /** 
+     * Visszater egy kivalaszthato itemmel
+     * @return Item
+     */
     @Override
     public Item chooseItem() {
         ArrayList<Item> il = currentRoom.getItems();
@@ -76,12 +109,23 @@ public class Student extends Character {
         return il.get(0); //Jelenleg elég hardcodeolva benne lennie, később itt kelleni fog input.
     }
 
+    
+    /** 
+     * Override, itt siman return false
+     * @param student
+     * @return false
+     */
     @Override
     public boolean triggerExpelling(Student s) { //param?
         ConsoleApp.returnLog("return false");
         return false;
     }
 
+    
+    /** 
+     * Kabitasi kiserlet, megnezi van e vedelmezo item
+     * @return boolean
+     */
     @Override
     public boolean tryStun() {
         for (Item item : inventory) {
@@ -96,6 +140,12 @@ public class Student extends Character {
         return false;
     }
 
+    
+    /** 
+     * Buktatasi kiserlet attacker altal
+     * @param attacker
+     * @return boolean
+     */
     @Override
     public boolean tryExpell(Teacher attacker) {
         for (Item item : inventory){
@@ -110,6 +160,11 @@ public class Student extends Character {
         return true;
     }
 
+    
+    /** 
+     * Megbukas fuggveny, megoli a hallgatot, eldobja az itemjeit
+     * @return boolean
+     */
     @Override
     public boolean setExpelled(){
         ConsoleApp.funcLog("removeCharacter(this)");

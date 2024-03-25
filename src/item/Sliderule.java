@@ -4,20 +4,11 @@ import src.game.ConsoleApp;
 import src.game.GameLogic;
 import src.character.Character;
 
-import java.io.Console;
-
-public class Sliderule extends Item {
-
-    public Sliderule() {
-        super();
-    }
-
-    @Override
-    public void decrRemainingTime() {
-        ConsoleApp.returnLog("return");
-        return;
-    }
-
+public class Sliderule extends Item {    
+    /** 
+     * Inicializalja az itemet, egyben veget is vet a jateknak
+     * @param c
+     */
     @Override
     public void initItem(Character c) {
         owner = c;

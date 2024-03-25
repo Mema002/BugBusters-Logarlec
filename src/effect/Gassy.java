@@ -5,11 +5,11 @@ import src.game.ConsoleApp;
 import src.room.Room;
 
 public class Gassy extends Effect {
-
-    public Gassy() {
-        super();
-    }
-
+    /** 
+     * Gassy effektus meghivasa, elgazositja a szobat es
+     * stunolja a karaktereket
+     * @param r
+     */
     @Override
     public void triggerEffect(Room r) {
         ConsoleApp.funcLog("room.getCharacters()");

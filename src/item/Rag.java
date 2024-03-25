@@ -6,17 +6,28 @@ import src.game.ConsoleApp;
 public class Rag extends Item {
     private int remainingTime;
 
+    /**
+     * Rag konstruktor
+     */
     public Rag() {
         super();
         this.remainingTime = 5;
     }
 
+    /**
+     * Csokkenti a fennmarado idot
+     */
     @Override
     public void decrRemainingTime() {
         ConsoleApp.returnLog("return");
         this.remainingTime -= 1;
     }
 
+    /** 
+     * Vedelmet nyujt az attacker ellen
+     * @param attacker
+     * @return boolean
+     */
     @Override
     public boolean checkDefense(Teacher attacker){
         if (remainingTime > 0) {

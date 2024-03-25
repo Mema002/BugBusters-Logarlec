@@ -5,7 +5,6 @@ import src.effect.Effect;
 import src.item.Item;
 import src.room.Room;
 
-import java.awt.image.ConvolveOp;
 import java.util.*;
 
 import static src.game.SingletonLogger.logger;

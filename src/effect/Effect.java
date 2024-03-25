@@ -5,9 +5,10 @@ import src.room.Room;
 public abstract class Effect {
     protected boolean active;
 
-    public Effect() {
-    }
-
+    /**
+     * Abstract, effektus meghivasa
+     * @param r
+     */
     public abstract void triggerEffect(Room r);
 
     public abstract String toString();

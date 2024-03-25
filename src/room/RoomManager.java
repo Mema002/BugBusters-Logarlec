@@ -10,10 +10,17 @@ import src.item.Item;
 public class RoomManager {
     private static ArrayList<Room> rooms;
 
+    /**
+     * RoomManager konstruktor
+     */
     public RoomManager() {
         rooms = new ArrayList<>();
     }
 
+    /**
+     * Legeneral count darab szobat
+     * @param count
+     */
     public void generateRooms(int count) {
         for (int i = 0; i < count; i++) {
             rooms.add(new Room(10, i));
@@ -21,11 +28,21 @@ public class RoomManager {
         ConsoleApp.returnLog("return");
     }
 
+    /**
+     * Visszater a szobakkal
+     * @return rooms
+     */
     public ArrayList<Room> getRooms() {
         ConsoleApp.returnLog("return");
         return rooms;
     }
 
+    /**
+     * Osszevonja a paramul kapott ket szobat
+     * A nagyobbik capacity lep ervenybe, effektek es itemek osszevonva
+     * @param r1
+     * @param r2
+     */
     public void mergeRooms(Room r1, Room r2) { //osztódhat ha van benne karakter?
         ConsoleApp.funcLog("room.setCapacity(Math.max(room1.getCapacity(),room2.getCapacity()))");
         ConsoleApp.funcLog("room.getCapacity()");
@@ -55,6 +72,11 @@ public class RoomManager {
         ConsoleApp.returnLog("return");
     }
 
+    /**
+     * Szetoszt egy szobat kettore
+     * A befogadokepesseget felezi, az itemeket-szomszedokat-effektet random osztja szet
+     * @param r
+     */
     public void splitRoom(Room r) {
         //capacity split
         ConsoleApp.funcLog("room.getId()");
@@ -114,6 +136,10 @@ public class RoomManager {
         ConsoleApp.returnLog("return");
     }
 
+    /**
+     * Kitorli a paramul kapott szobat
+     * @param r
+     */
     public void deleteRoom(Room r) {
         rooms.remove(r);
         for (Room room : rooms) {
@@ -126,6 +152,11 @@ public class RoomManager {
         ConsoleApp.returnLog("return");
     }
 
+    /**
+     * Visszater azokkal a szobakkal, amikbol el lehet jutni a paramul kapott szobaba
+     * @param r
+     * @return inNeighbour
+     */
     public static ArrayList<Room> getInNeighbours(Room r) {
         ArrayList<Room> inNeighbours = new ArrayList<Room>();
         for (Room room : rooms) {
@@ -162,6 +193,9 @@ public class RoomManager {
         ConsoleApp.returnLog("return");
     }
 
+    /**
+     * Meghivja az osszes szobara az effektjeiket
+     */
     public void triggerAllEffects() {
         for (Room room : rooms) {
             ConsoleApp.funcLog("room.treggerRoomEffects()");

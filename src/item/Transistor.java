@@ -9,12 +9,19 @@ public class Transistor extends Item {
     private Item pair;
     private Room location;
 
+    /**
+     * Transistor konstruktor
+     */
     public Transistor() {
         super();
         this.isActive = false;
         this.pair = null;
     }
 
+    /** 
+     * Inicializalja a transistort, ha lehetseges parositja is
+     * @param c
+     */
     @Override
     public void initItem(Character c) {
         owner=c;
@@ -32,6 +39,11 @@ public class Transistor extends Item {
         ConsoleApp.returnLog("return");
     }
 
+    /** 
+     * Hasznalja a transistort, azaz aktivalja
+     * @param c
+     * @return boolean
+     */
     @Override
     public boolean useItem(Character c) {
         if(!isActive) {
@@ -42,12 +54,19 @@ public class Transistor extends Item {
         return true;
     }
 
+    /** 
+     * Visszater azzal, hogy parositott-e a transistor vagy sem
+     * @return boolean
+     */
     @Override
     public boolean IsUnpaired() {
         ConsoleApp.returnLog("return " + String.valueOf(pair == null));
         return pair == null; //lehet nem pontos a compare
     }
-
+    
+    /** 
+     * Aktivalja a transistort
+     */
     private void activate() { //ha paired akkor lehet csak aktiválni
         if (!IsUnpaired()) {
             ConsoleApp.funcLog("IsUnpaired()");
@@ -55,29 +74,48 @@ public class Transistor extends Item {
         }
         ConsoleApp.returnLog("return");
     }
-
+    /**
+     * Deaktivalja a transistort
+     */
     private void deActivate() {
         ConsoleApp.returnLog("return");
         isActive = false;
     }
 
+    /** 
+     * Parositja a transistort a paramul kapott transistorral
+     * @param t
+     */
     @Override
     public void pair(Item t) {
         ConsoleApp.returnLog("return");
         pair = t;
     }
 
+    /** 
+     * Visszater a parja szobajaval
+     * @return Room
+     */
     private Room getPairLocation() { //itembe kene rakni abstractként
         ConsoleApp.returnLog("return location");
         return pair.getLocation();
     }
 
+    
+    /** 
+     * isActive getter
+     * @return boolean
+     */
     @Override
     public boolean isActive() {
         ConsoleApp.returnLog("return" + String.valueOf(isActive));
         return isActive;
     }
 
+    /**
+     * Eldobja a transistort
+     * Ha aktiv, elvegzi a teleportalast
+     */
     @Override
     public void drop() {
         if (pair != null){
@@ -106,6 +144,11 @@ public class Transistor extends Item {
         ConsoleApp.returnLog("return");
     }
 
+    
+    /** 
+     * Visszater a szobajaval
+     * @return Room
+     */
     @Override
     public Room getLocation() {
         return location;
