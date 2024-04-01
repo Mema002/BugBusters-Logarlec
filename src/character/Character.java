@@ -11,6 +11,7 @@ public abstract class Character {
     protected Room currentRoom;
     protected int stunnedFor;
     protected boolean expelled;
+    protected int id;
 
     /**
      * Character osztaly konstruktor, a paramul kapott szobaba helyezi a karaktert
@@ -25,11 +26,12 @@ public abstract class Character {
 
     /**
      * Visszater a karakter Id-jevel
-     * @return
+     * @return id
      */
-    public abstract int getId();
+    public int getId() {
+        return id;
+    }
 
-    
     /** 
      * Hozzaad egy itemet az inventoryhoz
      * @param i
@@ -211,7 +213,10 @@ public abstract class Character {
      * @param attacker
      * @return
      */
-    public abstract boolean tryExpell(Teacher attacker);
+    public boolean tryExpell(Teacher attacker) {
+        ConsoleApp.returnLog("return false");
+        return false;
+    }
 
     /**
      * Egy kor vegen meghivando fuggveny

@@ -8,7 +8,6 @@ import src.item.Item;
 import src.room.Room;
 
 public class Student extends Character {
-    private int id;
 
     /**
      * Student konstruktor
@@ -21,16 +20,6 @@ public class Student extends Character {
     }
 
     /**
-     * getId override
-     * @return id
-     */
-    @Override
-    public int getId() {
-        ConsoleApp.returnLog("return id");
-        return this.id;
-    }
-
-    /**
      * Hozzaadja az inventoryhoz a kapott itemet
      * @param i
      */
@@ -38,8 +27,6 @@ public class Student extends Character {
         ConsoleApp.returnLog("return");
         inventory.add(i);
     }
-
-
     
     /** 
      * Kitorlo a paramul kapott itemet az inventorybol
@@ -116,7 +103,7 @@ public class Student extends Character {
      * @return false
      */
     @Override
-    public boolean triggerExpelling(Student s) { //param?
+    public boolean triggerExpelling(Student s) {
         ConsoleApp.returnLog("return false");
         return false;
     }

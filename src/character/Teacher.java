@@ -5,7 +5,6 @@ import src.item.Item;
 import src.room.Room;
 
 public class Teacher extends Character {
-    private int id;
 
     /**
      * Teacher konstruktor
@@ -16,18 +15,6 @@ public class Teacher extends Character {
         super(currentRoom);
         this.id = id;
     }
-    
-    /** 
-     * getId override
-     * @return int
-     */
-    @Override
-    public int getId() {
-        ConsoleApp.returnLog("return int");
-        return id;
-    }
-    
-
     
     /** 
      * Mozgas a kapott indexu szobaba
@@ -83,18 +70,6 @@ public class Teacher extends Character {
         }
         ConsoleApp.returnLog("return true");
         return true;
-    }
-
-    
-    /** 
-     * Override, szimpla return false
-     * @param attacker
-     * @return boolean
-     */
-    @Override
-    public boolean tryExpell(Teacher attacker) {
-        ConsoleApp.returnLog("return false");
-        return false;
     }
     
     /** 
