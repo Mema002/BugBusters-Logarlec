@@ -70,4 +70,9 @@ public class Cursed extends Effect {
     public String toString() {
         return "Cursed";
     }
+
+    @Override
+    public void clearGas(Room r) {
+        return;
+    }
 }

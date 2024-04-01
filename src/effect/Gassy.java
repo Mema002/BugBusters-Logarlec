@@ -33,4 +33,9 @@ public class Gassy extends Effect {
     public String toString() {
         return "Gassy";
     }
+
+    @Override
+    public void clearGas(Room r) {
+        r.removeEffect(this);
+    }
 }
