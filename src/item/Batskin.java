@@ -5,13 +5,15 @@ import src.game.ConsoleApp;
 
 public class Batskin extends Item {
     private int durability;
+    private boolean isFake;
 
     /**
      * Batskin konstruktor
      */
-    public Batskin() {
+    public Batskin(boolean isFake) {
         super();
         this.durability = 3;
+        this.isFake = isFake;
     }
 
     /** 
@@ -21,10 +23,10 @@ public class Batskin extends Item {
      */
     @Override
     public boolean checkDefense(Teacher attacker) {
-        if(durability > 0){
+        if (durability > 0) {
             durability--;
-        ConsoleApp.returnLog("return true");
-            return true;
+            ConsoleApp.returnLog("return !isFake");
+            return !isFake;
         }
         ConsoleApp.returnLog("return false");
         return false;

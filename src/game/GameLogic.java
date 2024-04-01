@@ -113,14 +113,14 @@ public class GameLogic {
         int roomCount = rooms.size();
         ConsoleApp.funcLog("roomManager.getRooms()");
         ConsoleApp.funcLog("room.addItem()");
-        roomManager.getRooms().get(0).addItem(new Sliderule()); //1 sliderule fix
+        roomManager.getRooms().get(0).addItem(new Sliderule(false)); //1 sliderule fix
         for (int i = 0; i < count - 1; i++) {
-            int type = random.nextInt(6); //milyen itemet generaljunk
+            int type = random.nextInt(7); //milyen itemet generaljunk
             Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
             switch (type) {
                 case 0:
                     ConsoleApp.funcLog("randomRoom.addItem(new Batskin())");
-                    randomRoom.addItem(new Batskin());
+                    randomRoom.addItem(new Batskin(random.nextBoolean()));
                     break;
                 case 1:
                     ConsoleApp.funcLog("randomRoom.addItem(new Beerglass())");
@@ -132,7 +132,7 @@ public class GameLogic {
                     break;
                 case 3:
                     ConsoleApp.funcLog("randomRoom.addItem(new FFP2())");
-                    randomRoom.addItem(new FFP2());
+                    randomRoom.addItem(new FFP2(random.nextBoolean()));
                     break;
                 case 4:
                     ConsoleApp.funcLog("randomRoom.addItem(new Rag())");
@@ -141,6 +141,9 @@ public class GameLogic {
                 case 5:
                     ConsoleApp.funcLog("randomRoom.addItem(new Transistor())");
                     randomRoom.addItem(new Transistor());
+                    break;
+                case 6:
+                    randomRoom.addItem(new Sliderule(true));
                     break;
                 default: break;
             }

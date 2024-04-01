@@ -4,13 +4,15 @@ import src.game.ConsoleApp;
 
 public class FFP2 extends Item {
     private int durability;
+    private boolean isFake;
 
     /**
      * FFP2-es maszk konstruktor
      */
-    public FFP2() {
+    public FFP2(boolean isFake) {
         super();
         this.durability = 3;
+        this.isFake = isFake;
     }
 
     /** 
@@ -19,9 +21,10 @@ public class FFP2 extends Item {
      */
     @Override
     public boolean defendStun() {
-        if(durability > 0) {
-            ConsoleApp.returnLog("return true");
-            return true;
+        if (durability > 0) {
+            durability--;
+            ConsoleApp.returnLog("return !isFake");
+            return !isFake;
         }
         ConsoleApp.returnLog("return false");
         return false;

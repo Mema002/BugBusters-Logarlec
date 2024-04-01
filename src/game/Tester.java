@@ -22,7 +22,7 @@ public class Tester {
 
         Room room = new Room(5,0);
         Student student = new Student(room, 0);
-        Sliderule sliderule = new Sliderule();
+        Sliderule sliderule = new Sliderule(false);
 
         ConsoleApp.funcLog("room.addCharacter(student)");
         room.addCharacter(student);
@@ -74,7 +74,7 @@ public class Tester {
         Room room2 = new Room(2, 1);
         Student student = new Student(room2, 2);
         Teacher teacher = new Teacher(room1, 3);
-        Batskin batskin = new Batskin();
+        Batskin batskin = new Batskin(false);
 
         ConsoleApp.funcLog("room1.addNeighbour(room2)");
         room1.addNeighbour(room2);
@@ -333,7 +333,7 @@ public class Tester {
     public void test11() {
         Room room = new Room(5,0);
         Student student = new Student(room, 0);
-        Batskin batskin = new Batskin();
+        Batskin batskin = new Batskin(false);
         ConsoleApp.funcLog("room.addCharacter(student)");
         room.addCharacter(student);
         ConsoleApp.funcLog("room.addItem(batskin)");
@@ -473,7 +473,7 @@ public class Tester {
         Student student1 = new Student(room2, 1);
         Teacher teacher1 = new Teacher(room1, 1);
         ConsoleApp.funcLog("room1.addItem(new Batskin())");
-        room1.addItem(new Batskin());
+        room1.addItem(new Batskin(false));
         ConsoleApp.funcLog("room3.addEffect(new Gassy())");
         room3.addEffect(new Gassy());
 
@@ -513,7 +513,7 @@ public class Tester {
     public void test17() {
         Room room1 = new Room(1, 0);
         Student student = new Student(room1, 0);
-        FFP2 ffp2 = new FFP2() ;
+        FFP2 ffp2 = new FFP2(false) ;
         ConsoleApp.funcLog("room1.addCharacter(student)");
         room1.addCharacter(student);
         ConsoleApp.funcLog("student.addToInventory(ffp2)");

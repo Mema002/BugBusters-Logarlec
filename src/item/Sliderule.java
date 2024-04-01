@@ -4,7 +4,14 @@ import src.game.ConsoleApp;
 import src.game.GameLogic;
 import src.character.Character;
 
-public class Sliderule extends Item {    
+public class Sliderule extends Item {
+    private boolean isFake;
+
+    public Sliderule(boolean isFake) {
+        super();
+        this.isFake = isFake;
+    }
+
     /** 
      * Inicializalja az itemet, egyben veget is vet a jateknak
      * @param c
@@ -13,7 +20,8 @@ public class Sliderule extends Item {
     public void initItem(Character c) {
         owner = c;
         ConsoleApp.returnLog("return");
-        GameLogic.endGame();
+        if (!isFake)
+            GameLogic.endGame();
     }
 
     @Override

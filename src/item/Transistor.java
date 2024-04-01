@@ -24,7 +24,7 @@ public class Transistor extends Item {
      */
     @Override
     public void initItem(Character c) {
-        owner=c;
+        owner = c;
         ConsoleApp.funcLog("character.geInventory()");
         for (Item i : c.getInventory()) {
             ConsoleApp.funcLog("Item.IsUnpaired()");
