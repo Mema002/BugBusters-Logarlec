@@ -48,6 +48,11 @@ public class ConsoleApp {
 
     public static void stateLog() {
         toggleFuncCall();
+
+        LinkedHashMap<String, Integer> itemCount = new LinkedHashMap<>();
+        LinkedHashMap<String, Integer> characterCount = new LinkedHashMap<>();
+        LinkedHashMap<String, Integer> effectCount = new LinkedHashMap<>();
+
         System.out.println("\n\nSTART STATELOG\n");
 
         for(int i = 0; i<rooms.size(); i++){
@@ -59,54 +64,77 @@ public class ConsoleApp {
             //Room items
             ConsoleApp.funcLog("room.getItems()");
             ArrayList<Item> itemList = room.getItems();
-            consoleBuffer+="\tRoom items:\n";
+            if(!itemList.isEmpty())
+                consoleBuffer+="\tRoom items:\n";
             //Item count for index
-            ArrayList<String> itemCount = new ArrayList<>();
             for(int k = 0; k < itemList.size(); k++){
                 Item item = itemList.get(k);
+                if(itemCount.containsKey(item.toString())){
+                    Integer itemCountValue = itemCount.get(item.toString());
+                    itemCountValue++;
+                } else {
+                    itemCount.put(item.toString(), 1);
+                }
                 consoleBuffer+="\t\t";
                 consoleBuffer+=item.toString();
-                consoleBuffer+=itemCount.stream().filter(x -> x == item.toString()).count()+1;
+                consoleBuffer+=itemCount.get(item.toString());
                 consoleBuffer+='\n';
-                itemCount.add(item.toString());
             }
 
             //Characters
             ConsoleApp.funcLog("room.getCharacters()");
             ArrayList<Character> characterList = room.getCharacters();
-            consoleBuffer+="\tCharacters\n";
-            ArrayList<String> characterCount = new ArrayList<>();
+            if(!characterList.isEmpty())
+                consoleBuffer+="\tCharacters:\n";
             for (int l = 0; l < characterList.size(); l++){
                 Character character = characterList.get(l);
+                if(characterCount.containsKey(character.toString())){
+                    Integer characterCountValue = characterCount.get(character.toString());
+                    characterCountValue++;
+                } else {
+                    characterCount.put(character.toString(), 1);
+                }
                 consoleBuffer+="\t\t";
                 consoleBuffer+=character.toString();
-                consoleBuffer+=characterCount.stream().filter(x->x == character.toString()).count()+1;
+                consoleBuffer+=characterCount.get(character.toString());
                 consoleBuffer+='\n';
-                characterCount.add(character.toString());
 
                 //Character items
                 ConsoleApp.funcLog("character.getInventory()");
                 itemList = character.getInventory();
-                consoleBuffer+="\t\tCharacter items:\n";
+                if(!itemList.isEmpty())
+                    consoleBuffer+="\t\tCharacter items:\n";
                 //Item count for index
-                itemCount = new ArrayList<>();
                 for(int k = 0; k < itemList.size(); k++){
                     Item item = itemList.get(k);
+                    if(itemCount.containsKey(item.toString())){
+                        Integer itemCountValue = itemCount.get(item.toString());
+                        itemCountValue++;
+                    } else {
+                        itemCount.put(item.toString(), 1);
+                    }
                     consoleBuffer+="\t\t\t";
                     consoleBuffer+=item.toString();
-                    consoleBuffer+=itemCount.stream().filter(x -> x == item.toString()).count()+1;
+                    consoleBuffer+=itemCount.get(item.toString());
                     consoleBuffer+="\n";
-                    itemCount.add(item.toString());
                 }
             }
 
             //Effects
             ConsoleApp.funcLog("room.getEffects()");
             ArrayList<Effect> effectList = room.getEffects();
-            consoleBuffer+="\tRoom effects:\n";
+            if(!effectList.isEmpty())
+                consoleBuffer+="\tRoom effects:\n";
             for(Effect effect : effectList){
+                if(effectCount.containsKey(effect.toString())){
+                    Integer effectCountValue = effectCount.get(effect.toString());
+                    effectCountValue++;
+                } else {
+                    effectCount.put(effect.toString(), 1);
+                }
                 consoleBuffer+="\t\t";
                 consoleBuffer+=effect.toString();
+                consoleBuffer+=effectCount.get(effect.toString());
                 consoleBuffer+='\n';
             }
 
