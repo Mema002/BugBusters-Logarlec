@@ -107,7 +107,7 @@ public class Tester {
         Student student = new Student(room1, 0);
         Beerglass beerglass = new Beerglass();
 
-        ConsoleApp.funcLog("room2.addItem(batskin)");
+        ConsoleApp.funcLog("room2.addNeighbour(room1)");
         room2.addNeighbour(room1);
         ConsoleApp.funcLog("room1.addCharacter(student)");
         room1.addCharacter(student);
@@ -163,10 +163,13 @@ public class Tester {
     public void test6() {
         Room room1 = new Room(2, 0);
         Room room2 = new Room(2, 0);
+        FFP2 ffp2 = new FFP2(false);
         Gassy gassy = new Gassy();
         ConsoleApp.funcLog("room2.addEffect(gassy)");
         room2.addEffect(gassy);
         Student student = new Student(room1, 0);
+        ConsoleApp.funcLog("student1.addToInventory(ffp2)");
+        student.addToInventory(ffp2);
         ConsoleApp.funcLog("room1.addNeighbour(room2)");
         room1.addNeighbour(room2);
         ConsoleApp.funcLog("room1.addCharacter(student)");
