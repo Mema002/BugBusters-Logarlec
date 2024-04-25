@@ -1,0 +1,9 @@
+package src.testing;
+
+public class TestActionDTO {
+
+    Character character;
+    String action;
+    String param ; //TODO jobbra xdd
+
+}

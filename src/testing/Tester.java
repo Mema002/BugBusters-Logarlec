@@ -1,6 +1,8 @@
-package src.game;
+package src.testing;
 
 import src.character.Student;
+import src.game.ConsoleApp;
+import src.game.GameLogic;
 import src.item.Sliderule;
 import src.item.Transistor;
 import src.item.Batskin;

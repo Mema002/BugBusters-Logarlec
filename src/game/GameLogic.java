@@ -44,7 +44,7 @@ public class GameLogic {
         isGameRunning = false;
     }
 
-    private static void runGame() {
+    public static void runGame() {
         //Itt fut a jatek
 
         int currentPlayerIdx = 0;
@@ -81,6 +81,10 @@ public class GameLogic {
 
             currentPlayerIdx++;
         }
+    }
+
+    public static void setCharacters(ArrayList<Character> param) {
+
     }
 
     public static void changeRoomTo(Room r) {

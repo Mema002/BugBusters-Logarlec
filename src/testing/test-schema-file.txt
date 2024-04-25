@@ -1,0 +1,39 @@
+//StartState
+//Rooms
+0 2
+1 2
+
+;//RoomNeighbours
+0 1
+
+;//Characters
+Student.0.0
+Teacher.1.1
+
+;//Items
+Beerglass.0.1.3 Student.0
+
+--------------------------------------------
+;//Actions
+skipTurn
+move.0
+
+--------------------------------------------
+;//EndState
+Rooms
+0 2
+1 2
+
+;//RoomNeighbours
+0 1
+
+;//Characters
+Student.0.0
+Teacher.1.0
+
+;//Items
+Beerglass.0.1.2 Student.0
+
+//Magyarázat: '//' mögött lévő dolgok nem lesznek az values fájlban már, '.' jelöli az attribútumokat, a ' ' az egyéb logikailag összetartozó dolgokat, de nem attribútumokat.
+//  '----------------------------------' jelöli az első splitet, a fő paragrafusokat
+//a ';' jelöli a második splitet, a másodlagos paragrafusokat, amik logikailag jobban szétválaszthatóak

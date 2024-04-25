@@ -1,5 +1,7 @@
 package src.game;
 
+import src.testing.Tester;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
