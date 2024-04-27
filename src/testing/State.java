@@ -1,5 +1,6 @@
 package src.testing;
 
+import src.character.Character;
 import src.effect.Effect;
 import src.item.Item;
 import src.room.Room;

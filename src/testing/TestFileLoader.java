@@ -19,24 +19,28 @@ public class TestFileLoader {
 
     private LinkedHashMap<String, StringBuilder> parseGameData(String filename) {
         LinkedHashMap<String, StringBuilder> dataMap = new LinkedHashMap<>();
-        String currentSectionKey = null;
-        StringBuilder currentSectionContent = new StringBuilder();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("./valuesfiles/"+filename))) {
-            FileWriter fileWriter = new FileWriter("testWriting.txt");
+        try (
+                BufferedReader reader = new BufferedReader(new FileReader("src/testing/valuesfiles/"+filename));
+                FileWriter fileWriter = new FileWriter("testWriting.txt", false);
+            ) {
 
             String line;
+            String currentSectionKey = null;
+            StringBuilder currentSectionContent = new StringBuilder();
+
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("__")) {
                     System.out.println("Found section: " + line);
                     if (currentSectionKey != null) {
                         dataMap.put(currentSectionKey, currentSectionContent);
-                        System.out.println("Added section: " + currentSectionKey + " with content: " + currentSectionContent);
+                        System.out.println("Add section: " + currentSectionKey + " with content: " + currentSectionContent.toString());
                     }
                     currentSectionKey = line.trim();
                     currentSectionContent = new StringBuilder();
                 } else {
                     currentSectionContent.append(line).append("\n");
+                    System.out.println("Building section: " + currentSectionContent);
                 }
             }
             // Add the last section
@@ -50,3 +54,4 @@ public class TestFileLoader {
         return dataMap;
     }
 }
+

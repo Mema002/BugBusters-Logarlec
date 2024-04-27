@@ -1,5 +1,6 @@
 package src.game;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,12 +21,8 @@ import src.room.RoomManager;
 public class GameLogic {
     private static boolean isGameRunning;
     public static RoomManager roomManager;
-    private static ArrayList<Character> characters;
-    private static ArrayList<Character> deadCharacters;
-
-    //A consoleApp-hoz nem statikus Objektum
-    private static Object gameLogic = new Object();
-
+    private static List<Character> characters;
+    private static List<Character> deadCharacters;
     //A veletlen actionokhoz
     private static Random random = new Random();
 
@@ -83,8 +80,8 @@ public class GameLogic {
         }
     }
 
-    public static void setCharacters(ArrayList<Character> param) {
-
+    public static void setCharacters(List<Character> param) {
+        characters = param;
     }
 
     public static void changeRoomTo(Room r) {
@@ -100,7 +97,7 @@ public class GameLogic {
         }
 
         ConsoleApp.funcLog("roomManager.getRooms()");
-        ArrayList<Room> rooms = roomManager.getRooms();
+        List<Room> rooms = roomManager.getRooms();
         int roomCount = rooms.size();
 
         for (int i = 0; i < characters.size(); i++) {
@@ -113,7 +110,7 @@ public class GameLogic {
 
     public static void generateItems(int count) {
         ConsoleApp.funcLog("roomManager.getRooms()");
-        ArrayList<Room> rooms = roomManager.getRooms();
+        List<Room> rooms = roomManager.getRooms();
         int roomCount = rooms.size();
         ConsoleApp.funcLog("roomManager.getRooms()");
         ConsoleApp.funcLog("room.addItem()");
@@ -193,6 +190,4 @@ public class GameLogic {
 
 
     }
-
-    public static Object getGameLogic() {return gameLogic;}
 }

@@ -1,5 +1,7 @@
 package src.testing;
 
+import src.character.Character;
+
 public class TestActionDTO {
 
     Character character;

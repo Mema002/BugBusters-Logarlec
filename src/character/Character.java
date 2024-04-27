@@ -7,6 +7,7 @@ import src.item.Item;
 import src.room.Room;
 
 public abstract class Character {
+    private static int idCounter = 0;
     protected ArrayList<Item> inventory;
     protected Room currentRoom;
     protected int stunnedFor;
@@ -96,12 +97,14 @@ public abstract class Character {
      * Targyeldobas, eldobja a paramul kapott targyat
      * @param i
      */
-    public void dropItem(Item i) {
+    public void dropItem(int i) {
+        Item currentItem = inventory.get(i);
         inventory.remove(i);
         ConsoleApp.funcLog("currentRoom.addItem(i)");
-        currentRoom.addItem(i);
+        //currentRoom.addItem(i);
         ConsoleApp.funcLog("i.dropItem()");
-        i.drop();
+
+        currentItem.drop();
         ConsoleApp.returnLog("return");
     }
 

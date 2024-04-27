@@ -1,23 +1,60 @@
 package src.testing;
 
+import src.character.Character;
 import src.character.Student;
 import src.game.ConsoleApp;
 import src.game.GameLogic;
-import src.item.Sliderule;
-import src.item.Transistor;
-import src.item.Batskin;
-import src.item.Beerglass;
+import src.item.*;
 import src.room.Room;
 import src.room.RoomManager;
 
 import src.character.Teacher;
 import src.effect.Cursed;
 import src.effect.Gassy;
-import src.item.Camembert;
-import src.item.FFP2;
-import src.item.Rag;
+
+import java.util.*;
 
 public class Tester {
+
+    private List<TestCase> testCaseList = new ArrayList<>();
+
+    public void addTestCase(TestCase testCase) { testCaseList.add(testCase); }
+
+    public void runTests(){
+        for (TestCase testCase : testCaseList){
+            //Turn off logging
+            ConsoleApp.turnOffLogging();
+
+            //Start TestCase
+            State startingState = testCase.startState;
+
+            //Setup the rooms, characters, items
+            GameLogic.setCharacters(startingState.characters);
+            GameLogic.roomManager.setRooms(startingState.rooms);
+
+            for (TestActionDTO action : testCase.actions){
+                //Run the action
+                Character character = action.character;
+                String actionString = action.action;
+                switch (actionString){
+                    case "move":
+                        character.move(Integer.parseInt(action.param));
+                        break;
+                    case "pickUpItem":
+                        character.pickUpItem(Integer.parseInt(action.param));
+                        break;
+                    case "dropItem":
+                        //character.dropItem(action.item);
+                        break;
+                }
+            }
+
+
+            //Reset ConsoleApp
+            ConsoleApp.resetState();
+        }
+    }
+
     //Logarléc teszt
     public void test1() {
         GameLogic.startGame();
@@ -215,8 +252,8 @@ public class Tester {
         ConsoleApp.funcLog("student1.pickUpItem(0)");
         student1.pickUpItem(0);
 
-        ConsoleApp.funcLog("student1.dropItem(transistor1)");
-        student1.dropItem(transistor1);
+        ConsoleApp.funcLog("student1.dropItem(0)");
+        student1.dropItem(0);
 
         ConsoleApp.funcLog("student1.move(0)");
         student1.move(0);
@@ -225,7 +262,7 @@ public class Tester {
         student1.useItem(0);
 
         ConsoleApp.funcLog("student1.dropItem(transistor1)");
-        student1.dropItem(transistor1);
+        //student1.dropItem(transistor1);
         
         ConsoleApp.stateLog();
         ConsoleApp.resetState();
@@ -528,7 +565,7 @@ public class Tester {
         ConsoleApp.stateLog();
 
         ConsoleApp.funcLog("student.dropItem(ffp2)");
-        student.dropItem(ffp2);
+        //student.dropItem(ffp2);
         
         ConsoleApp.stateLog();
         ConsoleApp.resetState();

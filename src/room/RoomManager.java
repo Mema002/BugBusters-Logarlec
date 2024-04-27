@@ -2,13 +2,14 @@ package src.room;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import src.effect.Effect;
 import src.game.ConsoleApp;
 import src.item.Item;
 
 public class RoomManager {
-    private static ArrayList<Room> rooms;
+    private static List<Room> rooms;
 
     /**
      * RoomManager konstruktor
@@ -32,7 +33,7 @@ public class RoomManager {
      * Visszater a szobakkal
      * @return rooms
      */
-    public ArrayList<Room> getRooms() {
+    public List<Room> getRooms() {
         ConsoleApp.returnLog("return");
         return rooms;
     }
@@ -202,5 +203,9 @@ public class RoomManager {
             room.triggerRoomEffects();
         }
         ConsoleApp.returnLog("return");
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = (ArrayList<Room>) rooms;
     }
 }
