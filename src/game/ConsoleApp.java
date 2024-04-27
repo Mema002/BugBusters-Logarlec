@@ -47,12 +47,14 @@ public class ConsoleApp {
         }
     }
 
-    public static void addRoom(Room room){rooms.add(room);}
+    public static void addRoom(Room room){ rooms.add(room); }
 
-    public static void stateLog() {
+    public static void addRooms(List<Room> rooms){
+        rooms.addAll(rooms);
+    }
+
+    public static String getLog() {
         turnOffLogging();
-
-        consoleBuffer.append("\n\nSTART STATELOG\n");
 
         for(int i = 0; i<rooms.size(); i++){
             Room room = rooms.get(i);
@@ -115,14 +117,22 @@ public class ConsoleApp {
 
         }
 
-        consoleBuffer.append("\nEND STATELOG\n");
-        System.out.println(consoleBuffer.toString());
         turnOnLogging();
+
+        return consoleBuffer.toString();
+    }
+
+    public static void stateLog() {
+        StringBuilder stringBuilder = new StringBuilder(getLog());
+        stringBuilder.insert(0, "\n\nSTART STATELOG\n");
+        stringBuilder.append("\nEND STATELOG\n");
+        logger.info(stringBuilder.toString());
     }
 
     public static void resetState() {
         logging = true;
         rooms.clear();
+        consoleBuffer = new StringBuilder();
     }
 
     public static boolean writeOutInventory(Character character) {

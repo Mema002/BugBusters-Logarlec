@@ -32,23 +32,45 @@ public class Tester {
             GameLogic.setCharacters(startingState.characters);
             GameLogic.roomManager.setRooms(startingState.rooms);
 
-            for (TestActionDTO action : testCase.actions){
+            for (TestActionDTO action : testCase.actions) {
                 //Run the action
                 Character character = action.character;
                 String actionString = action.action;
-                switch (actionString){
+                switch (actionString.toLowerCase()) {
                     case "move":
                         character.move(Integer.parseInt(action.param));
                         break;
-                    case "pickUpItem":
+                    case "pickupitem":
                         character.pickUpItem(Integer.parseInt(action.param));
                         break;
-                    case "dropItem":
-                        //character.dropItem(action.item);
+                    case "dropitem":
+                        character.dropItem(Integer.parseInt(action.param));
+                        break;
+                    case "useitem":
+                        character.useItem(Integer.parseInt(action.param));
+                        break;
+                    case "skipturn":
+                        character.skipTurn();
                         break;
                 }
             }
 
+            ConsoleApp.addRooms(startingState.rooms);
+            String currentStateString = ConsoleApp.getLog();
+
+            //End TestCase
+            State expectedState = testCase.endState;
+            ConsoleApp.resetState();
+            ConsoleApp.addRooms(expectedState.rooms);
+            String expectedStateString = ConsoleApp.getLog();
+
+            if(currentStateString.equalsIgnoreCase(expectedStateString)){
+                System.out.println("Test Passed");
+            } else {
+                System.out.println("Test Failed");
+                System.out.println("Expected: \n" + expectedStateString);
+                System.out.println("Actual: \n" + currentStateString);
+            }
 
             //Reset ConsoleApp
             ConsoleApp.resetState();

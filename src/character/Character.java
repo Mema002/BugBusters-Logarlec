@@ -101,7 +101,7 @@ public abstract class Character {
         Item currentItem = inventory.get(i);
         inventory.remove(i);
         ConsoleApp.funcLog("currentRoom.addItem(i)");
-        //currentRoom.addItem(i);
+        currentRoom.addItem(currentItem);
         ConsoleApp.funcLog("i.dropItem()");
 
         currentItem.drop();
