@@ -19,4 +19,9 @@ public class State {
         this.items = items;
         this.effects = effects;
     }
+
+    @Override
+    public String toString() {
+        return "State: " + rooms + " " + characters + " " + items + " " + effects;
+    }
 }

@@ -8,9 +8,14 @@ public class TestCase {
     final State endState;
     final List<TestActionDTO> actions;
 
-    public TestCase(State startState, State endState) {
-        this.startState = null;
-        this.endState = null;
-        this.actions = new ArrayList<>();
+    public TestCase(State startState, State endState, List<TestActionDTO> actions) {
+        this.startState = startState;
+        this.endState = endState;
+        this.actions = actions;
+    }
+
+    @Override
+    public String toString() {
+        return "TestCase: " + "Start" + startState + " End" + endState + " " + actions;
     }
 }

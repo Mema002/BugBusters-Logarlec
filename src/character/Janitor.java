@@ -10,7 +10,7 @@ import src.room.Room;
 
 public class Janitor extends Character {
 
-    public Janitor(Room currentRoom) {
+    public Janitor(Room currentRoom, int id) {
         super(currentRoom);
     }
 

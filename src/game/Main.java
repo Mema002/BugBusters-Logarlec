@@ -1,5 +1,6 @@
 package src.game;
 
+import src.testing.TestCase;
 import src.testing.TestFileLoader;
 import src.testing.Tester;
 
@@ -11,7 +12,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         TestFileLoader loader = new TestFileLoader();
-        loader.loader("test-value-file.txt");
+        TestCase testCaseTest = loader.load("test-value-file.txt");
+        System.out.println();
+        System.out.println(testCaseTest);
 
 //        BufferedReader reader = new BufferedReader(
 //            new InputStreamReader(System.in));

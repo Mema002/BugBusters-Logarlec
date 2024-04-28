@@ -38,16 +38,16 @@ public class Tester {
                 String actionString = action.action;
                 switch (actionString.toLowerCase()) {
                     case "move":
-                        character.move(Integer.parseInt(action.param));
+                        character.move(Integer.parseInt(action.params[0])); //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
                         break;
                     case "pickupitem":
-                        character.pickUpItem(Integer.parseInt(action.param));
+                        character.pickUpItem(Integer.parseInt(action.params[1]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
                         break;
                     case "dropitem":
-                        character.dropItem(Integer.parseInt(action.param));
+                        character.dropItem(Integer.parseInt(action.params[2]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
                         break;
                     case "useitem":
-                        character.useItem(Integer.parseInt(action.param));
+                        character.useItem(Integer.parseInt(action.params[3]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
                         break;
                     case "skipturn":
                         character.skipTurn();
