@@ -6,8 +6,9 @@ import src.effect.Effect;
 public class Airfreshener extends Item {
     private int durability;
 
-    public Airfreshener(){
-        this.durability=1;
+    public Airfreshener(Integer.parseInt(int id, int param2, int durability){
+        this.id = id;
+        this.durability=durability;
     }
     /** 
      * Airfreshener hasznalata, kiszelloztet egy gazos szobat
