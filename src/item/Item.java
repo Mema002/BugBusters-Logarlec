@@ -7,15 +7,19 @@ import src.room.Room;
 
 public abstract class Item {
     private int id;
-    protected int durability;
     protected Character owner;
 
     /**
      * Item konstruktor, kezdetben nincs tulajdonos
      */
+    public Item(int id ) {
+        this.id = id;
+        owner = null;
+    }
     public Item() {
         owner = null;
     }
+
 
     /** 
      * Visszater az id-vel
@@ -27,8 +31,7 @@ public abstract class Item {
     }
 
     public int getDurability() {
-        ConsoleApp.returnLog("return int");
-        return durability;
+        return 0;
     }
 
     /** 

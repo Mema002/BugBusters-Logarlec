@@ -43,7 +43,6 @@ public class Tester {
             State expectedState = testCase.endState;
             ConsoleApp.resetState();
 
-            //TODO compare by id (Sort by id)
             List<Room> currentRooms = GameLogic.roomManager.getRooms();
             currentRooms.sort(Comparator.comparing(Room::getId));
 
@@ -79,10 +78,11 @@ public class Tester {
                     }
                 }
 
-                //If Test passed
-                if (testPassed)
-                    System.out.println("Test Passed");
             }
+
+            //If Test passed
+            if (testPassed)
+                System.out.println("Test Passed");
 
             //Reset ConsoleApp
             ConsoleApp.resetState();

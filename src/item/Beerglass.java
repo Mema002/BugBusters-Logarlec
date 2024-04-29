@@ -10,6 +10,10 @@ public class Beerglass extends Item {
     /**
      * Beerglass konstruktor
      */
+    public Beerglass(int id, boolean isFake, int remainingTime) {
+        super();
+        this.remainingTime = remainingTime;
+    }
     public Beerglass() {
         super();
         this.remainingTime = 5;
@@ -37,7 +41,6 @@ public class Beerglass extends Item {
 
     /** 
      * Visszater a fennmarado idovel
-     * @param attacker
      * @return int
      */
     public int getRemainingTime() { //valszeg inkább abstractba kéne overrideolnia mindenkinek

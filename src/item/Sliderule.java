@@ -6,10 +6,16 @@ import src.character.Character;
 
 public class Sliderule extends Item {
     private boolean isFake;
+    int durability;
 
     public Sliderule(boolean isFake) {
         super();
         this.isFake = isFake;
+    }
+    public Sliderule(int id, boolean isFake, int durability) {
+        super(id);
+        this.isFake = isFake;
+        this.durability = durability;
     }
 
     /** 

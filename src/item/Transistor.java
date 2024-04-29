@@ -8,6 +8,8 @@ public class Transistor extends Item {
     private boolean isActive;
     private Item pair;
     private Room location;
+    int durability;
+    boolean isFake;
 
     /**
      * Transistor konstruktor
@@ -16,6 +18,13 @@ public class Transistor extends Item {
         super();
         this.isActive = false;
         this.pair = null;
+    }
+    public Transistor(int id, boolean isFake, int durability) {
+        super(id);
+        this.isActive = false;
+        this.pair = null;
+        this.isFake = isFake;
+        this.durability = durability;
     }
 
     /** 

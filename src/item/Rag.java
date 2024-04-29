@@ -5,6 +5,7 @@ import src.game.ConsoleApp;
 
 public class Rag extends Item {
     private int remainingTime;
+    boolean isFake;
 
     /**
      * Rag konstruktor
@@ -12,6 +13,11 @@ public class Rag extends Item {
     public Rag() {
         super();
         this.remainingTime = 5;
+    }
+    public Rag(int id, boolean isFake, int remainingTime) {
+        super(id);
+        this.isFake = isFake;
+        this.remainingTime = remainingTime;
     }
 
     /**
