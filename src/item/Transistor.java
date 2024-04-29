@@ -12,7 +12,7 @@ public class Transistor extends Item {
     boolean isFake;
 
     /**
-     * Transistor.txt konstruktor
+     * Transistor konstruktor
      */
     public Transistor() {
         super();
@@ -168,6 +168,6 @@ public class Transistor extends Item {
 
     @Override
     public String toString() {
-        return "Transistor.txt";
+        return "Transistor";
     }
 }

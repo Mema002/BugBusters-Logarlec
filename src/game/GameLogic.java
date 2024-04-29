@@ -176,7 +176,7 @@ public class GameLogic {
                     randomRoom.addItem(new Rag());
                     break;
                 case 5:
-                    ConsoleApp.funcLog("randomRoom.addItem(new Transistor.txt())");
+                    ConsoleApp.funcLog("randomRoom.addItem(new Transistor())");
                     randomRoom.addItem(new Transistor());
                     break;
                 case 6:
