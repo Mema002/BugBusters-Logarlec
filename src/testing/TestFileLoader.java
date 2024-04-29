@@ -43,6 +43,7 @@ public class TestFileLoader {
         BufferedReader endStageString = convertToBufferedReader(mainStages.get("__Endstate"));
         BufferedReader actionsString = convertToBufferedReader(mainStages.get("__Actions"));
 
+        System.out.println("...Building " + filename + " testcase");
         System.out.println("...Building Start state");
         LinkedHashMap<String, StringBuilder> startStateData = this.parseGameData(startStageString, "_");
         State startState = this.toState(startStateData);
@@ -186,9 +187,7 @@ public class TestFileLoader {
                 Character owner = null;
                 Room room = null;
                 switch (params[4]) {
-                    case "Student":
-                    case "Teacher":
-                    case "Janitor":
+                    case "Character":
                         owner = characters
                                 .stream()
                                 .filter(
