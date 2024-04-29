@@ -211,73 +211,87 @@ public class TestFileLoader {
                 // de látom, hogy van, hogy az "owner" a szoba, ami nyilván nem lehet, mert a Roomnak csak az Object a közös ősosztály a Characterrel
                 // Szóval kell egy "helyszín" (pl: place) változó az Item-be, és ehhez setter-getter, hogy beállíthassuk.
                 // De ha már van valahol ilyen, akkor itt írjátok át. Plusz lehet érdemes lecsekkolni az egyes itemek inicializáláshoz mik kellenek...
-//                switch (params[0]) {
-//                    case "Sliderule":
-//                        Item item = new Sliderule(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
-//                        if (room == null)
-//                            item.setOwner(owner);
-//                        else
-//                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-//                            //item.setPlace(room);
-//                        items.add(item);
-//                        break;
-//                    case "Airfreshener":
-//                        item = new Airfreshener(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
-//                        if (room == null)
-//                            item.setOwner(owner);
-//                        else
-//                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-//                            //item.setPlace(room);
-//                        items.add(item);
-//                        break;
-//                    case "Beerglass":
-//                        item = new Beerglass(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
-//                        if (room == null)
-//                            item.setOwner(owner);
-//                        else
-//                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-//                            //item.setPlace(room);
-//                        items.add(item);
-//                        break;
-//                    case "Camembert":
-//                        item = new Camembert(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
-//                        if (room == null)
-//                            item.setOwner(owner);
-//                        else
-//                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-//                            //item.setPlace(room);
-//                        items.add(item);
-//                        break;
-//                    case "FFP2":
-//                        item = new FFP2(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
-//                        if (room == null)
-//                            item.setOwner(owner);
-//                        else
-//                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-//                            //item.setPlace(room);
-//                        items.add(item);
-//                        break;
-//                    case "Rag":
-//                        item = new Rag(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
-//                        if (room == null)
-//                            item.setOwner(owner);
-//                        else
-//                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-//                            //item.setPlace(room);
-//                        items.add(item);
-//                        break;
-//                    case "Transistor":
-//                        item = new Transistor(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
-//                        if (room == null)
-//                            item.setOwner(owner);
-//                        else
-//                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-//                            //item.setPlace(room);
-//                        items.add(item);
-//                        break;
-//                    default:
-//                        System.err.println("Hibás Item type:" + params[0]);
-//                }
+                switch (params[0]) {
+                    case "Sliderule":
+                        Item item = new Sliderule(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                        if (room == null)
+                            item.setOwner(owner);
+                        else {
+                            System.out.println("Nincs owner, mert le van rakva egy szobában");
+                            //item.setPlace(room);
+                            room.addItem(item);
+                        }
+                        items.add(item);
+                        break;
+                    case "Airfreshener":
+                        item = new Airfreshener(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                        if (room == null)
+                            item.setOwner(owner);
+                        else {
+                            System.out.println("Nincs owner, mert le van rakva egy szobában");
+                            //item.setPlace(room);
+                            room.addItem(item);
+                        }
+                        items.add(item);
+                        break;
+                    case "Beerglass":
+                        item = new Beerglass(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                        if (room == null)
+                            item.setOwner(owner);
+                        else {
+                            System.out.println("Nincs owner, mert le van rakva egy szobában");
+                            //item.setPlace(room);
+                            room.addItem(item);
+                        }
+                        items.add(item);
+                        break;
+                    case "Camembert":
+                        item = new Camembert(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                        if (room == null)
+                            item.setOwner(owner);
+                        else {
+                            System.out.println("Nincs owner, mert le van rakva egy szobában");
+                            //item.setPlace(room);
+                            room.addItem(item);
+                        }
+                        items.add(item);
+                        break;
+                    case "FFP2":
+                        item = new FFP2(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                        if (room == null)
+                            item.setOwner(owner);
+                        else {
+                            System.out.println("Nincs owner, mert le van rakva egy szobában");
+                            //item.setPlace(room);
+                            room.addItem(item);
+                        }
+                        items.add(item);
+                        break;
+                    case "Rag":
+                        item = new Rag(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                        if (room == null)
+                            item.setOwner(owner);
+                        else {
+                            System.out.println("Nincs owner, mert le van rakva egy szobában");
+                            //item.setPlace(room);
+                            room.addItem(item);
+                        }
+                        items.add(item);
+                        break;
+                    case "Transistor":
+                        item = new Transistor(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                        if (room == null)
+                            item.setOwner(owner);
+                        else {
+                            System.out.println("Nincs owner, mert le van rakva egy szobában");
+                            //item.setPlace(room);
+                            room.addItem(item);
+                        }
+                        items.add(item);
+                        break;
+                    default:
+                        System.err.println("Hibás Item type:" + params[0]);
+                }
                 //TODO most még üres az items lista, ha meglesz megfelelő konstruktor, és a megfelelő setPlace(), akkor csak ki kell kommentezni
             }
         );
@@ -339,8 +353,8 @@ public class TestFileLoader {
                     sectionContent = new StringBuilder();
                 } else {
                     sectionContent.append(line.trim()).append("\n");
-                    System.out.println("-------------");
-                    System.out.println("Building section: " + sectionContent);
+                    //System.out.println("-------------");
+                    //System.out.println("Building section: " + sectionContent);
                 }
             }
             // Add the last section

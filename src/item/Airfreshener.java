@@ -6,8 +6,9 @@ import src.effect.Effect;
 public class Airfreshener extends Item {
     private int durability;
 
-    public Airfreshener(Integer.parseInt(int id, int param2, int durability){
-        this.id = id;
+
+    public Airfreshener(int id, boolean param2, int durability){
+        super(id);
         this.durability=durability;
     }
     /** 
@@ -25,6 +26,7 @@ public class Airfreshener extends Item {
             owner.removeItem(this);
             return true;
         }
+        return false;
     }
 
     @Override

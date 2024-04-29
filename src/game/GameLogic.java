@@ -86,16 +86,16 @@ public class GameLogic {
 
                     switch (actionString.toLowerCase()) {
                         case "move":
-                            currentPlayer.move(Integer.parseInt(action.params[0])); //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            currentPlayer.move(Integer.parseInt(action.params[0]));
                             break;
                         case "pickupitem":
-                            currentPlayer.pickUpItem(Integer.parseInt(action.params[0]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            currentPlayer.pickUpItem(Integer.parseInt(action.params[0]));
                             break;
                         case "dropitem":
-                            currentPlayer.dropItem(Integer.parseInt(action.params[0]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            currentPlayer.dropItem(Integer.parseInt(action.params[0]));
                             break;
                         case "useitem":
-                            currentPlayer.useItem(Integer.parseInt(action.params[0]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            currentPlayer.useItem(Integer.parseInt(action.params[0]));
                             break;
                         case "skipturn":
                             currentPlayer.skipTurn();
