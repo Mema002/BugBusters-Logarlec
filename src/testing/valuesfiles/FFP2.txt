@@ -21,6 +21,6 @@ _Roomneighbours
 _Characters
 Student-0-1
 _Items
-FFP2-0-1-2-Student-0
+FFP2-0-1-2-Room-0
 _Effects
 Gassy-1

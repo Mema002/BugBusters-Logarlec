@@ -116,13 +116,19 @@ public class TestFileLoader {
                 System.out.println(Arrays.toString(params));
                 switch (params[0]) {
                     case "Student":
-                        characters.add(new Student( room, Integer.parseInt(params[1])));
+                        Student stu = new Student( room, Integer.parseInt(params[1]));
+                        characters.add(stu);
+                        room.addCharacter(stu);
                         break;
                     case "Teacher":
-                        characters.add(new Teacher( room, Integer.parseInt(params[1])));
+                        Teacher te = new Teacher( room, Integer.parseInt(params[1]));
+                        characters.add(te);
+                        room.addCharacter(te);
                         break;
                     case "Janitor":
-                        characters.add(new Janitor( room, Integer.parseInt(params[1])));
+                        Janitor ja = new Janitor( room, Integer.parseInt(params[1]));
+                        characters.add(ja);
+                        room.addCharacter(ja);
                         break;
                     default:
                         System.err.println("Hibás character type: " + params[0]);
