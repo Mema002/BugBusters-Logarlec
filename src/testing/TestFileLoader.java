@@ -266,8 +266,8 @@ public class TestFileLoader {
 //                            //item.setPlace(room);
 //                        items.add(item);
 //                        break;
-//                    case "Transistor":
-//                        item = new Transistor(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
+//                    case "Transistor.txt":
+//                        item = new Transistor.txt(Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]));
 //                        if (room == null)
 //                            item.setOwner(owner);
 //                        else
