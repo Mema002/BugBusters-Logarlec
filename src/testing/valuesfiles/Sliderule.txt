@@ -1,0 +1,16 @@
+__GameInit
+_Rooms
+0-5
+_Characters
+Student-0-0
+_Items
+Sliderule-0-1-1-Room-0
+__Actions
+pickUpItem-0
+__Endstate
+_Rooms
+0-5
+_Characters
+Student-0-0
+_Items
+Sliderule-0-1-0-Student-0

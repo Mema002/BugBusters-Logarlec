@@ -353,8 +353,8 @@ public class TestFileLoader {
                     sectionContent = new StringBuilder();
                 } else {
                     sectionContent.append(line.trim()).append("\n");
-                    //System.out.println("-------------");
-                    //System.out.println("Building section: " + sectionContent);
+                    System.out.println("-------------");
+                    System.out.println("Building section: " + sectionContent);
                 }
             }
             // Add the last section
