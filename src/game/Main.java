@@ -12,9 +12,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         TestFileLoader loader = new TestFileLoader();
-        TestCase testCaseTest = loader.load("test-value-file.txt");
+        TestCase testCaseTest = loader.load("FFP2.txt");
         System.out.println();
-        System.out.println(testCaseTest);
+        //System.out.println(testCaseTest);
+
+        Tester tester = new Tester();
+        tester.addTestCase(testCaseTest);
+        System.out.println("Running tests...");
+        tester.runTests();
 
 //        BufferedReader reader = new BufferedReader(
 //            new InputStreamReader(System.in));

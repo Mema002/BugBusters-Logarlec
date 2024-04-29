@@ -10,7 +10,7 @@ import java.util.*;
 import static src.game.SingletonLogger.logger;
 
 public class ConsoleApp {
-    private static boolean logging = true;
+    private static boolean logging = false;
     private static int tabCounter;
 
     private static StringBuilder consoleBuffer;
@@ -125,12 +125,11 @@ public class ConsoleApp {
     public static void stateLog() {
         StringBuilder stringBuilder = new StringBuilder(getLog());
         stringBuilder.insert(0, "\n\nSTART STATELOG\n");
-        stringBuilder.append("\nEND STATELOG\n");
         logger.info(stringBuilder.toString());
+        stringBuilder.append("\nEND STATELOG\n");
     }
 
     public static void resetState() {
-        logging = true;
         rooms.clear();
         consoleBuffer = new StringBuilder();
     }

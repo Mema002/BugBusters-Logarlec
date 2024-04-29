@@ -2,6 +2,7 @@ package src.testing;
 
 import src.character.Character;
 import src.character.Student;
+import src.effect.Effect;
 import src.game.ConsoleApp;
 import src.game.GameLogic;
 import src.item.*;
@@ -32,49 +33,160 @@ public class Tester {
             GameLogic.setCharacters(startingState.characters);
             GameLogic.roomManager.setRooms(startingState.rooms);
 
-            for (TestActionDTO action : testCase.actions) {
-                //Run the action
-                Character character = action.character;
-                String actionString = action.action;
-                switch (actionString.toLowerCase()) {
-                    case "move":
-                        character.move(Integer.parseInt(action.params[0])); //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
-                        break;
-                    case "pickupitem":
-                        character.pickUpItem(Integer.parseInt(action.params[1]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
-                        break;
-                    case "dropitem":
-                        character.dropItem(Integer.parseInt(action.params[2]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
-                        break;
-                    case "useitem":
-                        character.useItem(Integer.parseInt(action.params[3]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
-                        break;
-                    case "skipturn":
-                        character.skipTurn();
-                        break;
-                }
-            }
-
-            ConsoleApp.addRooms(startingState.rooms);
-            String currentStateString = ConsoleApp.getLog();
+            //Actions
+            GameLogic.runGame(testCase.actions);
 
             //End TestCase
+            ConsoleApp.addRooms(GameLogic.roomManager.getRooms());
+
+            //Expected TestCase
             State expectedState = testCase.endState;
             ConsoleApp.resetState();
-            ConsoleApp.addRooms(expectedState.rooms);
-            String expectedStateString = ConsoleApp.getLog();
 
-            if(currentStateString.equalsIgnoreCase(expectedStateString)){
-                System.out.println("Test Passed");
+            //TODO compare by id (Sort by id)
+            List<Room> currentRooms = GameLogic.roomManager.getRooms();
+            currentRooms.sort(Comparator.comparing(Room::getId));
+
+            List<Room> expectedRooms = expectedState.rooms;
+            expectedRooms.sort(Comparator.comparing(Room::getId));
+
+            //Get State log for current
+            ConsoleApp.addRooms(currentRooms);
+            String currentStateLog = ConsoleApp.getLog();
+
+            ConsoleApp.resetState();
+            ConsoleApp.turnOffLogging();
+
+            //Get State log for expected
+            ConsoleApp.addRooms(expectedRooms);
+            String expectedStateLog = ConsoleApp.getLog();
+
+
+            boolean testPassed = true;
+
+            if (currentRooms.size() != expectedRooms.size()) {
+                System.out.println("Test failed: Different number of rooms");
+                System.out.println("Expected: \n" + expectedStateLog);
+                System.out.println("Current: \n" + currentStateLog);
             } else {
-                System.out.println("Test Failed");
-                System.out.println("Expected: \n" + expectedStateString);
-                System.out.println("Actual: \n" + currentStateString);
+                for (int i = 0; i < currentRooms.size(); i++) {
+                    if (!CompareRooms(currentRooms.get(i), expectedRooms.get(i))) {
+                        System.out.println("Test failed:\n");
+                        System.out.println("Expected: \n" + expectedStateLog);
+                        System.out.println("Current: \n" + currentStateLog);
+                        testPassed = false;
+                        break;
+                    }
+                }
+
+                //If Test passed
+                if (testPassed)
+                    System.out.println("Test Passed");
             }
 
             //Reset ConsoleApp
             ConsoleApp.resetState();
         }
+    }
+
+    private boolean CompareRooms(Room room1, Room room2){
+        ConsoleApp.turnOffLogging();
+
+        //Compare Characters in Room by id
+
+        List<Character> characters1 = room1.getCharacters();
+        List<Character> characters2 = room2.getCharacters();
+
+        if (characters1.size() != characters2.size()) {
+            return false;
+        }
+
+        characters1.sort(Comparator.comparing(Character::getId));
+        characters2.sort(Comparator.comparing(Character::getId));
+
+        for (int i = 0; i < characters1.size(); i++) {
+            if (characters1.get(i).getId() != characters2.get(i).getId()) {
+                return false;
+            }
+
+            //Compare Character Items by id and durability
+
+            List<Item> characteritems1 = characters1.get(i).getInventory();
+            List<Item> characteritems2 = characters2.get(i).getInventory();
+
+            if (characteritems1.size() != characteritems2.size()) {
+                return false;
+            }
+
+            characteritems1.sort(Comparator.comparing(Item::getId));
+            characteritems2.sort(Comparator.comparing(Item::getId));
+
+            for (int k = 0; k < characteritems1.size(); k++) {
+                if (characteritems1.get(k).getId() != characteritems2.get(k).getId()) {
+                    if(characteritems1.get(k).getDurability() != characteritems2.get(k).getDurability()){
+                        return false;
+                    }
+                }
+            }
+        }
+
+        //Compare Room Items Position by id and durability
+
+        List<Item> items1 = room1.getItems();
+        List<Item> items2 = room2.getItems();
+
+        if (items1.size() != items2.size()) {
+            return false;
+        }
+
+        items1.sort(Comparator.comparing(Item::getId));
+        items2.sort(Comparator.comparing(Item::getId));
+
+        for (int i = 0; i < items1.size(); i++) {
+            if (items1.get(i).getId() != items2.get(i).getId()) {
+                if(items1.get(i).getDurability() != items2.get(i).getDurability()){
+                    return false;
+                }
+            }
+        }
+
+        //Compare Room neighbours by id
+
+        List<Room> neighbours1 = room1.getNeighbours();
+        List<Room> neighbours2 = room2.getNeighbours();
+
+        if (neighbours1.size() != neighbours2.size()) {
+            return false;
+        }
+
+        neighbours1.sort(Comparator.comparing(Room::getId));
+        neighbours2.sort(Comparator.comparing(Room::getId));
+
+        for (int i = 0; i < neighbours1.size(); i++) {
+            if (neighbours1.get(i).getId() != neighbours2.get(i).getId()) {
+                return false;
+            }
+        }
+
+        //Compare Room Effects
+
+        List<Effect> effects1 = room1.getEffects();
+        List<Effect> effects2 = room2.getEffects();
+
+        if (effects1.size() != effects2.size()) {
+            return false;
+        }
+
+        effects1.sort(Comparator.comparing(Effect::toString));
+        effects2.sort(Comparator.comparing(Effect::toString));
+
+        for (int i = 0; i < effects1.size(); i++) {
+            if (!effects1.get(i).toString().equals(effects2.get(i).toString())) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     //Logarléc teszt
