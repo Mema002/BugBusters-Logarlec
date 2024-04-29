@@ -111,7 +111,6 @@ public class ConsoleApp {
             for(Effect effect : effectList){
                 consoleBuffer.append("\t\t");
                 consoleBuffer.append(effect.toString());
-                consoleBuffer.append(effect.toString());
                 consoleBuffer.append('\n');
             }
 

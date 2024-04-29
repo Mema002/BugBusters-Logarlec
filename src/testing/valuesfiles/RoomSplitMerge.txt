@@ -1,0 +1,12 @@
+__GameInit
+_Rooms
+0-3
+_Effects
+Gassy-0
+Cursed-0
+__Endstate
+_Rooms
+0-3
+_Effects
+Gassy-0
+Cursed-0

@@ -8,7 +8,7 @@ _Characters
 Student-0-1
 Teacher-1-0
 _Items
-Rag-0-1-3-Student-0
+Rag-0-1-3-Character-0
 __Actions
 move-0
 __Endstate
@@ -21,4 +21,4 @@ _Characters
 Student-0-0
 Teacher-1-0
 _Items
-Rag-0-1-2-Student-0
+Rag-0-1-2-Character-0

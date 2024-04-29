@@ -7,11 +7,9 @@ _Roomneighbours
 _Characters
 Student-0-0
 Teacher-1-1
-_Items
-Beerglass-0-1-3-Character-0
 __Actions
 skipTurn
-move-0
+move-1
 __Endstate
 _Rooms
 0-2
@@ -19,7 +17,4 @@ _Rooms
 _Roomneighbours
 0-1
 _Characters
-Student-0-0
 Teacher-1-0
-_Items
-Beerglass-0-1-2-Character-0

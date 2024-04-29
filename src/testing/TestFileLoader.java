@@ -178,6 +178,7 @@ public class TestFileLoader {
         }
 
         System.out.println("Itemek felépítése");
+        //Barni TODO Ha nincsen item, akkor nem lesz _Items a stateData-ben, szóval kell egy ilyen ellenőrzés
         List<String> itemsByParams = Arrays.asList(stateData.get("_Items").toString().split("\n"));
         List<Item> items = new ArrayList<>();
         itemsByParams.forEach(
@@ -210,12 +211,6 @@ public class TestFileLoader {
                 }
 
 
-                //TODO meg kell csinálni mindegyik itemnek a rendes konstruktort a megfelelő paraméterekkel, amit a 8. doksiban megadott teszt fájlokban lévő paraméterekkel meghívunk.
-                // Az nem lenne megoldás, hogy a paraméterek számát módósítgatjuk tesztenként. FIX kell hogy legyen a fájlban megadott _Items paraméterek száma
-                // én ezt kaptam infónak: type-id-validity-durability-ownertype-ownerid
-                // de látom, hogy van, hogy az "owner" a szoba, ami nyilván nem lehet, mert a Roomnak csak az Object a közös ősosztály a Characterrel
-                // Szóval kell egy "helyszín" (pl: place) változó az Item-be, és ehhez setter-getter, hogy beállíthassuk.
-                // De ha már van valahol ilyen, akkor itt írjátok át. Plusz lehet érdemes lecsekkolni az egyes itemek inicializáláshoz mik kellenek...
                 switch (params[0]) {
                     case "Sliderule":
                         Item item = new Sliderule(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
