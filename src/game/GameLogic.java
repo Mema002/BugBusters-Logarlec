@@ -2,6 +2,7 @@ package src.game;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Random;
 
 import src.character.Character;
@@ -16,6 +17,7 @@ import src.item.Sliderule;
 import src.item.Transistor;
 import src.room.Room;
 import src.room.RoomManager;
+import src.testing.TestActionDTO;
 
 
 public class GameLogic {
@@ -41,10 +43,12 @@ public class GameLogic {
         isGameRunning = false;
     }
 
-    public static void runGame() {
+    public static void runGame(List<TestActionDTO> actions) {
         //Itt fut a jatek
 
         int currentPlayerIdx = 0;
+
+        ListIterator<TestActionDTO> actionIterator = actions.listIterator();
 
         while(isGameRunning) {
             //Ha halt meg jatekos
@@ -68,13 +72,45 @@ public class GameLogic {
                 characters.remove("return");
                 currentPlayerIdx = 0;
             }
-                
 
-
-            //Karakter akcio
             Character currentPlayer = characters.get(currentPlayerIdx);
+                
+            //Ha van megadott action lista
+            if(!actions.isEmpty()){
+                if(actionIterator.hasNext()){
+                    TestActionDTO action = actionIterator.next();
+                    String actionString = action.action;
 
-            //Itt fogja majd az ActionListener meghívni a fuggvenyeket
+
+                    //Action választás
+
+                    switch (actionString.toLowerCase()) {
+                        case "move":
+                            currentPlayer.move(Integer.parseInt(action.params[0])); //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            break;
+                        case "pickupitem":
+                            currentPlayer.pickUpItem(Integer.parseInt(action.params[0]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            break;
+                        case "dropitem":
+                            currentPlayer.dropItem(Integer.parseInt(action.params[0]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            break;
+                        case "useitem":
+                            currentPlayer.useItem(Integer.parseInt(action.params[0]));  //TODO megfelelő paraméterrel a tömbből, most csak mock érték van benne
+                            break;
+                        case "skipturn":
+                            currentPlayer.skipTurn();
+                            break;
+                    }
+                }
+                else{
+                    //TODO hibakezeles
+                }
+            } //Ha nincs megadott action lista
+            else {
+                //TODO az actionok végre hajtása
+            }
+
+
 
             currentPlayerIdx++;
         }

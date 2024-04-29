@@ -21,7 +21,7 @@ public class Room {
      * @param capacity
      * @param id
      */
-    public Room(int capacity, int id) {
+    public Room(int id, int capacity) {
         this.characters = new ArrayList<Character>();
         this.items = new ArrayList<Item>();
         this.effects = new ArrayList<Effect>();

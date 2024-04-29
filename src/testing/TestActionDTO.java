@@ -6,9 +6,9 @@ import java.util.Arrays;
 
 public class TestActionDTO {
 
-    Character character;
-    String action;
-    String[] params;
+    public Character character;
+    public String action;
+    public String[] params;
 
     @Override
     public String toString() {

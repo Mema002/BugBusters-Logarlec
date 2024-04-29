@@ -49,8 +49,8 @@ public class ConsoleApp {
 
     public static void addRoom(Room room){ rooms.add(room); }
 
-    public static void addRooms(List<Room> rooms){
-        rooms.addAll(rooms);
+    public static void addRooms(List<Room> paramRooms){
+        rooms.addAll(paramRooms);
     }
 
     public static String getLog() {

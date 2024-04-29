@@ -3,7 +3,6 @@ package src.item;
 import src.game.ConsoleApp;
 
 public class FFP2 extends Item {
-    private int durability;
     private boolean isFake;
 
     /**

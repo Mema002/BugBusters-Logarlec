@@ -7,6 +7,7 @@ import src.room.Room;
 
 public abstract class Item {
     private int id;
+    protected int durability;
     protected Character owner;
 
     /**
@@ -23,6 +24,11 @@ public abstract class Item {
     public int getId() {
         ConsoleApp.returnLog("return id");
         return id;
+    }
+
+    public int getDurability() {
+        ConsoleApp.returnLog("return int");
+        return durability;
     }
 
     /** 

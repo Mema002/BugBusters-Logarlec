@@ -4,7 +4,6 @@ import src.character.Teacher;
 import src.game.ConsoleApp;
 
 public class Batskin extends Item {
-    private int durability;
     private boolean isFake;
 
     /**
