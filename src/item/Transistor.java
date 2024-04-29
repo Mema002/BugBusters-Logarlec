@@ -141,6 +141,9 @@ public class Transistor extends Item {
             ConsoleApp.funcLog("this.pair(null)");
             this.pair(null);
         }
+        Room currentRoom = owner.getCurrentRoom();
+        currentRoom.addItem(this);
+        owner.removeItem(this);
         ConsoleApp.returnLog("return");
     }
 
