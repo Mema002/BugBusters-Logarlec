@@ -303,7 +303,7 @@ public class TestFileLoader {
         List<TestActionDTO> actionDTOs = new ArrayList<>();
         for (int i = 0; i < actions.size(); i++) {
             String action = actions.get(i);
-            Character character = characters.get(i);
+            Character character = characters.get(i%characters.size());
             String[] parts = action.split("-");
             TestActionDTO actionDTO = new TestActionDTO();
             actionDTO.character = character;
