@@ -179,122 +179,139 @@ public class TestFileLoader {
 
         System.out.println("Itemek felépítése");
         //Barni TODO Ha nincsen item, akkor nem lesz _Items a stateData-ben, szóval kell egy ilyen ellenőrzés
-        List<String> itemsByParams = Arrays.asList(stateData.get("_Items").toString().split("\n"));
         List<Item> items = new ArrayList<>();
-        itemsByParams.forEach(
-            (itemParams)-> {
-                String[] params = itemParams.split("-");
-                System.out.println(Arrays.toString(params));
-                Character owner = null;
-                Room room = null;
-                switch (params[4]) {
-                    case "Character":
-                        owner = characters
-                                .stream()
-                                .filter(
-                                        o -> o.getId() == Integer.parseInt(params[5])
-                                )
-                                .findFirst()
-                                .orElse(null);
-                        break;
-                    case "Room":
-                        room = rooms
-                                .stream()
-                                .filter(
-                                        r -> r.getId() == Integer.parseInt(params[5])
-                                )
-                                .findFirst()
-                                .orElse(null);
-                        break;
-                    default:
-                        System.err.println("Hibás owner type: " + params[0]);
-                }
+        if (!stateData.containsKey("_Items")) {
+            System.out.println("...Nincs Items a stateData-ben");
+        } else {
+            List<String> itemsByParams = Arrays.asList(stateData.get("_Items").toString().split("\n"));
+            itemsByParams.forEach(
+                    (itemParams)-> {
+                        String[] params = itemParams.split("-");
+                        System.out.println(Arrays.toString(params));
+                        Character owner = null;
+                        Room room = null;
+                        switch (params[4]) {
+                            case "Character":
+                                owner = characters
+                                        .stream()
+                                        .filter(
+                                                o -> o.getId() == Integer.parseInt(params[5])
+                                        )
+                                        .findFirst()
+                                        .orElse(null);
+                                break;
+                            case "Room":
+                                room = rooms
+                                        .stream()
+                                        .filter(
+                                                r -> r.getId() == Integer.parseInt(params[5])
+                                        )
+                                        .findFirst()
+                                        .orElse(null);
+                                break;
+                            default:
+                                System.err.println("Hibás owner type: " + params[0]);
+                        }
 
 
-                switch (params[0]) {
-                    case "Sliderule":
-                        Item item = new Sliderule(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                        if (room == null)
-                            item.setOwner(owner);
-                        else {
-                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-                            //item.setPlace(room);
-                            room.addItem(item);
+                        switch (params[0]) {
+                            case "Sliderule":
+                                Item item = new Sliderule(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            case "Airfreshener":
+                                item = new Airfreshener(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            case "Beerglass":
+                                item = new Beerglass(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            case "Camembert":
+                                item = new Camembert(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            case "FFP2":
+                                item = new FFP2(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            case "Rag":
+                                item = new Rag(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            case "Batskin":
+                                item = new Batskin(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            case "Transistor":
+                                item = new Transistor(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
+                                if (room == null)
+                                    item.setOwner(owner);
+                                else {
+                                    System.out.println("Nincs owner, mert le van rakva egy szobában");
+                                    //item.setPlace(room);
+                                    room.addItem(item);
+                                }
+                                items.add(item);
+                                break;
+                            default:
+                                System.err.println("Hibás Item type:" + params[0]);
                         }
-                        items.add(item);
-                        break;
-                    case "Airfreshener":
-                        item = new Airfreshener(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                        if (room == null)
-                            item.setOwner(owner);
-                        else {
-                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-                            //item.setPlace(room);
-                            room.addItem(item);
-                        }
-                        items.add(item);
-                        break;
-                    case "Beerglass":
-                        item = new Beerglass(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                        if (room == null)
-                            item.setOwner(owner);
-                        else {
-                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-                            //item.setPlace(room);
-                            room.addItem(item);
-                        }
-                        items.add(item);
-                        break;
-                    case "Camembert":
-                        item = new Camembert(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                        if (room == null)
-                            item.setOwner(owner);
-                        else {
-                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-                            //item.setPlace(room);
-                            room.addItem(item);
-                        }
-                        items.add(item);
-                        break;
-                    case "FFP2":
-                        item = new FFP2(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                        if (room == null)
-                            item.setOwner(owner);
-                        else {
-                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-                            //item.setPlace(room);
-                            room.addItem(item);
-                        }
-                        items.add(item);
-                        break;
-                    case "Rag":
-                        item = new Rag(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                        if (room == null)
-                            item.setOwner(owner);
-                        else {
-                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-                            //item.setPlace(room);
-                            room.addItem(item);
-                        }
-                        items.add(item);
-                        break;
-                    case "Transistor":
-                        item = new Transistor(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                        if (room == null)
-                            item.setOwner(owner);
-                        else {
-                            System.out.println("Nincs owner, mert le van rakva egy szobában");
-                            //item.setPlace(room);
-                            room.addItem(item);
-                        }
-                        items.add(item);
-                        break;
-                    default:
-                        System.err.println("Hibás Item type:" + params[0]);
-                }
-                //TODO most még üres az items lista, ha meglesz megfelelő konstruktor, és a megfelelő setPlace(), akkor csak ki kell kommentezni
-            }
-        );
+                        //TODO most még üres az items lista, ha meglesz megfelelő konstruktor, és a megfelelő setPlace(), akkor csak ki kell kommentezni
+                    }
+            );
+        }
+
+
 
         return new State(rooms, characters, items, effects);
     }

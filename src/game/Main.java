@@ -14,19 +14,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         List<String> testFileNames = new ArrayList<>();
-        //testFileNames.add("FFP2.txt");
-        //testFileNames.add("Camembert.txt");
-        //testFileNames.add("Airfreshener.txt");
-        //testFileNames.add("Beerglass.txt");
+        testFileNames.add("FFP2.txt");
+        testFileNames.add("Camembert.txt");
+        testFileNames.add("Airfreshener.txt");
+        testFileNames.add("Beerglass.txt");
         testFileNames.add("CursedRoom.txt");
-        //testFileNames.add("FakeSliderule.txt");
+        testFileNames.add("FakeSliderule.txt");
         //testFileNames.add("GameStart.txt");
-        //testFileNames.add("GassyRoom.txt");
-        //testFileNames.add("ItemDrop.txt");
-        //testFileNames.add("JanitorStep.txt");
+        testFileNames.add("GassyRoom.txt");
+        testFileNames.add("ItemDrop.txt");
+        testFileNames.add("JanitorStep.txt");
         //testFileNames.add("JanitorStepgassy.txt");
-        //testFileNames.add("Move.txt");
-        //testFileNames.add("Osszetett.txt");
+        testFileNames.add("Move.txt");
+        testFileNames.add("Osszetett.txt");
         //testFileNames.add("PickUpItem.txt");
         //testFileNames.add("Rag.txt");
         //testFileNames.add("RoomSplitMerge.txt");
