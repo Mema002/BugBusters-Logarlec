@@ -4,7 +4,7 @@ _Rooms
 1-1
 _Roomneighbours
 0-1
-_Character
+_Characters
 Janitor-0-0
 _Effects
 Gassy-1

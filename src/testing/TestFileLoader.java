@@ -41,7 +41,6 @@ public class TestFileLoader {
 
         BufferedReader startStageString = convertToBufferedReader(mainStages.get("__GameInit"));
         BufferedReader endStageString = convertToBufferedReader(mainStages.get("__Endstate"));
-        BufferedReader actionsString = convertToBufferedReader(mainStages.get("__Actions"));
 
         System.out.println("...Building " + filename + " testcase");
         System.out.println("...Building Start state");
@@ -52,12 +51,15 @@ public class TestFileLoader {
         LinkedHashMap<String, StringBuilder> endStateData = this.parseGameData(endStageString, "_");
         State endState = this.toState(endStateData);
 
-        System.out.println();
-        System.out.println("...Building Actions");
-        List<String> actions = actionsString.lines().toList();
-        List<TestActionDTO> actionDTOs = toActionDTOs(actions, startState.characters);
-        actionDTOs.forEach(System.out::println);
-
+        List<TestActionDTO> actionDTOs = new ArrayList<>();
+        if (mainStages.containsKey("__Actions")){
+            BufferedReader actionsString = convertToBufferedReader(mainStages.get("__Actions"));
+            System.out.println();
+            System.out.println("...Building Actions");
+            List<String> actions = actionsString.lines().toList();
+            actionDTOs = toActionDTOs(actions, startState.characters);
+            actionDTOs.forEach(System.out::println);
+        }
 
         return new TestCase(startState, endState, actionDTOs);
     }
@@ -102,40 +104,46 @@ public class TestFileLoader {
         }
 
         System.out.println("Karakterek felépítése");
-        List<String> charactersByParams = Arrays.asList(stateData.get("_Characters").toString().split("\n"));
         List<Character> characters = new ArrayList<>();
-        charactersByParams.forEach(
-            (characterParams)-> {
-                String[] params = characterParams.split("-");
-                Room room = rooms
-                        .stream()
-                        .filter(
-                            r -> r.getId() == Integer.parseInt(params[2])
-                        )
-                        .findFirst()
-                        .orElse(null);
-                System.out.println(Arrays.toString(params));
-                switch (params[0]) {
-                    case "Student":
-                        Student stu = new Student( room, Integer.parseInt(params[1]));
-                        characters.add(stu);
-                        room.addCharacter(stu);
-                        break;
-                    case "Teacher":
-                        Teacher te = new Teacher( room, Integer.parseInt(params[1]));
-                        characters.add(te);
-                        room.addCharacter(te);
-                        break;
-                    case "Janitor":
-                        Janitor ja = new Janitor( room, Integer.parseInt(params[1]));
-                        characters.add(ja);
-                        room.addCharacter(ja);
-                        break;
-                    default:
-                        System.err.println("Hibás character type: " + params[0]);
-                }
-            }
-        );
+        if (!stateData.containsKey("_Characters")) {
+            System.out.println("...Nincs Characters a stateData-ben");
+        } else {
+            System.out.println("...Vannak karakterek");
+            List<String> charactersByParams = Arrays.asList(stateData.get("_Characters").toString().split("\n"));
+            charactersByParams.forEach(
+                    (characterParams)-> {
+                        String[] params = characterParams.split("-");
+                        Room room = rooms
+                                .stream()
+                                .filter(
+                                        r -> r.getId() == Integer.parseInt(params[2])
+                                )
+                                .findFirst()
+                                .orElse(null);
+                        System.out.println(Arrays.toString(params));
+                        switch (params[0]) {
+                            case "Student":
+                                Student stu = new Student( room, Integer.parseInt(params[1]));
+                                characters.add(stu);
+                                room.addCharacter(stu);
+                                break;
+                            case "Teacher":
+                                Teacher te = new Teacher( room, Integer.parseInt(params[1]));
+                                characters.add(te);
+                                room.addCharacter(te);
+                                break;
+                            case "Janitor":
+                                Janitor ja = new Janitor( room, Integer.parseInt(params[1]));
+                                characters.add(ja);
+                                room.addCharacter(ja);
+                                break;
+                            default:
+                                System.err.println("Hibás character type: " + params[0]);
+                        }
+                    }
+            );
+        }
+
 
         System.out.println("Effektek beállítása, ha vannak szomszédok");
         List<Effect> effects = new ArrayList<>();
@@ -178,11 +186,11 @@ public class TestFileLoader {
         }
 
         System.out.println("Itemek felépítése");
-        //Barni TODO Ha nincsen item, akkor nem lesz _Items a stateData-ben, szóval kell egy ilyen ellenőrzés
         List<Item> items = new ArrayList<>();
         if (!stateData.containsKey("_Items")) {
             System.out.println("...Nincs Items a stateData-ben");
         } else {
+            System.out.println("...Vannak itemek");
             List<String> itemsByParams = Arrays.asList(stateData.get("_Items").toString().split("\n"));
             itemsByParams.forEach(
                     (itemParams)-> {
