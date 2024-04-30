@@ -36,13 +36,14 @@ public class TestFileLoader {
             return null;
         }
 
+        String testName = filename.split("\\.", 2)[0];
 
         LinkedHashMap<String, StringBuilder> mainStages = this.parseGameData(loadedFile, "__");
 
         BufferedReader startStageString = convertToBufferedReader(mainStages.get("__GameInit"));
         BufferedReader endStageString = convertToBufferedReader(mainStages.get("__Endstate"));
 
-        System.out.println("...Building " + filename + " testcase");
+        System.out.println("...Building " + testName + " testcase");
         System.out.println("...Building Start state");
         LinkedHashMap<String, StringBuilder> startStateData = this.parseGameData(startStageString, "_");
         State startState = this.toState(startStateData);
@@ -61,7 +62,7 @@ public class TestFileLoader {
             actionDTOs.forEach(System.out::println);
         }
 
-        return new TestCase(startState, endState, actionDTOs);
+        return new TestCase(testName, startState, endState, actionDTOs);
     }
 
     private State toState(LinkedHashMap<String, StringBuilder> stateData) {

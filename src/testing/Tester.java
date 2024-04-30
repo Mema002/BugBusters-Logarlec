@@ -23,6 +23,8 @@ public class Tester {
 
     public void runTests(){
         for (TestCase testCase : testCaseList){
+            System.out.println("Running test: " + testCase.name);
+
             //Turn off logging
             ConsoleApp.turnOffLogging();
 
