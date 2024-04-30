@@ -10,8 +10,8 @@ _Characters
 Student-0-0
 Teacher-1-2
 __Actions
-move-1
-move-1
+move-0
+move-0
 __Endstate
 _Rooms
 0-1

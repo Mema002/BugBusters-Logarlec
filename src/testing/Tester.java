@@ -36,6 +36,7 @@ public class Tester {
             GameLogic.roomManager.setRooms(startingState.rooms);
 
             //Actions
+            GameLogic.setCharacters(startingState.characters);
             GameLogic.runGame(testCase.actions);
 
             //End TestCase

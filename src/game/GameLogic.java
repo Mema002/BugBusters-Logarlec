@@ -46,11 +46,19 @@ public class GameLogic {
     public static void runGame(List<TestActionDTO> actions) {
         //Itt fut a jatek
 
+        startGame();
+
         int currentPlayerIdx = 0;
 
         ListIterator<TestActionDTO> actionIterator = actions.listIterator();
 
         while(isGameRunning) {
+            //Ha nincs tobb jatekos
+            if(characters.isEmpty()){
+                endGame();
+                break;
+            }
+
             //Ha halt meg jatekos
             if(!deadCharacters.isEmpty()){
                 for (Character deadCharacter : deadCharacters){
@@ -103,11 +111,13 @@ public class GameLogic {
                     }
                 }
                 else{
-                    //TODO hibakezeles
+                    endGame();
                 }
             } //Ha nincs megadott action lista
             else {
                 //TODO az actionok végre hajtása
+
+                endGame();
             }
 
 

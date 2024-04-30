@@ -9,7 +9,7 @@ Student-0-0
 _Effects
 Gassy-1
 __Actions
-move-1
+move-0
 __Endstate
 _Rooms
 0-1

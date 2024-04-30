@@ -9,7 +9,7 @@ Student-0-0
 Teacher-1-1
 __Actions
 skipTurn
-move-1
+move-0
 __Endstate
 _Rooms
 0-2

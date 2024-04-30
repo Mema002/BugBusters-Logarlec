@@ -9,8 +9,6 @@ _Roomneighbours
 0-1
 _Characters
 Student-0-0
-__ACTION
-move-0
 __Endstate
 _Rooms
 0-3
@@ -21,4 +19,4 @@ _Rooms
 _Roomneighbours
 0-1
 _Characters
-Student-0-1
+Student-0-0

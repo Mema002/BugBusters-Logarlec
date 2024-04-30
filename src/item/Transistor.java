@@ -152,7 +152,6 @@ public class Transistor extends Item {
         }
         Room currentRoom = owner.getCurrentRoom();
         currentRoom.addItem(this);
-        owner.removeItem(this);
         ConsoleApp.returnLog("return");
     }
 

@@ -226,8 +226,10 @@ public class TestFileLoader {
                         switch (params[0]) {
                             case "Sliderule":
                                 Item item = new Sliderule(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null){
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
@@ -237,8 +239,10 @@ public class TestFileLoader {
                                 break;
                             case "Airfreshener":
                                 item = new Airfreshener(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null) {
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
@@ -248,8 +252,10 @@ public class TestFileLoader {
                                 break;
                             case "Beerglass":
                                 item = new Beerglass(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null) {
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
@@ -259,8 +265,10 @@ public class TestFileLoader {
                                 break;
                             case "Camembert":
                                 item = new Camembert(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null) {
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
@@ -270,8 +278,10 @@ public class TestFileLoader {
                                 break;
                             case "FFP2":
                                 item = new FFP2(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null) {
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
@@ -281,8 +291,10 @@ public class TestFileLoader {
                                 break;
                             case "Rag":
                                 item = new Rag(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null) {
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
@@ -292,8 +304,10 @@ public class TestFileLoader {
                                 break;
                             case "Batskin":
                                 item = new Batskin(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null) {
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
@@ -303,8 +317,10 @@ public class TestFileLoader {
                                 break;
                             case "Transistor":
                                 item = new Transistor(Integer.parseInt(params[1]), (params[2]).equals("1"), Integer.parseInt(params[3]));
-                                if (room == null)
+                                if (room == null) {
                                     item.setOwner(owner);
+                                    owner.addToInventory(item);
+                                }
                                 else {
                                     System.out.println("Nincs owner, mert le van rakva egy szobában");
                                     //item.setPlace(room);
