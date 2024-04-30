@@ -4,7 +4,7 @@ _Rooms
 _Characters
 Student-0-0
 _Items
-Slideruler-0-0-1-Room-0
+Sliderule-0-0-1-Room-0
 __Actions
 pickUpItem-0
 __Endstate
@@ -13,4 +13,4 @@ _Rooms
 _Characters
 Student-0-0
 _Items
-Slideruler-0-0-1-Character-0
+Sliderule-0-0-1-Character-0
