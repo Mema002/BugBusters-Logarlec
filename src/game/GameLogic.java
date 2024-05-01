@@ -21,6 +21,7 @@ import src.testing.TestActionDTO;
 
 
 public class GameLogic {
+    private static int stepCounter;
     private static boolean isGameRunning;
     public static RoomManager roomManager;
     private static List<Character> characters;
@@ -33,6 +34,7 @@ public class GameLogic {
         characters = new ArrayList<Character>();
         deadCharacters = new ArrayList<Character>();
         isGameRunning = false;
+        stepCounter = 0;
     }
 
     public static void startGame() {
@@ -59,25 +61,9 @@ public class GameLogic {
                 break;
             }
 
-            //Ha halt meg jatekos
-            if(!deadCharacters.isEmpty()){
-                for (Character deadCharacter : deadCharacters){
-                    //A sorrend miatt fontos
-                    if(characters.indexOf(deadCharacter) < currentPlayerIdx)
-                        currentPlayerIdx -= 1;
-                    ConsoleApp.funcLog("characters.remove(deadCharacter)");
-                    characters.remove(deadCharacter);
-                    ConsoleApp.returnLog("return");
-                }
-
-                deadCharacters.clear();
-            }
-
             //Ujbol indul ha az utolso karakter is meg volt
             if(currentPlayerIdx >= characters.size()){
                 ConsoleApp.funcLog("endOfTurn();");
-                endOfTurn();
-                characters.remove("return");
                 currentPlayerIdx = 0;
             }
 
@@ -111,6 +97,7 @@ public class GameLogic {
                     }
                 }
                 else{
+
                     endGame();
                 }
             } //Ha nincs megadott action lista
@@ -120,9 +107,25 @@ public class GameLogic {
                 endGame();
             }
 
+            //Ha halt meg jatekos
+            if(!deadCharacters.isEmpty()){
+                for (Character deadCharacter : deadCharacters){
+                    //A sorrend miatt fontos
+                    if(characters.indexOf(deadCharacter) < currentPlayerIdx)
+                        currentPlayerIdx -= 1;
+                    ConsoleApp.funcLog("characters.remove(deadCharacter)");
+                    characters.remove(deadCharacter);
+                    ConsoleApp.returnLog("return");
+                }
 
+                deadCharacters.clear();
+            }
+
+            if (currentPlayerIdx == 0 && stepCounter != 0)
+                endOfTurn();
 
             currentPlayerIdx++;
+            stepCounter++;
         }
     }
 

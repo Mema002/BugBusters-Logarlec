@@ -1,7 +1,7 @@
 __GameInit
 _Rooms
-0-1
-1-1
+0-2
+1-2
 _Roomneighbours
 0-1
 _Characters

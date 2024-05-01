@@ -16,3 +16,5 @@ Student-0-0
 Teacher-1-0
 _Items
 Camembert-0-1-3-Character-0
+_Effects
+Gassy-0

@@ -9,7 +9,7 @@ Airfreshener-1-1-1-Character-0
 _Effects
 Gassy-0
 __Actions
-dropItem-1
+useItem-1
 __Endstate
 _Rooms
 0-1
