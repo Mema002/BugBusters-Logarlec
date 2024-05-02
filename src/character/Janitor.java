@@ -1,6 +1,7 @@
 package src.character;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import src.effect.Effect;
 import src.effect.Sticky;
@@ -18,15 +19,15 @@ public class Janitor extends Character {
     public void move(int targetIndex) {
         ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
+        Random random = new Random();
 
         //ez még nem kell mert 
-        /* int targetIndex;
+        //int targetIndex;
         if (options.isEmpty()) return;
         if (options.size() == 1) targetIndex = 0;
         else {
-            Random random = new Random();
-            targetIndex = random.nextInt(options.size() /*+ 1);
-        } */
+            targetIndex = random.nextInt(options.size());
+        }
 
         Room targetRoom = options.get(targetIndex);
         ConsoleApp.funcLog("targetRoom.requestChange()");
@@ -46,7 +47,9 @@ public class Janitor extends Character {
             }
 
             for (Character c : targetRoom.getCharacters()) { //kisöprés majd ide
-
+                if (c.getStunnedFor() == 0  && !targetRoom.getNeighbours().isEmpty()) {
+                    c.setRoom(targetRoom.getNeighbours().get(random.nextInt(options.size())));
+                }
             }
         }
         ConsoleApp.returnLog("return");

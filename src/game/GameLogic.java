@@ -54,15 +54,15 @@ public class GameLogic {
 
         ListIterator<TestActionDTO> actionIterator = actions.listIterator();
 
-        while(isGameRunning) {
+        while (isGameRunning) {
             //Ha nincs tobb jatekos
-            if(characters.isEmpty()){
+            if (characters.isEmpty()) {
                 endGame();
                 break;
             }
 
             //Ujbol indul ha az utolso karakter is meg volt
-            if(currentPlayerIdx >= characters.size()){
+            if (currentPlayerIdx >= characters.size()) {
                 ConsoleApp.funcLog("endOfTurn();");
                 currentPlayerIdx = 0;
             }
@@ -70,8 +70,8 @@ public class GameLogic {
             Character currentPlayer = characters.get(currentPlayerIdx);
                 
             //Ha van megadott action lista
-            if(!actions.isEmpty()){
-                if(actionIterator.hasNext()){
+            if (!actions.isEmpty()) {
+                if (actionIterator.hasNext()) {
                     TestActionDTO action = actionIterator.next();
                     String actionString = action.action;
 
@@ -108,10 +108,10 @@ public class GameLogic {
             }
 
             //Ha halt meg jatekos
-            if(!deadCharacters.isEmpty()){
+            if (!deadCharacters.isEmpty()) {
                 for (Character deadCharacter : deadCharacters){
                     //A sorrend miatt fontos
-                    if(characters.indexOf(deadCharacter) < currentPlayerIdx)
+                    if (characters.indexOf(deadCharacter) < currentPlayerIdx)
                         currentPlayerIdx -= 1;
                     ConsoleApp.funcLog("characters.remove(deadCharacter)");
                     characters.remove(deadCharacter);
