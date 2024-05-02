@@ -6,8 +6,7 @@ public class Sticky extends Effect {
 
     @Override
     public void triggerEffect(Room r) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'triggerEffect'");
+        return;
     }
 
     @Override

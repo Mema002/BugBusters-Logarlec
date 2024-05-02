@@ -5,8 +5,8 @@ _Rooms
 2-3
 _Roomneighbours
 0-1
-1-2
 0-2
+1-2
 _Characters
 Student-0-0
 Student-1-0
@@ -22,9 +22,11 @@ _Rooms
 2-3
 _Roomneighbours
 0-1
-1-2
 0-2
+1-2
 _Characters
 Student-0-1
 Student-1-1
 Janitor-2-0
+_Effects
+Sticky-0

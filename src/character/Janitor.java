@@ -1,6 +1,8 @@
 package src.character;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import src.effect.Effect;
@@ -24,12 +26,20 @@ public class Janitor extends Character {
         //ez még nem kell mert 
         //int targetIndex;
         if (options.isEmpty()) return;
-        if (options.size() == 1) targetIndex = 0;
-        else {
-            targetIndex = random.nextInt(options.size());
-        }
 
         Room targetRoom = options.get(targetIndex);
+
+        List<Character> characterToMove = new ArrayList<>();
+        for (Character character : targetRoom.getCharacters()) {
+            if (!character.getCurrentRoom().getNeighbours().isEmpty())
+                characterToMove.add(character);
+        }
+        for (Character character : characterToMove) {
+            ConsoleApp.funcLog("character.move()");
+            character.move(0);
+        }
+
+
         ConsoleApp.funcLog("targetRoom.requestChange()");
         if (targetRoom.requestChange()) {
             ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
@@ -46,11 +56,6 @@ public class Janitor extends Character {
                 e.clearGas(targetRoom);
             }
 
-            for (Character c : targetRoom.getCharacters()) { //kisöprés majd ide
-                if (c.getStunnedFor() == 0  && !targetRoom.getNeighbours().isEmpty()) {
-                    c.setRoom(targetRoom.getNeighbours().get(random.nextInt(options.size())));
-                }
-            }
         }
         ConsoleApp.returnLog("return");
     }

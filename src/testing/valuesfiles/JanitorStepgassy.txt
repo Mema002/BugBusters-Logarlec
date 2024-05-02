@@ -18,3 +18,5 @@ _Roomneighbours
 0-1
 _Characters
 Janitor-0-1
+_Effects
+Sticky-1

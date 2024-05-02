@@ -26,13 +26,9 @@ public class Main {
         testFileNames.add("GameStart.txt");
         testFileNames.add("GassyRoom.txt");
         testFileNames.add("ItemDrop.txt");
-        // TODO Janitor kiküldi a karaktereket implementálása
-        // testFileNames.add("JanitorStep.txt");
-        // TODO Stcky effekt implementálása
-        // testFileNames.add("JanitorStepgassy.txt");
+        testFileNames.add("JanitorStep.txt");
+        testFileNames.add("JanitorStepgassy.txt");
         testFileNames.add("Move.txt");
-        //TODO Szerintem töröljük ki ez az összetettet
-        // testFileNames.add("Osszetett.txt");
         testFileNames.add("PickUpItem.txt");
         testFileNames.add("Rag.txt");
         testFileNames.add("RoomSplitMerge.txt");

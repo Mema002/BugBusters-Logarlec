@@ -11,7 +11,13 @@ public abstract class Effect {
      */
     public abstract void triggerEffect(Room r);
 
-    public abstract void clearGas(Room r);
+    public void clearGas(Room r){
+        return;
+    }
+
+    public void clearSticky(Room r) {
+        return;
+    }
 
     public abstract String toString();
 }
