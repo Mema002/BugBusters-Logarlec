@@ -143,15 +143,17 @@ public class Transistor extends Item {
                     owner.setRoom(targetRoom);
                     ConsoleApp.funcLog("deActivate()");
                     deActivate();
+                    pair.pair(null);
+                    pair(null);
                 }
             }
-            ConsoleApp.funcLog("pair.pair(null)");
+            /* ConsoleApp.funcLog("pair.pair(null)");
             pair.pair(null);
             ConsoleApp.funcLog("this.pair(null)");
-            this.pair(null);
+            this.pair(null); */
         }
-        Room currentRoom = owner.getCurrentRoom();
-        currentRoom.addItem(this);
+        location=owner.getCurrentRoom();
+        owner=null;
         ConsoleApp.returnLog("return");
     }
 
