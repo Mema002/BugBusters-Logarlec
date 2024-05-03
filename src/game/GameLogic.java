@@ -8,13 +8,7 @@ import java.util.Random;
 import src.character.Character;
 import src.character.Student;
 import src.character.Teacher;
-import src.item.Batskin;
-import src.item.Beerglass;
-import src.item.Camembert;
-import src.item.FFP2;
-import src.item.Rag;
-import src.item.Sliderule;
-import src.item.Transistor;
+import src.item.*;
 import src.room.Room;
 import src.room.RoomManager;
 import src.testing.TestActionDTO;
@@ -26,6 +20,8 @@ public class GameLogic {
     public static RoomManager roomManager;
     private static List<Character> characters;
     private static List<Character> deadCharacters;
+
+    private static List<TestActionDTO> actions = new ArrayList<>();
     //A veletlen actionokhoz
     private static Random random = new Random();
 
@@ -45,12 +41,13 @@ public class GameLogic {
         isGameRunning = false;
     }
 
-    public static void runGame(List<TestActionDTO> actions) {
+    public static void runGame(boolean isRealGame) {
         //Itt fut a jatek
 
         startGame();
 
         int currentPlayerIdx = 0;
+
 
         ListIterator<TestActionDTO> actionIterator = actions.listIterator();
 
@@ -70,7 +67,8 @@ public class GameLogic {
             Character currentPlayer = characters.get(currentPlayerIdx);
                 
             //Ha van megadott action lista
-            if (!actions.isEmpty()) {
+            if (!isRealGame) {
+
                 if (actionIterator.hasNext()) {
                     TestActionDTO action = actionIterator.next();
                     String actionString = action.action;
@@ -97,14 +95,26 @@ public class GameLogic {
                     }
                 }
                 else{
-
+                    actions.clear();
                     endGame();
                 }
+
             } //Ha nincs megadott action lista
             else {
                 //TODO az actionok végre hajtása
 
-                endGame();
+                System.out.println(ConsoleApp.getLog(roomManager.getRooms()));
+                System.out.println();
+                System.out.println("Current player: " + currentPlayer + "" + currentPlayer.getId());
+                System.out.println("\tCurrent room: Room " + currentPlayer.getCurrentRoom().getId());
+                System.out.println("\t\tNeighbours: ");
+                currentPlayer.getCurrentRoom().getNeighbours().forEach(room -> System.out.println("\t\t\tRoom " + room.getId()));
+                System.out.println("\tInventory: ");
+                currentPlayer.getInventory().forEach(item -> System.out.println("\t\t" + item + " " + item.getId()));
+                System.out.println();
+                GameConsoleInterface.getAction(currentPlayer);
+                System.out.println();
+
             }
 
             //Ha halt meg jatekos
@@ -138,22 +148,22 @@ public class GameLogic {
     }
 
     public static void generateCharacters(int studentCount, int teacherCount) {
+        Random random = new Random();
+        List<Room> rooms = roomManager.getRooms();
+
         for (int i = 0; i < studentCount; i++) {
-            characters.add(new Student(null, i)); //null az most ideiglenes, lehet inkább ki kéne venni a konstruktorból
+            int rndIdx = random.nextInt(rooms.size());
+            Student newStudent = new Student(rooms.get(rndIdx), i);
+            rooms.get(rndIdx).addCharacter(newStudent);
+            characters.add(newStudent);
         }
         for (int i = 0; i < teacherCount; i++) {
-            characters.add(new Teacher(null, i /*+ studentCount*/));
+            int rndIdx = random.nextInt(rooms.size());
+            Teacher newTeacher = new Teacher(rooms.get(rndIdx), i);
+            rooms.get(rndIdx).addCharacter(newTeacher);
+            characters.add(newTeacher);
         }
 
-        ConsoleApp.funcLog("roomManager.getRooms()");
-        List<Room> rooms = roomManager.getRooms();
-        int roomCount = rooms.size();
-
-        for (int i = 0; i < characters.size(); i++) {
-            Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
-            ConsoleApp.funcLog("randomRoom.addCharacter()");
-            randomRoom.addCharacter(characters.get(i));
-        }
         ConsoleApp.returnLog("return");
     }
 
@@ -166,34 +176,57 @@ public class GameLogic {
         roomManager.getRooms().get(0).addItem(new Sliderule(false)); //1 sliderule fix
         for (int i = 0; i < count - 1; i++) {
             int type = random.nextInt(7); //milyen itemet generaljunk
+            int holderType = random.nextInt(2);
             Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
+            Character randomCharacter = characters.get(random.nextInt(characters.size())); //melyik karakterhez
             switch (type) {
                 case 0:
                     ConsoleApp.funcLog("randomRoom.addItem(new Batskin())");
-                    randomRoom.addItem(new Batskin(random.nextBoolean()));
+                    if (holderType == 1)
+                        randomRoom.addItem(new Batskin(i, true, 3));
+                    else
+                        randomCharacter.addToInventory(new Batskin(i, true, 3));
                     break;
                 case 1:
                     ConsoleApp.funcLog("randomRoom.addItem(new Beerglass())");
-                    randomRoom.addItem(new Beerglass());
+                    if (holderType == 1)
+                        randomRoom.addItem(new Beerglass(i, true, 3));
+                    else
+                        randomCharacter.addToInventory(new Beerglass(i, true, 3));
                     break;
                 case 2:
                     ConsoleApp.funcLog("randomRoom.addItem(new Camembert())");
-                    randomRoom.addItem(new Camembert());
+                    if (holderType == 1)
+                        randomRoom.addItem(new Camembert(i, true, 3));
+                    else
+                        randomCharacter.addToInventory(new Camembert(i, true, 3));
                     break;
                 case 3:
                     ConsoleApp.funcLog("randomRoom.addItem(new FFP2())");
-                    randomRoom.addItem(new FFP2(random.nextBoolean()));
+                    if (holderType == 1)
+                        randomRoom.addItem(new FFP2(i, true, 3));
+                    else
+                        randomCharacter.addToInventory(new FFP2(i, true, 3));
                     break;
                 case 4:
                     ConsoleApp.funcLog("randomRoom.addItem(new Rag())");
-                    randomRoom.addItem(new Rag());
+                    if (holderType == 1)
+                        randomRoom.addItem(new Rag(i, true, 3));
+                    else
+                        randomCharacter.addToInventory(new Rag(i, true, 3));
                     break;
                 case 5:
                     ConsoleApp.funcLog("randomRoom.addItem(new Transistor())");
-                    randomRoom.addItem(new Transistor());
+                    if (holderType == 1)
+                        randomRoom.addItem(new Transistor(i, true, 3));
+                    else
+                        randomCharacter.addToInventory(new Transistor(i, true, 3));
                     break;
                 case 6:
-                    randomRoom.addItem(new Sliderule(true));
+                    if (holderType == 1)
+                        randomRoom.addItem(new Airfreshener(i, true, 3));
+                    else
+                        randomCharacter.addToInventory(new Airfreshener(i, true, 3));
                     break;
                 default: break;
             }
@@ -238,5 +271,9 @@ public class GameLogic {
         roomManager.clearRooms();
 
 
+    }
+
+    public static void setActions(List<TestActionDTO> paramActions) {
+        actions = paramActions;
     }
 }

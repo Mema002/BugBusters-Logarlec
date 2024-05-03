@@ -67,7 +67,12 @@ public class Main {
                     break;
                 }
                 case "2": {
-                    //futtatni a játékot ide
+                    GameLogic.roomManager.generateRooms(10);
+                    GameLogic.generateCharacters(5, 2);
+                    GameLogic.generateItems(20);
+
+                    GameLogic.runGame(true);
+
                     break;
                 }
                 case "9": System.out.println("byebye"); break;

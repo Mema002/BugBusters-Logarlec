@@ -53,11 +53,12 @@ public class ConsoleApp {
         rooms.addAll(paramRooms);
     }
 
-    public static String getLog() {
+    public static String getLog(List<Room> paramRooms) {
         turnOffLogging();
+        StringBuilder consoleBuffer = new StringBuilder();
 
-        for(int i = 0; i<rooms.size(); i++){
-            Room room = rooms.get(i);
+        for(int i = 0; i<paramRooms.size(); i++){
+            Room room = paramRooms.get(i);
             consoleBuffer.append(room.toString());
             consoleBuffer.append(room.getId());
             consoleBuffer.append('\n');
@@ -116,16 +117,16 @@ public class ConsoleApp {
 
         }
 
-        turnOnLogging();
-
         return consoleBuffer.toString();
     }
 
     public static void stateLog() {
-        StringBuilder stringBuilder = new StringBuilder(getLog());
+        StringBuilder stringBuilder = new StringBuilder(getLog(rooms));
         stringBuilder.insert(0, "\n\nSTART STATELOG\n");
         logger.info(stringBuilder.toString());
         stringBuilder.append("\nEND STATELOG\n");
+
+        turnOnLogging();
     }
 
     public static void resetState() {

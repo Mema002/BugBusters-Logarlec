@@ -37,7 +37,8 @@ public class Tester {
 
             //Actions
             GameLogic.setCharacters(startingState.characters);
-            GameLogic.runGame(testCase.actions);
+            GameLogic.setActions(testCase.actions);
+            GameLogic.runGame(false);
 
             //End TestCase
             ConsoleApp.addRooms(GameLogic.roomManager.getRooms());
@@ -53,15 +54,11 @@ public class Tester {
             expectedRooms.sort(Comparator.comparing(Room::getId));
 
             //Get State log for current
-            ConsoleApp.addRooms(currentRooms);
-            String currentStateLog = ConsoleApp.getLog();
+            String currentStateLog = ConsoleApp.getLog(currentRooms);
 
-            ConsoleApp.resetState();
-            ConsoleApp.turnOffLogging();
 
             //Get State log for expected
-            ConsoleApp.addRooms(expectedRooms);
-            String expectedStateLog = ConsoleApp.getLog();
+            String expectedStateLog = ConsoleApp.getLog(expectedRooms);
 
 
             boolean testPassed = true;

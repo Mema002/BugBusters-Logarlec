@@ -3,6 +3,7 @@ package src.room;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import src.effect.Effect;
 import src.game.ConsoleApp;
@@ -23,9 +24,27 @@ public class RoomManager {
      * @param count
      */
     public void generateRooms(int count) {
+        Random random = new Random();
         for (int i = 0; i < count; i++) {
-            rooms.add(new Room(10, i));
+            rooms.add(new Room(i, random.nextInt(2 ,5)));
         }
+
+        //Neighbours
+        List<Room> shuffledRooms = new ArrayList<>(rooms);
+        int maxPairCount = (int)((count * (count-1)) * 0.4);
+
+        int pairCount = 0;
+        while (pairCount < maxPairCount){
+            Collections.shuffle(shuffledRooms);
+            Room r1 = shuffledRooms.get(0);
+            Room r2 = shuffledRooms.get(1);
+            if (!r1.getNeighbours().contains(r2)){
+                r1.addNeighbour(r2);
+                r2.addNeighbour(r1);
+                pairCount++;
+            }
+        }
+
         ConsoleApp.returnLog("return");
     }
 
