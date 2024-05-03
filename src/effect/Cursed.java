@@ -33,7 +33,7 @@ public class Cursed extends Effect {
             if (random.nextInt(2) == 0) {
                 active = true;
                 ConsoleApp.funcLog("room.getNeighbours()");
-                outNeighbours = r.getNeighbours();
+                outNeighbours = new ArrayList<>(r.getNeighbours());
                 ConsoleApp.funcLog("room.getNeighbours().clear()");
                 r.getNeighbours().clear();
                 ConsoleApp.funcLog("roomManager.getInNeighbours(Room: room)");

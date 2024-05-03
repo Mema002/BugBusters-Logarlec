@@ -245,10 +245,10 @@ public class GameLogic {
             c.endOfRound();
         }
         //1 a 3 hoz esely
-        if(1 == random.nextInt(0, 3)) {
-            ConsoleApp.funcLog("RoomManager.triggerAllEffects()");
-            roomManager.triggerAllEffects();
-        }
+        /* if(1 == random.nextInt(0, 3)) {
+            ConsoleApp.funcLog("RoomManager.triggerAllEffects()"); */
+        roomManager.triggerAllEffects();
+        //}
         ConsoleApp.returnLog("return");
     }
 

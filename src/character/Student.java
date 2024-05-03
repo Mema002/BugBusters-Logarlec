@@ -50,19 +50,21 @@ public class Student extends Character {
         ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
         //choose?
-        Room targetRoom = options.get(targetIndex);
-        ConsoleApp.funcLog("targetRoom.requestChange()");
-        if (targetRoom.requestChange()) {
-            ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
-            currentRoom.removeCharacter(this);
-            ConsoleApp.funcLog("targetRoom.addCharacter(this)");
-            targetRoom.addCharacter(this);
-            ConsoleApp.funcLog("this.setRoom(targetRoom)");
-            setRoom(targetRoom);
-            ConsoleApp.funcLog("targetRoom.getCharacters()");
-            for(Character c : targetRoom.getCharacters()){
-                ConsoleApp.funcLog("c.triggerExpelling(this)");
-                c.triggerExpelling(this);
+        if(!options.isEmpty()){
+            Room targetRoom = options.get(targetIndex);
+            ConsoleApp.funcLog("targetRoom.requestChange()");
+            if (targetRoom.requestChange()) {
+                ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
+                currentRoom.removeCharacter(this);
+                ConsoleApp.funcLog("targetRoom.addCharacter(this)");
+                targetRoom.addCharacter(this);
+                ConsoleApp.funcLog("this.setRoom(targetRoom)");
+                setRoom(targetRoom);
+                ConsoleApp.funcLog("targetRoom.getCharacters()");
+                for(Character c : targetRoom.getCharacters()){
+                    ConsoleApp.funcLog("c.triggerExpelling(this)");
+                    c.triggerExpelling(this);
+                }
             }
         }
         ConsoleApp.returnLog("return");
