@@ -15,7 +15,6 @@ import src.testing.TestActionDTO;
 
 
 public class GameLogic {
-    private static int stepCounter;
     private static boolean isGameRunning;
     public static RoomManager roomManager;
     private static List<Character> characters;
@@ -30,7 +29,6 @@ public class GameLogic {
         characters = new ArrayList<Character>();
         deadCharacters = new ArrayList<Character>();
         isGameRunning = false;
-        stepCounter = 0;
     }
 
     public static void startGame() {
@@ -58,12 +56,6 @@ public class GameLogic {
                 break;
             }
 
-            //Ujbol indul ha az utolso karakter is meg volt
-            if (currentPlayerIdx >= characters.size()) {
-                ConsoleApp.funcLog("endOfTurn();");
-                currentPlayerIdx = 0;
-            }
-
             Character currentPlayer = characters.get(currentPlayerIdx);
                 
             //Ha van megadott action lista
@@ -72,7 +64,6 @@ public class GameLogic {
                 if (actionIterator.hasNext()) {
                     TestActionDTO action = actionIterator.next();
                     String actionString = action.action;
-
 
                     //Action választás
 
@@ -97,6 +88,7 @@ public class GameLogic {
                 else{
                     actions.clear();
                     endGame();
+                    break;
                 }
 
             } //Ha nincs megadott action lista
@@ -131,11 +123,14 @@ public class GameLogic {
                 deadCharacters.clear();
             }
 
-            if (currentPlayerIdx == 0 && stepCounter != 0)
-                endOfTurn();
-
             currentPlayerIdx++;
-            stepCounter++;
+
+            //Ujbol indul ha az utolso karakter is meg volt
+            if (currentPlayerIdx >= characters.size()) {
+                ConsoleApp.funcLog("endOfTurn();");
+                endOfTurn();
+                currentPlayerIdx = 0;
+            }
         }
     }
 

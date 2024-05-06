@@ -31,7 +31,7 @@ public class RoomManager {
 
         //Neighbours
         List<Room> shuffledRooms = new ArrayList<>(rooms);
-        int maxPairCount = (int)((count * (count-1)) * 0.4);
+        int maxPairCount = (int)((count * (count-1)) * 0.2);
 
         int pairCount = 0;
         while (pairCount < maxPairCount){

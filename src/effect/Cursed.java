@@ -30,7 +30,7 @@ public class Cursed extends Effect {
     public void triggerEffect(Room r) {
         if (!active) {
             Random random = new Random(); //aktivalas nem 100%
-            if (random.nextInt(2) == 0) {
+            if (true || random.nextInt(2) == 0) {
                 active = true;
                 ConsoleApp.funcLog("room.getNeighbours()");
                 outNeighbours = new ArrayList<>(r.getNeighbours());
@@ -55,13 +55,13 @@ public class Cursed extends Effect {
             ConsoleApp.funcLog("room.getNeighbours().addAll(ArrayList<Room>: outNeighbours)");
             r.getNeighbours().addAll(outNeighbours);
             ConsoleApp.funcLog("Cursed.outNeighbours.clear()");
-            outNeighbours.clear();
+            //outNeighbours.clear();w
             for (Room room : inNeighbours) {
                 ConsoleApp.funcLog("room.getNeighbours().add(Room: room)");
-                room.getNeighbours().add(r);
+                room.addNeighbour(r);
             }
             ConsoleApp.funcLog("Cursed.inNeighbours.clear()");
-            inNeighbours.clear();
+            //inNeighbours.clear();
             ConsoleApp.returnLog("return");
         }
     }
