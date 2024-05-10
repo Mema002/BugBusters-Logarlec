@@ -3,6 +3,8 @@ package src.character;
 import java.util.ArrayList;
 
 import src.game.ConsoleApp;
+import src.gui.CharacterView;
+import src.gui.ItemView;
 import src.item.Item;
 import src.room.Room;
 
@@ -244,4 +246,6 @@ public abstract class Character {
      * Szkeletonhoz szukseges
      */
     public abstract String toString();
+    
+    public abstract CharacterView getView();
 }

@@ -3,6 +3,7 @@ package src.item;
 import src.character.Character;
 import src.character.Teacher;
 import src.game.ConsoleApp;
+import src.gui.ItemView;
 
 public class Beerglass extends Item {
     private int remainingTime;
@@ -66,5 +67,10 @@ public class Beerglass extends Item {
     @Override
     public String toString() {
         return "Beerglass";
+    }
+    
+    @Override
+    public ItemView getView() {
+        return new ItemView(this);
     }
 }

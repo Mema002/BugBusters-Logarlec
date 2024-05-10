@@ -8,6 +8,7 @@ import java.util.Random;
 import src.effect.Effect;
 import src.effect.Sticky;
 import src.game.ConsoleApp;
+import src.gui.CharacterView;
 import src.item.Item;
 import src.room.Room;
 
@@ -73,5 +74,10 @@ public class Janitor extends Character {
     @Override
     public String toString() {
         return "Janitor";
+    }
+
+    @Override
+    public CharacterView getView() {
+        return new CharacterView(this);
     }
 }

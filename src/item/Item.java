@@ -3,6 +3,7 @@ package src.item;
 import src.character.Character;
 import src.character.Teacher;
 import src.game.ConsoleApp;
+import src.gui.ItemView;
 import src.room.Room;
 
 public abstract class Item {
@@ -129,4 +130,6 @@ public abstract class Item {
     }
 
     public abstract String toString();
+
+    public abstract ItemView getView();
 }

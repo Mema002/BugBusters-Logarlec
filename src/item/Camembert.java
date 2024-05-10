@@ -1,6 +1,7 @@
 package src.item;
 
 import src.game.ConsoleApp;
+import src.gui.ItemView;
 import src.character.Character;
 import src.effect.Gassy;
 
@@ -32,5 +33,10 @@ public class Camembert extends Item {
     @Override
     public String toString() {
         return "Camembert";
+    }
+    
+    @Override
+    public ItemView getView() {
+        return new ItemView(this);
     }
 }

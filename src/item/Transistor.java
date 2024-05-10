@@ -3,6 +3,7 @@ package src.item;
 import src.room.Room;
 import src.character.Character;
 import src.game.ConsoleApp;
+import src.gui.ItemView;
 
 public class Transistor extends Item {
     private boolean isActive;
@@ -170,5 +171,10 @@ public class Transistor extends Item {
     @Override
     public String toString() {
         return "Transistor";
+    }
+    
+    @Override
+    public ItemView getView() {
+        return new ItemView(this);
     }
 }

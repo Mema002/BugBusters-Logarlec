@@ -2,6 +2,7 @@ package src.item;
 
 import src.game.ConsoleApp;
 import src.game.GameLogic;
+import src.gui.ItemView;
 import src.character.Character;
 
 public class Sliderule extends Item {
@@ -33,5 +34,10 @@ public class Sliderule extends Item {
     @Override
     public String toString() {
         return "Sliderule";
+    }
+    
+    @Override
+    public ItemView getView() {
+        return new ItemView(this);
     }
 }

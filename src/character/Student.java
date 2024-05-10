@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import src.game.ConsoleApp;
 import src.game.GameLogic;
+import src.gui.CharacterView;
 import src.item.Item;
 import src.room.Room;
 
@@ -170,5 +171,10 @@ public class Student extends Character {
     @Override
     public String toString() {
         return "Student";
+    }
+
+    @Override
+    public CharacterView getView() {
+        return new CharacterView(this);
     }
 }

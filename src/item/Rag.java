@@ -2,6 +2,7 @@ package src.item;
 
 import src.character.Teacher;
 import src.game.ConsoleApp;
+import src.gui.ItemView;
 
 public class Rag extends Item {
     private int remainingTime;
@@ -49,5 +50,10 @@ public class Rag extends Item {
     @Override
     public String toString() {
         return "Rag";
+    }
+    
+    @Override
+    public ItemView getView() {
+        return new ItemView(this);
     }
 }

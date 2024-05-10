@@ -2,6 +2,7 @@ package src.item;
 
 import src.character.Character;
 import src.effect.Effect;
+import src.gui.ItemView;
 import src.room.Room;
 
 import java.util.List;
@@ -40,6 +41,11 @@ public class Airfreshener extends Item {
     @Override
     public String toString() {
         return "Airfreshener";
+    }
+    
+    @Override
+    public ItemView getView() {
+        return new ItemView(this);
     }
     
 }

@@ -143,6 +143,10 @@ public class GameLogic {
         characters = param;
     }
 
+    public static List<Character> getCharacters() {
+        return characters;
+    }
+
     public static void changeRoomTo(Room r) {
 
     }

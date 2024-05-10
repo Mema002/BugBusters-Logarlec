@@ -1,6 +1,7 @@
 package src.item;
 
 import src.game.ConsoleApp;
+import src.gui.ItemView;
 
 public class FFP2 extends Item {
     private boolean isFake;
@@ -38,5 +39,10 @@ public class FFP2 extends Item {
     @Override
     public String toString() {
         return "FFP2";
+    }
+    
+    @Override
+    public ItemView getView() {
+        return new ItemView(this);
     }
 }
