@@ -38,11 +38,11 @@ public class Main {
 
         Student student1 = new Student(room1, 1);
         CharacterView studentView1 = new CharacterView(student1);
-        roomView1.addCharacter(studentView1);
+        roomView1.addCharacterView(studentView1);
 
         Student student2 = new Student(room1, 2);
         CharacterView studentView2 = new CharacterView(student2);
-        roomView1.addCharacter(studentView2);
+        roomView1.addCharacterView(studentView2);
 
         GUIController.rooms.add(roomView1);
         GUIController.rooms.add(roomView2);
