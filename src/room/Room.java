@@ -1,13 +1,17 @@
 package src.room;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
+import src.dto.RoomChangeDto;
+import src.dto.RoomChangeType;
 import src.effect.Effect;
 import src.game.ConsoleApp;
 import src.item.Item;
 import src.character.Character;
 
-public class Room {
+public class Room extends Observable {
     private ArrayList<Character> characters;
     private ArrayList<Item> items;
     private ArrayList<Effect> effects;
@@ -55,6 +59,8 @@ public class Room {
     public void removeCharacter(Character c) {
         ConsoleApp.returnLog("return");
         characters.remove(c);
+        setChanged();
+        notifyObservers(new RoomChangeDto(c, RoomChangeType.REMOVE));
     }
 
     /**
@@ -64,6 +70,8 @@ public class Room {
     public void addCharacter(Character c) {
         ConsoleApp.returnLog("return");
         characters.add(c);
+        setChanged();
+        notifyObservers(new RoomChangeDto(c, RoomChangeType.ADD));
     }
 
     //items get set
@@ -209,6 +217,7 @@ public class Room {
     public void clearItems() {
         items.clear();
     }
+
 
     public String toString() {
         return "Room";

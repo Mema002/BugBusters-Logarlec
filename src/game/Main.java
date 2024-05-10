@@ -1,7 +1,11 @@
 package src.game;
 
 import src.character.Student;
+import src.gui.CharacterView;
 import src.gui.GUI;
+import src.gui.GUIController;
+import src.gui.RoomView;
+import src.room.Room;
 import src.testing.TestCase;
 import src.testing.TestFileLoader;
 import src.testing.Tester;
@@ -15,12 +19,43 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int studentCount = 5;
+        /*int studentCount = 5;
         GameLogic.roomManager.generateRooms(10);
         GameLogic.generateCharacters(studentCount, 2);
         GameLogic.generateItems(20);
         
         GUI gui = new GUI(GameLogic.getCharacters(), studentCount);
+*/
+
+        Room room1 = new Room(1, 5);
+        RoomView roomView1 = new RoomView(room1);
+
+        Room room2 = new Room(2, 5);
+        RoomView roomView2 = new RoomView(room2);
+
+        room1.addNeighbour(room2);
+        room2.addNeighbour(room1);
+
+        Student student1 = new Student(room1, 1);
+        CharacterView studentView1 = new CharacterView(student1);
+        roomView1.addCharacter(studentView1);
+
+        Student student2 = new Student(room1, 2);
+        CharacterView studentView2 = new CharacterView(student2);
+        roomView1.addCharacter(studentView2);
+
+        GUIController.rooms.add(roomView1);
+        GUIController.rooms.add(roomView2);
+        GUIController.characters.add(studentView1);
+        GUIController.characters.add(studentView2);
+
+        GUIController.rooms.forEach(r -> r.print());
+        System.out.println();
+
+        student1.move(0);
+
+        GUIController.rooms.forEach(r -> r.print());
+
 
     //     List<String> testFileNames = new ArrayList<>();
     //     testFileNames.add("FFP2.txt");

@@ -1,23 +1,21 @@
 package src.gui;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
+import src.character.Character;
+import src.dto.RoomChangeDto;
+import src.dto.RoomChangeType;
+import src.item.Item;
+import src.room.Room;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import src.item.Item;
-import src.room.Room;
-import src.character.Character;
-
-public class RoomView extends JPanel {
+public class RoomView extends JPanel implements Observer {
     private Image background;
     public Room room;
     public ArrayList<ItemView> items;
@@ -59,6 +57,8 @@ public class RoomView extends JPanel {
             label.setForeground(Color.WHITE);
             add(label);
         }
+
+        room.addObserver(this);
     }
 
     private ImageIcon resizeIcon(ImageIcon icon, int width, int height) {
@@ -66,10 +66,39 @@ public class RoomView extends JPanel {
         Image resizedImage = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImage);
     }
+
+    public void addCharacter(CharacterView cv) {
+        characters.add(cv);
+    }
+
+    public void removeCharacter(CharacterView cv) {
+        characters.remove(cv);
+    }
  
     @Override //hatterkep kirajzolas
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, getWidth(), getHeight(), null); // image scaled
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg instanceof RoomChangeDto) {
+            RoomChangeDto change = (RoomChangeDto) arg;
+            if (change.type == RoomChangeType.ADD) {
+                CharacterView characterView = GUIController.characters.stream().filter(c -> c.character == change.character).findFirst().get();
+                if (characterView != null)
+                    characters.add(characterView);
+            } else if (change.type == RoomChangeType.REMOVE) {
+                CharacterView characterView = GUIController.characters.stream().filter(c -> c.character == change.character).findFirst().get();
+                if (characterView != null)
+                    characters.remove(characterView);
+            }
+        }
+    }
+
+    public void print() {
+        System.out.println("Room " + room.getId() + ":");
+        characters.forEach(c -> System.out.println(c));
     }
 }
