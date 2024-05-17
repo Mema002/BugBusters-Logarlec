@@ -1,10 +1,8 @@
 package src.game;
 
 import src.character.Student;
-import src.gui.CharacterView;
-import src.gui.GUI;
-import src.gui.GUIController;
-import src.gui.RoomView;
+import src.gui.*;
+import src.item.FFP2;
 import src.room.Room;
 import src.testing.TestCase;
 import src.testing.TestFileLoader;
@@ -44,15 +42,22 @@ public class Main {
         CharacterView studentView2 = new CharacterView(student2);
         roomView1.addCharacterView(studentView2);
 
+        FFP2 ffp2 = new FFP2(0, false, 3);
+        room2.addItem(ffp2);
+        ItemView ffp2View = new ItemView(ffp2);
+        roomView2.addItemView(ffp2View);
+
         GUIController.rooms.add(roomView1);
         GUIController.rooms.add(roomView2);
         GUIController.characters.add(studentView1);
         GUIController.characters.add(studentView2);
+        GUIController.items.add(ffp2View);
 
         GUIController.rooms.forEach(r -> r.print());
         System.out.println();
 
         student1.move(0);
+        student1.pickUpItem(0);
 
         GUIController.rooms.forEach(r -> r.print());
 

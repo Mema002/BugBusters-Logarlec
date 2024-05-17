@@ -1,15 +1,19 @@
 package src.gui;
 
+import src.item.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 public class GUIController {
     static public List<RoomView> rooms; // A szobák megjelenítéséért felelős objektumok listája
     static public List<CharacterView> characters; // A karakterek megjelenítéséért felelős objektumok listája
+    static public List<ItemView> items; // A tárgyak megjelenítéséért felelős objektumok listája
 
     // Konstruktor
     static {
         rooms = new ArrayList<>();
         characters = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
     static public void displayCharacter(Character character) {

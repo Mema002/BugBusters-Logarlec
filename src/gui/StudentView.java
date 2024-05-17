@@ -3,6 +3,7 @@ package src.gui;
 import javax.swing.*;
 import java.awt.*;
 import src.character.Character;
+import src.dto.ChangeType;
 import src.effect.Cursed;
 import src.effect.Effect;
 import src.effect.Gassy;
@@ -13,7 +14,7 @@ import src.room.Room;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentView extends JPanel {
+public class StudentView extends JPanel implements ModelObserver{
     public Character character;
     public List<ItemView> inventory;
 
@@ -116,5 +117,40 @@ public class StudentView extends JPanel {
 
     public String toString() {
         return character.toString() + character.getId();
+    }
+
+    @Override
+    public void update(Room room, ChangeType type) {
+        return;
+    }
+
+    @Override
+    public void update(Character character, ChangeType type) {
+        return;
+    }
+
+    @Override
+    public void update(Item item, ChangeType type) {
+        ItemView iv = GUIController.items.stream().filter(i -> i.item == item).findFirst().orElse(null);
+        if (iv == null)
+            return;
+        if (type == ChangeType.ADD) {
+            addItemView(iv);
+        } else if (type == ChangeType.REMOVE) {
+            removeItemView(iv);
+        }
+    }
+
+    @Override
+    public void update(Effect effect, ChangeType type) {
+        return;
+    }
+
+    private void removeItemView(ItemView iv) {
+        inventory.remove(iv);
+    }
+
+    private void addItemView(ItemView iv) {
+        inventory.add(iv);
     }
 }

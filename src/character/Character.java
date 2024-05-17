@@ -2,13 +2,15 @@ package src.character;
 
 import java.util.ArrayList;
 
+import src.dto.ChangeType;
 import src.game.ConsoleApp;
 import src.gui.CharacterView;
 import src.gui.ItemView;
+import src.gui.ObservableModel;
 import src.item.Item;
 import src.room.Room;
 
-public abstract class Character {
+public abstract class Character extends ObservableModel {
     private static int idCounter = 0;
     protected ArrayList<Item> inventory;
     protected Room currentRoom;
@@ -42,6 +44,9 @@ public abstract class Character {
     public void addToInventory(Item i) {
         ConsoleApp.returnLog("return");
         inventory.add(i);
+
+        //Notify observers
+        observers.forEach(observer -> observer.update(i, ChangeType.ADD));
     }
 
     
@@ -52,6 +57,9 @@ public abstract class Character {
     public void removeItem(Item i) {
         ConsoleApp.returnLog("return");
         inventory.remove(i);
+
+        //Notify observers
+        observers.forEach(observer -> observer.update(i, ChangeType.REMOVE));
     }
 
     
@@ -108,6 +116,9 @@ public abstract class Character {
 
         currentItem.drop();
         ConsoleApp.returnLog("return");
+
+        //Notify observers
+        observers.forEach(observer -> observer.update(currentItem, ChangeType.REMOVE));
     }
 
     /**
@@ -117,6 +128,9 @@ public abstract class Character {
         for (Item i : inventory) {
             ConsoleApp.funcLog("currentRoom.addItem(Item: i)");
             currentRoom.addItem(i);
+
+            //Notify observers
+            observers.forEach(observer -> observer.update(i, ChangeType.REMOVE));
         }
         inventory.clear();
         ConsoleApp.returnLog("return");

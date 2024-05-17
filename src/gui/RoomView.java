@@ -6,8 +6,6 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -15,17 +13,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import src.dto.RoomChangeDto;
-import src.dto.RoomChangeType;
+import src.dto.ChangeType;
+import src.effect.Effect;
 import src.item.Item;
 import src.room.Room;
 import src.character.Character;
 
-public class RoomView extends JPanel implements Observer {
+public class RoomView extends JPanel implements ModelObserver {
     private Image background;
-    public Room room;
-    public ArrayList<ItemView> items;
-    public ArrayList<CharacterView> characters;
+    private Room room;
+    private ArrayList<ItemView> items;
+    private ArrayList<CharacterView> characters;
 
     public RoomView(Room r) {
         room = r;
@@ -49,7 +47,7 @@ public class RoomView extends JPanel implements Observer {
         }
 
         for (CharacterView cv : characters) { //random bedobálva
-            ImageIcon resizedIcon = resizeIcon(cv.icon, 75, 75);
+            ImageIcon resizedIcon = resizeIcon(cv.getIcon(), 75, 75);
             JLabel label = new JLabel(resizedIcon);
             label.setText(cv.toString());
             label.setForeground(Color.WHITE);
@@ -87,11 +85,20 @@ public class RoomView extends JPanel implements Observer {
         characters.remove(cv);
     }
 
+    public void addItemView(ItemView iv) {
+        items.add(iv);
+    }
+
+    public void removeItemView(ItemView iv) {
+        items.remove(iv);
+    }
+
     public void print() {
         System.out.println("Room " + room.getId() + ":");
         for (CharacterView cv : characters) {
             System.out.println(cv.toString());
         }
+        System.out.println("Room items:");
         for (ItemView iv : items) {
             System.out.println(iv.toString());
         }
@@ -99,19 +106,36 @@ public class RoomView extends JPanel implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        if (arg instanceof RoomChangeDto) {
-            RoomChangeDto dto = (RoomChangeDto) arg;
-            CharacterView cv = GUIController.characters.stream().filter(c -> c.character == dto.character).findFirst().orElse(null);
-            if (cv == null)
-                return;
-            if (dto.type == RoomChangeType.ADD) {
-                if (dto.character != null)
-                    addCharacterView(cv);
-            } else if (dto.type == RoomChangeType.REMOVE) {
-                if (dto.character != null)
-                    removeCharacterView(cv);
-            }
+    public void update(Character character, ChangeType type) {
+        CharacterView cv = GUIController.characters.stream().filter(c -> c.getCharacter() == character).findFirst().orElse(null);
+        if (cv == null)
+            return;
+        if (type == ChangeType.ADD) {
+            addCharacterView(cv);
+        } else if (type == ChangeType.REMOVE) {
+            removeCharacterView(cv);
         }
+    }
+
+    @Override
+    public void update(Item item, ChangeType type) {
+        ItemView iv = GUIController.items.stream().filter(i -> i.item == item).findFirst().orElse(null);
+        if (iv == null)
+            return;
+        if (type == ChangeType.ADD) {
+            addItemView(iv);
+        } else if (type == ChangeType.REMOVE) {
+            removeItemView(iv);
+        }
+    }
+
+    @Override
+    public void update(Room room, ChangeType type) {
+        return;
+    }
+
+    @Override
+    public void update(Effect effect, ChangeType type) {
+        return;
     }
 }

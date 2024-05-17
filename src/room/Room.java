@@ -1,23 +1,23 @@
 package src.room;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.List;
 
-import src.dto.RoomChangeDto;
-import src.dto.RoomChangeType;
+import src.dto.CharacterChangeDto;
+import src.dto.ChangeType;
 import src.effect.Effect;
 import src.game.ConsoleApp;
+import src.gui.ModelObserver;
+import src.gui.ObservableModel;
 import src.item.Item;
 import src.character.Character;
 
-public class Room extends Observable {
+public class Room extends ObservableModel {
     private ArrayList<Character> characters;
     private ArrayList<Item> items;
     private ArrayList<Effect> effects;
     private ArrayList<Room> neighbours;
     private int capacity;
-
     private final int id;
 
     /**
@@ -32,6 +32,7 @@ public class Room extends Observable {
         this.neighbours = new ArrayList<Room>();
         this.capacity = capacity;
         this.id = id;
+        observers = new ArrayList<ModelObserver>();
     }
 
     /**
@@ -59,8 +60,9 @@ public class Room extends Observable {
     public void removeCharacter(Character c) {
         ConsoleApp.returnLog("return");
         characters.remove(c);
-        setChanged();
-        notifyObservers(new RoomChangeDto(c, RoomChangeType.REMOVE));
+
+        // Notify observers
+        observers.forEach(o -> o.update(c, ChangeType.REMOVE));
     }
 
     /**
@@ -70,8 +72,9 @@ public class Room extends Observable {
     public void addCharacter(Character c) {
         ConsoleApp.returnLog("return");
         characters.add(c);
-        setChanged();
-        notifyObservers(new RoomChangeDto(c, RoomChangeType.ADD));
+
+        // Notify observers
+        observers.forEach(o -> o.update(c, ChangeType.ADD));
     }
 
     //items get set
@@ -92,6 +95,9 @@ public class Room extends Observable {
     public void addItem(Item i) {
         ConsoleApp.returnLog("return");
         items.add(i);
+
+        // Notify observers
+        observers.forEach(o -> o.update(i, ChangeType.ADD));
     }
 
     /**
@@ -101,6 +107,9 @@ public class Room extends Observable {
     public void removeItem(Item i) {
         ConsoleApp.returnLog("return");
         items.remove(i);
+
+        // Notify observers
+        observers.forEach(o -> o.update(i, ChangeType.REMOVE));
     }
 
     //effects get set
@@ -217,7 +226,6 @@ public class Room extends Observable {
     public void clearItems() {
         items.clear();
     }
-
 
     public String toString() {
         return "Room";

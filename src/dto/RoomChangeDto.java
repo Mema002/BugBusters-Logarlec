@@ -1,13 +1,13 @@
 package src.dto;
 
-import src.character.Character;
+import src.room.Room;
 
 public class RoomChangeDto {
-    public Character character;
-    public RoomChangeType type;
+    public Room room;
+    public ChangeType type;
 
-    public RoomChangeDto(Character character, RoomChangeType type) {
-        this.character = character;
+    public RoomChangeDto(Room room, ChangeType type) {
+        this.room = room;
         this.type = type;
     }
 }

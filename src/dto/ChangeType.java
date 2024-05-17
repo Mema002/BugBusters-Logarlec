@@ -1,6 +1,6 @@
 package src.dto;
 
-public enum RoomChangeType {
+public enum ChangeType {
     ADD,
     REMOVE
 }
