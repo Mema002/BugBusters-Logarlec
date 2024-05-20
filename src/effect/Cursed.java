@@ -3,6 +3,8 @@ package src.effect;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 import src.game.ConsoleApp;
 import src.room.Room;
 import src.room.RoomManager;
@@ -74,5 +76,10 @@ public class Cursed extends Effect {
     @Override
     public void clearGas(Room r) {
         return;
+    }
+    
+    @Override
+    public ImageIcon getIcon() {
+        return new ImageIcon("images/Cursed.png");
     }
 }

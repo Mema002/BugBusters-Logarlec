@@ -1,5 +1,7 @@
 package src.effect;
 
+import javax.swing.ImageIcon;
+
 import src.character.Character;
 import src.game.ConsoleApp;
 import src.room.Room;
@@ -37,5 +39,10 @@ public class Gassy extends Effect {
     @Override
     public void clearGas(Room r) {
         r.removeEffect(this);
+    }
+
+    @Override
+    public ImageIcon getIcon() {
+        return new ImageIcon("images/Gassy.png");
     }
 }

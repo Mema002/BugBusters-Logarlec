@@ -35,6 +35,8 @@ public class StudentView extends JPanel implements ModelObserver{
 
         // Panel 1: random kép Panel in row=0, col=0
         RoomView room = new RoomView(currentRoom); //igazabol a current room roomview-ja
+        room.setPreferredSize(new Dimension(300, 300));
+        room.setMinimumSize(new Dimension(300, 300));
         gbc.gridx = 0; //a gridben hanyadik oszlop
         gbc.gridy = 0; //a gridben hanyadik sor
         gbc.fill = GridBagConstraints.BOTH;
@@ -43,25 +45,53 @@ public class StudentView extends JPanel implements ModelObserver{
         gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
         add(room, gbc);
 
-        // Panel 2: Scrollable Panel in row=0, col=1
-        JPanel listPanel1 = new JPanel(new GridLayout(0, 1));  // Using GridLayout for list of panels
+        // Panel 2: szomszédok
+        JPanel listPanel1 = new JPanel();  // Using GridLayout for list of panels
+        listPanel1.setLayout(new BoxLayout(listPanel1, BoxLayout.Y_AXIS));
         for (Room r : currentRoom.getNeighbours()) {
             JPanel smallPanel = new JPanel();
+            smallPanel.setLayout(new BoxLayout(smallPanel, BoxLayout.X_AXIS));
             smallPanel.setMaximumSize(new Dimension(1000, 75));
             smallPanel.setBackground(new Color((int)(Math.random() * 0x1000000)));
 
-            JLabel label = new JLabel(r.toString() + r.getId());
-            smallPanel.add(label);
+            JPanel infoPanel = new JPanel();
+            infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.X_AXIS));
+            infoPanel.setOpaque(false);
+            infoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            infoPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+            infoPanel.add(Box.createHorizontalGlue());
+
+            for (Effect e : r.getEffects()) {
+                JLabel effectIconLabel = new JLabel();
+                ImageIcon imageIcon = e.getIcon();
+                Image image = imageIcon.getImage();
+                Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
+                imageIcon = new ImageIcon(newimg);
+                effectIconLabel.setIcon(imageIcon);
+                effectIconLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                effectIconLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
+                infoPanel.add(effectIconLabel);
+                infoPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+
+            }
+            JLabel label = new JLabel(r.toString());
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setAlignmentY(Component.CENTER_ALIGNMENT);
+            infoPanel.add(label);
+            infoPanel.add(Box.createHorizontalGlue());
+            smallPanel.add(infoPanel);
             listPanel1.add(smallPanel);
         }
         JScrollPane scrollPane1 = new JScrollPane(listPanel1);
         scrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane1.setPreferredSize(new Dimension(200, 300));
+        scrollPane1.setMinimumSize(new Dimension(200, 300));
         gbc.gridx = 1;
         gbc.weightx = 1;  // Give more weight to scrollable panels
         gbc.insets = new Insets(10, 10, 10, 10);  // Adjust padding
         add(scrollPane1, gbc);
 
-        // Panel 3: Scrollable Panel in row=0, col=2, similar to Panel 2
+        // Panel 3: inventory
         JPanel listPanel2 = new JPanel();
         listPanel2.setLayout(new BoxLayout(listPanel2, BoxLayout.Y_AXIS));
         for (ItemView item : inventory) {
@@ -78,6 +108,8 @@ public class StudentView extends JPanel implements ModelObserver{
             listPanel2.add(smallPanel);
         }
         JScrollPane scrollPane2 = new JScrollPane(listPanel2);
+        scrollPane2.setPreferredSize(new Dimension(200, 300));
+        scrollPane2.setMinimumSize(new Dimension(200, 300));
         gbc.gridx = 2;
         gbc.insets = new Insets(10, 10, 10, 10);  // Adjust padding
         add(scrollPane2, gbc);

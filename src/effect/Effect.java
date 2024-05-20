@@ -1,5 +1,7 @@
 package src.effect;
 
+import javax.swing.ImageIcon;
+
 import src.room.Room;
 
 public abstract class Effect {
@@ -20,4 +22,6 @@ public abstract class Effect {
     }
 
     public abstract String toString();
+
+    public abstract ImageIcon getIcon();
 }

@@ -2,6 +2,9 @@ package src.game;
 
 import src.character.*;
 import src.character.Character;
+import src.effect.Cursed;
+import src.effect.Gassy;
+import src.effect.Sticky;
 import src.gui.*;
 import src.item.Beerglass;
 import src.item.FFP2;
@@ -28,7 +31,7 @@ public class Main {
         GUI gui = new GUI(GameLogic.getCharacters(), studentCount);
         */
 
-        Room room1 = new Room(1, 5);
+        Room room1 = new Room(1, 5); room1.addEffect(new Gassy()); room1.addEffect(new Cursed()); room1.addEffect(new Sticky());
         Room room2 = new Room(2, 5);
         Room room3 = new Room(3, 5);
         room1.addNeighbour(room2); room1.addNeighbour(room3);
