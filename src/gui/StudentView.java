@@ -53,6 +53,12 @@ public class StudentView extends JPanel implements ModelObserver{
         // Panel 2: szomszédok
         JPanel listPanel1 = new JPanel();  // Using GridLayout for list of panels
         listPanel1.setLayout(new BoxLayout(listPanel1, BoxLayout.Y_AXIS));
+
+        JLabel neighboursTitle = new JLabel(character.getCurrentRoom().toString() + "'s Neighbours");
+        neighboursTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        neighboursTitle.setAlignmentY(Component.CENTER_ALIGNMENT);
+        listPanel1.add(neighboursTitle);
+
         for (Room r : currentRoom.getNeighbours()) {
             JPanel smallPanel = new JPanel();
             smallPanel.setLayout(new BoxLayout(smallPanel, BoxLayout.X_AXIS));
@@ -88,7 +94,7 @@ public class StudentView extends JPanel implements ModelObserver{
             listPanel1.add(smallPanel);
 
             JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
-            separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4)); // Thin black line
+            separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4));
             listPanel1.add(separator);
         }
         JScrollPane scrollPane1 = new JScrollPane(listPanel1);
@@ -103,6 +109,12 @@ public class StudentView extends JPanel implements ModelObserver{
         // Panel 3: inventory
         JPanel listPanel2 = new JPanel();
         listPanel2.setLayout(new BoxLayout(listPanel2, BoxLayout.Y_AXIS));
+
+        JLabel inventoryTitle = new JLabel(character.toString() + character.getId() + "'s Inventory");
+        inventoryTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        inventoryTitle.setAlignmentY(Component.CENTER_ALIGNMENT);
+        listPanel2.add(inventoryTitle);
+
         for (ItemView item : inventory) {
             JPanel smallPanel = new JPanel();
             smallPanel.setMaximumSize(new Dimension(1000, 75));
@@ -121,6 +133,7 @@ public class StudentView extends JPanel implements ModelObserver{
             listPanel2.add(separator);
         }
         JScrollPane scrollPane2 = new JScrollPane(listPanel2);
+        scrollPane2.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane2.setPreferredSize(new Dimension(200, 300));
         scrollPane2.setMinimumSize(new Dimension(200, 300));
         gbc.gridx = 2;
@@ -130,18 +143,44 @@ public class StudentView extends JPanel implements ModelObserver{
         // Panel 4: szoba tulajdonságai
         JPanel RoomAttributePanel = new JPanel();
         RoomAttributePanel.setLayout(new BoxLayout(RoomAttributePanel, BoxLayout.Y_AXIS));
+        RoomAttributePanel.setPreferredSize(new Dimension(100, 95));
+        RoomAttributePanel.setMinimumSize(new Dimension(100, 95));
         
-        JLabel szobanevlabel = new JLabel("Jelenlegi szoba: " + currentRoom.toString());
+        JLabel szobanevlabel = new JLabel("Current room: " + currentRoom.toString());
+        szobanevlabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        szobanevlabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         RoomAttributePanel.add(szobanevlabel);
 
-        JLabel szobacapacitylabel = new JLabel("Kapacitás: " + currentRoom.getCapacity());
+        JLabel szobacapacitylabel = new JLabel("Capacity: " + currentRoom.getCapacity());
+        szobacapacitylabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        szobacapacitylabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         RoomAttributePanel.add(szobacapacitylabel);
 
-        StringBuilder szobaeffektekstring = new StringBuilder("Effektek: ");
-        for (Effect e : currentRoom.getEffects()) {
-            szobaeffektekstring.append(e.toString() + " ");
+        JLabel effectsLabel = new JLabel("Effects: ");
+        effectsLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        effectsLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        RoomAttributePanel.add(effectsLabel);
+
+        JPanel effectIconPanel = new JPanel();
+        effectIconPanel.setLayout(new BoxLayout(effectIconPanel, BoxLayout.X_AXIS));
+        effectIconPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        if (character.getCurrentRoom().getEffects().size() == 0) {
+            ImageIcon imageIcon = new ImageIcon("images/None.png");
+            Image image = imageIcon.getImage();
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
+            imageIcon = new ImageIcon(newimg);
+            JLabel effectLabel = new JLabel(imageIcon);
+            effectIconPanel.add(effectLabel);
         }
-        RoomAttributePanel.add(new JLabel(szobaeffektekstring.toString()));
+        for (Effect e : character.getCurrentRoom().getEffects()) {
+            ImageIcon imageIcon = e.getIcon();
+            Image image = imageIcon.getImage();
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
+            imageIcon = new ImageIcon(newimg);
+            JLabel effectLabel = new JLabel(imageIcon);
+            effectIconPanel.add(effectLabel);
+        }
+        RoomAttributePanel.add(effectIconPanel);
 
         gbc.gridx = 0;
         gbc.gridy = 1;

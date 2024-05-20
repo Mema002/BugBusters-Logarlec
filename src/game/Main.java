@@ -29,8 +29,8 @@ public class Main {
         GUI gui = new GUI(GameLogic.getCharacters(), studentCount);
 */
 
-        Room room1 = new Room(1, 5); room1.addEffect(new Cursed()); room1.addEffect(new Sticky());
-        Room room2 = new Room(2, 5); room2.addEffect(new Gassy());
+        Room room1 = new Room(1, 5); 
+        Room room2 = new Room(2, 5); room2.addEffect(new Gassy()); room2.addEffect(new Cursed());
         Room room3 = new Room(3, 5);
         room1.addNeighbour(room2); room1.addNeighbour(room3);
         room2.addNeighbour(room1);

@@ -33,7 +33,7 @@ public class RoomView extends JPanel implements ModelObserver {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         try { //hatterkep beolvasas sheesh
-            background = ImageIO.read(new File("images/background2.jpg"));
+            background = ImageIO.read(new File("images/newbackground.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
