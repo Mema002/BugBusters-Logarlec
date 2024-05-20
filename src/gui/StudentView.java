@@ -23,6 +23,7 @@ public class StudentView extends JPanel implements ModelObserver{
     public List<ItemView> inventory;
     private List<JButton> actionButtons;
 
+
     public StudentView(Character c) { //ez a jatekos viewja, minden jatekos viewja egy uj tabon
         character = c;
         inventory = new ArrayList<ItemView>();

@@ -51,6 +51,8 @@ public class Main {
 
         GUI gui = new GUI(GameLogic.getCharacters(), 2);
 
+        GameLogic.runGame(true);
+
         // Room room1 = new Room(1, 5);
         // RoomView roomView1 = new RoomView(room1);
 
