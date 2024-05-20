@@ -1,8 +1,11 @@
 package src.game;
 
-import src.character.Student;
+import src.character.*;
+import src.character.Character;
 import src.gui.*;
+import src.item.Beerglass;
 import src.item.FFP2;
+import src.item.Rag;
 import src.room.Room;
 import src.testing.TestCase;
 import src.testing.TestFileLoader;
@@ -23,43 +26,63 @@ public class Main {
         GameLogic.generateItems(20);
         
         GUI gui = new GUI(GameLogic.getCharacters(), studentCount);
-*/
+        */
 
         Room room1 = new Room(1, 5);
-        RoomView roomView1 = new RoomView(room1);
-
         Room room2 = new Room(2, 5);
-        RoomView roomView2 = new RoomView(room2);
-
-        room1.addNeighbour(room2);
+        Room room3 = new Room(3, 5);
+        room1.addNeighbour(room2); room1.addNeighbour(room3);
         room2.addNeighbour(room1);
+        GameLogic.roomManager.addRoom(room1);
+        GameLogic.roomManager.addRoom(room2);
 
-        Student student1 = new Student(room1, 1);
-        CharacterView studentView1 = new CharacterView(student1);
-        roomView1.addCharacterView(studentView1);
+        room1.addItem(new FFP2(1, false, 5));
+        room2.addItem(new Rag(2, false, 5));
 
-        Student student2 = new Student(room1, 2);
-        CharacterView studentView2 = new CharacterView(student2);
-        roomView1.addCharacterView(studentView2);
+        Student student1 = new Student(room1, 1); room1.addCharacter(student1);
+        Student student2 = new Student(room2, 2); room2.addCharacter(student2);
+        ArrayList<Character> students = new ArrayList();
+        students.add(student1); student1.addToInventory(new Beerglass(3, false, 5));
+        students.add(student2);
+        GameLogic.setCharacters(students);
+        
+        GUI gui = new GUI(GameLogic.getCharacters(), 2);
 
-        FFP2 ffp2 = new FFP2(0, false, 3);
-        room2.addItem(ffp2);
-        ItemView ffp2View = new ItemView(ffp2);
-        roomView2.addItemView(ffp2View);
+        // Room room1 = new Room(1, 5);
+        // RoomView roomView1 = new RoomView(room1);
 
-        GUIController.rooms.add(roomView1);
-        GUIController.rooms.add(roomView2);
-        GUIController.characters.add(studentView1);
-        GUIController.characters.add(studentView2);
-        GUIController.items.add(ffp2View);
+        // Room room2 = new Room(2, 5);
+        // RoomView roomView2 = new RoomView(room2);
 
-        GUIController.rooms.forEach(r -> r.print());
-        System.out.println();
+        // room1.addNeighbour(room2);
+        // room2.addNeighbour(room1);
 
-        student1.move(0);
-        student1.pickUpItem(0);
+        // Student student1 = new Student(room1, 1);
+        // CharacterView studentView1 = new CharacterView(student1);
+        // roomView1.addCharacterView(studentView1);
 
-        GUIController.rooms.forEach(r -> r.print());
+        // Student student2 = new Student(room1, 2);
+        // CharacterView studentView2 = new CharacterView(student2);
+        // roomView1.addCharacterView(studentView2);
+
+        // FFP2 ffp2 = new FFP2(0, false, 3);
+        // room2.addItem(ffp2);
+        // ItemView ffp2View = new ItemView(ffp2);
+        // roomView2.addItemView(ffp2View);
+
+        // GUIController.rooms.add(roomView1);
+        // GUIController.rooms.add(roomView2);
+        // GUIController.characters.add(studentView1);
+        // GUIController.characters.add(studentView2);
+        // GUIController.items.add(ffp2View);
+
+        // GUIController.rooms.forEach(r -> r.print());
+        // System.out.println();
+
+        // student1.move(0);
+        // student1.pickUpItem(0);
+
+        // GUIController.rooms.forEach(r -> r.print());
 
 
     //     List<String> testFileNames = new ArrayList<>();

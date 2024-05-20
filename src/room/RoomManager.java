@@ -156,6 +156,10 @@ public class RoomManager {
         ConsoleApp.returnLog("return");
     }
 
+    public void addRoom(Room r) {
+        rooms.add(r);
+    }
+
     /**
      * Kitorli a paramul kapott szobat
      * @param r

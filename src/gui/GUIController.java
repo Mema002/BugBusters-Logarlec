@@ -8,12 +8,14 @@ public class GUIController {
     static public List<RoomView> rooms; // A szobák megjelenítéséért felelős objektumok listája
     static public List<CharacterView> characters; // A karakterek megjelenítéséért felelős objektumok listája
     static public List<ItemView> items; // A tárgyak megjelenítéséért felelős objektumok listája
+    static public boolean isSet;
 
     // Konstruktor
     static {
         rooms = new ArrayList<>();
         characters = new ArrayList<>();
         items = new ArrayList<>();
+        isSet = false;
     }
 
     static public void displayCharacter(Character character) {

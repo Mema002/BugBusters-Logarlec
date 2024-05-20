@@ -228,6 +228,6 @@ public class Room extends ObservableModel {
     }
 
     public String toString() {
-        return "Room";
+        return "Room" + id;
     }
 }

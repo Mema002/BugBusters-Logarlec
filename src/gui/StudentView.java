@@ -2,6 +2,9 @@ package src.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import src.character.Character;
 import src.dto.ChangeType;
 import src.effect.Cursed;
@@ -102,10 +105,126 @@ public class StudentView extends JPanel implements ModelObserver{
 
         // Panel 5: Button Panel in row=1 spanning the last 2 columns
         JPanel buttonPanel = new JPanel(new FlowLayout());
-        for (int i = 1; i <= 5; i++) {
-            JButton button = new JButton("Button" + i);
-            buttonPanel.add(button);
-        }
+
+        JButton moveButton = new JButton("Move"); //move gomb
+        ArrayList<Room> roomOptions = character.getCurrentRoom().getNeighbours();
+        moveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (roomOptions.size() != 0) {
+                    JPopupMenu roomMenu = new JPopupMenu();
+                    for (int j = 0; j < roomOptions.size(); j++) {
+                        Room room = roomOptions.get(j);
+                        JMenuItem menuItem = new JMenuItem(room.toString());
+                        final int index = j;
+                        menuItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                character.move(index);
+                                GUIController.isSet = true;
+                                System.out.println(character.getCurrentRoom().toString());
+                            }
+                        });
+                        roomMenu.add(menuItem);
+                    }
+                    roomMenu.show(moveButton, moveButton.getWidth() / 2, moveButton.getHeight() / 2);
+                }
+            }
+        });
+        buttonPanel.add(moveButton); //movegomb add
+
+        //pick up gomb
+        JButton pickupButton = new JButton("Pick Up Item");
+        ArrayList<Item> itemOptions = character.getCurrentRoom().getItems();
+        pickupButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (itemOptions.size() != 0) {
+                    JPopupMenu itemMenu = new JPopupMenu();
+                    for (int j = 0; j < itemOptions.size(); j++) {
+                        Item item = itemOptions.get(j);
+                        JMenuItem menuItem = new JMenuItem(item.toString());
+                        final int index = j;
+                        menuItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                character.pickUpItem(index);
+                                GUIController.isSet = true;
+                            }
+                        });
+                        itemMenu.add(menuItem);
+                    }
+                    itemMenu.show(pickupButton, pickupButton.getWidth() / 2, pickupButton.getHeight() / 2);
+                }
+            }
+        });
+        buttonPanel.add(pickupButton); //pickupButton add
+
+        //drop button
+        JButton dropButton = new JButton("Drop Item");
+        ArrayList<Item> dropOptions = character.getInventory();
+        dropButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (dropOptions.size() != 0) {
+                    JPopupMenu dropMenu = new JPopupMenu();
+                    for (int j = 0; j < dropOptions.size(); j++) {
+                        Item item = dropOptions.get(j);
+                        JMenuItem menuItem = new JMenuItem(item.toString());
+                        final int index = j;
+                        menuItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                character.dropItem(index);
+                                GUIController.isSet = true;
+                            }
+                        });
+                        dropMenu.add(menuItem);
+                    }
+                    dropMenu.show(dropButton, dropButton.getWidth() / 2, dropButton.getHeight() / 2);
+                }
+            }
+        });
+        buttonPanel.add(dropButton); //drop button add
+
+        //use button
+        JButton useButton = new JButton("Use Item");
+        ArrayList<Item> useOptions = character.getInventory();
+        useButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (useOptions.size() != 0) {
+                    JPopupMenu useMenu = new JPopupMenu();
+                    for (int j = 0; j < useOptions.size(); j++) {
+                        Item item = useOptions.get(j);
+                        JMenuItem menuItem = new JMenuItem(item.toString());
+                        final int index = j;
+                        menuItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                character.useItem(index);
+                                GUIController.isSet = true;
+                            }
+                        });
+                        useMenu.add(menuItem);
+                    }
+                    useMenu.show(useButton, useButton.getWidth() / 2, useButton.getHeight() / 2);
+                }
+            }
+        });
+        buttonPanel.add(useButton); //use button add
+
+        //skip button
+        JButton skipButton = new JButton("Skip Turn");
+        skipButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GUIController.isSet = false;
+                System.out.println("Skipped turn");
+            }
+        });
+        buttonPanel.add(skipButton); //skip button add
+
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 2;  // Span across all columns
