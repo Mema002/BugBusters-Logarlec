@@ -23,6 +23,7 @@ public abstract class Character extends ObservableModel {
      * @param currentRoom
      */
     public Character(Room currentRoom) {
+        super();
         this.inventory = new ArrayList<Item>();
         this.currentRoom = currentRoom;
         this.stunnedFor = 0;

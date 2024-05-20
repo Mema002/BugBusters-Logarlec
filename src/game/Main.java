@@ -29,7 +29,7 @@ public class Main {
         GameLogic.generateItems(20);
         
         GUI gui = new GUI(GameLogic.getCharacters(), studentCount);
-        */
+*/
 
         Room room1 = new Room(1, 5); room1.addEffect(new Gassy()); room1.addEffect(new Cursed()); room1.addEffect(new Sticky());
         Room room2 = new Room(2, 5);
@@ -48,7 +48,7 @@ public class Main {
         students.add(student1); student1.addToInventory(new Beerglass(3, false, 5));
         students.add(student2);
         GameLogic.setCharacters(students);
-        
+
         GUI gui = new GUI(GameLogic.getCharacters(), 2);
 
         // Room room1 = new Room(1, 5);
@@ -79,13 +79,7 @@ public class Main {
         // GUIController.characters.add(studentView2);
         // GUIController.items.add(ffp2View);
 
-        // GUIController.rooms.forEach(r -> r.print());
-        // System.out.println();
-
-        // student1.move(0);
-        // student1.pickUpItem(0);
-
-        // GUIController.rooms.forEach(r -> r.print());
+        GUIController.getRoomViews().forEach(r -> r.print());
 
 
     //     List<String> testFileNames = new ArrayList<>();
