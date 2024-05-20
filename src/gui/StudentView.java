@@ -11,6 +11,7 @@ import src.effect.Cursed;
 import src.effect.Effect;
 import src.effect.Gassy;
 import src.effect.Sticky;
+import src.game.GameLogic;
 import src.item.Item;
 import src.room.Room;
 
@@ -20,10 +21,14 @@ import java.util.List;
 public class StudentView extends JPanel implements ModelObserver{
     public Character character;
     public List<ItemView> inventory;
+    private List<JButton> actionButtons;
+
 
     public StudentView(Character c) { //ez a jatekos viewja, minden jatekos viewja egy uj tabon
         character = c;
         inventory = new ArrayList<ItemView>();
+        actionButtons = new ArrayList<JButton>();
+
         Room currentRoom = character.getCurrentRoom();
 
         for (Item i : character.getInventory()) { //ItemView-ok lekérése character inventoryjából
@@ -161,7 +166,7 @@ public class StudentView extends JPanel implements ModelObserver{
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 character.move(index);
-                                GUIController.isSet = true;
+                                GUIController.setAction();
                                 System.out.println(character.getCurrentRoom().toString());
                             }
                         });
@@ -172,6 +177,7 @@ public class StudentView extends JPanel implements ModelObserver{
             }
         });
         buttonPanel.add(moveButton); //movegomb add
+        actionButtons.add(moveButton);
 
         //pick up gomb
         JButton pickupButton = new JButton("Pick Up Item");
@@ -189,7 +195,7 @@ public class StudentView extends JPanel implements ModelObserver{
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 character.pickUpItem(index);
-                                GUIController.isSet = true;
+                                GUIController.setAction();
                             }
                         });
                         itemMenu.add(menuItem);
@@ -199,6 +205,7 @@ public class StudentView extends JPanel implements ModelObserver{
             }
         });
         buttonPanel.add(pickupButton); //pickupButton add
+        actionButtons.add(pickupButton);
 
         //drop button
         JButton dropButton = new JButton("Drop Item");
@@ -216,7 +223,7 @@ public class StudentView extends JPanel implements ModelObserver{
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 character.dropItem(index);
-                                GUIController.isSet = true;
+                                GUIController.setAction();
                             }
                         });
                         dropMenu.add(menuItem);
@@ -226,6 +233,7 @@ public class StudentView extends JPanel implements ModelObserver{
             }
         });
         buttonPanel.add(dropButton); //drop button add
+        actionButtons.add(dropButton);
 
         //use button
         JButton useButton = new JButton("Use Item");
@@ -243,7 +251,7 @@ public class StudentView extends JPanel implements ModelObserver{
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 character.useItem(index);
-                                GUIController.isSet = true;
+                                GUIController.setAction();
                             }
                         });
                         useMenu.add(menuItem);
@@ -253,17 +261,20 @@ public class StudentView extends JPanel implements ModelObserver{
             }
         });
         buttonPanel.add(useButton); //use button add
+        actionButtons.add(useButton);
 
         //skip button
         JButton skipButton = new JButton("Skip Turn");
         skipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GUIController.isSet = false;
+                character.skipTurn();
+                GUIController.setAction();
                 System.out.println("Skipped turn");
             }
         });
         buttonPanel.add(skipButton); //skip button add
+        actionButtons.add(skipButton);
 
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -290,7 +301,7 @@ public class StudentView extends JPanel implements ModelObserver{
 
     @Override
     public void update(Item item, ChangeType type) {
-        ItemView iv = GUIController.items.stream().filter(i -> i.item == item).findFirst().orElse(null);
+        ItemView iv = GUIController.getItemViews().stream().filter(i -> i.item == item).findFirst().orElse(null);
         if (iv == null)
             return;
         if (type == ChangeType.ADD) {
@@ -303,6 +314,20 @@ public class StudentView extends JPanel implements ModelObserver{
     @Override
     public void update(Effect effect, ChangeType type) {
         return;
+    }
+
+    @Override
+    public void update() {
+        //Gombok letiltása
+        if (GameLogic.getCurrentPlayer() == character) {
+            for (JButton b : actionButtons) {
+                b.setEnabled(true);
+            }
+        } else {
+            for (JButton b : actionButtons) {
+                b.setEnabled(false);
+            }
+        }
     }
 
     private void removeItemView(ItemView iv) {

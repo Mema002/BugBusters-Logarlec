@@ -64,7 +64,7 @@ public class CharacterView implements ModelObserver{
 
     @Override
     public void update(Item item, ChangeType type) {
-        ItemView iv = GUIController.items.stream().filter(i -> i.item == item).findFirst().orElse(null);
+        ItemView iv = GUIController.getItemViews().stream().filter(i -> i.item == item).findFirst().orElse(null);
         if (iv == null)
             return;
         if (type == ChangeType.ADD) {
@@ -76,6 +76,11 @@ public class CharacterView implements ModelObserver{
 
     @Override
     public void update(Effect effect, ChangeType type) {
+        return;
+    }
+
+    @Override
+    public void update() {
         return;
     }
 }

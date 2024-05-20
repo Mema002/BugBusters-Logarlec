@@ -1,5 +1,6 @@
 package src.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ObservableModel {
@@ -11,5 +12,9 @@ public class ObservableModel {
 
     public void removeObserver(ModelObserver observer) {
         observers.remove(observer);
+    }
+
+    public ObservableModel() {
+        observers = new ArrayList<>();
     }
 }

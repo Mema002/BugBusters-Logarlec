@@ -3,7 +3,6 @@ package src.room;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.dto.CharacterChangeDto;
 import src.dto.ChangeType;
 import src.effect.Effect;
 import src.game.ConsoleApp;

@@ -1,13 +1,11 @@
 package src.game;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.ListIterator;
-import java.util.Random;
+import java.util.*;
 
 import src.character.Character;
 import src.character.Student;
 import src.character.Teacher;
+import src.gui.ModelObserver;
 import src.item.*;
 import src.room.Room;
 import src.room.RoomManager;
@@ -20,7 +18,9 @@ public class GameLogic {
     public static RoomManager roomManager;
     private static List<Character> characters;
     private static List<Character> deadCharacters;
-
+    private static boolean hasAction;
+    private static Character currentPlayer;
+    private static List<ModelObserver> observers;
     private static List<TestActionDTO> actions = new ArrayList<>();
     //A veletlen actionokhoz
     private static Random random = new Random();
@@ -29,8 +29,10 @@ public class GameLogic {
         roomManager = new RoomManager();
         characters = new ArrayList<Character>();
         deadCharacters = new ArrayList<Character>();
+        observers = new ArrayList<ModelObserver>();
         isGameRunning = false;
         stepCounter = 0;
+        hasAction = false;
     }
 
     public static void startGame() {
@@ -64,7 +66,8 @@ public class GameLogic {
                 currentPlayerIdx = 0;
             }
 
-            Character currentPlayer = characters.get(currentPlayerIdx);
+            currentPlayer = characters.get(currentPlayerIdx);
+            notifyObservers();
                 
             //Ha van megadott action lista
             if (!isRealGame) {
@@ -112,8 +115,20 @@ public class GameLogic {
                 System.out.println("\tInventory: ");
                 currentPlayer.getInventory().forEach(item -> System.out.println("\t\t" + item + " " + item.getId()));
                 System.out.println();
-                GameConsoleInterface.getAction(currentPlayer);
+                //GameConsoleInterface.getAction(currentPlayer);
                 System.out.println();
+
+                while (!hasAction) {
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                //Action happened
+
+                hasAction = false;
 
             }
 
@@ -147,8 +162,12 @@ public class GameLogic {
         return characters;
     }
 
-    public static void changeRoomTo(Room r) {
+    public static Character getCurrentPlayer() {
+        return currentPlayer;
+    }
 
+    public static void setAction() {
+        hasAction = true;
     }
 
     public static void generateCharacters(int studentCount, int teacherCount) {
@@ -279,5 +298,15 @@ public class GameLogic {
 
     public static void setActions(List<TestActionDTO> paramActions) {
         actions = paramActions;
+    }
+
+    public static void addObserver(ModelObserver observer) {
+        observers.add(observer);
+    }
+
+    private static void notifyObservers() {
+        for (ModelObserver observer : observers) {
+            observer.update();
+        }
     }
 }

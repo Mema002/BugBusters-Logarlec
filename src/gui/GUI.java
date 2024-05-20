@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import src.character.Character;
+import src.game.GameLogic;
 
 public class GUI extends JFrame {
     public TabbedPanel tabpanel;
@@ -15,7 +16,9 @@ public class GUI extends JFrame {
 
         ArrayList<StudentView> cvs = new ArrayList<>();
         for (int i = 0; i < studentCount; i++) { //csak studentcount-nyi characterviewt csinal
-            cvs.add(new StudentView(characters.get(i)));
+            StudentView sv = new StudentView(characters.get(i));
+            cvs.add(sv);
+            GameLogic.addObserver(sv);
         }
 
         tabpanel = new TabbedPanel(cvs);
