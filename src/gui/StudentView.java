@@ -52,7 +52,7 @@ public class StudentView extends JPanel implements ModelObserver{
             JPanel smallPanel = new JPanel();
             smallPanel.setLayout(new BoxLayout(smallPanel, BoxLayout.X_AXIS));
             smallPanel.setMaximumSize(new Dimension(1000, 75));
-            smallPanel.setBackground(new Color((int)(Math.random() * 0x1000000)));
+            smallPanel.setBackground(new Color(156, 156, 156));
 
             JPanel infoPanel = new JPanel();
             infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.X_AXIS));
@@ -72,7 +72,7 @@ public class StudentView extends JPanel implements ModelObserver{
                 effectIconLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
                 infoPanel.add(effectIconLabel);
                 infoPanel.add(Box.createRigidArea(new Dimension(10, 0)));
-
+                smallPanel.setBackground(new Color(186, 0, 0));
             }
             JLabel label = new JLabel(r.toString());
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -81,14 +81,18 @@ public class StudentView extends JPanel implements ModelObserver{
             infoPanel.add(Box.createHorizontalGlue());
             smallPanel.add(infoPanel);
             listPanel1.add(smallPanel);
+
+            JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
+            separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4)); // Thin black line
+            listPanel1.add(separator);
         }
         JScrollPane scrollPane1 = new JScrollPane(listPanel1);
         scrollPane1.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane1.setPreferredSize(new Dimension(200, 300));
         scrollPane1.setMinimumSize(new Dimension(200, 300));
         gbc.gridx = 1;
-        gbc.weightx = 1;  // Give more weight to scrollable panels
-        gbc.insets = new Insets(10, 10, 10, 10);  // Adjust padding
+        gbc.weightx = 1;
+        gbc.insets = new Insets(10, 10, 10, 10); //margin
         add(scrollPane1, gbc);
 
         // Panel 3: inventory
@@ -96,16 +100,20 @@ public class StudentView extends JPanel implements ModelObserver{
         listPanel2.setLayout(new BoxLayout(listPanel2, BoxLayout.Y_AXIS));
         for (ItemView item : inventory) {
             JPanel smallPanel = new JPanel();
-            smallPanel.setMaximumSize(new Dimension(1000, 75));  // Limit the max height
-            smallPanel.setBackground(new Color((int)(Math.random() * 0x1000000)));  // Random colors
+            smallPanel.setMaximumSize(new Dimension(1000, 75));
+            smallPanel.setBackground(item.getColor());
 
-            JLabel label = new JLabel(item.icon);
+            JLabel label = new JLabel(item.getIcon());
             label.setText(item.toString());
             label.setHorizontalTextPosition(JLabel.RIGHT);
             label.setVerticalTextPosition(JLabel.CENTER);
             smallPanel.add(label);
 
             listPanel2.add(smallPanel);
+
+            JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
+            separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4)); // Thin black line
+            listPanel2.add(separator);
         }
         JScrollPane scrollPane2 = new JScrollPane(listPanel2);
         scrollPane2.setPreferredSize(new Dimension(200, 300));
@@ -118,7 +126,7 @@ public class StudentView extends JPanel implements ModelObserver{
         JPanel RoomAttributePanel = new JPanel();
         RoomAttributePanel.setLayout(new BoxLayout(RoomAttributePanel, BoxLayout.Y_AXIS));
         
-        JLabel szobanevlabel = new JLabel("Jelenlegi szoba: " + currentRoom.toString() + currentRoom.getId());
+        JLabel szobanevlabel = new JLabel("Jelenlegi szoba: " + currentRoom.toString());
         RoomAttributePanel.add(szobanevlabel);
 
         JLabel szobacapacitylabel = new JLabel("Kapacitás: " + currentRoom.getCapacity());

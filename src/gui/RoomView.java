@@ -55,7 +55,7 @@ public class RoomView extends JPanel implements ModelObserver {
         }
 
         for (ItemView iv : items) { //random bedobálva
-            ImageIcon resizedIcon = resizeIcon(iv.icon, 75, 75);
+            ImageIcon resizedIcon = resizeIcon(iv.getIcon(), 75, 75);
             JLabel label = new JLabel(resizedIcon);
             label.setText(iv.toString());
             label.setForeground(Color.WHITE);

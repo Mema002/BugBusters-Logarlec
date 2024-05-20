@@ -6,9 +6,7 @@ import src.effect.Cursed;
 import src.effect.Gassy;
 import src.effect.Sticky;
 import src.gui.*;
-import src.item.Beerglass;
-import src.item.FFP2;
-import src.item.Rag;
+import src.item.*;
 import src.room.Room;
 import src.testing.TestCase;
 import src.testing.TestFileLoader;
@@ -31,8 +29,8 @@ public class Main {
         GUI gui = new GUI(GameLogic.getCharacters(), studentCount);
         */
 
-        Room room1 = new Room(1, 5); room1.addEffect(new Gassy()); room1.addEffect(new Cursed()); room1.addEffect(new Sticky());
-        Room room2 = new Room(2, 5);
+        Room room1 = new Room(1, 5); room1.addEffect(new Cursed()); room1.addEffect(new Sticky());
+        Room room2 = new Room(2, 5); room2.addEffect(new Gassy());
         Room room3 = new Room(3, 5);
         room1.addNeighbour(room2); room1.addNeighbour(room3);
         room2.addNeighbour(room1);
@@ -45,7 +43,15 @@ public class Main {
         Student student1 = new Student(room1, 1); room1.addCharacter(student1);
         Student student2 = new Student(room2, 2); room2.addCharacter(student2);
         ArrayList<Character> students = new ArrayList();
-        students.add(student1); student1.addToInventory(new Beerglass(3, false, 5));
+        students.add(student1);
+        student1.addToInventory(new Airfreshener(3, false, 5));
+        student1.addToInventory(new Batskin(3, false, 5));
+        student1.addToInventory(new Beerglass(3, false, 5));
+        student1.addToInventory(new Camembert(3, false, 5));
+        student1.addToInventory(new FFP2(3, false, 5));
+        student1.addToInventory(new Rag(3, false, 5));
+        student1.addToInventory(new Sliderule(3, false, 5));
+        student1.addToInventory(new Transistor(3, false, 5));
         students.add(student2);
         GameLogic.setCharacters(students);
         
