@@ -1,6 +1,7 @@
 package src.gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -8,10 +9,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 import src.dto.ChangeType;
 import src.effect.Effect;
@@ -33,7 +37,7 @@ public class RoomView extends JPanel implements ModelObserver {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         try { //hatterkep beolvasas sheesh
-            background = ImageIO.read(new File("images/newbackground.jpg"));
+            background = ImageIO.read(new File("images/background2.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,16 +54,20 @@ public class RoomView extends JPanel implements ModelObserver {
             ImageIcon resizedIcon = resizeIcon(cv.getIcon(), 75, 75);
             JLabel label = new JLabel(resizedIcon);
             label.setText(cv.toString());
-            label.setForeground(Color.WHITE);
+            label.setOpaque(true);
+            label.setBackground(new Color(255, 255, 255, 100));
             add(label);
+            add(Box.createRigidArea(new Dimension(0, 3)));
         }
 
         for (ItemView iv : items) { //random bedobálva
             ImageIcon resizedIcon = resizeIcon(iv.getIcon(), 75, 75);
             JLabel label = new JLabel(resizedIcon);
             label.setText(iv.toString());
-            label.setForeground(Color.WHITE);
+            label.setOpaque(true);
+            label.setBackground(new Color(255, 255, 255, 100));
             add(label);
+            add(Box.createRigidArea(new Dimension(0, 3)));
         }
 
         room.addObserver(this);

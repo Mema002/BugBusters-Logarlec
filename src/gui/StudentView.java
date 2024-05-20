@@ -129,7 +129,7 @@ public class StudentView extends JPanel implements ModelObserver{
             listPanel2.add(smallPanel);
 
             JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
-            separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4)); // Thin black line
+            separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4));
             listPanel2.add(separator);
         }
         JScrollPane scrollPane2 = new JScrollPane(listPanel2);
