@@ -1,6 +1,5 @@
 package src.item;
 
-import src.game.ConsoleApp;
 import src.gui.ItemView;
 import src.character.Character;
 import src.effect.Gassy;
@@ -24,9 +23,12 @@ public class Camembert extends Item {
 
     @Override
     public boolean useItem(Character c) {
-        ConsoleApp.funcLog("owner.getCurrentRoom().addEffect(new Gassy())");
+        if (isFake) {
+            System.out.println(c.toString() + "'s Camembert was fake!");
+            c.removeItem(this);
+            return false;
+        }
         owner.getCurrentRoom().addEffect(new Gassy());
-        ConsoleApp.returnLog("return true");
         c.removeItem(this);
         return true;
     }

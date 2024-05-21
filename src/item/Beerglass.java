@@ -7,6 +7,7 @@ import src.gui.ItemView;
 
 public class Beerglass extends Item {
     private int remainingTime;
+    private boolean isFake;
 
     /**
      * Beerglass konstruktor
@@ -14,6 +15,7 @@ public class Beerglass extends Item {
     public Beerglass(int id, boolean isFake, int remainingTime) {
         super();
         this.remainingTime = remainingTime;
+        this.isFake = isFake;
     }
     public Beerglass() {
         super();
@@ -56,6 +58,11 @@ public class Beerglass extends Item {
      */
     @Override
     public boolean checkDefense(Teacher attacker) {
+        if (isFake) {
+            System.out.println(owner.toString() + "'s Beerglass was fake!");
+            owner.removeItem(this);
+            return false;
+        }
         if (remainingTime > 0) {
             ConsoleApp.returnLog("return true");
             return true;

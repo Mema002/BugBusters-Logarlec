@@ -6,12 +6,12 @@ import src.gui.ItemView;
 
 public class Batskin extends Item {
     private int durability;
-    private boolean isValid;
+    private boolean isFake;
 
-     public Batskin(int id, boolean isValid, int durability){
+     public Batskin(int id, boolean isFake, int durability){
          super(id);
          this.durability = durability;
-         this.isValid = isValid;
+         this.isFake = isFake;
     }
     /**
      * Batskin konstruktor
@@ -19,7 +19,7 @@ public class Batskin extends Item {
     public Batskin(boolean isValid) {
         super();
         this.durability = 3;
-        this.isValid = isValid;
+        this.isFake = isValid;
     }
 
     /** 
@@ -29,18 +29,21 @@ public class Batskin extends Item {
      */
     @Override
     public boolean checkDefense(Teacher attacker) {
+        if (isFake) {
+            System.out.println(owner.toString() + "'s Batskin was fake!");
+            owner.removeItem(this);
+            return false;
+        }
         if (durability > 0) {
             durability--;
-            ConsoleApp.returnLog("return !isValid");
-            return isValid;
+            return true;
         }
-        ConsoleApp.returnLog("return false");
         return false;
     }
 
     @Override
     public String toString() {
-        return "BatSkin";
+        return "Batskin";
     }
     
     @Override

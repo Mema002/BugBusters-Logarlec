@@ -27,10 +27,14 @@ public class FFP2 extends Item {
      */
     @Override
     public boolean defendStun() {
+        if (isFake) {
+            System.out.println(owner.toString() + "'s FFP2 Mask was fake!");
+            owner.removeItem(this);
+            return false;
+        }
         if (durability > 0) {
             durability--;
-            ConsoleApp.returnLog("return !isFake");
-            return !isFake;
+            return true;
         }
         ConsoleApp.returnLog("return false");
         return false;

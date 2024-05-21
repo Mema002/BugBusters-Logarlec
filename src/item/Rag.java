@@ -36,7 +36,12 @@ public class Rag extends Item {
      * @return boolean
      */
     @Override
-    public boolean checkDefense(Teacher attacker){
+    public boolean checkDefense(Teacher attacker) {
+        if (isFake) {
+            System.out.println(owner.toString() + "'s Rag was fake!");
+            owner.removeItem(this);
+            return false;
+        }
         if (remainingTime > 0) {
             ConsoleApp.funcLog("attacker.beStunnedFor(1)");
             attacker.beStunnedFor(1);

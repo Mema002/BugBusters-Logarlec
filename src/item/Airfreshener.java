@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Airfreshener extends Item {
     private int durability;
-
+    private boolean isFake;
 
     public Airfreshener(int id, boolean param2, int durability){
         super(id);
@@ -22,10 +22,13 @@ public class Airfreshener extends Item {
      */
     @Override
     public boolean useItem(Character c) {
-        if(durability > 0){
+        if (isFake) {
+            System.out.println(c.toString() + "'s Airfreshener was fake!");
+            c.removeItem(this);
+            return false;
+        }
+        if (durability > 0){
             durability--;
-            //for (Effect e : c.getCurrentRoom().getEffects())
-            //    e.clearGas(c.getCurrentRoom());
 
             List<Effect> GassyEffects = c.getCurrentRoom().getEffects().stream().filter(e -> e.toString().equals("Gassy")).toList();
             for (Effect e : GassyEffects)

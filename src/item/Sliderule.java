@@ -26,6 +26,10 @@ public class Sliderule extends Item {
     @Override
     public void initItem(Character c) {
         owner = c;
+        if (isFake) {
+            System.out.println(owner.toString() + "'s Sliderule was fake!");
+            owner.removeItem(this);
+        }
         ConsoleApp.returnLog("return");
         if (!isFake) {
             GameLogic.endGame();
