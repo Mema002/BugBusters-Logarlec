@@ -617,7 +617,7 @@ public class Tester {
         GameLogic.generateCharacters(1, 1);
         
         ConsoleApp.funcLog("GameLogic.generateItems(5)");
-        GameLogic.generateItems(5);
+        GameLogic.generateItems(5, 2);
         
         ConsoleApp.funcLog("roomManager.getRooms()");
         for (Room r : GameLogic.roomManager.getRooms()) {

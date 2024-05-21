@@ -22,10 +22,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         int studentCount = GUIController.selectPlayerNumber();
-        GameLogic.roomManager.generateRooms(10);
-        GameLogic.generateCharacters(studentCount, studentCount / 2);
-        GameLogic.generateItems(20);
-        
+        //GameLogic.roomManager.generateRooms(10);
+        //GameLogic.generateCharacters(studentCount, studentCount / 2);
+        //GameLogic.generateItems(20, studentCount);
+
+        GameLogic.generateGame(studentCount);
+
         GUI gui = new GUI(GameLogic.getCharacters(), studentCount);
 
         // Room room1 = new Room(1, 5); 

@@ -196,6 +196,12 @@ public class GameLogic {
         hasAction = true;
     }
 
+    public static void generateGame(int playerCount) {
+        GameLogic.roomManager.generateRooms(playerCount*4);
+        GameLogic.generateCharacters(playerCount, playerCount / 2);
+        GameLogic.generateItems(playerCount*3, playerCount);
+    }
+
     public static void generateCharacters(int studentCount, int teacherCount) {
         playerCount = studentCount;
         Random random = new Random();
@@ -217,15 +223,14 @@ public class GameLogic {
         ConsoleApp.returnLog("return");
     }
 
-    public static void generateItems(int count) {
+    public static void generateItems(int count, int playerCount) {
         ConsoleApp.funcLog("roomManager.getRooms()");
         List<Room> rooms = roomManager.getRooms();
         int roomCount = rooms.size();
         ConsoleApp.funcLog("roomManager.getRooms()");
         ConsoleApp.funcLog("room.addItem()");
-        roomManager.getRooms().get(0).addItem(new Sliderule(false)); //1 sliderule fix
         for (int i = 0; i < count - 1; i++) {
-            int type = random.nextInt(8); //milyen itemet generaljunk
+            int type = random.nextInt(6); //milyen itemet generaljunk
             int holderType = random.nextInt(2);
             Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
             Character randomCharacter = characters.get(random.nextInt(characters.size())); //melyik karakterhez
@@ -233,58 +238,35 @@ public class GameLogic {
             switch (type) {
                 case 0:
                     ConsoleApp.funcLog("randomRoom.addItem(new Batskin())");
-                    if (holderType == 1)
-                        randomRoom.addItem(new Batskin(i, isFake, 3));
-                    else
-                        randomCharacter.addToInventory(new Batskin(i, isFake, 3));
-                    break;
+                    randomRoom.addItem(new Batskin(i, isFake, 3));
                 case 1:
                     ConsoleApp.funcLog("randomRoom.addItem(new Beerglass())");
-                    if (holderType == 1)
-                        randomRoom.addItem(new Beerglass(i, isFake, 3));
-                    else
-                        randomCharacter.addToInventory(new Beerglass(i, isFake, 3));
-                    break;
+                    randomRoom.addItem(new Beerglass(i, isFake, 3));
                 case 2:
                     ConsoleApp.funcLog("randomRoom.addItem(new Camembert())");
-                    if (holderType == 1)
-                        randomRoom.addItem(new Camembert(i, isFake, 3));
-                    else
-                        randomCharacter.addToInventory(new Camembert(i, isFake, 3));
-                    break;
+                    randomRoom.addItem(new Camembert(i, isFake, 3));
                 case 3:
                     ConsoleApp.funcLog("randomRoom.addItem(new FFP2())");
-                    if (holderType == 1)
-                        randomRoom.addItem(new FFP2(i, isFake, 3));
-                    else
-                        randomCharacter.addToInventory(new FFP2(i, isFake, 3));
-                    break;
+                    randomRoom.addItem(new FFP2(i, isFake, 3));
                 case 4:
                     ConsoleApp.funcLog("randomRoom.addItem(new Rag())");
-                    if (holderType == 1)
-                        randomRoom.addItem(new Rag(i, isFake, 3));
-                    else
-                        randomCharacter.addToInventory(new Rag(i, isFake, 3));
-                    break;
+                    randomRoom.addItem(new Rag(i, isFake, 3));
                 case 5:
                     ConsoleApp.funcLog("randomRoom.addItem(new Transistor())");
-                    if (holderType == 1)
-                        randomRoom.addItem(new Transistor(i, false, 3));
-                    else
-                        randomCharacter.addToInventory(new Transistor(i, false, 3));
-                    break;
+                    randomRoom.addItem(new Transistor(i, false, 3));
                 case 6:
-                    if (holderType == 1)
-                        randomRoom.addItem(new Airfreshener(i, isFake, 3));
-                    else
-                        randomCharacter.addToInventory(new Airfreshener(i, isFake, 3));
-                    break;
-                case 7: //hamis sliderule csak szobaba kerul
-                    randomRoom.addItem(new Sliderule(true));
-                    break;
+                    randomRoom.addItem(new Airfreshener(i, isFake, 3));
                 default: break;
             }
         }
+        // Fake Sliderule
+        for (int i = 0; i < playerCount*2; i++) {
+            Room randomRoom = rooms.get(random.nextInt(roomCount));
+            randomRoom.addItem(new Sliderule(count+i, true, 1));
+        }
+        // Real Sliderule
+        rooms.get(random.nextInt(roomCount)).addItem(new Sliderule(count+playerCount*2, false, 1));
+
         ConsoleApp.returnLog("return");
     }
 
