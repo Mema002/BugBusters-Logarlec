@@ -48,13 +48,16 @@ public class RoomManager {
         }
 
         //Effects
+        ArrayList<Room> tempRooms = new ArrayList<>(rooms);
         int maxEffectCount = (int)(count * 0.2); //szobak 20%-a kap effektet
         int effectCount = 0;
         while (effectCount < maxEffectCount) {
             Effect effect;
             if (1 == random.nextInt(2)) effect = new Gassy();
             else effect = new Cursed();
-            rooms.get(random.nextInt(count)).addEffect(effect);
+            Room chosenRoom = tempRooms.get(random.nextInt(tempRooms.size()));
+            chosenRoom.addEffect(effect);
+            tempRooms.remove(chosenRoom);
             effectCount++;
         }
         ConsoleApp.returnLog("return");
@@ -203,18 +206,6 @@ public class RoomManager {
         }
         ConsoleApp.returnLog("return inNeighbours");
         return inNeighbours;
-    }
-
-    public void sortEffects(ArrayList<Effect> e) {
-
-    }
-
-    public void sortNeighbours(ArrayList<Room> r) {
-
-    }
-
-    public void sortCapacity(int i) {
-
     }
 
     public void clearRooms() {
