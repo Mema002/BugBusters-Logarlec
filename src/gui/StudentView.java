@@ -20,19 +20,20 @@ import java.util.List;
 
 public class StudentView extends JPanel implements ModelObserver{
     public Character character;
+    public RoomView room;
     public List<ItemView> inventory;
     private List<JButton> actionButtons;
 
+    GridBagConstraints roomViewgbc = new GridBagConstraints();
 
     public StudentView(Character c) { //ez a jatekos viewja, minden jatekos viewja egy uj tabon
-        character = c;
         inventory = new ArrayList<ItemView>();
         actionButtons = new ArrayList<JButton>();
 
         for (Item i : character.getInventory()) { //ItemView-ok lekérése character inventoryjából
             inventory.add(i.getView());
         }
-        
+
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -48,6 +49,7 @@ public class StudentView extends JPanel implements ModelObserver{
         gbc.weighty = 3; //sor relativ szelesseg
         gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
         add(room, gbc);
+        //setRoomView(currentRoom);
 
         // Panel 2: szomszédok
         JPanel listPanel1 = createNeighboursPanel();

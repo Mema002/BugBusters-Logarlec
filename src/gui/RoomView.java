@@ -137,6 +137,10 @@ public class RoomView extends JPanel implements ModelObserver {
         }
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
     @Override
     public void update(Room room, ChangeType type) {
         return;
