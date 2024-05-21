@@ -35,7 +35,7 @@ public class StudentView extends JPanel implements ModelObserver{
         actionButtons = new ArrayList<JButton>();
 
         setLayout(new GridBagLayout());
-        gbc = new GridBagConstraints();
+        //gbc = new GridBagConstraints();
 
         updateStudentView();
     }
@@ -44,6 +44,8 @@ public class StudentView extends JPanel implements ModelObserver{
         removeAll();
         inventory.clear();
         actionButtons.clear();
+        
+        gbc = new GridBagConstraints();
 
         for (Item i : character.getInventory()) { //ItemView-ok lekérése character inventoryjából
             inventory.add(i.getView());
@@ -93,6 +95,9 @@ public class StudentView extends JPanel implements ModelObserver{
         gbc.weighty = 0.2;
         gbc.insets = new Insets(10, 10, 10, 10);
         add(buttonPanel, gbc);
+
+        validate();
+        repaint();
     }
 
     public String toString() {

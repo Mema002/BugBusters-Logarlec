@@ -5,6 +5,7 @@ import java.util.*;
 import src.character.Character;
 import src.character.Student;
 import src.character.Teacher;
+import src.gui.GUIController;
 import src.gui.ModelObserver;
 import src.item.*;
 import src.room.Room;
@@ -131,7 +132,7 @@ public class GameLogic {
                     }
                     
                     //Action happened
-
+                    GUIController.updateStudentViews();
                     hasAction = false;
                 } else {
                     //AI action

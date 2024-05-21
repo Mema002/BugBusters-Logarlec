@@ -32,14 +32,20 @@ public class GUIController {
     static public List<CharacterView> getCharacterViews() { return characters; }
 
     //change RoomView in StudentViews
-    static public void changeRoomView(RoomView newRoomView) {
-        RoomView roomForDelete = rooms.stream().filter(r -> r.getRoom() == newRoomView.getRoom()).findFirst().orElse(null);
-        if (roomForDelete != null) {
-            rooms.remove(roomForDelete);
-            rooms.add(newRoomView);
-        }
-        for (StudentView student : students) {
-            student.updateRoomView(newRoomView);
+    // static public void changeRoomView(RoomView newRoomView) {
+    //     RoomView roomForDelete = rooms.stream().filter(r -> r.getRoom() == newRoomView.getRoom()).findFirst().orElse(null);
+    //     if (roomForDelete != null) {
+    //         rooms.remove(roomForDelete);
+    //         rooms.add(newRoomView);
+    //     }
+    //     for (StudentView student : students) {
+    //         student.updateRoomView(newRoomView);
+    //     }
+    // }
+
+    public static void updateStudentViews() {
+        for (StudentView sv : students) {
+            sv.updateStudentView();
         }
     }
 
