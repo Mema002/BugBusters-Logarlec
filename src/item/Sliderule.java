@@ -28,7 +28,7 @@ public class Sliderule extends Item {
     public void initItem(Character c) {
         owner = c;
         if (isFake) {
-            System.out.println(owner.toString() + "'s Sliderule was fake!");
+            GUIController.tfMessage();
             owner.removeItem(this);
             c.getCurrentRoom().removeItem(this);
         }

@@ -7,6 +7,7 @@ import src.item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 public class GUIController {
     static private List<RoomView> rooms; // A szobák megjelenítéséért felelős objektumok listája
@@ -107,6 +108,17 @@ public class GUIController {
             null,
             c.toString() + " picked up the Sliderule, you won!",
             "Game Over",
+            JOptionPane.PLAIN_MESSAGE
+        );
+    }
+
+    public static void tfMessage() {
+        ImageIcon icon = new ImageIcon("images/tf.png");
+
+        JOptionPane.showMessageDialog(
+            null,
+            icon,
+            null,
             JOptionPane.PLAIN_MESSAGE
         );
     }
