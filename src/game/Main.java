@@ -33,9 +33,11 @@ public class Main {
         Room room2 = new Room(2, 5); room2.addEffect(new Gassy()); room2.addEffect(new Cursed());
         Room room3 = new Room(3, 5);
         room1.addNeighbour(room2); room1.addNeighbour(room3);
-        room2.addNeighbour(room1);
+        room2.addNeighbour(room1); room2.addNeighbour(room3);
+        room3.addNeighbour(room1); room3.addNeighbour(room2);
         GameLogic.roomManager.addRoom(room1);
         GameLogic.roomManager.addRoom(room2);
+        GameLogic.roomManager.addRoom(room3);
 
         room1.addItem(new FFP2(1, false, 5));
         room2.addItem(new Rag(2, false, 5));

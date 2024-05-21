@@ -20,26 +20,113 @@ import java.util.List;
 
 public class StudentView extends JPanel implements ModelObserver{
     public Character character;
+    public RoomView room;
     public List<ItemView> inventory;
     private List<JButton> actionButtons;
 
 
     public StudentView(Character c) { //ez a jatekos viewja, minden jatekos viewja egy uj tabon
-        character = c;
         inventory = new ArrayList<ItemView>();
         actionButtons = new ArrayList<JButton>();
 
-        Room currentRoom = character.getCurrentRoom();
+        character = c;
+        setupPanels(c.getCurrentRoom());
+    }
+
+    public String toString() {
+        return character.toString() + character.getId();
+    }
+
+    @Override
+    public void update(Room room, ChangeType type) {
+        return;
+    }
+
+    @Override
+    public void update(Character character, ChangeType type) {
+        return;
+    }
+
+    @Override
+    public void update(Item item, ChangeType type) {
+        ItemView iv = GUIController.getItemViews().stream().filter(i -> i.item == item).findFirst().orElse(null);
+        if (iv == null)
+            return;
+        if (type == ChangeType.ADD) {
+            addItemView(iv);
+        } else if (type == ChangeType.REMOVE) {
+            removeItemView(iv);
+        }
+    }
+
+    @Override
+    public void update(Effect effect, ChangeType type) {
+        return;
+    }
+
+    @Override
+    public void update() {
+        //Gombok letiltása
+        if (GameLogic.getCurrentPlayer() == character) {
+            for (JButton b : actionButtons) {
+                b.setEnabled(true);
+            }
+        } else {
+            for (JButton b : actionButtons) {
+                b.setEnabled(false);
+            }
+        }
+
+        //RoomView frissítése
+        if (room.getRoom() != character.getCurrentRoom()) {
+            this.removeAll();
+            setupPanels(character.getCurrentRoom());
+        }
+
+        repaint();
+    }
+
+    private void removeItemView(ItemView iv) {
+        inventory.remove(iv);
+    }
+
+    private void addItemView(ItemView iv) {
+        inventory.add(iv);
+    }
+
+    private void setRoomView(Room currentRoom) {
+        if (room.getRoom() != currentRoom) {
+            GridBagConstraints gbc = new GridBagConstraints();
+
+            // Panel 1: random kép Panel in row=0, col=0
+            room = new RoomView(currentRoom); //igazabol a current room roomview-ja
+            room.setPreferredSize(new Dimension(300, 300));
+            room.setMinimumSize(new Dimension(300, 300));
+            gbc.gridx = 0; //a gridben hanyadik oszlop
+            gbc.gridy = 0; //a gridben hanyadik sor
+            gbc.fill = GridBagConstraints.BOTH;
+            gbc.weightx = 3;  //oszlop relativ szelesseg
+            gbc.weighty = 3; //sor relativ szelesseg
+            gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
+
+            if(this.getComponentCount() > 0){
+                remove(0);
+            }
+            add(room, gbc, 0);
+        }
+    }
+
+    private void setupPanels(Room currentRoom) {
 
         for (Item i : character.getInventory()) { //ItemView-ok lekérése character inventoryjából
             inventory.add(i.getView());
         }
-        
+
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
         // Panel 1: random kép Panel in row=0, col=0
-        RoomView room = new RoomView(currentRoom); //igazabol a current room roomview-ja
+        room = new RoomView(currentRoom); //igazabol a current room roomview-ja
         room.setPreferredSize(new Dimension(300, 300));
         room.setMinimumSize(new Dimension(300, 300));
         gbc.gridx = 0; //a gridben hanyadik oszlop
@@ -49,6 +136,7 @@ public class StudentView extends JPanel implements ModelObserver{
         gbc.weighty = 3; //sor relativ szelesseg
         gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
         add(room, gbc);
+        //setRoomView(currentRoom);
 
         // Panel 2: szomszédok
         JPanel listPanel1 = new JPanel();  // Using GridLayout for list of panels
@@ -145,7 +233,7 @@ public class StudentView extends JPanel implements ModelObserver{
         RoomAttributePanel.setLayout(new BoxLayout(RoomAttributePanel, BoxLayout.Y_AXIS));
         RoomAttributePanel.setPreferredSize(new Dimension(100, 95));
         RoomAttributePanel.setMinimumSize(new Dimension(100, 95));
-        
+
         JLabel szobanevlabel = new JLabel("Current room: " + currentRoom.toString());
         szobanevlabel.setFont(new Font("Dialog", Font.PLAIN, 15));
         szobanevlabel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -322,58 +410,5 @@ public class StudentView extends JPanel implements ModelObserver{
         gbc.weighty = 0.2;  // Adjust weight for the button panel
         gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
         add(buttonPanel, gbc);
-    }
-
-    public String toString() {
-        return character.toString() + character.getId();
-    }
-
-    @Override
-    public void update(Room room, ChangeType type) {
-        return;
-    }
-
-    @Override
-    public void update(Character character, ChangeType type) {
-        return;
-    }
-
-    @Override
-    public void update(Item item, ChangeType type) {
-        ItemView iv = GUIController.getItemViews().stream().filter(i -> i.item == item).findFirst().orElse(null);
-        if (iv == null)
-            return;
-        if (type == ChangeType.ADD) {
-            addItemView(iv);
-        } else if (type == ChangeType.REMOVE) {
-            removeItemView(iv);
-        }
-    }
-
-    @Override
-    public void update(Effect effect, ChangeType type) {
-        return;
-    }
-
-    @Override
-    public void update() {
-        //Gombok letiltása
-        if (GameLogic.getCurrentPlayer() == character) {
-            for (JButton b : actionButtons) {
-                b.setEnabled(true);
-            }
-        } else {
-            for (JButton b : actionButtons) {
-                b.setEnabled(false);
-            }
-        }
-    }
-
-    private void removeItemView(ItemView iv) {
-        inventory.remove(iv);
-    }
-
-    private void addItemView(ItemView iv) {
-        inventory.add(iv);
     }
 }

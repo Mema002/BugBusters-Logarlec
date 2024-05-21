@@ -5,12 +5,17 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import src.character.Character;
+import src.dto.ChangeType;
+import src.effect.Effect;
 import src.game.GameLogic;
+import src.item.Item;
+import src.room.Room;
 
-public class GUI extends JFrame {
+public class GUI extends JFrame implements ModelObserver{
     public TabbedPanel tabpanel;
 
     public GUI(List<Character> characters, int studentCount) {
+        GameLogic.addObserver(this);
         setTitle("BugBusters");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -29,5 +34,30 @@ public class GUI extends JFrame {
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
         //pack();
         setVisible(true);
+    }
+
+    @Override
+    public void update(Room room, ChangeType type) {
+
+    }
+
+    @Override
+    public void update(Character character, ChangeType type) {
+
+    }
+
+    @Override
+    public void update(Item item, ChangeType type) {
+
+    }
+
+    @Override
+    public void update(Effect effect, ChangeType type) {
+
+    }
+
+    @Override
+    public void update() {
+        repaint();
     }
 }

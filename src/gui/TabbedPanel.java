@@ -41,7 +41,6 @@ public class TabbedPanel extends JTabbedPane implements ModelObserver {
             if (studentViews.get(i).character == GameLogic.getCurrentPlayer()) {
                 this.setSelectedIndex(i);
                 this.getTabComponentAt(i).setForeground(Color.RED);
-                break;
             } else {
                 this.getTabComponentAt(i).setForeground(Color.BLACK);
             }
