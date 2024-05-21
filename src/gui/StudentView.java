@@ -230,7 +230,7 @@ public class StudentView extends JPanel implements ModelObserver, GameLogicObser
             smallPanel.setBackground(item.getColor());
 
             JLabel label = new JLabel(item.getIcon());
-            label.setText(item.toString());
+            label.setText(item.toString() + item.getAttrib());
             label.setHorizontalTextPosition(JLabel.RIGHT);
             label.setVerticalTextPosition(JLabel.CENTER);
             smallPanel.add(Box.createHorizontalGlue());

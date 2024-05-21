@@ -69,7 +69,7 @@ public class ItemView {
     }
 
     public String toString() {
-        return item.toString() + attrib;
+        return item.toString();
     }
 
     public ImageIcon getIcon() {
