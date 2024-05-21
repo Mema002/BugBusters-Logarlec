@@ -29,6 +29,7 @@ public class Sliderule extends Item {
         if (isFake) {
             System.out.println(owner.toString() + "'s Sliderule was fake!");
             owner.removeItem(this);
+            c.getCurrentRoom().removeItem(this);
         }
         ConsoleApp.returnLog("return");
         if (!isFake) {
