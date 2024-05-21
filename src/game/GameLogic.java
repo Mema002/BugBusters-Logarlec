@@ -1,6 +1,7 @@
 package src.game;
 
 import java.util.*;
+import java.util.random.RandomGenerator;
 
 import src.character.Character;
 import src.character.Student;
@@ -143,7 +144,12 @@ public class GameLogic {
                 } else {
                     //AI action
                     //TODO AI action
-                    currentPlayer.skipTurn();
+                    if(random.nextInt(3) == 1)
+                        currentPlayer.skipTurn();
+                    else {
+                        int neighbourListSize = currentPlayer.getCurrentRoom().getNeighbours().size();
+                        currentPlayer.move(random.nextInt(neighbourListSize-1));
+                    }
                 }
             }
 
