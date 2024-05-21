@@ -1,5 +1,6 @@
 package src.gui;
 
+import src.character.Character;
 import src.game.GameLogic;
 import src.item.Item;
 
@@ -99,5 +100,14 @@ public class GUIController {
         } catch (Exception e) {
             return 2;
         }
+    }
+
+    public static void gameOverMessage(Character c) {
+        JOptionPane.showMessageDialog(
+            null,
+            c.toString() + " picked up the Sliderule, you won!",
+            "Game Over",
+            JOptionPane.PLAIN_MESSAGE
+        );
     }
 }

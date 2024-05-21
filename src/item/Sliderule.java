@@ -2,6 +2,7 @@ package src.item;
 
 import src.game.ConsoleApp;
 import src.game.GameLogic;
+import src.gui.GUIController;
 import src.gui.ItemView;
 import src.character.Character;
 
@@ -34,7 +35,7 @@ public class Sliderule extends Item {
         ConsoleApp.returnLog("return");
         if (!isFake) {
             GameLogic.endGame();
-            System.out.println(c.toString() + " picked up the Sliderule! The Game is over!");
+            GUIController.gameOverMessage(c);
         }
     }
 
