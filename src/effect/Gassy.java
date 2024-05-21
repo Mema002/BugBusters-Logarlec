@@ -6,6 +6,9 @@ import src.character.Character;
 import src.game.ConsoleApp;
 import src.room.Room;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Gassy extends Effect {
     /** 
      * Gassy effektus meghivasa, elgazositja a szobat es
@@ -15,6 +18,7 @@ public class Gassy extends Effect {
     @Override
     public void triggerEffect(Room r) {
         ConsoleApp.funcLog("room.getCharacters()");
+        List<Character> toMove = new ArrayList<>();
         for(Character c : r.getCharacters()){
             ConsoleApp.funcLog("character.tryStun()");
             if(c.tryStun()) {
@@ -22,8 +26,12 @@ public class Gassy extends Effect {
                 c.dropItems();
                 ConsoleApp.funcLog("character.beStunnedFor(int: 1)");
                 c.beStunnedFor(1);
+                if (c.getCurrentRoom().getNeighbours().size() > 0) {
+                    toMove.add(c);
+                }
             }
         }
+        toMove.forEach(c -> c.move(0));
         ConsoleApp.returnLog("return");
     }
     
