@@ -129,7 +129,7 @@ public class GameLogic {
                             throw new RuntimeException(e);
                         }
                     }
-
+                    
                     //Action happened
 
                     hasAction = false;
