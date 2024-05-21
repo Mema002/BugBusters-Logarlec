@@ -11,5 +11,4 @@ public interface ModelObserver {
     public void update(Character character, ChangeType type);
     public void update(Item item, ChangeType type);
     public void update(Effect effect, ChangeType type);
-    public void update();
 }

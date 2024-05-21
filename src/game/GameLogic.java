@@ -6,6 +6,7 @@ import src.character.Character;
 import src.character.Student;
 import src.character.Teacher;
 import src.gui.GUIController;
+import src.gui.GameLogicObserver;
 import src.gui.ModelObserver;
 import src.item.*;
 import src.room.Room;
@@ -22,7 +23,7 @@ public class GameLogic {
     private static int playerCount;
     private static boolean hasAction;
     private static Character currentPlayer;
-    private static List<ModelObserver> observers;
+    private static List<GameLogicObserver> observers;
     private static List<TestActionDTO> actions = new ArrayList<>();
     //A veletlen actionokhoz
     private static Random random = new Random();
@@ -31,7 +32,7 @@ public class GameLogic {
         roomManager = new RoomManager();
         characters = new ArrayList<Character>();
         deadCharacters = new ArrayList<Character>();
-        observers = new ArrayList<ModelObserver>();
+        observers = new ArrayList<>();
         isGameRunning = false;
         stepCounter = 0;
         playerCount = 0;
@@ -153,6 +154,7 @@ public class GameLogic {
                     if (characters.indexOf(deadCharacter) < currentPlayerIdx)
                         currentPlayerIdx -= 1;
                     ConsoleApp.funcLog("characters.remove(deadCharacter)");
+                    notifyObservers(deadCharacter);
                     characters.remove(deadCharacter);
                     playerCount--;
                     ConsoleApp.returnLog("return");
@@ -321,13 +323,19 @@ public class GameLogic {
         actions = paramActions;
     }
 
-    public static void addObserver(ModelObserver observer) {
+    public static void addObserver(GameLogicObserver observer) {
         observers.add(observer);
     }
 
+    public static void removeObserver(GameLogicObserver observer) {
+        observers.remove(observer);
+    }
+
     private static void notifyObservers() {
-        for (ModelObserver observer : observers) {
-            observer.update();
-        }
+        observers.forEach(observer -> observer.update());
+    }
+
+    private static void notifyObservers(Character character) {
+        observers.forEach(observer -> observer.update(character));
     }
 }

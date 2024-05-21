@@ -1,6 +1,7 @@
 package src.gui;
 
 import src.character.Character;
+import src.character.Student;
 import src.dto.ChangeType;
 import src.effect.Effect;
 import src.game.GameLogic;
@@ -14,7 +15,7 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
-public class TabbedPanel extends JTabbedPane implements ModelObserver {
+public class TabbedPanel extends JTabbedPane implements GameLogicObserver {
     //tabpanel egy container, paneleket tárol tabos formában
     //ugy gondoltam h minden studentnek legyen egy tabja(panelja)
     //es miután választottak actiont átugrunk a következő tabra
@@ -48,22 +49,12 @@ public class TabbedPanel extends JTabbedPane implements ModelObserver {
     }
 
     @Override
-    public void update(Room room, ChangeType type) {
-
-    }
-
-    @Override
-    public void update(Character character, ChangeType type) {
-
-    }
-
-    @Override
-    public void update(Item item, ChangeType type) {
-
-    }
-
-    @Override
-    public void update(Effect effect, ChangeType type) {
-
+    public void update(Character character) {
+        for (int i = 0; i < studentViews.size(); i++) {
+            if (studentViews.get(i).character == character) {
+                this.getTabComponentAt(i).setEnabled(false);
+                break;
+            }
+        }
     }
 }

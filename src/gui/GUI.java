@@ -11,7 +11,7 @@ import src.game.GameLogic;
 import src.item.Item;
 import src.room.Room;
 
-public class GUI extends JFrame implements ModelObserver{
+public class GUI extends JFrame implements GameLogicObserver{
     public TabbedPanel tabpanel;
 
     public GUI(List<Character> characters, int studentCount) {
@@ -36,29 +36,13 @@ public class GUI extends JFrame implements ModelObserver{
         //pack();
         setVisible(true);
     }
-
-    @Override
-    public void update(Room room, ChangeType type) {
-
-    }
-
-    @Override
-    public void update(Character character, ChangeType type) {
-
-    }
-
-    @Override
-    public void update(Item item, ChangeType type) {
-
-    }
-
-    @Override
-    public void update(Effect effect, ChangeType type) {
-
-    }
-
     @Override
     public void update() {
         repaint();
+    }
+
+    @Override
+    public void update(Character character) {
+
     }
 }

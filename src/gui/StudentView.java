@@ -15,7 +15,7 @@ import src.room.Room;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentView extends JPanel implements ModelObserver{
+public class StudentView extends JPanel implements ModelObserver, GameLogicObserver {
     public Character character;
     public List<ItemView> inventory;
     private List<JButton> actionButtons;
@@ -143,6 +143,11 @@ public class StudentView extends JPanel implements ModelObserver{
                 b.setEnabled(false);
             }
         }
+    }
+
+    @Override
+    public void update(Character character) {
+
     }
 
     private void removeItemView(ItemView iv) {

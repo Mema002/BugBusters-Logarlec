@@ -151,9 +151,4 @@ public class RoomView extends JPanel implements ModelObserver {
     public void update(Effect effect, ChangeType type) {
         return;
     }
-
-    @Override
-    public void update() {
-        return;
-    }
 }
