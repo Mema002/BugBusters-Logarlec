@@ -31,8 +31,10 @@ public class Rag extends Item {
      */
     @Override
     public void decrRemainingTime() {
-        ConsoleApp.returnLog("return");
-        this.remainingTime -= 1;
+        if (this.remainingTime > 0){
+            ConsoleApp.returnLog("return");
+            this.remainingTime -= 1;
+        }
     }
 
     /** 

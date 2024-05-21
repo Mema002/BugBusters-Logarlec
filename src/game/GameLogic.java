@@ -198,8 +198,8 @@ public class GameLogic {
 
     public static void generateGame(int playerCount) {
         GameLogic.roomManager.generateRooms(playerCount*4);
-        GameLogic.generateCharacters(playerCount, playerCount / 2);
-        GameLogic.generateItems(playerCount*3, playerCount);
+        GameLogic.generateCharacters(playerCount, (playerCount / 2) + 1);
+        GameLogic.generateItems(playerCount*6, playerCount);
     }
 
     public static void generateCharacters(int studentCount, int teacherCount) {
