@@ -20,9 +20,10 @@ import java.util.List;
 
 public class StudentView extends JPanel implements ModelObserver{
     public Character character;
-    public RoomView room;
     public List<ItemView> inventory;
     private List<JButton> actionButtons;
+    private GridBagConstraints gbc;
+    public RoomView roomView;
 
     GridBagConstraints roomViewgbc = new GridBagConstraints();
 
@@ -35,20 +36,20 @@ public class StudentView extends JPanel implements ModelObserver{
         }
 
         setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        gbc = new GridBagConstraints();
 
         // Panel 1: random kép Panel in row=0, col=0
-        RoomView room = new RoomView(character.getCurrentRoom()); //igazabol a current room roomview-ja
+        RoomView roomView = new RoomView(character.getCurrentRoom()); //igazabol a current room roomview-ja
 
-        room.setPreferredSize(new Dimension(300, 300));
-        room.setMinimumSize(new Dimension(300, 300));
+        roomView.setPreferredSize(new Dimension(300, 300));
+        roomView.setMinimumSize(new Dimension(300, 300));
         gbc.gridx = 0; //a gridben hanyadik oszlop
         gbc.gridy = 0; //a gridben hanyadik sor
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 3;  //oszlop relativ szelesseg
         gbc.weighty = 3; //sor relativ szelesseg
         gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
-        add(room, gbc);
+        add(roomView, gbc);
         //setRoomView(currentRoom);
 
         // Panel 2: szomszédok
@@ -419,5 +420,11 @@ public class StudentView extends JPanel implements ModelObserver{
             }
         });
         return skipButton;
+    }
+
+    public void updateRoomView(RoomView newRoomView) {
+        roomView = new RoomView(newRoomView.getRoom()); //vagy siman = newRoomView;
+        this.validate();
+        this.repaint();
     }
 }
