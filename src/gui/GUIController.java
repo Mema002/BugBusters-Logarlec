@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class GUIController {
     static private List<RoomView> rooms; // A szobák megjelenítéséért felelős objektumok listája
-    static private List<CharacterView> characters; // A karakterek megjelenítéséért felelős objektumok listája
+    static private List<StudentView> characters; // A karakterek megjelenítéséért felelős objektumok listája
     static private List<ItemView> items; // A tárgyak megjelenítéséért felelős objektumok listája
     static public boolean isSet;
 
@@ -21,15 +21,27 @@ public class GUIController {
 
     static public List<RoomView> getRoomViews() { return rooms; }
 
-    static public List<CharacterView> getCharacterViews() { return characters; }
+    static public List<StudentView> getStudentViews() { return characters; }
 
     static public List<ItemView> getItemViews() { return items; }
+
+    //change RoomView in StudentViews
+    static public void changeRoomView(RoomView newRoomView) {
+        RoomView roomForDelete = rooms.stream().filter(r -> r.getRoom() == newRoomView.getRoom()).findFirst().orElse(null);
+        if (roomForDelete != null) {
+            rooms.remove(roomForDelete);
+            rooms.add(newRoomView);
+        }
+        for (StudentView student : characters) {
+            student.updateRoomView(newRoomView);
+        }
+    }
 
     static public void addRoomView(RoomView room) {
         rooms.add(room);
     }
 
-    static public void addCharacterView(CharacterView character) {
+    static public void addStudentView(StudentView character) {
         characters.add(character);
     }
 
@@ -41,7 +53,7 @@ public class GUIController {
         rooms.remove(room);
     }
 
-    static public void removeCharacterView(CharacterView character) {
+    static public void removeStudentView(StudentView character) {
         characters.remove(character);
     }
 
@@ -49,29 +61,6 @@ public class GUIController {
         items.remove(item);
     }
 
-    static public void displayCharacter(Character character) {
-        // Karakter állapotának megjelenítése
-    }
-
-    static public void roomSelect(Character character) {
-        // Szoba kiválasztása lépéshez
-    }
-
-    static public void actionSelect(Character character) {
-        // Akció kiválasztása
-    }
-
-    static public void itemSelect(Character character) {
-        // Item kiválasztása használathoz
-    }
-
-    public static void pickupSelect(Character character) {
-        // Item felvételének kiválasztása
-    }
-
-    public static void dropSelect(Character character) {
-        // Item eldobásának kiválasztása
-    }
 
     public static void setAction() {
         GameLogic.setAction();

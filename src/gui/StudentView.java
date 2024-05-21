@@ -24,12 +24,24 @@ public class StudentView extends JPanel implements ModelObserver{
     public List<ItemView> inventory;
     private List<JButton> actionButtons;
 
+    GridBagConstraints roomViewgbc = new GridBagConstraints();
+
 
     public StudentView(Character c) { //ez a jatekos viewja, minden jatekos viewja egy uj tabon
         inventory = new ArrayList<ItemView>();
         actionButtons = new ArrayList<JButton>();
 
         character = c;
+
+        //RoomView gbc
+        roomViewgbc.gridx = 0; //a gridben hanyadik oszlop
+        roomViewgbc.gridy = 0; //a gridben hanyadik sor
+        roomViewgbc.fill = GridBagConstraints.BOTH;
+        roomViewgbc.weightx = 3;  //oszlop relativ szelesseg
+        roomViewgbc.weighty = 3; //sor relativ szelesseg
+        roomViewgbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
+
+
         setupPanels(c.getCurrentRoom());
     }
 
@@ -96,23 +108,19 @@ public class StudentView extends JPanel implements ModelObserver{
 
     private void setRoomView(Room currentRoom) {
         if (room.getRoom() != currentRoom) {
-            GridBagConstraints gbc = new GridBagConstraints();
+
+            if (GUIController.getRoomViews().get(GUIController.getRoomViews().size() - 1) == room)
 
             // Panel 1: random kép Panel in row=0, col=0
             room = new RoomView(currentRoom); //igazabol a current room roomview-ja
+            GUIController.addRoomView(room);
             room.setPreferredSize(new Dimension(300, 300));
             room.setMinimumSize(new Dimension(300, 300));
-            gbc.gridx = 0; //a gridben hanyadik oszlop
-            gbc.gridy = 0; //a gridben hanyadik sor
-            gbc.fill = GridBagConstraints.BOTH;
-            gbc.weightx = 3;  //oszlop relativ szelesseg
-            gbc.weighty = 3; //sor relativ szelesseg
-            gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
 
             if(this.getComponentCount() > 0){
                 remove(0);
             }
-            add(room, gbc, 0);
+            add(room, roomViewgbc, 0);
         }
     }
 
@@ -410,5 +418,11 @@ public class StudentView extends JPanel implements ModelObserver{
         gbc.weighty = 0.2;  // Adjust weight for the button panel
         gbc.insets = new Insets(10, 10, 10, 10);  // Padding around the panel
         add(buttonPanel, gbc);
+    }
+
+    public void updateRoomView(RoomView room) {
+        this.room = room;
+        this.remove(0);
+        this.add(room, roomViewgbc, 0);
     }
 }

@@ -23,6 +23,7 @@ public class GUI extends JFrame implements ModelObserver{
         for (int i = 0; i < studentCount; i++) { //csak studentcount-nyi characterviewt csinal
             StudentView sv = new StudentView(characters.get(i));
             cvs.add(sv);
+            GUIController.addStudentView(sv);
             GameLogic.addObserver(sv);
         }
 
