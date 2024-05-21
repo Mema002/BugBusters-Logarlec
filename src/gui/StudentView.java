@@ -29,6 +29,7 @@ public class StudentView extends JPanel implements ModelObserver{
     public StudentView(Character c) { //ez a jatekos viewja, minden jatekos viewja egy uj tabon
         inventory = new ArrayList<ItemView>();
         actionButtons = new ArrayList<JButton>();
+        character = c;
 
         for (Item i : character.getInventory()) { //ItemView-ok lekérése character inventoryjából
             inventory.add(i.getView());
@@ -419,5 +420,8 @@ public class StudentView extends JPanel implements ModelObserver{
             }
         });
         return skipButton;
+    }
+
+    public void updateRoomView(RoomView newRoomView) {
     }
 }
