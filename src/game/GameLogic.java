@@ -47,7 +47,8 @@ public class GameLogic {
 
     public static void endGame() {
         isGameRunning = false;
-        System.out.println("Game ended");
+        notifyObservers();
+        GUIController.gameOverMessage(currentPlayer);
     }
 
     public static void runGame(boolean isRealGame) {
@@ -148,7 +149,8 @@ public class GameLogic {
                         currentPlayer.skipTurn();
                     else {
                         int neighbourListSize = currentPlayer.getCurrentRoom().getNeighbours().size();
-                        currentPlayer.move(random.nextInt(neighbourListSize-1));
+                        if (neighbourListSize > 0)
+                            currentPlayer.move(random.nextInt(neighbourListSize-1));
                     }
                 }
             }
