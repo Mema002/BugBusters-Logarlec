@@ -230,7 +230,7 @@ public class GameLogic {
         ConsoleApp.funcLog("roomManager.getRooms()");
         ConsoleApp.funcLog("room.addItem()");
         for (int i = 0; i < count - 1; i++) {
-            int type = random.nextInt(6); //milyen itemet generaljunk
+            int type = random.nextInt(7); //milyen itemet generaljunk
             int holderType = random.nextInt(2);
             Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
             Character randomCharacter = characters.get(random.nextInt(characters.size())); //melyik karakterhez
@@ -239,23 +239,30 @@ public class GameLogic {
                 case 0:
                     ConsoleApp.funcLog("randomRoom.addItem(new Batskin())");
                     randomRoom.addItem(new Batskin(i, isFake, 3));
+                    break;
                 case 1:
                     ConsoleApp.funcLog("randomRoom.addItem(new Beerglass())");
                     randomRoom.addItem(new Beerglass(i, isFake, 3));
+                    break;
                 case 2:
                     ConsoleApp.funcLog("randomRoom.addItem(new Camembert())");
                     randomRoom.addItem(new Camembert(i, isFake, 3));
+                    break;
                 case 3:
                     ConsoleApp.funcLog("randomRoom.addItem(new FFP2())");
                     randomRoom.addItem(new FFP2(i, isFake, 3));
+                    break;
                 case 4:
                     ConsoleApp.funcLog("randomRoom.addItem(new Rag())");
                     randomRoom.addItem(new Rag(i, isFake, 3));
+                    break;
                 case 5:
                     ConsoleApp.funcLog("randomRoom.addItem(new Transistor())");
                     randomRoom.addItem(new Transistor(i, false, 3));
+                    break;
                 case 6:
                     randomRoom.addItem(new Airfreshener(i, isFake, 3));
+                    break;
                 default: break;
             }
         }
