@@ -96,7 +96,7 @@ public class Main {
         // GUIController.characters.add(studentView2);
         // GUIController.items.add(ffp2View);
 
-        GUIController.getRoomViews().forEach(r -> r.print());
+        //GUIController.getRoomViews().forEach(r -> r.print());
 
 
     //     List<String> testFileNames = new ArrayList<>();

@@ -60,7 +60,7 @@ public class ConsoleApp {
         for(int i = 0; i<paramRooms.size(); i++){
             Room room = paramRooms.get(i);
             consoleBuffer.append(room.toString());
-            consoleBuffer.append(room.getId());
+            //consoleBuffer.append(room.getId());
             consoleBuffer.append('\n');
 
             //Room items

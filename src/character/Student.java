@@ -123,12 +123,12 @@ public class Student extends Character {
             ConsoleApp.funcLog("item.defendStun()");
             if(item.defendStun()){
                 ConsoleApp.returnLog("return true");
-                return true;
+                return false;
             }
 
         }
         ConsoleApp.returnLog("return false");
-        return false;
+        return true;
     }
 
     

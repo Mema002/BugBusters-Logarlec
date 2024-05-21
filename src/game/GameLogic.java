@@ -122,18 +122,23 @@ public class GameLogic {
                 //GameConsoleInterface.getAction(currentPlayer);
                 System.out.println();
 
+                //Ha jatekos
                 if (currentPlayerIdx < playerCount) {
-                    while (!hasAction) {
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
+                    //Ha a játékos nem sunnolt
+                    if (currentPlayer.getStunnedFor() == 0){
+                        while (!hasAction) {
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
+
+                        //Action happened
+                        GUIController.updateStudentViews();
+                        hasAction = false;
                     }
-                    
-                    //Action happened
-                    GUIController.updateStudentViews();
-                    hasAction = false;
+                //Ha AI
                 } else {
                     //AI action
                     //TODO AI action
