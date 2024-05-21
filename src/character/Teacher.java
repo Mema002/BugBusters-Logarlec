@@ -35,6 +35,8 @@ public class Teacher extends Character {
             targetIndex = random.nextInt(options.size() /*+ 1);
         } */
 
+        ArrayList<Character> toExpell = new ArrayList<Character>();
+
         Room targetRoom = options.get(targetIndex);
         ConsoleApp.funcLog("targetRoom.requestChange()");
         if (targetRoom.requestChange()) {
@@ -49,9 +51,10 @@ public class Teacher extends Character {
                 ConsoleApp.funcLog("character.tryExpell(this)");
                 if (c.tryExpell(this)) {
                     ConsoleApp.funcLog("character.setExpelled()");
-                    c.setExpelled();
+                    toExpell.add(c);
                 }
             }
+            toExpell.forEach(c -> c.setExpelled());
         }
         ConsoleApp.returnLog("return");
     }

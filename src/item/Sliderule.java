@@ -35,7 +35,6 @@ public class Sliderule extends Item {
         ConsoleApp.returnLog("return");
         if (!isFake) {
             GameLogic.endGame();
-            GUIController.gameOverMessage(c);
         }
     }
 
