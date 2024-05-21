@@ -6,7 +6,7 @@ import src.gui.ItemView;
 
 public class Rag extends Item {
     private int remainingTime;
-    boolean isFake;
+    private boolean isFake;
 
     /**
      * Rag konstruktor
@@ -15,10 +15,15 @@ public class Rag extends Item {
         super();
         this.remainingTime = 5;
     }
+
     public Rag(int id, boolean isFake, int remainingTime) {
         super(id);
         this.isFake = isFake;
         this.remainingTime = remainingTime;
+    }
+
+    public int getRemainingTime() {
+        return remainingTime;
     }
 
     /**

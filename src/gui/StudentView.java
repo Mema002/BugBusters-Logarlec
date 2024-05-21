@@ -218,13 +218,14 @@ public class StudentView extends JPanel implements ModelObserver, GameLogicObser
         JPanel listPanel2 = new JPanel();
         listPanel2.setLayout(new BoxLayout(listPanel2, BoxLayout.Y_AXIS));
 
-        JLabel inventoryTitle = new JLabel(character.toString() + character.getId() + "'s Inventory");
+        JLabel inventoryTitle = new JLabel(character.toString() + "'s Inventory");
         inventoryTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         inventoryTitle.setAlignmentY(Component.CENTER_ALIGNMENT);
         listPanel2.add(inventoryTitle);
 
         for (ItemView item : inventory) {
             JPanel smallPanel = new JPanel();
+            smallPanel.setLayout(new BoxLayout(smallPanel, BoxLayout.X_AXIS));
             smallPanel.setMaximumSize(new Dimension(1000, 75));
             smallPanel.setBackground(item.getColor());
 
@@ -232,7 +233,11 @@ public class StudentView extends JPanel implements ModelObserver, GameLogicObser
             label.setText(item.toString());
             label.setHorizontalTextPosition(JLabel.RIGHT);
             label.setVerticalTextPosition(JLabel.CENTER);
+            smallPanel.add(Box.createHorizontalGlue());
             smallPanel.add(label);
+            smallPanel.add(Box.createHorizontalGlue());
+            smallPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            smallPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
             listPanel2.add(smallPanel);
 

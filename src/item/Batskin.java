@@ -1,7 +1,6 @@
 package src.item;
 
 import src.character.Teacher;
-import src.game.ConsoleApp;
 import src.gui.ItemView;
 
 public class Batskin extends Item {
@@ -20,6 +19,10 @@ public class Batskin extends Item {
         super();
         this.durability = 3;
         this.isFake = isValid;
+    }
+
+    public int getDurability() {
+        return durability;
     }
 
     /** 

@@ -21,6 +21,10 @@ public class FFP2 extends Item {
         this.isFake = isFake;
     }
 
+    public int getDurability() {
+        return durability;
+    }
+
     /** 
      * Override, megved a gazos effektustol
      * @return boolean
