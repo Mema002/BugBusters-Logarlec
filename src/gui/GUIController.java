@@ -9,8 +9,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 public class GUIController {
     static private List<RoomView> rooms; // A szobák megjelenítéséért felelős objektumok listája
-    static private List<StudentView> characters; // A karakterek megjelenítéséért felelős objektumok listája
+    static private List<StudentView> students; // A karakterek megjelenítéséért felelős objektumok listája
     static private List<ItemView> items; // A tárgyak megjelenítéséért felelős objektumok listája
+    static private List<CharacterView> characters; // A karakterek megjelenítéséért felelős objektumok listája
     static public boolean isSet;
 
     // Konstruktor
@@ -18,14 +19,17 @@ public class GUIController {
         rooms = new ArrayList<>();
         characters = new ArrayList<>();
         items = new ArrayList<>();
+        students = new ArrayList<>();
         isSet = false;
     }
 
     static public List<RoomView> getRoomViews() { return rooms; }
 
-    static public List<StudentView> getStudentViews() { return characters; }
+    static public List<StudentView> getStudentViews() { return students; }
 
     static public List<ItemView> getItemViews() { return items; }
+
+    static public List<CharacterView> getCharacterViews() { return characters; }
 
     //change RoomView in StudentViews
     static public void changeRoomView(RoomView newRoomView) {
@@ -34,7 +38,7 @@ public class GUIController {
             rooms.remove(roomForDelete);
             rooms.add(newRoomView);
         }
-        for (StudentView student : characters) {
+        for (StudentView student : students) {
             student.updateRoomView(newRoomView);
         }
     }
@@ -44,11 +48,15 @@ public class GUIController {
     }
 
     static public void addStudentView(StudentView character) {
-        characters.add(character);
+        students.add(character);
     }
 
     static public void addItemView(ItemView item) {
         items.add(item);
+    }
+
+    static public void addCharacterView(CharacterView character) {
+        characters.add(character);
     }
 
     static public void removeRoomView(RoomView room) {
@@ -56,13 +64,16 @@ public class GUIController {
     }
 
     static public void removeStudentView(StudentView character) {
-        characters.remove(character);
+        students.remove(character);
     }
 
     static public void removeItemView(ItemView item) {
         items.remove(item);
     }
 
+    static public void removeCharacterView(CharacterView character) {
+        characters.remove(character);
+    }
 
     public static void setAction() {
         GameLogic.setAction();

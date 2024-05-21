@@ -18,6 +18,7 @@ public class GameLogic {
     public static RoomManager roomManager;
     private static List<Character> characters;
     private static List<Character> deadCharacters;
+    private static int playerCount;
     private static boolean hasAction;
     private static Character currentPlayer;
     private static List<ModelObserver> observers;
@@ -32,6 +33,7 @@ public class GameLogic {
         observers = new ArrayList<ModelObserver>();
         isGameRunning = false;
         stepCounter = 0;
+        playerCount = 0;
         hasAction = false;
     }
 
@@ -52,12 +54,11 @@ public class GameLogic {
 
         int currentPlayerIdx = 0;
 
-
         ListIterator<TestActionDTO> actionIterator = actions.listIterator();
 
         while (isGameRunning) {
             //Ha nincs tobb jatekos
-            if (characters.isEmpty()) {
+            if (playerCount == 0) {
                 endGame();
                 break;
             }
@@ -120,18 +121,23 @@ public class GameLogic {
                 //GameConsoleInterface.getAction(currentPlayer);
                 System.out.println();
 
-                while (!hasAction) {
-                    try {
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                if (currentPlayerIdx < playerCount) {
+                    while (!hasAction) {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
+
+                    //Action happened
+
+                    hasAction = false;
+                } else {
+                    //AI action
+                    //TODO AI action
+                    currentPlayer.skipTurn();
                 }
-
-                //Action happened
-
-                hasAction = false;
-
             }
 
             //Ha halt meg jatekos
@@ -142,6 +148,7 @@ public class GameLogic {
                         currentPlayerIdx -= 1;
                     ConsoleApp.funcLog("characters.remove(deadCharacter)");
                     characters.remove(deadCharacter);
+                    playerCount--;
                     ConsoleApp.returnLog("return");
                 }
 
@@ -173,6 +180,7 @@ public class GameLogic {
     }
 
     public static void generateCharacters(int studentCount, int teacherCount) {
+        playerCount = studentCount;
         Random random = new Random();
         List<Room> rooms = roomManager.getRooms();
 

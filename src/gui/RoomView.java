@@ -14,8 +14,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
 
 import src.dto.ChangeType;
 import src.effect.Effect;
@@ -69,6 +67,9 @@ public class RoomView extends JPanel implements ModelObserver {
             add(label);
             add(Box.createRigidArea(new Dimension(0, 3)));
         }
+
+        setPreferredSize(new Dimension(300, 300));
+        setMinimumSize(new Dimension(300, 300));
 
         room.addObserver(this);
     }

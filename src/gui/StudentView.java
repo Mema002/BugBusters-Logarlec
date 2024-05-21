@@ -22,12 +22,18 @@ public class StudentView extends JPanel implements ModelObserver{
     public Character character;
     public List<ItemView> inventory;
     private List<JButton> actionButtons;
+
     private GridBagConstraints gbc;
     public RoomView roomView;
+    public JScrollPane neighboursPanel;
+    public JScrollPane inventoryPanel;
+    public JPanel roomAttributePanel;
+    public JPanel buttonPanel;
 
     GridBagConstraints roomViewgbc = new GridBagConstraints();
 
     public StudentView(Character c) { //ez a jatekos viewja, minden jatekos viewja egy uj tabon
+        character = c;
         inventory = new ArrayList<ItemView>();
         actionButtons = new ArrayList<JButton>();
 
@@ -41,8 +47,6 @@ public class StudentView extends JPanel implements ModelObserver{
         // Panel 1: random kép Panel in row=0, col=0
         RoomView roomView = new RoomView(character.getCurrentRoom()); //igazabol a current room roomview-ja
 
-        roomView.setPreferredSize(new Dimension(300, 300));
-        roomView.setMinimumSize(new Dimension(300, 300));
         gbc.gridx = 0; //a gridben hanyadik oszlop
         gbc.gridy = 0; //a gridben hanyadik sor
         gbc.fill = GridBagConstraints.BOTH;
@@ -53,63 +57,30 @@ public class StudentView extends JPanel implements ModelObserver{
         //setRoomView(currentRoom);
 
         // Panel 2: szomszédok
-        JPanel listPanel1 = createNeighboursPanel();
+        neighboursPanel = createNeighboursPanel();
 
-        JScrollPane scrollPane1 = new JScrollPane(listPanel1);
-        scrollPane1.getVerticalScrollBar().setUnitIncrement(16);
-        scrollPane1.setPreferredSize(new Dimension(200, 300));
-        scrollPane1.setMinimumSize(new Dimension(200, 300));
         gbc.gridx = 1;
         gbc.weightx = 1;
         gbc.insets = new Insets(10, 10, 10, 10); //margin
-        add(scrollPane1, gbc);
+        add(neighboursPanel, gbc);
 
         // Panel 3: inventory
-        JPanel listPanel2 = createInventoryPanel();
+        inventoryPanel = createInventoryPanel();
 
-        JScrollPane scrollPane2 = new JScrollPane(listPanel2);
-        scrollPane2.getVerticalScrollBar().setUnitIncrement(16);
-        scrollPane2.setPreferredSize(new Dimension(200, 300));
-        scrollPane2.setMinimumSize(new Dimension(200, 300));
         gbc.gridx = 2;
         gbc.insets = new Insets(10, 10, 10, 10);  // Adjust padding
-        add(scrollPane2, gbc);
+        add(inventoryPanel, gbc);
 
         // Panel 4: szoba tulajdonságai
-        JPanel RoomAttributePanel = createRoomAttribPanel();
+        roomAttributePanel = createRoomAttribPanel();
 
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weighty = 0.2;
-        add(RoomAttributePanel, gbc);
+        add(roomAttributePanel, gbc);
 
         // Panel 5: Button Panel in row=1 spanning the last 2 columns
-        JPanel buttonPanel = new JPanel(new FlowLayout());
-
-        //move button
-        JButton moveButton = createMoveButton();
-        buttonPanel.add(moveButton);
-        actionButtons.add(moveButton);
-
-        //pick up gomb
-        JButton pickupButton = createPickUpButton();
-        buttonPanel.add(pickupButton);
-        actionButtons.add(pickupButton);
-
-        //drop button
-        JButton dropButton = createDropButton();
-        buttonPanel.add(dropButton);
-        actionButtons.add(dropButton);
-
-        //use button
-        JButton useButton = createUseButton();
-        buttonPanel.add(useButton);
-        actionButtons.add(useButton);
-
-        //skip button
-        JButton skipButton = createSkipButton();
-        buttonPanel.add(skipButton); //skip button add
-        actionButtons.add(skipButton);
+        buttonPanel = createButtonPanel();
 
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -173,7 +144,7 @@ public class StudentView extends JPanel implements ModelObserver{
         inventory.add(iv);
     }
 
-    public JPanel createNeighboursPanel() {
+    public JScrollPane createNeighboursPanel() {
         JPanel listPanel1 = new JPanel();
         listPanel1.setLayout(new BoxLayout(listPanel1, BoxLayout.Y_AXIS));
 
@@ -220,10 +191,16 @@ public class StudentView extends JPanel implements ModelObserver{
             separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4));
             listPanel1.add(separator);
         }
-        return listPanel1;
+
+        JScrollPane scrollPane1 = new JScrollPane(listPanel1);
+        scrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane1.setPreferredSize(new Dimension(200, 300));
+        scrollPane1.setMinimumSize(new Dimension(200, 300));
+
+        return scrollPane1;
     }
 
-    public JPanel createInventoryPanel() {
+    public JScrollPane createInventoryPanel() {
         JPanel listPanel2 = new JPanel();
         listPanel2.setLayout(new BoxLayout(listPanel2, BoxLayout.Y_AXIS));
 
@@ -249,7 +226,13 @@ public class StudentView extends JPanel implements ModelObserver{
             separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 4));
             listPanel2.add(separator);
         }
-        return listPanel2;
+
+        JScrollPane scrollPane2 = new JScrollPane(listPanel2);
+        scrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane2.setPreferredSize(new Dimension(200, 300));
+        scrollPane2.setMinimumSize(new Dimension(200, 300));
+
+        return scrollPane2;
     }
 
     public JPanel createRoomAttribPanel() {
@@ -420,6 +403,37 @@ public class StudentView extends JPanel implements ModelObserver{
             }
         });
         return skipButton;
+    }
+
+    public JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+
+        //move button
+        JButton moveButton = createMoveButton();
+        buttonPanel.add(moveButton);
+        actionButtons.add(moveButton);
+
+        //pick up gomb
+        JButton pickupButton = createPickUpButton();
+        buttonPanel.add(pickupButton);
+        actionButtons.add(pickupButton);
+
+        //drop button
+        JButton dropButton = createDropButton();
+        buttonPanel.add(dropButton);
+        actionButtons.add(dropButton);
+
+        //use button
+        JButton useButton = createUseButton();
+        buttonPanel.add(useButton);
+        actionButtons.add(useButton);
+
+        //skip button
+        JButton skipButton = createSkipButton();
+        buttonPanel.add(skipButton); //skip button add
+        actionButtons.add(skipButton);
+
+        return buttonPanel;
     }
 
     public void updateRoomView(RoomView newRoomView) {
