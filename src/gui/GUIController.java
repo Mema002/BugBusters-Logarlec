@@ -5,6 +5,8 @@ import src.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 public class GUIController {
     static private List<RoomView> rooms; // A szobák megjelenítéséért felelős objektumok listája
     static private List<CharacterView> characters; // A karakterek megjelenítéséért felelős objektumok listája
@@ -75,5 +77,21 @@ public class GUIController {
 
     public static void setAction() {
         GameLogic.setAction();
+    }
+
+    public static int selectPlayerNumber() {
+        try {
+            return Integer.parseInt((String) JOptionPane.showInputDialog(
+                    null,
+                    "Select number of Students:",
+                    "Number of Students",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    new Object[]{"2","3","4","5","6","7","8","9","10"},
+                    "2"
+            ));
+        } catch (Exception e) {
+            return 2;
+        }
     }
 }

@@ -37,10 +37,12 @@ public class GameLogic {
 
     public static void startGame() {
         isGameRunning = true;
+        System.out.println("Game started");
     }
 
     public static void endGame() {
         isGameRunning = false;
+        System.out.println("Game ended");
     }
 
     public static void runGame(boolean isRealGame) {

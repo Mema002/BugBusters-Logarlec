@@ -44,6 +44,7 @@ public abstract class Character extends ObservableModel {
      */
     public void addToInventory(Item i) {
         ConsoleApp.returnLog("return");
+        i.setOwner(this);
         inventory.add(i);
 
         //Notify observers

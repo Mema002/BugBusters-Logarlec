@@ -26,6 +26,7 @@ public class Student extends Character {
      */
     public void addToInventory(Item i) {
         ConsoleApp.returnLog("return");
+        i.setOwner(this);
         inventory.add(i);
     }
     
