@@ -158,6 +158,7 @@ public class GameLogic {
 
             if (currentPlayerIdx == 0 && stepCounter != 0)
                 endOfTurn();
+                GUIController.updateStudentViews();
 
             currentPlayerIdx++;
             stepCounter++;

@@ -27,6 +27,7 @@ public class Camembert extends Item {
         ConsoleApp.funcLog("owner.getCurrentRoom().addEffect(new Gassy())");
         owner.getCurrentRoom().addEffect(new Gassy());
         ConsoleApp.returnLog("return true");
+        c.removeItem(this);
         return true;
     }
 

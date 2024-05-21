@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import src.effect.Cursed;
 import src.effect.Effect;
+import src.effect.Gassy;
 import src.game.ConsoleApp;
 import src.item.Item;
 
@@ -31,7 +33,7 @@ public class RoomManager {
 
         //Neighbours
         List<Room> shuffledRooms = new ArrayList<>(rooms);
-        int maxPairCount = (int)((count * (count-1)) * 0.4);
+        int maxPairCount = (int)((count * (count-1)) * 0.2);
 
         int pairCount = 0;
         while (pairCount < maxPairCount){
@@ -45,6 +47,16 @@ public class RoomManager {
             }
         }
 
+        //Effects
+        int maxEffectCount = (int)(count * 0.2); //szobak 20%-a kap effektet
+        int effectCount = 0;
+        while (effectCount < maxEffectCount) {
+            Effect effect;
+            if (1 == random.nextInt(2)) effect = new Gassy();
+            else effect = new Cursed();
+            rooms.get(random.nextInt(count)).addEffect(effect);
+            effectCount++;
+        }
         ConsoleApp.returnLog("return");
     }
 

@@ -87,7 +87,7 @@ public class Teacher extends Character {
 
     @Override
     public String toString() {
-        return "Teacher";
+        return "Teacher" + id;
     }
 
     @Override

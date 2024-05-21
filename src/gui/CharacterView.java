@@ -49,7 +49,7 @@ public class CharacterView implements ModelObserver{
     }
 
     public String toString() {
-        return character.toString() + character.getId() + character.getInventory().toString();
+        return character.toString() + character.getInventory().toString();
     }
 
     @Override

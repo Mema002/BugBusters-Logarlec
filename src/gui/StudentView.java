@@ -101,7 +101,7 @@ public class StudentView extends JPanel implements ModelObserver{
     }
 
     public String toString() {
-        return character.toString() + character.getId();
+        return character.toString();
     }
 
     @Override

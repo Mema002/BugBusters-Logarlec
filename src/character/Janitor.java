@@ -73,7 +73,7 @@ public class Janitor extends Character {
 
     @Override
     public String toString() {
-        return "Janitor";
+        return "Janitor" + id;
     }
 
     @Override

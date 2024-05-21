@@ -171,7 +171,7 @@ public class Student extends Character {
 
     @Override
     public String toString() {
-        return "Student";
+        return "Student" + id;
     }
 
     @Override
