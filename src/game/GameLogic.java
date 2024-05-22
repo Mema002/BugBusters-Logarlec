@@ -48,7 +48,6 @@ public class GameLogic {
     public static void endGame() {
         isGameRunning = false;
         notifyObservers();
-        GUIController.gameOverMessage(currentPlayer);
     }
 
     public static void runGame(boolean isRealGame) {
@@ -64,6 +63,7 @@ public class GameLogic {
             //Ha nincs tobb jatekos
             if (playerCount == 0) {
                 endGame();
+                GUIController.gameLostMessage();
                 break;
             }
 

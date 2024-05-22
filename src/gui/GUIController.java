@@ -122,4 +122,13 @@ public class GUIController {
             JOptionPane.PLAIN_MESSAGE
         );
     }
+
+    public static void gameLostMessage() {
+        JOptionPane.showMessageDialog(
+            null,
+            "Every student was expelled!",
+            "Game Over",
+            JOptionPane.PLAIN_MESSAGE
+        );
+    }
 }
