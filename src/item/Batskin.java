@@ -44,6 +44,10 @@ public class Batskin extends Item {
         return false;
     }
 
+    public boolean isFake() {
+        return isFake;
+    }
+
     @Override
     public String toString() {
         return "Batskin";

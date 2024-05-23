@@ -44,6 +44,10 @@ public class FFP2 extends Item {
         return false;
     }
 
+    public boolean isFake() {
+        return isFake;
+    }
+
     @Override
     public String toString() {
         return "FFP2";

@@ -59,6 +59,10 @@ public class Rag extends Item {
         return false;
     }
 
+    public boolean isFake() {
+        return isFake;
+    }
+
     @Override
     public String toString() {
         return "Rag";

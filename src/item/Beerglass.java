@@ -71,6 +71,10 @@ public class Beerglass extends Item {
         return false;
     }
 
+    public boolean isFake() {
+        return isFake;
+    }
+
     @Override
     public String toString() {
         return "Beerglass";

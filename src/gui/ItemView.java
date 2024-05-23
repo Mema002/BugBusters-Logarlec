@@ -16,42 +16,42 @@ public class ItemView {
         item = a;
         icon = new ImageIcon("images/Airfreshener.png");
         color = new Color(102, 214, 242);
-        attrib = "";
+        attrib = a.isFake() ? ", Fake" : "";
     }
 
     public ItemView(Batskin b) {
         item = b;
         icon = new ImageIcon("images/Batskin.png");
         color = new Color(181, 101, 29);
-        attrib = ", durability: " + Integer.toString(b.getDurability());
+        attrib = ", durability: " + Integer.toString(b.getDurability()) + (b.isFake() ? ", Fake" : "");
     }
 
     public ItemView(Beerglass b) {
         item = b;
         icon = new ImageIcon("images/Beerglass.png");
         color = new Color(238, 216, 24);
-        attrib = ", remaining time: " + Integer.toString(b.getRemainingTime());
+        attrib = ", remaining time: " + Integer.toString(b.getRemainingTime()) + (b.isFake() ? ", Fake" : "");
     }
 
     public ItemView(Camembert c) {
         item = c;
         icon = new ImageIcon("images/Camembert.png");
         color = new Color(249, 184, 6);
-        attrib = "";
+        attrib = c.isFake() ? ", Fake" : "";
     }
 
     public ItemView(FFP2 f) {
         item = f;
         icon = new ImageIcon("images/FFP2.png");
         color = new Color(64, 198, 193);
-        attrib = ", durability: " + Integer.toString(f.getDurability());
+        attrib = ", durability: " + Integer.toString(f.getDurability()) + (f.isFake() ? ", Fake" : "");
     }
 
     public ItemView(Rag r) {
         item = r;
         icon = new ImageIcon("images/Rag.png");
         color = new Color(144, 144, 144);
-        attrib = ", remaining time: " + Integer.toString(r.getRemainingTime());
+        attrib = ", remaining time: " + Integer.toString(r.getRemainingTime()) + (r.isFake() ? ", Fake" : "");
     }
 
     public ItemView(Sliderule s) {

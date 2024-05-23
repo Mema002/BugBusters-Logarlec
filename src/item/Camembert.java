@@ -33,6 +33,10 @@ public class Camembert extends Item {
         return true;
     }
 
+    public boolean isFake() {
+        return isFake;
+    }
+
     @Override
     public String toString() {
         return "Camembert";
