@@ -39,7 +39,8 @@ public class Beerglass extends Item {
     @Override
     public void decrRemainingTime() {
         ConsoleApp.returnLog("return");
-        remainingTime -= 1;
+        if (remainingTime > 0)
+            remainingTime -= 1;
     }
 
     /** 

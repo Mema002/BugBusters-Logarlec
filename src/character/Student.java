@@ -57,7 +57,9 @@ public class Student extends Character {
                 currentRoom.removeCharacter(this);
                 targetRoom.addCharacter(this);
                 setRoom(targetRoom);
-                for(Character c : targetRoom.getCharacters()){
+
+                ArrayList<Character> characterToTriggerExpelling = new ArrayList<>(targetRoom.getCharacters());
+                for(Character c : characterToTriggerExpelling){
                     c.triggerExpelling(this);
                 }
             }
@@ -132,7 +134,8 @@ public class Student extends Character {
      */
     @Override
     public boolean tryExpell(Teacher attacker) {
-        for (Item item : inventory){
+        ArrayList<Item> copyOfInventory = new ArrayList<>(inventory);
+        for (Item item : copyOfInventory) {
             if(item.checkDefense(attacker)){
                 return false;
             }
