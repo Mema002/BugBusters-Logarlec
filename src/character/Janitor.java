@@ -18,14 +18,12 @@ public class Janitor extends Character {
         super(currentRoom);
     }
 
-    @Override //teacherbol copy paste
+    @Override
     public void move(int targetIndex) {
         ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
         Random random = new Random();
 
-        //ez még nem kell mert 
-        //int targetIndex;
         if (options.isEmpty()) return;
 
         Room targetRoom = options.get(targetIndex);
@@ -39,7 +37,6 @@ public class Janitor extends Character {
             ConsoleApp.funcLog("character.move()");
             character.move(0);
         }
-
 
         ConsoleApp.funcLog("targetRoom.requestChange()");
         if (targetRoom.requestChange()) {

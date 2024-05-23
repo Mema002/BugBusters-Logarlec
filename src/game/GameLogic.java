@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.random.RandomGenerator;
 
 import src.character.Character;
+import src.character.Janitor;
 import src.character.Student;
 import src.character.Teacher;
 import src.gui.GUIController;
@@ -144,13 +145,16 @@ public class GameLogic {
                 //Ha AI
                 } else {
                     //AI action
-                    //TODO AI action
-                    if(random.nextInt(3) == 1)
+                    if (random.nextInt(3) == 1)
                         currentPlayer.skipTurn();
                     else {
                         int neighbourListSize = currentPlayer.getCurrentRoom().getNeighbours().size();
-                        if (neighbourListSize > 0)
-                            currentPlayer.move(random.nextInt(neighbourListSize-1));
+                        if (neighbourListSize > 0) {
+                            if (neighbourListSize == 1)
+                                currentPlayer.move(0); //nexInt paramja valamiert nem lehet 0
+                            else
+                                currentPlayer.move(random.nextInt(neighbourListSize - 1));
+                        }
                     }
                 }
             }
@@ -218,6 +222,12 @@ public class GameLogic {
             Teacher newTeacher = new Teacher(rooms.get(rndIdx), i);
             rooms.get(rndIdx).addCharacter(newTeacher);
             characters.add(newTeacher);
+        }
+        for (int i = 0; i < teacherCount; i++) {
+            int rndIdx = random.nextInt(rooms.size());
+            Janitor newJanitor = new Janitor(rooms.get(rndIdx), i);
+            rooms.get(rndIdx).addCharacter(newJanitor);
+            characters.add(newJanitor);
         }
 
         ConsoleApp.returnLog("return");
