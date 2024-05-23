@@ -46,6 +46,13 @@ public class RoomManager {
                 pairCount++;
             }
         }
+        for (Room room : rooms){
+            if (room.getNeighbours().isEmpty()){
+                Room randNeighbour = rooms.get(random.nextInt(rooms.size()));
+                room.addNeighbour(randNeighbour);
+                randNeighbour.addNeighbour(room);
+            }
+        }
 
         //Effects
         ArrayList<Room> tempRooms = new ArrayList<>(rooms);
