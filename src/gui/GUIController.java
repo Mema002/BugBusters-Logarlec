@@ -123,6 +123,15 @@ public class GUIController {
         );
     }
 
+    public static void stickyMessage(){
+        JOptionPane.showMessageDialog(
+                null,
+                "The item sticks to the room so you can't pick it up :(",
+                null,
+                JOptionPane.PLAIN_MESSAGE
+        );
+    }
+
     public static void gameLostMessage() {
         JOptionPane.showMessageDialog(
             null,

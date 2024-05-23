@@ -3,8 +3,10 @@ package src.character;
 import java.util.ArrayList;
 
 import src.dto.ChangeType;
+import src.effect.Effect;
 import src.game.ConsoleApp;
 import src.gui.CharacterView;
+import src.gui.GUIController;
 import src.gui.ItemView;
 import src.gui.ObservableModel;
 import src.item.Item;
@@ -155,6 +157,12 @@ public abstract class Character extends ObservableModel {
         if (options.isEmpty()) {
             ConsoleApp.returnLog("return");
             return; 
+        }
+        for (Effect e : currentRoom.getEffects()){
+            if(e.isSticky(currentRoom)){
+                GUIController.stickyMessage();
+                return;
+            }
         }
         Item chosen = options.get(targetIndex);
         if(inventory.size() < 5){

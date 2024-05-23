@@ -21,6 +21,10 @@ public abstract class Effect {
         return;
     }
 
+    public void increaseCounter(Room r) {}
+
+    public abstract boolean isSticky(Room r);
+
     public abstract String toString();
 
     public abstract ImageIcon getIcon();

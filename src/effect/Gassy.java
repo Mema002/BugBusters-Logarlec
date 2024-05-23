@@ -50,6 +50,11 @@ public class Gassy extends Effect {
     }
 
     @Override
+    public boolean isSticky(Room r) {
+        return false;
+    }
+
+    @Override
     public ImageIcon getIcon() {
         return new ImageIcon("images/Gassy.png");
     }

@@ -77,7 +77,12 @@ public class Cursed extends Effect {
     public void clearGas(Room r) {
         return;
     }
-    
+
+    @Override
+    public boolean isSticky(Room r) {
+        return false;
+    }
+
     @Override
     public ImageIcon getIcon() {
         return new ImageIcon("images/Cursed.png");

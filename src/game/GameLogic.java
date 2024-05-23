@@ -244,7 +244,7 @@ public class GameLogic {
             int holderType = random.nextInt(2);
             Room randomRoom = rooms.get(random.nextInt(roomCount)); //melyik szobaba
             Character randomCharacter = characters.get(random.nextInt(characters.size())); //melyik karakterhez
-            boolean isFake = random.nextInt(4) != 0;
+            boolean isFake = random.nextInt(2) != 0;
             switch (type) {
                 case 0:
                     ConsoleApp.funcLog("randomRoom.addItem(new Batskin())");

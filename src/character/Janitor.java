@@ -35,6 +35,7 @@ public class Janitor extends Character {
         }
         for (Character character : characterToMove) {
             ConsoleApp.funcLog("character.move()");
+
             character.move(0);
         }
 

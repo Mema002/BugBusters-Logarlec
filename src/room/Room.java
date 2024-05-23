@@ -71,7 +71,9 @@ public class Room extends ObservableModel {
     public void addCharacter(Character c) {
         ConsoleApp.returnLog("return");
         characters.add(c);
-
+        for (Effect e : effects) {
+            e.increaseCounter(this);
+        }
         // Notify observers
         observers.forEach(o -> o.update(c, ChangeType.ADD));
     }
