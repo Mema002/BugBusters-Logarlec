@@ -39,4 +39,9 @@ public class Sticky extends Effect {
         return new ImageIcon("images/Sticky.png");
     }
 
+    @Override
+    public boolean hasSticky (Room r) {
+        return true;
+    }
+
 }

@@ -55,6 +55,11 @@ public class Gassy extends Effect {
     }
 
     @Override
+    public boolean canClearGas(Room r) {
+        return true;
+    }
+
+    @Override
     public ImageIcon getIcon() {
         return new ImageIcon("images/Gassy.png");
     }

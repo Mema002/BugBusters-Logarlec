@@ -17,6 +17,8 @@ public abstract class Effect {
         return;
     }
 
+    public boolean canClearGas(Room r){return false;}
+
     public void clearSticky(Room r) {
         return;
     }
@@ -24,6 +26,8 @@ public abstract class Effect {
     public void increaseCounter(Room r) {}
 
     public abstract boolean isSticky(Room r);
+
+    public boolean hasSticky(Room r) {return false;}
 
     public abstract String toString();
 

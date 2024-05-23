@@ -35,14 +35,10 @@ public class Transistor extends Item {
     @Override
     public void initItem(Character c) {
         owner = c;
-        ConsoleApp.funcLog("character.geInventory()");
         for (Item i : c.getInventory()) {
-            ConsoleApp.funcLog("Item.IsUnpaired()");
-            if (i.IsUnpaired()) {
-                ConsoleApp.funcLog("Item.pair()");
+            if (i.IsUnpaired() && !i.equals(this)) {
                 this.pair(i);
                 i.pair(this);
-                ConsoleApp.returnLog("return");
                 return;
             }
         }
@@ -130,19 +126,12 @@ public class Transistor extends Item {
     public void drop() {
         if (pair != null){
             if (isActive()) {
-                ConsoleApp.funcLog("getPairLocation()");
                 Room targetRoom = getPairLocation();
-                ConsoleApp.funcLog("owner.getCurrentRoom()");
                 Room currentRoom = owner.getCurrentRoom();
-                ConsoleApp.funcLog("targetRoom.requestChange()");
                 if (targetRoom.requestChange()) {
-                    ConsoleApp.funcLog("currentRoom.removeCharacter(owner)");
                     currentRoom.removeCharacter(owner);
-                    ConsoleApp.funcLog("targetRoom.addCharacter(owner)");
                     targetRoom.addCharacter(owner);
-                    ConsoleApp.funcLog("owner.setRoom(targetRoom)");
                     owner.setRoom(targetRoom);
-                    ConsoleApp.funcLog("deActivate()");
                     deActivate();
                     pair.pair(null);
                     pair(null);

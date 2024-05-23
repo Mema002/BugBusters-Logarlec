@@ -47,14 +47,25 @@ public class Janitor extends Character {
             targetRoom.addCharacter(this);
             setRoom(targetRoom);
 
-            currentRoom.addEffect(new Sticky());
-
+            boolean cansticky=true;
+            boolean canclean = false;
+            ArrayList<Effect> cleanables= new ArrayList<>();
             for (Effect e : targetRoom.getEffects()) {
-                e.clearGas(targetRoom);
+                if(e.canClearGas(targetRoom)){
+                    canclean = true;
+                    cleanables.add(e);
+                }
+                if(e.hasSticky(targetRoom)){
+                    cansticky=false;
+                }
             }
-
+            if(cansticky){
+                targetRoom.addEffect(new Sticky());
+            }
+            if(canclean){
+                targetRoom.getEffects().removeAll(cleanables);
+            }
         }
-        ConsoleApp.returnLog("return");
     }
 
     @Override
