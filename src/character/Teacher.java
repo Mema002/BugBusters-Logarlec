@@ -23,7 +23,6 @@ public class Teacher extends Character {
      */
     @Override
     public void move(int targetIndex) {
-        ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
 
         //ez még nem kell mert 
@@ -38,25 +37,17 @@ public class Teacher extends Character {
         ArrayList<Character> toExpell = new ArrayList<Character>();
 
         Room targetRoom = options.get(targetIndex);
-        ConsoleApp.funcLog("targetRoom.requestChange()");
         if (targetRoom.requestChange()) {
-            ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
             currentRoom.removeCharacter(this);
-            ConsoleApp.funcLog("targetRoom.addCharacter(this)");
             targetRoom.addCharacter(this);
-            ConsoleApp.funcLog("setRoom(targetRoom)");
             setRoom(targetRoom);
-            ConsoleApp.funcLog("targetRoom.getCharacters()");
             for (Character c : targetRoom.getCharacters()) {
-                ConsoleApp.funcLog("character.tryExpell(this)");
                 if (c.tryExpell(this)) {
-                    ConsoleApp.funcLog("character.setExpelled()");
                     toExpell.add(c);
                 }
             }
             toExpell.forEach(c -> c.setExpelled());
         }
-        ConsoleApp.returnLog("return");
     }
 
     

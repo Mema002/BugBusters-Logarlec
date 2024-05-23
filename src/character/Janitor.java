@@ -22,7 +22,6 @@ public class Janitor extends Character {
     public void move(int targetIndex) {
         ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
-        Random random = new Random();
 
         if (options.isEmpty()) return;
 
@@ -34,20 +33,19 @@ public class Janitor extends Character {
                 characterToMove.add(character);
         }
         for (Character character : characterToMove) {
-            ConsoleApp.funcLog("character.move()");
-
-            character.move(0);
+            for(int i=0; i<targetRoom.getNeighbours().size(); i++){
+                Room potentialRoom = targetRoom.getNeighbours().get(i);
+                if(!potentialRoom.equals(targetRoom) && potentialRoom.requestChange()){
+                    character.move(i);
+                    break;
+                }
+            }
         }
 
-        ConsoleApp.funcLog("targetRoom.requestChange()");
         if (targetRoom.requestChange()) {
-            ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
             currentRoom.removeCharacter(this);
-            ConsoleApp.funcLog("targetRoom.addCharacter(this)");
             targetRoom.addCharacter(this);
-            ConsoleApp.funcLog("setRoom(targetRoom)");
             setRoom(targetRoom);
-            ConsoleApp.funcLog("targetRoom.getCharacters()");
 
             currentRoom.addEffect(new Sticky());
 

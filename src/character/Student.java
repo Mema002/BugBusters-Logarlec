@@ -49,22 +49,15 @@ public class Student extends Character {
      */
     @Override
     public void move(int targetIndex) {
-        ConsoleApp.funcLog("currentRoom.getNeighbours()");
         ArrayList<Room> options = currentRoom.getNeighbours();
         //choose?
         if(!options.isEmpty()){
             Room targetRoom = options.get(targetIndex);
-            ConsoleApp.funcLog("targetRoom.requestChange()");
             if (targetRoom.requestChange()) {
-                ConsoleApp.funcLog("currentRoom.removeCharacter(this)");
                 currentRoom.removeCharacter(this);
-                ConsoleApp.funcLog("targetRoom.addCharacter(this)");
                 targetRoom.addCharacter(this);
-                ConsoleApp.funcLog("this.setRoom(targetRoom)");
                 setRoom(targetRoom);
-                ConsoleApp.funcLog("targetRoom.getCharacters()");
                 for(Character c : targetRoom.getCharacters()){
-                    ConsoleApp.funcLog("c.triggerExpelling(this)");
                     c.triggerExpelling(this);
                 }
             }
@@ -140,14 +133,11 @@ public class Student extends Character {
     @Override
     public boolean tryExpell(Teacher attacker) {
         for (Item item : inventory){
-            ConsoleApp.funcLog("item.checkDefense(attacker)");
             if(item.checkDefense(attacker)){
-                ConsoleApp.returnLog("return false");
                 return false;
             }
 
         }
-        ConsoleApp.returnLog("return true");
         return true;
     }
 
