@@ -48,9 +48,20 @@ public class RoomManager {
         }
         for (Room room : rooms){
             if (room.getNeighbours().isEmpty()){
-                Room randNeighbour = rooms.get(random.nextInt(rooms.size()));
-                room.addNeighbour(randNeighbour);
-                randNeighbour.addNeighbour(room);
+                if (room.getNeighbours().size() > 1){
+                    while (room.getNeighbours().isEmpty()) {
+                        Room randNeighbour = rooms.get(random.nextInt(rooms.size()));
+                        if (room != randNeighbour) {
+                            room.addNeighbour(randNeighbour);
+                            randNeighbour.addNeighbour(room);
+                        }
+                    }
+                }
+                else if (room.getNeighbours().size() == 1){
+                    Room firstNeighbour = room.getNeighbours().get(0);
+                    room.addNeighbour(firstNeighbour);
+                    firstNeighbour.addNeighbour(room);
+                }
             }
         }
 
