@@ -254,7 +254,8 @@ public abstract class Character extends ObservableModel {
     public void endOfRound() {
         for (Item item : inventory) {
             ConsoleApp.funcLog("item.decrRemainingTime()");
-            item.decrRemainingTime();
+            if (item.getDurability() > 0)
+                item.decrRemainingTime();
         }
         ConsoleApp.returnLog("return");
     }

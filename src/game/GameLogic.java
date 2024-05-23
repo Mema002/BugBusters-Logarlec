@@ -76,7 +76,7 @@ public class GameLogic {
 
             currentPlayer = characters.get(currentPlayerIdx);
             notifyObservers();
-                
+
             //Ha van megadott action lista
             if (!isRealGame) {
 
@@ -142,7 +142,7 @@ public class GameLogic {
                         GUIController.updateStudentViews();
                         hasAction = false;
                     }
-                //Ha AI
+                    //Ha AI
                 } else {
                     //AI action
                     if (random.nextInt(3) == 1)
@@ -177,7 +177,7 @@ public class GameLogic {
 
             if (currentPlayerIdx == 0 && stepCounter != 0)
                 endOfTurn();
-                GUIController.updateStudentViews();
+            GUIController.updateStudentViews();
 
             currentPlayerIdx++;
             stepCounter++;
